@@ -1,0 +1,42 @@
+body {
+    padding-top: 3.5rem;
+}
+
+.bg-dark {
+    background-color: #3B5998!important;
+}
+
+.btn-primary{
+    background-color: #4267b2;
+    border-color: #29487d;
+    border-radius: 0;
+}
+
+.btn-primary:hover{
+    background-color: #1b366b;
+    border-color: #29487d;
+    border-radius: 0;
+}
+
+.navbar{
+    padding-left:50px;
+    padding-right:50px;
+}
+
+#Principal{
+    background-color: #dbe5f8;
+    padding-left: 30px;
+    padding-right: 30px;  
+}
+
+.card{
+    border: none;
+}
+.card-header{
+    border: none;
+    background-color: transparent!important;
+}
+
+h6{
+    color: red;
+  }

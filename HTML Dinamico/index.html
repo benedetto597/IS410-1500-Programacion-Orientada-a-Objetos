@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl-info td, #tbl-info th{
+            border: 1px solid black;
+            padding:10px;
+        }
+        #tbl-info img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Artistas</h1>
+    <table id="tbl-info">
+        <thead>
+            <tr>
+                <th>Nombre Artista</th>
+                <th>URL de la caratula</th>
+                <th>Cantidad de albumes</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tbl-info-contenido"></tbody>
+    </table>
+
+    <hr>
+    <div id="detalle">
+    </div>
+    <h1>Albumes del artista: <span id="artista"></span></h1>
+    <table id="tbl-detalle-albumes">
+        <thead>
+            <tr>
+                <th>TituloAlbum</th>
+                <th>Anio</th>
+                <th>Genero</th>
+                <th>Caratula</th>
+                <th>Canciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <h1>Canciones del Album: <span id="album"></span></h1>
+    <table id="tbl-canciones">
+        <thead>
+            <tr>
+                <th>Canción</th>
+                <th>Duración</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="js/controlador.js"></script>
+</body>
+</html>

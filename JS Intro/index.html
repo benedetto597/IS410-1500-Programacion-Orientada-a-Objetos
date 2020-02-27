@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test JS</title>
+</head>
+<body>
+    <script>
+        /* JS es lenguaje Funcional
+        --> Tiene de especial almacenar una función dentro de una variable
+        --> Da como resultado una sintaxis alternativa para la creación de una función
+        */
+        class Computadora{
+            constructor(marca, modelo){
+                // Primero en ejecutarse al instanciarse
+                this.marca = "Dell";
+                this.modelo = modelo;
+            }
+
+            //Metodo de la clase, la cual no es como una funcion
+            mostrarDatos(){
+                //No se debe escribir 'function' al inicio del metodo
+                console.log(this.marca + ', ' + this.modelo);
+            }
+        }
+
+        //Funcion fuera de clase
+        function sumar(a,b){
+            return a+b;
+        }
+
+        console.log(sumar(5,6));
+
+        //Almacenar la función en una variable
+        let funcion = sumar;
+        console.log(funcion(4,5));
+
+        //Crear una función anonima
+        let resta = function(a,b){
+            return a-b;
+        }
+        console.log(resta(6,2));
+
+        // Arrow function, se le quita la palabra function
+        let multiaplication = (a,b) => {
+            return a*b;
+        }
+
+        /*
+        También se puede escribir en una sola línea:
+            let multiaplication = (a,b) => a*b;
+        */
+
+        let mostrarText = x => console.log(x);
+        mostrarText("Hola Mundo");
+
+        // Función Arrow sin nombre (anonima) o llamada Autoejecución
+        (()=> console.log("Autoejecución"))();
+
+        // Instancia de la clase
+        let computadora = new Computadora('Dell', 'LS 2020');
+        // Uso del metodo
+        computadora.mostrarDatos();
+
+        // JSON
+        let persona ={
+            nombre: 'Juan',
+            apellido: 'Perez',
+            edad:32,
+            mostrarMensaje: ()=>{console.log("El mensaje en JSON")}
+        }
+
+        console.log(persona);
+        //document.write(persona);
+        document.write(persona.nombre);
+
+        //Convertir un JSON a Cadena con stringify
+        document.write(JSON.stringify(persona));
+        
+        console.log(computadora);
+
+        //No importa si se creo por bajo como una clase, es un JSON
+        document.write(JSON.stringify(computadora));
+        
+        persona.mostrarMensaje()
+        
+        //Areglos
+        let arreglo = ["hola", "Mundo"];
+        console.log(arreglo[0] + ' ' + arreglo[1]);
+
+        let arregloDeCosas = [ "Texto" , 312, "Más Texto", {nombre:'Juan'}];
+        for (let i=0; i<arregloDeCosas.length; i++)
+            console.log(arregloDeCosas[i]);
+        
+        //Arreglo de JSON
+        let personas = [
+            {nombre:'Juan',apellido:'Perez',edad:32,Genero:'Masculino'},
+            {nombre:'Rober',apellido:'Rosario',edad:25,Genero:'Masculino'},
+            {nombre:'Karla',apellido:'Sosa',edad:23,Genero:'Femenino'},
+            {nombre:'Pedro',apellido:'Antunez',edad:18,Genero:'Masculino'}
+        ];
+
+        console.log(personas);
+        
+    </script>
+</body>
+</html>
