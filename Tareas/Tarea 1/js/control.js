@@ -11,16 +11,23 @@ function ShowUsers(){
 }
 
 function ConfirmPost(){
-    ValidateSlot();
+    ValidatePost();
+    ValidateDate();
 
 }
 
-function ValidateSlot(){
+function ValidatePost(){
     if(document.querySelector('textarea').value == ''){
         document.getElementById('error-post').innerHTML = `<h6>Escriba un Post</h6>`;
-
+        return false;
     }
+    return true;
+}
+
+function ValidateDate(){
     if(document.getElementById('date').value == ''){
         document.getElementById('error-date').innerHTML = `<h6>Seleccione una Fecha</h6>`;
+        reutrn false;
     }
+    return true;
 }
