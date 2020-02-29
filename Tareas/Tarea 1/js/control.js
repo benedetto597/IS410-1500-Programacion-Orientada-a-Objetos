@@ -47,7 +47,7 @@ function ConfirmPost(){
             <div class="card p-3">
                     <div class="card-header" style=" padding-left:0; padding-right:0;">
                         <img id="userlogo"src="img/user.jpg" class="img-thumbnail rounded-circle float-left">
-                        <div class="col pt-2">
+                        <div style="padding-top:10px;">
                         <b class="card-title text-left" style="font-size:15px" >${document.getElementById('Users').value}</b><h6 style="font-size:10px; color: #6a6d72; display: inline;">(${getDate(document.getElementById('date').value)})</h6>
                         </div>
                     </div>
