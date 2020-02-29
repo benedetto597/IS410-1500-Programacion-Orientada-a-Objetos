@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
+        <div class="row">
+        <a class="navbar-brand col-align-self-center" href="#"><img src="img/logo.png"></a>
+        <button class="navbar-toggler col-align-self-center" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </div>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" style="width:500px">
+            <button class="btn btn-light btn-sm my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div id="mainRow" class="row">
+            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                <div class="card w-100" style="width: 18rem;">
+                    <img class="card-img-top" src="img/1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <b>Card title</b>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-4 mx-1" id="main">
+          <div class="card text-center">
+            <form class="card-body" style="padding-bottom: 10px;">
+              <h4 class="card-title">Agregar Post</h4>
+              <div class="form-group">
+                <select id="Users" class="form-control"></select>
+                <div class="form-group">
+                  <textarea placeholder="¿Qué Estas Pensando?" class="form-control my-2" rows="2"></textarea>
+                  <input type="date" placeholder="Fecha" class="form-control" id="date">
+                  <button type="button" class="btn btn-primary btn-md my-2" onclick="ConfirmPost();">Post</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controlador.js"></script>
+</body>
+</html>

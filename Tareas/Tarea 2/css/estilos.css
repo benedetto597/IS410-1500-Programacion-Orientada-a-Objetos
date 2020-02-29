@@ -1,0 +1,21 @@
+body {
+    padding-top: 4.5rem;
+    padding-left: 0;
+}
+
+.navbar{
+    padding-left:25px;
+    padding-right:150px;
+}
+
+.card{
+    border:none;
+}
+
+.card-body{
+    padding: 0;
+}
+
+.card-img-top{
+    height: 150px;
+}
