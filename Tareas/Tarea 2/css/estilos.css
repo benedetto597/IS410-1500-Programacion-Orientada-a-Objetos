@@ -5,7 +5,7 @@ body {
 
 .navbar{
     padding-left:25px;
-    padding-right:150px;
+    padding-right:110px;
 }
 
 .card{
@@ -24,8 +24,36 @@ body {
     border:2px solid rgba(0,0,0,.125) !important;
     border-radius: 5px 5px 5px 5px !important;
     padding: 2rem;
+    padding-bottom: 0;
 }
 
 .form-control{
     margin-bottom: 5px;
+}
+
+h6{
+    color: red;
+}
+
+h5{
+    color: white;
+    font-size: smaller;
+}
+#img {
+    position: relative;    /* para poder posicionar el texto de forma absoluta */
+    display: inline-block; /* para que solo ocupe el ancho de la imagen */
+  }
+  
+#titleimg {
+    position: absolute;    /* posición absolute con respecto al padre */
+    top: 0.5rem;             /* posicionada en la esquina inferior derecha */
+    left: 0.5rem;
+}
+
+#timeimg{
+    position: relative;
+    font-weight: normal;
+    background-color: rgba(22, 21, 21, 0.418);
+    border: 2px solid rgba(22, 21, 21, 0.418);
+    border-radius: 3px;
 }

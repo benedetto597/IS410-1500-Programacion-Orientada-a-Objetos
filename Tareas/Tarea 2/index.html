@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="img/favicon.png">
 
 </head>
-<body>
+<body onload="ShowChannels();">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
         <div class="row">
         <a class="navbar-brand col-align-self-center" href="#"><img src="img/logo.png"></a>
@@ -21,37 +21,34 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         
         <form class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" style="width:500px">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" style="width:400px">
             <button class="btn btn-light btn-sm my-2 my-sm-0" type="submit">Search</button>
         </form>
         </div>
     </nav>
 
     <div class="container-fluid">
-        <div id="mainRow" class="row">
-            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-xs-12">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="img/1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <b>Card title</b>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="mainRow" class="row"></div>
     </div>
+    <hr>
     <footer class="page-footer">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="main">
           <div id="formCard" class="card">
             <form class="card-body" style="padding-bottom: 10px;">
               <div class="form-group">
-                  <input type="text" placeholder="Titulo" class="form-control">
-                  <input type="text" placeholder="URL Caratula" class="form-control">
-                  <select id="Users" class="form-control"></select>              
-                  <input type="text" placeholder="Visualizaciones" class="form-control">
-                  <input type="time" placeholder="Duración HH:MM" class="form-control">
-                  <input type="text" placeholder="Subido hace X horas..." class="form-control">
-                  <button type="button" class="btn btn-danger btn-md my-2" onclick="ConfirmPost();">Guardar</button>
+                <input type="text" placeholder="Titulo" class="form-control" id="Title">
+                    <div id="error-title" class="my-2"></div>
+                <input type="text" placeholder="URL Caratula" class="form-control" id="URL">
+                    <div id="error-url" class="my-2"></div>
+                <select id="Channels" class="form-control" id="Channels"></select>              
+                    <div id="error-channel" class="my-2"></div>
+                <input type="number" placeholder="Visualizaciones" class="form-control" id="Views">
+                    <div id="error-view" class="my-2"></div>
+                <input type="time" placeholder="Duración HH:MM" class="form-control" id="Duration">
+                    <div id="error-duration" class="my-2"></div>
+                <input type="number" placeholder="Subido hace X horas..." class="form-control" id="Uploaded">
+                    <div id="error-upload" class="my-2"></div>
+                <button type="button" class="btn btn-danger btn-md my-2" onclick="ConfirmPost();">Guardar</button>
               </div>
             </form>
           </div>

@@ -53,6 +53,8 @@ function ShowUsers(){
 
 function ConfirmPost(){
     if (ValidatePost()== false || ValidateDate() == false){
+        document.getElementById('error-date').innerHTML = `<h6>Seleccione una fecha</h6>`;
+        document.getElementById('error-post').innerHTML = `<h6>Escriba un Post</h6>`;
         return false;
     }else{
         let posUser = searchUser();
@@ -91,7 +93,6 @@ function searchUser(){
 
 function ValidatePost(){
     if(document.querySelector('textarea').value == ''){
-        document.getElementById('error-post').innerHTML = `<h6>Escriba un Post</h6>`;
         return false;
     }
     let postContent = document.querySelector('textarea').value;
@@ -103,7 +104,7 @@ function ValidatePost(){
 
 function ValidateDate(){
     if(document.getElementById('date').value == ''){
-        document.getElementById('error-date').innerHTML = `<h6>Seleccione una date</h6>`;
+        
         return false;
     }
     let postDate = document.getElementById('date').value;
