@@ -19,3 +19,13 @@ body {
 .card-img-top{
     height: 150px;
 }
+
+#formCard{
+    border:2px solid rgba(0,0,0,.125) !important;
+    border-radius: 5px 5px 5px 5px !important;
+    padding: 2rem;
+}
+
+.form-control{
+    margin-bottom: 5px;
+}

@@ -41,17 +41,17 @@
         </div>
     </div>
     <footer class="page-footer">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-4 mx-1" id="main">
-          <div class="card text-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="main">
+          <div id="formCard" class="card">
             <form class="card-body" style="padding-bottom: 10px;">
-              <h4 class="card-title">Agregar Post</h4>
               <div class="form-group">
-                <select id="Users" class="form-control"></select>
-                <div class="form-group">
-                  <textarea placeholder="¿Qué Estas Pensando?" class="form-control my-2" rows="2"></textarea>
-                  <input type="date" placeholder="Fecha" class="form-control" id="date">
-                  <button type="button" class="btn btn-primary btn-md my-2" onclick="ConfirmPost();">Post</button>
-                </div>
+                  <input type="text" placeholder="Titulo" class="form-control">
+                  <input type="text" placeholder="URL Caratula" class="form-control">
+                  <select id="Users" class="form-control"></select>              
+                  <input type="text" placeholder="Visualizaciones" class="form-control">
+                  <input type="time" placeholder="Duración HH:MM" class="form-control">
+                  <input type="text" placeholder="Subido hace X horas..." class="form-control">
+                  <button type="button" class="btn btn-danger btn-md my-2" onclick="ConfirmPost();">Guardar</button>
               </div>
             </form>
           </div>
