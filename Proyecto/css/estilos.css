@@ -1,0 +1,77 @@
+#Mini-Mall-mainloogo{
+    height: 60px;
+    width: 90px;
+}
+
+.navbar{
+    background-color: transparent !important;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+.w-100{
+    border-top: 2px solid #BBA99D !important;
+    border-bottom: 2px solid #BBA99D !important;
+    padding-left: 180px;
+    padding-right: 180px;
+}
+
+#lp-second-part{
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+#lp-content-row{
+    padding-left: 150px;
+    padding-bottom: 200px !important;
+    padding-top: 20px;
+}
+
+#lp-content-col{
+    margin-right: 30px !important;
+}
+
+#lp-content-img {
+    position: relative;    /* para poder posicionar el texto de forma absoluta */
+    display: inline-block; /* para que solo ocupe el ancho de la imagen */
+    padding-left: 0;
+}
+  
+#lp-content-text {
+    position: absolute;    /* posición absolute con respecto al padre */
+    top: 1rem;             /* posicionada en la esquina inferior derecha */
+    left: 1.5rem;
+}
+
+.card-img-top{
+    height: 250px;
+}
+
+.rounded-circle{
+    border: 2px solid #EEC058;
+    height: 150px;
+    width: 150px;
+}
+
+#lp-second-lists{
+    margin-right: auto;
+    background-color: transparent !important;
+    border: none;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    
+}
+
+.card-text{
+    color:black;
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow:none;
+}
