@@ -5,15 +5,11 @@
 
 .navbar{
     background-color: transparent !important;
-    padding-left: 150px;
-    padding-right: 150px;
 }
 
 .w-100{
     border-top: 2px solid #BBA99D !important;
     border-bottom: 2px solid #BBA99D !important;
-    padding-left: 180px;
-    padding-right: 180px;
 }
 
 #lp-second-part{
@@ -76,6 +72,14 @@
     box-shadow:none;
 }
 
+#lp-card-company , #lp-sidebar-comment, footer{
+    background-color: #EEC058;
+    border:none;
+}
+
+.form-control, .btn-danger{
+    border-radius: 0.6rem;
+}
 
 /* Carrusel*/
 @media (min-width: 768px) and (max-width: 991px) {

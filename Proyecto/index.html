@@ -14,7 +14,7 @@
     /* Background Main Window*/
     main{
         width:auto;
-        height:auto;
+        height:100vh;
         background-image: url(img/lp-primary-image.jpeg);
         background-repeat: no-repeat;
         background-size:cover;
@@ -24,11 +24,11 @@
     /* Background Second-main Window*/
     #lp-second-part{
         width:auto;
-        height: auto;
+        height: 100vh;
         background-image: url(img/lp-second-image.jpeg);
         background-repeat: no-repeat;
         background-size:cover;
-        background-position:center;
+        background-position:inherit;
     }
 
     </style>
@@ -168,28 +168,39 @@
     <div id="lp-third-part">
         
             <div class="row">
-                <nav class="col-md-6 d-md-block bg-dark sidebar">
+                <nav class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 bg-dark sidebar">
                     <div class="sidebar-sticky">
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                          <span>Artists</span>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ab facere maiores corporis accusamus, obcaecati quia corrupti alias magnam ad deleniti quam nihil sapiente, rerum cumque, repellat labore officiis veniam!
-                        </h6>
+                        <img src="img/lp-content-third-image.jpeg" style="height:100vh; width: 100vw;">
                     </div>
                 </nav>
-                <div class="col-md-2">
-
-                </div>
-                <nav class="col-md-4 d-md-block bg-dark sidebar">
-                    <div class="sidebar-sticky">
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                          <span>Artists</span>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ab facere maiores corporis accusamus, obcaecati quia corrupti alias magnam ad deleniti quam nihil sapiente, rerum cumque, repellat labore officiis veniam!
-                        </h6>
+                
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0">
+                        <div class="card" id="lp-card-company">
+                            <a href="#"><img src="img/icon/MiniMallicon.png" class="card-img-top p-5" alt="logo-icon">
+                            <div class="card-body">
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></a>
+                            </div>
+                          </div>
+                    </div>
+              
+                <nav  class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-xs-12 col-md-4 d-md-block sidebar" id="lp-sidebar-comment">
+                    <div class="sidebar-sticky p-4">
+                        <input type="text" placeholder="Comenta tu opinión aquí" class="form-control">
+                        <button type="button" class="btn btn-danger btn-block">Publicar Comentario</button>     
                     </div>
                   </nav>
-
+                  <footer class="col-12">
+                    <ul class="nav nav-fill">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">Active</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">Link</a>
+                        </li>
+                    </ul>
+                  </footer>
             </div>
-       
+
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
