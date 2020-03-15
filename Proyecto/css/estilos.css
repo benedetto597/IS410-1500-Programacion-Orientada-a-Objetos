@@ -72,10 +72,11 @@
     box-shadow:none;
 }
 
-#lp-card-company , #lp-sidebar-comment, footer{
-    background-color: #EEC058;
-    border:none;
+#lp-card-company , #lp-sidebar-comment, .bg-dark,footer{
+    background-color: #EEC058 !important;
+    border:none !important;
 }
+
 
 .form-control, .btn-danger{
     border-radius: 0.6rem;

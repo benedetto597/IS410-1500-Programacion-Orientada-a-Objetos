@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lugo</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/all.css"><!--FontAwesome-->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body onload="Mostrar();">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top px-5">
+        <a class="navbar-brand" href="#"><h4 class="py-1">Lugo</h4></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <select id="usuarios" onchange="CambiarUsuario();" class="rounded-pill custom-select custom-select-md px-5 "></select>
+                <button class="btn btn-primary my-2 my-sm-0 rounded-pill px-4" type="button">Ver Ordenes</button>
+            </form>
+        </div>
+        </nav>
+        
+        <main role="main" class="container" style="height: 100vh;">
+            <div id="bienvenida-row" class="row">
+                <!-- Bienvenida Personalizada -->
+            </div>
+            <div id="categorias-row" class="row">
+                <!-- Categorías Personalizadas -->
+            </div>
+
+            <div class="modal" id="modal-categorias" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Restaurantes</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                            <div id="modal-productos">
+                                <!-- Listado Productos -->
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary rounded-pill px-4" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal" id="modal-agregar" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                  <div class="modal-content">
+                    <div id="modal-agregar-head" class="modal-header">
+                      
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Cantidad a Solicitar:<input class="rounded-pill" id="modal-agregar-cantidad" type="number"></h5>
+                    </div>
+                    <div id="modal-agregar-footer"class="modal-footer">
+                    
+                      <button type="button" onclick="AgregarOrden();" class="btn btn-primary rounded-pill px-4" data-dismiss="modal">Procesar Orden</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+        </main><!-- /.container -->
+        
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controlador.js"></script>
+</body>
+</html>

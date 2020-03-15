@@ -1,0 +1,40 @@
+body{
+    padding-top: 5rem;
+}
+
+.navbar{
+background-color: rgb(2, 2, 146) !important;
+}
+
+.btn-primary{
+    background-color: rgb(0, 0, 70) !important;
+    border:none;
+}
+
+.btn{
+    border:none;
+}
+
+.card, .card-header{
+    border:none;
+    border-radius: 13px;
+    color:white;
+}
+
+.card-body{
+    margin-top: 0.5rem;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.fas{
+    position: absolute;    
+    top: 1rem;             
+    left: 1rem;
+}
+
+#title-img{
+    position: absolute;    
+    top: 5rem;             
+    left: 1rem;
+}
