@@ -29,12 +29,14 @@
         background-repeat: no-repeat;
         background-size:cover;
         background-position:inherit;
+        
     }
 
     </style>
 </head>
 <body>
     <main>
+        <!-- Barra de Navegación Primer Parte LandingPage-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
@@ -43,7 +45,7 @@
             <div class="collapse navbar-collapse row" id="navbarSupportedContent">
                 <ul id="main-navbar" class="nav navbar-nav mr-auto px-5">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><h6>Iniciar Sesión</h6></a>
+                        <a class="nav-link" href="register-client.html"><h6>Iniciar Sesión</h6></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><h6>Registrarse</h6></a>
@@ -64,24 +66,24 @@
                 
                     <ul id="main-navbar" class="nav navbar-nav px-5">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#">Inicio</a>
-                        </li>
+                            <a class="nav-link" href="#"><h6>Inicio</h6></a>
+                      </li>
                         <li class="nav-item mr-auto ml-auto">
-                            <a class="nav-link" href="#">Promociones</a>
+                            <a class="nav-link" href="#"><h6>Promociones</h6></a>
                         </li>
                         <li class="nav-item ml-auto">
-                            <a class="nav-link" href="#">Contactanos</a>
+                            <a class="nav-link" href="#"><h6>Contactanos</h6></a>
                         </li>
                     </ul>
                 
             </div>
         </nav>
-        
+        <!-- Contenido Primer Parte LandinPage -->
         <div class="row p-5">
             <div class="col-xl-2 col-md-1 col-xs-1">
                 <div class="card" style="width: 13rem;" id="lp-content-img">
                     <div class="card-body">
-                        <img class="card-img-top" src="img/lp-content-image.jpeg" alt="Card image cap">
+                        <a href="#"><img class="card-img-top" src="img/lp-content-image.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Lo más vendido</h6>
                     </div>  
                 </div>
@@ -90,7 +92,7 @@
             <div class="col-xl-2 col-md-1 col-xs-1">
                 <div class="card" style="width: 13rem;" id="lp-content-img">
                     <div class="card-body">
-                        <img class="card-img-top" src="img/lp-content-categories.jpeg" alt="Card image cap">
+                        <a href="#"><img class="card-img-top" src="img/lp-content-categories.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Categorías</h6>
                     </div> 
                 </div>
@@ -98,8 +100,9 @@
         </div>   
     </main>
 
+    <!-- Segunda Parte LandingPage-->
     <div id="lp-second-part" class="p-0">
-        <!-- Top content -->
+        <!-- Carrusel de Productos -->
         <div class="top-content p-3">
             <div class="container-fluid">
                 <div id="carousel-products" class="carousel slide" data-ride="carousel">
@@ -140,6 +143,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Listas de Empresas y Productos -->
         <div class="row">
             <nav class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12 sidebar px-5">
               <div class="sidebar-sticky p-3">
@@ -156,10 +161,10 @@
                 </li>
                 </ul>
                 <ul class="nav flex-column my-3">
-                    <li class=" nav-item row">
+                    <li class="nav-item row">
                         <div class="col-lg-6 ">
                             <div class="px-0 text-right">
-                                <a href="#"><img src="img/lp-second-companylist.jpeg" class="card-img-right img-fluid rounded" ></a>
+                                <a href="#"><img src="img/lp-second-productlist.jpeg" class="card-img-right img-fluid rounded" ></a>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -169,20 +174,28 @@
                 </ul>
             </nav>
            
-            <nav class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-xs-12 col-md-12 d-md-block bg-dark sidebar " id="lp-second-map">
+            <!-- Mapa y Comentario -->
+            <nav class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-xs-12 col-md-12 d-md-block bg-dark sidebar" id="lp-second-map">
                 <div class="sidebar-sticky p-3">
                   <ul class="nav flex-column my-3">
                       <li class=" nav-item row">
-                          <div class="col-lg-6">
+                          <div class="col-lg-12">
                               <a href="#"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30958.478613821273!2d-87.23716252116157!3d14.088400836372765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa2babf743d51%3A0x68cf2238206ac9d3!2sTegucigalpa!5e0!3m2!1ses!2shn!4v1584565177621!5m2!1ses!2shn" width="600" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></a>
                       </div>
-                  </li>
-                  </ul>
+                    </li>
+                </ul>
+                <ul class="nav flex-column my-3 px-5">
+                    <li class=" nav-item row">
+                        <div class="col-lg-12">
+                            <a href="#lp-card-comments"><img src="img/lp-second-commentsjpg"  class="img-fluid" ></a>
+                        </div>    
+                    </li>
+                </ul>
               </nav>
         </div>
     </div>
+    <!-- Tercera Parte LandingPage -->
     <div id="lp-third-part">
-        <!-- Third Part -->
             <div class="row">
                 <nav class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 bg-dark sidebar">
                     <div class="sidebar-sticky">
@@ -192,7 +205,7 @@
                 
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0">
                         <div class="card" id="lp-card-company">
-                            <a href="#"><img src="img/icon/MiniMallicon.png" class="card-img-top p-3  img-thumbnail" alt="logo-icon">
+                            <a href="#lp-card-comments"><img src="img/icon/MiniMallicon.png" class="card-img-top p-3  img-thumbnail" alt="logo-icon">
                             <div class="card-body">
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></a>
                             </div>
@@ -200,9 +213,14 @@
                     </div>
               
                 <nav  class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-xs-12 col-md-4 d-md-block sidebar" id="lp-sidebar-comment">
-                    <div class="sidebar-sticky p-4 ">
-                        <input type="text" placeholder="Comenta tu opinión aquí" class="form-control">
-                        <button type="button" class="btn btn-danger btn-block my-3">Publicar Comentario</button>     
+                    <div class="sidebar-sticky p-5">
+                        <div id="lp-card-comments" class="card form-group">
+                            <div class="card-body">
+                                <textarea name="" id="" class="form-control"></textarea>
+                                <input type="text" placeholder="Comenta tu opinión aquí" class="form-control my-3">
+                                <button type="button" class="btn btn-danger btn-block ">Publicar Comentario</button>     
+                            </div>
+                        </div>
                     </div>
                   </nav>
                   <footer class="col-12">
@@ -211,7 +229,7 @@
                           <a class="nav-link active" href="#">Active</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link active" href="#">Link</a>
+                          <a class="nav-link active" href="#">Contactenos</a>
                         </li>
                     </ul>
                   </footer>
