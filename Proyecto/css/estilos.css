@@ -1,4 +1,4 @@
-#Mini-Mall-mainloogo{
+#Mini-Mall-mainlogo{
     height: 60px;
     width: 90px;
 }
@@ -58,18 +58,17 @@
     box-shadow:none;
 }
 
-#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register{
+#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register, #btn-admin-register, #country-select-admin, #currency-select-admin, #modal-header-company, #btn-company-login, #btn-company-register-modal{
     background-color: #EEC058 !important;
     border:none !important;
 }
 
-#form-client{
+#form-client, #modal-header-client, #btn-client-login, #btn-client-register-modal{
     background-color: #FBC987 !important;
     border:none !important;
 }
 
-
-.form-control, .btn-danger, iframe, #lp-card-comments, #form-client, #btn-client-register{
+.form-control, .btn-danger, iframe, #lp-card-comments, #form-client, #btn-client-register, #btn-admin-register, #form-admin, #btn-client-login{
     border-radius: 0.6rem;
 }
 
@@ -78,8 +77,9 @@
     color:black;
 }
 
-#country-select, #currency-select{
+#country-select, #currency-select, #form-admin, #modal-header-admin, #btn-admin-login{
     background-color: #757575;
+    border:none
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

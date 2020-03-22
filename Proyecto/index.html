@@ -32,6 +32,27 @@
         
     }
 
+    #modal-body-client{
+        background-image: url(img/login-client.jpeg);
+        background-repeat: no-repeat;
+        background-size:cover;
+        height: 500px;
+    }
+
+    #modal-body-company{
+        background-image: url(img/login-company.jpeg);
+        background-repeat: no-repeat;
+        background-size:cover;
+        height: 500px;
+    }
+
+    #modal-body-admin{
+        background-image: url(img/login-admin.jpg);
+        background-repeat: no-repeat;
+        background-size:cover;
+        height: 500px;
+    }
+
     </style>
 </head>
 <body>
@@ -49,9 +70,9 @@
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Iniciar Sesión</button>
                             <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="register-client.html">Cliente</a>
-                                <a class="dropdown-item" href="#">Empresa</a>
-                                <a class="dropdown-item" href="#">Super Admin</a>
+                                <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
+                                <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
+                                <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
                             </div>
                         </div>
                     </li>
@@ -62,12 +83,12 @@
                             <div class="dropdown-menu" >
                                 <a class="dropdown-item" href="register-client.html">Cliente</a>
                                 <a class="dropdown-item" href="register-company.html">Empresa</a>
-                                <a class="dropdown-item" href="#">Super Admin</a>
+                                <a class="dropdown-item" href="register-admin.html">Super Admin</a>
                             </div>
                         </div>
                     </li>
                 </ul>       
-                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainloogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
+                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
                 <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
                     <li class="nav-item invisible">
                         <a class="nav-link" href="#"><h6>Iniciar Sesión Iniciar Inic</h6></a>
@@ -93,7 +114,138 @@
                     </ul>
                 
             </div>
-        </nav>
+        </nav>          
+          <!-- Modal Login Cliente -->
+          <div class="modal fade" id="login-client" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="modal-header-client" class="modal-header p-2">
+                    <div class="col-md-2 ml-auto">
+                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
+                    </div>
+                    <div class="col-md-1 ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                </div>
+                <div id="modal-body-client" class="modal-body p-0">
+                    <form id="modal-form-client" action="" class="bg-light p-3">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto mr-auto ml-auto">
+                                <h4 id="exampleModalLabel">Cliente</h4>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-10 mr-auto ml-auto">
+                                <input type="text" class="form-control my-2" id="login-user-client" placeholder="Usuario">
+                                <input type="text" class="form-control my-2" id="login-pass-client" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-6 ml-auto mr-auto">
+                        <div class="card" style="border: none;" >
+                            <div class="card-body ml-auto mr-auto">
+                                <button type="submit" id="btn-client-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
+                                <button type="button" id="btn-client-register-modal" onclick="location.href='register-client.html'" class="btn btn-lg shadow  mb-0 rounded-pill my-2" style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Login Empresa -->
+          <div class="modal fade" id="login-company" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="modal-header-company" class="modal-header p-2">
+                    <div class="col-md-2 ml-auto">
+                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
+                    </div>
+                    <div class="col-md-1 ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                </div>
+                <div id="modal-body-company" class="modal-body p-0">
+                    <form id="modal-form-company" action="" class="bg-light p-3">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto mr-auto ml-auto">
+                                <h4 id="exampleModalLabel">Empresa</h4>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-10 mr-auto ml-auto">
+                                <input type="number" class="form-control my-2" id="login-code-company" placeholder="Código de Empleado">
+                                <input type="text" class="form-control my-2" id="login-pass-company" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-6 ml-auto mr-auto">
+                        <div class="card" style="border: none;" >
+                            <div class="card-body ml-auto mr-auto">
+                                <button type="submit" id="btn-company-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
+                                <button type="button" id="btn-company-register-modal" onclick="location.href='register-company.html'" class="btn btn-lg shadow  mb-0 rounded-pill my-2" style="padding-left:2rem; padding-right:2rem;">Registrarse</button>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Login Administrador -->
+          <div class="modal fade" id="login-admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="modal-header-admin" class="modal-header p-2">
+                    <div class="col-md-2 ml-auto">
+                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
+                    </div>
+                    <div class="col-md-1 ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                </div>
+                <div id="modal-body-admin" class="modal-body p-0">
+                    <form id="modal-form-admin" action="" class="bg-light p-3">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto mr-auto ml-auto">
+                                <h4 id="exampleModalLabel">Empresa</h4>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-10 mr-auto ml-auto">
+                                <input type="number" class="form-control" id="login-code-admin" placeholder="Código de Acceso">
+                                <input type="text" class="form-control my-2" id="login-user-admin" placeholder="Usuario">
+                                <input type="text" class="form-control my-2" id="login-pass-admin" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-6 ml-auto mr-auto">
+                        <div class="card" style="border: none;" >
+                            <div class="card-body ml-auto mr-auto">
+                                <button type="submit" id="btn-admin-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <!-- Contenido Primer Parte LandinPage -->
         <div class="row p-5">
             <div class="col-xl-2 col-md-1 col-xs-1">

@@ -14,7 +14,20 @@ initMap = function ()
             };
             setMapa(coords);  //pasamos las coordenadas al metodo para crear el mapa
            
-          },function(error){console.log(error);});
+          },function(error){switch(error.code){
+				case error.PERMISSION_DENIED:
+					mensajeError = "Permiso denegado por el usuario."
+					break;
+				case error.POSITION_UNAVAILABLE:
+					mensajeError = "Posici\363n no disponible."+" "+error.message;
+					break;
+				case error.TIMEOUT:
+					mensajeError = "Desconexi\363n por tiempo."
+					break;
+				case error.UNKNOWN_ERROR:
+					mensajeError = "Error desconocido."+" "+error.message;
+					break;
+		}console.log(mensajeError);});
     
 }
 
