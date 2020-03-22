@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini-Mall | Cliente</title>
+    <title>Mini-Mall | Empresa</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
@@ -18,6 +18,11 @@
             background-repeat: no-repeat;
             background-size:cover;
             background-position:inherit;
+        }
+
+        #map {
+            width: 100%;
+            height: 80%;
         }
 
         </style>
@@ -68,7 +73,8 @@
         </div>
         </nav>
 
-        <!-- Formulario de Registro -->
+        <div id="map"></div>
+        <!-- Formulario de Registro 
         <form action="">
             <div class="col-8 mr-auto ml-auto p-3" id="form-client">
                 <div class="form-row align-items-center">
@@ -125,9 +131,88 @@
                 
             </div>
         </form>
+        -->
+        
     </main>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        var marker;          //Variable del marcador
+var coords = {};    //Coordenadas obtenidas con la geolocalización
+
+//Funcion principal
+initMap = function () 
+{
+
+    //API para geolocalizar el usuario
+        navigator.geolocation.getCurrentPosition(
+          function (position){
+            coords =  {
+              lng: position.coords.longitude,
+              lat: position.coords.latitude
+            };
+            setMapa(coords);  //pasamos las coordenadas al metodo para crear el mapa
+           
+          },function(error){switch(error.code){
+				case error.PERMISSION_DENIED:
+					mensajeError = "Permiso denegado por el usuario."
+					break;
+				case error.POSITION_UNAVAILABLE:
+					mensajeError = "Posici\363n no disponible."+" "+error.message;
+					break;
+				case error.TIMEOUT:
+					mensajeError = "Desconexi\363n por tiempo."
+					break;
+				case error.UNKNOWN_ERROR:
+					mensajeError = "Error desconocido."+" "+error.message;
+					break;
+		}console.log(mensajeError);});
+    
+}
+
+function setMapa (coords)
+{   
+      //Se crea una nueva instancia del objeto mapa
+      var map = new google.maps.Map(document.getElementById('map'),
+      {
+        zoom: 13,
+        center:new google.maps.LatLng(coords.lat,coords.lng),
+
+      });
+
+      /*Creamos el marcador en el mapa con sus propiedades
+      para nuestro obetivo tenemos que poner el atributo draggable en true
+      position pondremos las mismas coordenas que obtuvimos en la geolocalización*/
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: new google.maps.LatLng(coords.lat,coords.lng),
+
+      });
+      //agregamos un evento al marcador junto con la funcion callback al igual que el evento dragend que indica 
+      //cuando el usuario a soltado el marcador
+      marker.addListener('click', toggleBounce);
+      
+      marker.addListener( 'dragend', function (event)
+      {
+        //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
+        document.getElementById("coords").value = this.getPosition().lat()+","+ this.getPosition().lng();
+      });
+}
+
+//callback al hacer clic en el marcador lo que hace es quitar y poner la animacion BOUNCE
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8&callback=initMap"></script>
     <script src="js/controlador.js"></script>
 </body>
 </html>

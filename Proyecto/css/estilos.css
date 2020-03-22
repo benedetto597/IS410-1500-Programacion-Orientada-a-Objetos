@@ -58,24 +58,29 @@
     box-shadow:none;
 }
 
-#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail{
+#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register{
     background-color: #EEC058 !important;
     border:none !important;
 }
 
+#form-client{
+    background-color: #FBC987 !important;
+    border:none !important;
+}
 
-.form-control, .btn-danger, iframe, #lp-card-comments{
+
+.form-control, .btn-danger, iframe, #lp-card-comments, #form-client, #btn-client-register{
     border-radius: 0.6rem;
 }
+
 
 .active{
     color:black;
 }
 
-#white-text{
-    color: white !important;
+#country-select, #currency-select{
+    background-color: #757575;
 }
-
 
 @media (min-width: 768px) and (max-width: 991px) {
     .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
