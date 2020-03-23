@@ -94,7 +94,7 @@
                         <a class="nav-link" href="#"><h6>Iniciar Sesión Iniciar Inic</h6></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><h6>Carrito</h6></a>
+                        <a class="nav-link" href="cart.html"><h6>Carrito</h6></a>
                     </li>
                 </ul>
             
@@ -106,7 +106,16 @@
                             <a class="nav-link" href="#"><h6>Inicio</h6></a>
                       </li>
                         <li class="nav-item mr-auto ml-auto">
-                            <a class="nav-link" href="#"><h6>Promociones</h6></a>
+                            <div class="btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Promociones</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Lista de Productos</a>
+                                    <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Lista de Empresas</a>
+                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Últimas Promociones</a>
+                                </div>
+                            </div>
+                            
                         </li>
                         <li class="nav-item ml-auto">
                             <a class="nav-link" href="#"><h6>Contactanos</h6></a>
@@ -246,6 +255,8 @@
               </div>
             </div>
           </div>
+
+
         <!-- Contenido Primer Parte LandinPage -->
         <div class="row p-5">
             <div class="col-xl-2 col-md-1 col-xs-1">

@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <style>
     
         /* Background Main Window*/
         main{
             width:auto;
-            height:100vh;
+            height:auto;
             background-image: url(img/register-client.jpeg);
             background-repeat: no-repeat;
             background-size:cover;
@@ -21,10 +23,11 @@
         }
 
         #map {
-            width: 100%;
-            height: 80%;
+           
+            bottom: 0;
+            height: 130px;
+            width: 280px;
         }
-
         </style>
 </head>
 <body>
@@ -44,7 +47,7 @@
                         <a class="nav-link" href="#"><h6 id="white-text">Registrarse</h6></a>
                     </li>
                 </ul>       
-                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainloogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
+                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
                 <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
                     <li class="nav-item invisible ">
                         <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión Iniciar Inic</h6></a>
@@ -73,71 +76,92 @@
         </div>
         </nav>
 
-        <div id="map"></div>
-        <!-- Formulario de Registro 
+        
+        <!-- Formulario de Registro -->
         <form action="">
-            <div class="col-8 mr-auto ml-auto p-3" id="form-client">
+            <div class="col-8 mr-auto ml-auto p-3" id="form-company">
                 <div class="form-row align-items-center">
                     <div class="col-auto mr-auto ml-auto">
-                        <h4>Cliente</h4>
+                        <h4>Empresa</h4>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <b>Nombre Completo</b>
-                        <input type="text" class="form-control my-1" id="first-name-client" placeholder="Nombres">
-                        <input type="text" class="form-control" id="last-name-client" placeholder="Apellidos">
+                        <input type="text" class="form-control" id="first-name-company" placeholder="Nombres">
+                        <input type="text" class="form-control my-1" id="last-name-company" placeholder="Apellidos">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <b>Empresa</b>
+                        <input type="text" class="form-control" id="name-company" placeholder="Nombre de la Empresa">
+                        <input type="address" class="form-control my-1" id="address-company" placeholder="Dirección">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <b>Empleado</b>
+                        <input type="number" class="form-control" id="number-employed-company" placeholder="Código de Acceso">
+                        <input type="email" class="form-control my-1" id="email-employed-company" placeholder="Correo Empresarial">
                     </div>
                     
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <b>País</b>
                         <select id="country-select" class="form-control text-white">
+                            <option selected>Seleccione un País</option>
                             <option>Honduras</option>
                             <option>Estados Unidos</option>
                         </select>
-                        <select id="currency-select" class="form-control text-white">
+                        <select id="currency-select" class="form-control text-white my-1">
+                            <option selected>Seleccione una Moneda</option>
                             <option>L Lempira</option>
                             <option>$ Dolar</option>
                         </select>
                     </div>
+                    <div class="form-group col-md-4">
+                       <b>Contraseña</b>
+                      <input type="password" class="form-control" id="password-company" placeholder="Contraseña">
+                      <input type="password" class="form-control my-1" id="password-company-repeat" placeholder="Repita Contraseña">
+                    </div>
 
-                    <div class="form-group col-md-6">
-                        <b>Usuario</b>
-                        <input type="text" class="form-control my-1" id="first-name-client" placeholder="Nombres">
-                        <input type="text" class="form-control" id="last-name-client" placeholder="Apellidos">
+                    <div class="form-group col-md-4">
+                        <b>Redes Sociales</b>
+                        <input type="text" class="form-control" id="code-company" placeholder="Nombres">
+                        <input type="text" class="form-control my-1" id="user-company" placeholder="Apellidos">
                       </div>
 
-                    <div class="form-group col-md-6">
-                       <b>Contraseña</b>
-                      <input type="password" class="form-control my-1" id="password-client" placeholder="Contraseña">
-                      <input type="password" class="form-control" id="password-client-repeat" placeholder="Repita Contraseña">
+                    <div class="form-group col-md-4 col-sm-12">
+                        <div id="map"></div>
                     </div>
-                </div>
+                    <div class="form-group col-md-4">
+                        <div class="custom-file overflow-hidden rounded-pill mb-5">
+                            <input id="customFile" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();">
+                            <label for="customFile" class="custom-file-label rounded-pill">Foto de Perfil</label>
+                        </div>
+                        <div class="custom-file overflow-hidden rounded-pill mb-5">
+                            <input id="customFile2" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();">
+                            <label for="customFile2" class="custom-file-label rounded-pill">Banner</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-1">
+                    </div>
+                        <div class="form-group col-md-3">
+                                <button type="submit" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white"  style="background-color: #757575;">Registrarse</button>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                    Recuerdame
+                                    </label>
+                                </div>
+                        </div>
+                    </div>
 
-                <div class="form-row align-items-center">
-                    <div class="col-auto mr-auto ml-auto">
-                        <div class="form-group">
-                            
-                          </div>
-                          <button type="submit" id="btn-client-register" class="btn btn-lg shadow p-2 px-5 mb-0 bg-white rounded-pill">Registrarse</button>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                              Recuerdame
-                            </label>
-                          </div>
-                    </div>
                 </div>
-                
             </div>
         </form>
-        -->
+        
         
     </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8&callback=initMap"></script>
     <script src="js/localization.js"></script>
     <script src="js/controlador.js"></script>
 </body>

@@ -1,72 +1,27 @@
-var marker;          //Variable del marcador
-var coords = {};    //Coordenadas obtenidas con la geolocalización
+var mymap = L.map('map', {
+	center: [14.077105, -87.200558],
+	zoom: 12
+});
 
-//Funcion principal
-initMap = function () 
-{
 
-    //API para geolocalizar el usuario
-        navigator.geolocation.getCurrentPosition(
-          function (position){
-            coords =  {
-              lng: position.coords.longitude,
-              lat: position.coords.latitude
-            };
-            setMapa(coords);  //pasamos las coordenadas al metodo para crear el mapa
-           
-          },function(error){switch(error.code){
-				case error.PERMISSION_DENIED:
-					mensajeError = "Permiso denegado por el usuario."
-					break;
-				case error.POSITION_UNAVAILABLE:
-					mensajeError = "Posici\363n no disponible."+" "+error.message;
-					break;
-				case error.TIMEOUT:
-					mensajeError = "Desconexi\363n por tiempo."
-					break;
-				case error.UNKNOWN_ERROR:
-					mensajeError = "Error desconocido."+" "+error.message;
-					break;
-		}console.log(mensajeError);});
-    
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
+}).addTo(mymap);
+
+var lat_lon
+var marker
+function onMapClick(e) {
+    if (marker != undefined) {
+        mymap.removeLayer(marker);
+    };
+
+    lat = e.latlng.lat;
+    lon = e.latlng.lng;  
+    marker = L.marker([lat,lon]).addTo(mymap);
+    lat_lon = [lat,lon];
 }
-
-function setMapa (coords)
-{   
-      //Se crea una nueva instancia del objeto mapa
-      var map = new google.maps.Map(document.getElementById('map'),
-      {
-        zoom: 13,
-        center:new google.maps.LatLng(coords.lat,coords.lng),
-
-      });
-
-      /*Creamos el marcador en el mapa con sus propiedades
-      para nuestro obetivo tenemos que poner el atributo draggable en true
-      position pondremos las mismas coordenas que obtuvimos en la geolocalización*/
-      marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: new google.maps.LatLng(coords.lat,coords.lng),
-
-      });
-      //agregamos un evento al marcador junto con la funcion callback al igual que el evento dragend que indica 
-      //cuando el usuario a soltado el marcador
-      marker.addListener('click', toggleBounce);
-      
-      marker.addListener( 'dragend', function (event)
-      {
-        //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
-        document.getElementById("coords").value = this.getPosition().lat()+","+ this.getPosition().lng();
-      });
-}
-
-//callback al hacer clic en el marcador lo que hace es quitar y poner la animacion BOUNCE
-function toggleBounce() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
+   
+mymap.on('click', onMapClick);

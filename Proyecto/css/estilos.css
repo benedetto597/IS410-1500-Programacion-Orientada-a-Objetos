@@ -77,10 +77,12 @@
     color:black;
 }
 
-#country-select, #currency-select, #form-admin, #modal-header-admin, #btn-admin-login{
-    background-color: #757575;
-    border:none
+#country-select, #currency-select, #form-admin, #modal-header-admin, #btn-admin-login, #btn-company-register{
+    background-color: #757575 !important;
+    border:none !important;
 }
+
+
 
 @media (min-width: 768px) and (max-width: 991px) {
     .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
