@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
     <script src="js/carousel.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <style>
     
     /* Background Main Window*/
@@ -53,12 +56,17 @@
         height: 500px;
     }
 
+    #map {
+           height: 230px;
+           width: 580px;
+    }
+
     </style>
 </head>
 <body>
     <main>
         <!-- Barra de Navegación Primer Parte LandingPage-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light animated bounceInDown">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
             </button>
@@ -81,9 +89,9 @@
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Registrarse</button>
                             <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="register-client.html">Cliente</a>
-                                <a class="dropdown-item" href="register-company.html">Empresa</a>
-                                <a class="dropdown-item" href="register-admin.html">Super Admin</a>
+                                <a class="dropdown-item" href="register/register-client.html">Cliente</a>
+                                <a class="dropdown-item" href="register/register-company.html">Empresa</a>
+                                <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
                             </div>
                         </div>
                     </li>
@@ -110,8 +118,8 @@
                                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Promociones</button>
                                 <div class="dropdown-menu" >
-                                    <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Lista de Productos</a>
-                                    <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Lista de Empresas</a>
+                                    <a class="dropdown-item" href="promotions/product-company-list.html">Productos y Empresas</a>
+                                    <a class="dropdown-item" href="promotions/categories.html">Categorías</a>
                                     <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Últimas Promociones</a>
                                 </div>
                             </div>
@@ -230,7 +238,7 @@
                     <form id="modal-form-admin" action="" class="bg-light p-3">
                         <div class="form-row align-items-center">
                             <div class="col-auto mr-auto ml-auto">
-                                <h4 id="exampleModalLabel">Empresa</h4>
+                                <h4 id="exampleModalLabel">Administrador</h4>
                             </div>
                         </div>
                         <div class="form-row">
@@ -259,16 +267,16 @@
 
         <!-- Contenido Primer Parte LandinPage -->
         <div class="row p-5">
-            <div class="col-xl-2 col-md-1 col-xs-1">
+            <div class="col-xl-2 col-md-1 col-xs-1 animated bounceInDown">
                 <div class="card" style="width: 13rem;" id="lp-content-img">
                     <div class="card-body">
                         <a href="#"><img class="card-img-top" src="img/lp-content-image.jpeg" alt="Card image cap"></a>
-                        <h6 id="lp-content-text"> Lo más vendido</h6>
+                        <h6 id="lp-content-text"> Últimas Promociones</h6>
                     </div>  
                 </div>
                             
             </div>
-            <div class="col-xl-2 col-md-1 col-xs-1">
+            <div class="col-xl-2 col-md-1 col-xs-1 animated bounceInDown">
                 <div class="card" style="width: 13rem;" id="lp-content-img">
                     <div class="card-body">
                         <a href="#"><img class="card-img-top" src="img/lp-content-categories.jpeg" alt="Card image cap"></a>
@@ -284,7 +292,7 @@
         <!-- Carrusel de Productos -->
         <div class="top-content p-3">
             <div class="container-fluid">
-                <div id="carousel-products" class="carousel slide" data-ride="carousel">
+                <div id="carousel-products" class="carousel slide animated bounceInLeft" data-ride="carousel">
                     <div class="carousel-inner row w-75 mx-auto" role="listbox">
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
                             <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img1">
@@ -325,7 +333,7 @@
 
         <!-- Listas de Empresas y Productos -->
         <div class="row">
-            <nav class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12 sidebar px-5">
+            <nav class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12 sidebar px-5 animated bounceInLeft">
               <div class="sidebar-sticky p-3">
                 <ul class="nav flex-column my-3">
                     <li class=" nav-item row">
@@ -354,13 +362,13 @@
             </nav>
            
             <!-- Mapa y Comentario -->
-            <nav class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-xs-12 col-md-12 d-md-block bg-dark sidebar" id="lp-second-map">
+            <nav class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-xs-12 col-md-12 d-md-block bg-dark sidebar animated bounceInRight" id="lp-second-map">
                 <div class="sidebar-sticky p-3">
                   <ul class="nav flex-column my-3">
                       <li class=" nav-item row">
-                          <div class="col-lg-12">
-                              <a href="#"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30958.478613821273!2d-87.23716252116157!3d14.088400836372765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa2babf743d51%3A0x68cf2238206ac9d3!2sTegucigalpa!5e0!3m2!1ses!2shn!4v1584565177621!5m2!1ses!2shn" width="600" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></a>
-                      </div>
+                        <div class="col-lg-12">
+                            <div id="map"></div>                     
+                        </div>
                     </li>
                 </ul>
                 <ul class="nav flex-column my-3 px-5">
@@ -376,22 +384,22 @@
     <!-- Tercera Parte LandingPage -->
     <div id="lp-third-part">
             <div class="row">
-                <nav class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 bg-dark sidebar">
+                <nav class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 bg-dark sidebar ">
                     <div class="sidebar-sticky">
                         <img src="img/lp-content-third-image.jpeg" style="height:100vh; width: 100vw;">
                     </div>
                 </nav>
                 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0 animated bounceInRight">
                         <div class="card" id="lp-card-company">
-                            <a href="#lp-card-comments"><img src="img/icon/MiniMallicon.png" class="card-img-top p-3  img-thumbnail" alt="logo-icon">
+                            <a href="#"><img src="img/icon/MiniMallicon.png" class="card-img-top p-3  img-thumbnail" alt="logo-icon">
                             <div class="card-body">
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></a>
                             </div>
                           </div>
                     </div>
               
-                <nav  class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-xs-12 col-md-4 d-md-block sidebar" id="lp-sidebar-comment">
+                <nav  class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-xs-12 col-md-4 d-md-block sidebar animated bounceInRight" id="lp-sidebar-comment">
                     <div class="sidebar-sticky p-5">
                         <div id="lp-card-comments" class="card form-group">
                             <div class="card-body">
@@ -402,7 +410,7 @@
                         </div>
                     </div>
                   </nav>
-                  <footer class="col-12">
+                  <footer class="col-12 ">
                     <ul class="nav nav-fill">
                         <li class="nav-item">
                           <a class="nav-link active" href="#">Active</a>
@@ -417,6 +425,8 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/localization.js"></script>
+    <script src="js/places.js"></script>
     <script src="js/controlador.js"></script>
 </body>
 </html>

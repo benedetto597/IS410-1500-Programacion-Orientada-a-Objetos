@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
     <style>
     
@@ -25,12 +27,12 @@
 <body>
     <main>
          <!-- Barra de Navegación -->
-         <nav class="navbar navbar-expand-lg navbar-dark ">
+         <nav class="navbar navbar-expand-lg navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
             </button>
             
-            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse row " id="navbarSupportedContent">
                 <ul id="main-navbar" class="nav navbar-nav mr-auto px-5">
                     <li class="nav-item invisible">
                         <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión</h6></a>
@@ -50,15 +52,24 @@
                 </ul>
             
         
-            <div class="w-100">
+            <div class="w-100 ">
                 
                     <ul id="main-navbar" class="nav navbar-nav px-5">
                         <li class="nav-item mr-auto">
                             <a class="nav-link" href="index.html"><h6 class="text-white">Inicio</h6></a>
                        </li>
-                        <li class="nav-item mr-auto ml-auto">
-                            <a class="nav-link" href="#"><h6 class="text-dark">Promociones</h6></a>
-                        </li>
+                       <li class="nav-item mr-auto ml-auto">
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Promociones</button>
+                            <div class="dropdown-menu ">
+                                <a class="dropdown-item" href="promotions/product-company-list.html">Productos y Empresas</a>
+                                <a class="dropdown-item" href="promotions/categories.html" >Categorías</a>
+                                <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Últimas Promociones</a>
+                            </div>
+                        </div>
+                        
+                    </li>
                         <li class="nav-item ml-auto">
                             <a class="nav-link" href="#"><h6 class="text-white">Contactanos</h6></a>
                         </li>
@@ -70,7 +81,7 @@
 
         <!-- Carrusel de Productos en Carrito o Comprados-->
         <div class="top-content p-3">
-            <div class="container-fluid">
+            <div class="container-fluid animated bounceInUp">
                 <div id="carousel-products" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner row w-75 mx-auto" role="listbox">
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
