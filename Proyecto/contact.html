@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Mall | Contacto</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
+    <style>
+    
+        /* Background Main Window*/
+        main{
+            width:auto;
+            height:100vh;
+            background-image: url(img/contact-page.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position:inherit;
+        }
+
+        #modal-body-client{
+            background-image: url(img/login-client.jpeg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            height: 500px;
+        }
+
+        #modal-body-company{
+            background-image: url(img/login-company.jpeg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            height: 500px;
+        }
+
+        #modal-body-admin{
+            background-image: url(img/login-admin.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            height: 500px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Barra de Navegación Primer Parte LandingPage-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light animated bounceInDown">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" ></span>
+            </button>
+            
+            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                <ul id="main-navbar" class="nav navbar-nav mr-auto px-5">
+                    <li class="nav-item">
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Iniciar Sesión</button>
+                            <div class="dropdown-menu" >
+                                <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
+                                <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
+                                <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Registrarse</button>
+                            <div class="dropdown-menu" >
+                                <a class="dropdown-item" href="register/register-client.html">Cliente</a>
+                                <a class="dropdown-item" href="register/register-company.html">Empresa</a>
+                                <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>       
+                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
+                <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
+                    <li class="nav-item invisible">
+                        <a class="nav-link" href="#"><h6  class="text-dark">Iniciar Sesión Iniciar Inic</h6></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html"><h6  class="text-dark">Carrito</h6></a>
+                    </li>
+                </ul>
+            
+        
+            <div class="w-100">
+                
+                    <ul id="main-navbar" class="nav navbar-nav px-5">
+                        <li class="nav-item mr-auto">
+                            <a class="nav-link" href="index.html"><h6  class="text-dark">Inicio</h6></a>
+                      </li>
+                        <li class="nav-item mr-auto ml-auto">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Promociones</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="promotions/product-company-list.html">Productos y Empresas</a>
+                                    <a class="dropdown-item" href="promotions/categories.html">Categorías</a>
+                                    <a class="dropdown-item" href="promotions/last-products.html">Últimas Promociones</a>
+                                </div>
+                            </div>
+                            
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link" href="#"><h6  class="text-dark">Contactanos</h6></a>
+                        </li>
+                    </ul>
+                
+            </div>
+        </nav>
+
+        <div class="modal fade" id="login-client" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="modal-header-client" class="modal-header p-2">
+                    <div class="col-md-2 ml-auto">
+                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
+                    </div>
+                    <div class="col-md-1 ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                </div>
+                <div id="modal-body-client" class="modal-body p-0">
+                    <form id="modal-form-client" action="" class="bg-light p-3">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto mr-auto ml-auto">
+                                <h4 id="exampleModalLabel">Cliente</h4>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-10 mr-auto ml-auto">
+                                <input type="text" class="form-control my-2" id="login-user-client" placeholder="Usuario">
+                                <input type="text" class="form-control my-2" id="login-pass-client" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-6 ml-auto mr-auto">
+                        <div class="card" style="border: none;" >
+                            <div class="card-body ml-auto mr-auto">
+                                <button type="submit" id="btn-client-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
+                                <button type="button" id="btn-client-register-modal" onclick="location.href='register/register-client.html'" class="btn btn-lg shadow  mb-0 rounded-pill my-2" style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Login Empresa -->
+          <div class="modal fade" id="login-company" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="modal-header-company" class="modal-header p-2">
+                    <div class="col-md-2 ml-auto">
+                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
+                    </div>
+                    <div class="col-md-1 ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                </div>
+                <div id="modal-body-company" class="modal-body p-0">
+                    <form id="modal-form-company" action="" class="bg-light p-3">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto mr-auto ml-auto">
+                                <h4 id="exampleModalLabel">Empresa</h4>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-10 mr-auto ml-auto">
+                                <input type="number" class="form-control my-2" id="login-code-company" placeholder="Código de Empleado">
+                                <input type="text" class="form-control my-2" id="login-pass-company" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-6 ml-auto mr-auto">
+                        <div class="card" style="border: none;" >
+                            <div class="card-body ml-auto mr-auto">
+                                <button type="submit" id="btn-company-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
+                                <button type="button" id="btn-company-register-modal" onclick="location.href='register/register-company.html'" class="btn btn-lg shadow  mb-0 rounded-pill my-2" style="padding-left:2rem; padding-right:2rem;">Registrarse</button>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Login Administrador -->
+          <div class="modal fade" id="login-admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="modal-header-admin" class="modal-header p-2">
+                    <div class="col-md-2 ml-auto">
+                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
+                    </div>
+                    <div class="col-md-1 ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                </div>
+                <div id="modal-body-admin" class="modal-body p-0">
+                    <form id="modal-form-admin" action="" class="bg-light p-3">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto mr-auto ml-auto">
+                                <h4 id="exampleModalLabel">Administrador</h4>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-10 mr-auto ml-auto">
+                                <input type="number" class="form-control" id="login-code-admin" placeholder="Código de Acceso">
+                                <input type="text" class="form-control my-2" id="login-user-admin" placeholder="Usuario">
+                                <input type="text" class="form-control my-2" id="login-pass-admin" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-6 ml-auto mr-auto">
+                        <div class="card" style="border: none;" >
+                            <div class="card-body ml-auto mr-auto">
+                                <button type="submit" id="btn-admin-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Formulario de Registro -->
+        <div class="container-fluid">
+            <form class="row" action=""><div class="col-lg-6 col-xl-6 col-md-2 col-xs-1 col-sm-1"></div>
+                <div class="col-lg-5 col-xl-5 col-md-8 col-xs-10 col-sm-10 px-5 animated zoomIn" id="form-admin">
+                    <div class="form-row align-items-center">
+                        <div class="col-auto mr-auto ml-auto text-white">
+                            <h4>Contactanos</h4>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <b class="text-white">Nombre</b>
+                            <input type="text" class="form-control" id="name-contact" placeholder="Nombre Completo">
+                        </div>
+                        
+                        <div class="form-group col-md-12">
+                            <b class="text-white">Correo</b>
+                            <input type="email" class="form-control" id="email-contact" placeholder="Correo">
+                        </div>
+                        
+                        <div class="form-group col-md-12">
+                            <b class="text-white">Telefono</b>
+                            <input type="tel" class="form-control" id="phone-contact" placeholder="Número Telefonico">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <b class="text-white">Mensaje</b>
+                            <textarea name="" id="message-contact" class="form-control" placeholder="Escribe tu mensaje Aquí"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row align-items-center">
+                        <div class="col-auto mr-auto ml-auto">
+                            <button type="submit" id="btn-admin-register" class="btn btn-lg shadow p-2 px-5 my-4 mb-0 bg-white rounded-pill">Enviar</button>
+                        </div>
+                    </div>    
+                </div>
+                <div class="col-lg-1 col-xl-1 col-md-2 col-xs-1 col-sm-1"></div>
+            </form>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/control-contact.js"></script>
+</body>
+</html>

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
     <style>
     
@@ -26,57 +25,72 @@
 </head>
 <body>
     <main>
-         <!-- Barra de Navegación -->
-         <nav class="navbar navbar-expand-lg navbar-dark">
+         <!-- Barra de Navegación Primer Parte LandingPage-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
             </button>
             
-            <div class="collapse navbar-collapse row " id="navbarSupportedContent">
+            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
                 <ul id="main-navbar" class="nav navbar-nav mr-auto px-5">
                     <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión</h6></a>
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Iniciar Sesión</button>
+                            <div class="dropdown-menu" >
+                                <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
+                                <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
+                                <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6 id="white-text">Registrarse</h6></a>
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Registrarse</button>
+                            <div class="dropdown-menu" >
+                                <a class="dropdown-item" href="register/register-client.html">Cliente</a>
+                                <a class="dropdown-item" href="register/register-company.html">Empresa</a>
+                                <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
+                            </div>
+                        </div>
                     </li>
                 </ul>       
                 <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
                 <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
-                    <li class="nav-item invisible ">
-                        <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión Iniciar Inic</h6></a>
-                    </li>
                     <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6 id="white-text">Carrito</h6></a>
+                        <a class="nav-link" href="#"><h6 class="text-white">Iniciar Sesión Iniciar Inic</h6></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html"><h6 class="text-white">Carrito</h6></a>
                     </li>
                 </ul>
             
         
-            <div class="w-100 ">
+            <div class="w-100">
                 
                     <ul id="main-navbar" class="nav navbar-nav px-5">
                         <li class="nav-item mr-auto">
                             <a class="nav-link" href="index.html"><h6 class="text-white">Inicio</h6></a>
-                       </li>
-                       <li class="nav-item mr-auto ml-auto">
-                        <div class="btn-group">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Promociones</button>
-                            <div class="dropdown-menu ">
-                                <a class="dropdown-item" href="promotions/product-company-list.html">Productos y Empresas</a>
-                                <a class="dropdown-item" href="promotions/categories.html" >Categorías</a>
-                                <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Últimas Promociones</a>
+                      </li>
+                        <li class="nav-item mr-auto ml-auto">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Promociones</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="promotions/product-company-list.html">Productos y Empresas</a>
+                                    <a class="dropdown-item" href="promotions/categories.html">Categorías</a>
+                                    <a class="dropdown-item" href="promotions/last-products.html">Últimas Promociones</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </li>
+                            
+                        </li>
                         <li class="nav-item ml-auto">
-                            <a class="nav-link" href="#"><h6 class="text-white">Contactanos</h6></a>
+                            <a class="nav-link" href="contact.html"><h6 class="text-white">Contactanos</h6></a>
                         </li>
                     </ul>
                 
             </div>
-        </div>
         </nav>
 
         <!-- Carrusel de Productos en Carrito o Comprados-->
@@ -86,7 +100,7 @@
                     <div class="carousel-inner row w-75 mx-auto" role="listbox">
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -98,7 +112,7 @@
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -110,7 +124,7 @@
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -122,7 +136,7 @@
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -134,7 +148,7 @@
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -146,7 +160,7 @@
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -158,7 +172,7 @@
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -170,7 +184,7 @@
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-">
+                                <div class="card-header border-0 rounded bg-transparent">
                                     <img src="img/icon/companyicon1.png" class="card-img-top img-fluid mx-auto d-block card-img m-2" alt="img1">  
                                 </div>
                                 <div class="card-body bg-light border-0  rounded">
@@ -194,6 +208,6 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/controlador.js"></script>
+    <script src="js/control-cart.js"></script>
 </body>
 </html>

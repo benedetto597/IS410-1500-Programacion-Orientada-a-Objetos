@@ -58,17 +58,17 @@
     box-shadow:none;
 }
 
-#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register, #btn-admin-register, #country-select-admin, #currency-select-admin, #modal-header-company, #btn-company-login, #btn-company-register-modal{
+#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register, #btn-admin-register, #country-select-admin, #currency-select-admin, #modal-header-company, #btn-company-login, #btn-company-register-modal, #btn-branch, #btn-promotion, #product-select-promotion, #branch-select-promotion, #btn-comment-product, #btn-buy-product, #btn-add-fav-product, #btn-add-cart-product, #btn-comment-product{
     background-color: #EEC058 !important;
     border:none !important;
 }
 
-#form-client, #modal-header-client, #btn-client-login, #btn-client-register-modal{
+#form-client, #form-branch, #modal-header-client, #btn-client-login, #btn-client-register-modal, #form-product{
     background-color: #FBC987 !important;
     border:none !important;
 }
 
-.form-control, .btn-danger, iframe, #lp-card-comments, #form-client, #btn-client-register, #btn-admin-register, #form-admin, #btn-client-login{
+.form-control, .btn-danger, iframe, #lp-card-comments, #form-client, #form-branch, #btn-client-register, #btn-admin-register, #form-admin, #form-promotion, #btn-client-login, #btn-branch, #btn-product{
     border-radius: 0.6rem;
 }
 
@@ -77,9 +77,25 @@
     color:black;
 }
 
-#country-select, #currency-select, #form-admin, #modal-header-admin, #btn-admin-login, #btn-company-register{
+#country-select,#categories-select-product, #currency-select, #form-admin, #form-promotion, #modal-header-admin, #btn-admin-login, #btn-company-register, #btn-product, #image-product{
     background-color: #757575 !important;
     border:none !important;
+}
+
+input.currency {
+    text-align: right;
+    padding-right: 15px;
+}
+.input-group .form-control {
+    float: none;
+}
+.input-group .input-buttons {
+    position: relative;
+    z-index: 3;
+}
+
+#form-product{
+    background-color: rgb(238, 193, 88, 0.2);
 }
 
 

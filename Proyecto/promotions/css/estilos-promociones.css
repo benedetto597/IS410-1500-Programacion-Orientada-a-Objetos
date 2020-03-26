@@ -13,24 +13,24 @@
 }
 
 #modal-body-client{
-background-image: url(../../img/login-client.jpeg);
-background-repeat: no-repeat;
-background-size:cover;
-height: 500px;
+  background-image: url(../../img/login-client.jpeg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: 500px;
 }
 
 #modal-body-company{
-background-image: url(../../img/login-company.jpeg);
-background-repeat: no-repeat;
-background-size:cover;
-height: 500px;
+  background-image: url(../../img/login-company.jpeg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: 500px;
 }
 
 #modal-body-admin{
-background-image: url(../../img/login-admin.jpg);
-background-repeat: no-repeat;
-background-size:cover;
-height: 500px;
+  background-image: url(../../img/login-admin.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: 500px;
 }
 
 img{

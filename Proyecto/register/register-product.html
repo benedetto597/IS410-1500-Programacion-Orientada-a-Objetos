@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Mall | Producto</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="shortcut icon" href="../img/icon/MiniMallicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <style>
+    
+        /* Background Main Window*/
+        main{
+            width:auto;
+            height:100vh;
+            background-image: url(img/register-client.jpeg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position:inherit;
+        }
+        
+        </style>
+</head>
+<body>
+    <main>
+        <!-- Barra de Navegación -->
+        <nav class="navbar navbar-expand-lg navbar-dark animated bounceInDown">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" ></span>
+            </button>
+            
+            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                <ul id="main-navbar" class="nav navbar-nav mr-auto px-5">
+                    <li class="nav-item invisible">
+                        <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión</h6></a>
+                    </li>
+                    <li class="nav-item invisible">
+                        <a class="nav-link" href="#"><h6 id="white-text">Registrarse</h6></a>
+                    </li>
+                </ul>       
+                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="../img/icon/MiniMall.png"></a>
+                <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
+                    <li class="nav-item invisible ">
+                        <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión Iniciar Inic</h6></a>
+                    </li>
+                    <li class="nav-item invisible">
+                        <a class="nav-link" href="#"><h6 id="white-text">Carrito</h6></a>
+                    </li>
+                </ul>
+            
+        
+            <div class="w-100">
+                
+                    <ul id="main-navbar" class="nav navbar-nav px-5">
+                        <li class="nav-item mr-auto">
+                            <a class="nav-link" href="../index.html"><h6 class="text-white">Inicio</h6></a>
+                       </li>
+                        <li class="nav-item mr-auto ml-auto invisible">
+                            <a class="nav-link" href="#"><h6 class="text-white">Promociones</h6></a>
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link" href="../contact.html"><h6 class="text-white">Contactanos</h6></a>
+                        </li>
+                    </ul>
+                
+            </div>
+        </div>
+        </nav>
+
+        
+        <!-- Formulario de Registro -->
+        <form action="">
+            <div class="col-8 mr-auto ml-auto p-3 animated zoomIn" id="form-product">
+                <div class="form-row align-items-center">
+                    <div class="col-auto mr-auto ml-auto">
+                        <h4>Producto</h4>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <b>Nombre del Producto</b>
+                        <input type="text" class="form-control" id="name-product" placeholder="Nombre">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <b>Subir Imagen</b>
+                        <div class="custom-file overflow-hidden rounded-pill ">
+                            <input id="file-product" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();">
+                            <label for="file-product" class="custom-file-label rounded-pill">Foto del Producto</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <b>Precio</b>
+                        <div class="input-group">
+                            <span class="input-group-addon pt-2 px-2"><b id="currency-company">L</b></span>
+                            <input type="number" min="0" max="100000" step="1" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency">
+                        </div> 
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                        <b>Categorías</b>
+                        <select id="categories-select-product" class="form-control text-white">
+                            <option selected>Seleccione una Categoría</option>
+                            <option>Comidas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <b>Descripción</b>
+                        <textarea name="" id="" class="form-control"></textarea>
+                    </div>  
+                </div>
+                <div class="form-row align-items-center">
+                    <div class="col-auto mr-auto ml-auto">
+                        <button id="btn-product" type="submit" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white">Registrar Prodcuto</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+        
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/control-register-product.js"></script>
+</body>
+</html>

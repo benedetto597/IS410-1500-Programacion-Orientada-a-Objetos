@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
-    <script src="js/carousel.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <style>
@@ -99,10 +98,10 @@
                 <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
                 <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
                     <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6>Iniciar Sesión Iniciar Inic</h6></a>
+                        <a class="nav-link" href="#"><h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.html"><h6>Carrito</h6></a>
+                        <a class="nav-link" href="cart.html"><h6 class="text-dark">Carrito</h6></a>
                     </li>
                 </ul>
             
@@ -111,7 +110,7 @@
                 
                     <ul id="main-navbar" class="nav navbar-nav px-5">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#"><h6>Inicio</h6></a>
+                            <a class="nav-link" href="#"><h6 class="text-dark">Inicio</h6></a>
                       </li>
                         <li class="nav-item mr-auto ml-auto">
                             <div class="btn-group">
@@ -120,13 +119,13 @@
                                 <div class="dropdown-menu" >
                                     <a class="dropdown-item" href="promotions/product-company-list.html">Productos y Empresas</a>
                                     <a class="dropdown-item" href="promotions/categories.html">Categorías</a>
-                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Últimas Promociones</a>
+                                    <a class="dropdown-item" href="promotions/last-products.html">Últimas Promociones</a>
                                 </div>
                             </div>
                             
                         </li>
                         <li class="nav-item ml-auto">
-                            <a class="nav-link" href="#"><h6>Contactanos</h6></a>
+                            <a class="nav-link" href="contact.html"><h6 class="text-dark">Contactanos</h6></a>
                         </li>
                     </ul>
                 
@@ -270,7 +269,7 @@
             <div class="col-xl-2 col-md-1 col-xs-1 animated bounceInDown">
                 <div class="card" style="width: 13rem;" id="lp-content-img">
                     <div class="card-body">
-                        <a href="#"><img class="card-img-top" src="img/lp-content-image.jpeg" alt="Card image cap"></a>
+                        <a href="promotions/last-products.html"><img class="card-img-top" src="img/lp-content-image.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Últimas Promociones</h6>
                     </div>  
                 </div>
@@ -279,7 +278,7 @@
             <div class="col-xl-2 col-md-1 col-xs-1 animated bounceInDown">
                 <div class="card" style="width: 13rem;" id="lp-content-img">
                     <div class="card-body">
-                        <a href="#"><img class="card-img-top" src="img/lp-content-categories.jpeg" alt="Card image cap"></a>
+                        <a href="promotions/categories.html"><img class="card-img-top" src="img/lp-content-categories.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Categorías</h6>
                     </div> 
                 </div>
@@ -416,7 +415,7 @@
                           <a class="nav-link active" href="#">Active</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link active" href="#">Contactenos</a>
+                          <a class="nav-link active" href="contact.html">Contactenos</a>
                         </li>
                     </ul>
                   </footer>
@@ -427,6 +426,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/localization.js"></script>
     <script src="js/places.js"></script>
-    <script src="js/controlador.js"></script>
+    <script src="js/control-index.js"></script>
 </body>
 </html>
