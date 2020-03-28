@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Mall | Empresa</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../img/icon/MiniMallicon.png">
+    <style>
+    
+        /* Background Main Window*/
+        main{
+            width:100vw;
+            height:40vh;
+            background-image: url(../img/lp-primary-image.jpeg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position:right;
+        }
+
+        #map {
+           bottom: 0;
+           height: 150px;
+           width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <main class="col-12">
+                <!-- Barra de Navegación Primer Parte LandingPage -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" ></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-main">
+                <div class="row m-0 w-100">
+                    <ul id="main-navbar" class="nav navbar-nav mr-auto px-5 my-auto">
+                        <li class="nav-item">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user fa-fw"></i>Iniciar Sesión</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
+                                    <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
+                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-plus fa-fw"></i>Registrarse</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="../register/register-client.html">Cliente</a>
+                                    <a class="dropdown-item" href="../register/register-company.html">Empresa</a>
+                                    <a class="dropdown-item" href="../register/register-admin.html">Super Admin</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>       
+                    <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="../img/icon/MiniMall.png"></a>
+                    <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
+                        <li class="nav-item invisible">
+                            <a class="nav-link" href="#"><h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../cart.html"><h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6></a>
+                        </li>
+                    </ul>
+                
+            
+                </div>  
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div id="navbar-menu" class="w-100">
+                    <ul class="nav navbar-nav px-5  my-auto">
+                        <li class="nav-item mr-auto">
+                            <a class="nav-link" href="../index.html"><h6 class="text-dark"><i class="fas fa-home fa-fw"></i>Inicio</h6></a>
+                      </li>
+                        <li class="nav-item mr-auto ml-auto">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-percent fa-fw"></i>Promociones</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="../promotions/product-company-list.html"> <i class="fas fa-building fa-fw"></i>Productos y Empresas</a>
+                                    <a class="dropdown-item" href="../promotions/categories.html"><i class="fas fa-th-large fa-fw"></i>Categorías</a>
+                                    <a class="dropdown-item" href="../promotions/last-products.html"><i class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
+                                </div>
+                            </div> 
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link" href="../contact.html"><h6 class="text-dark"><i class="fas fa-phone-volume fa-fw"></i>Contactanos</h6></a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+            <div class="container  col-lg-10 animated bounceInUp">
+                <div class="fb-profile">
+                    <img id="company-photo-logo" class="fb-image-profile thumbnail" src="../img/profile-client.jpeg" alt="Profile image"/>
+                </div>
+            </div> 
+        </main>
+    </div>
+
+    <!-- Tabs Visualización de Perfil -->
+    <div id="tabs-company-profile" class="row p-0" style="height: 60vh">
+        <div class="container p-0">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 animated bounceInUp mt-5" >
+                    <div class="card mt-5 bg-transparent border-0 ml-auto mr-auto p-2" style="width: 18rem;">
+                        <div class="card-body text-center mt-5">
+                          <h5 class="card-text">Nombre Empresa</h5>
+                          <h5 class="card-text">Nombre Empleado</h5>
+                          <h5 class="card-text">Correo Electronico</h5>
+                          <h5 class="card-text">Redes Sociales</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-6 col-sm-6 animated bounceInUp">
+                    <div class="container mt-3 mb-0">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs nav-fill">
+                          <li class="nav-item">
+                            <a class="nav-link active text-dark" data-toggle="tab" href="#informacion">Información</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-dark" data-toggle="tab" href="#estadisticas">Estadisticas</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-dark" data-toggle="tab" href="#productos">Productos</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-dark" data-toggle="tab" href="#editar">Editar Perfil</a>
+                          </li>
+                        </ul>
+                      
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="informacion" class="container p-0 tab-pane active">
+                                <div class="col-12 bg-white">
+                                    <div class="container-fluid py-3 px-4">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <b>Nombre De la Empresa</b>
+                                                <h6>Nombre Empresa</h6><br>
+                                                <b>País</b>
+                                                <h6>País</h6><br>
+                                                <b>Dirección</b>
+                                                <h6>Dirección</h6><br>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <b>Moneda</b>
+                                                <h6>Moneda</h6>
+                                                <b>Empleado</b>
+                                                <h6>Nombre Completo</h6><br>
+                                                <b>Correo</b>
+                                                <h6>Correo Electronico</h6><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="estadisticas" class="container p-0 tab-pane fade">
+                                <div class="col-12 bg-white">
+                                    <div class="container-fluid p-5">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <b>Promociones</b>
+                                                <div class="table-wrapper-scroll-y my-custom-scrollbar ">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead class="table-warning">
+                                                        <tr>
+                                                            <th scope="col">ID Producto</th>
+                                                            <th scope="col">Categoria</th>
+                                                            <th scope="col">Producto</th>
+                                                            
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mark</td>
+                                                            <td>Otto</td>                                                           
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td colspan="2">Larry the Bird</td>
+                                                        </tr>                                                   
+                                                        </tbody>
+                                                    </table>
+                                               </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <b>Empresas</b>
+                                                <div class="table-wrapper-scroll-y my-custom-scrollbar ">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead class="table-warning">
+                                                        <tr>
+                                                            <th scope="col">ID Producto</th>
+                                                            <th scope="col">Categoria</th>
+                                                            <th scope="col">Producto</th>
+                                                            
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mark</td>
+                                                            <td>Otto</td>                                                           
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td colspan="2">Larry the Bird</td>
+                                                        </tr>                                                   
+                                                        </tbody>
+                                                    </table>
+                                               </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="productos" class="container p-0 tab-pane fade">
+                                <div class="col-12 bg-white">
+                                    <div class="container-fluid p-5">
+                                        <b>Productos</b>
+                                        <div class="table-wrapper-scroll-y my-custom-scrollbar ">
+                                            <table class="table table-hover table-striped">
+                                                <thead class="table-warning">
+                                                <tr>
+                                                    <th scope="col">ID Producto</th>
+                                                    <th scope="col">Categoria</th>
+                                                    <th scope="col">Producto</th>
+                                                    <th scope="col">Producto</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Mark</td>
+                                                    <td>Otto</td>                                                           
+                                                    <td>Otto</td>                                                           
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>                                                            
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td >Larry the Bird</td>
+                                                    <td >Larry the Bird</td>
+                                                    <td >Larry the Bird</td>
+                                                </tr>                                                   
+                                                </tbody>
+                                            </table>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="editar" class="container tab-pane fade p-0">
+                                <div class="col-12 bg-white px-4 py-2">
+
+                                    <!-- Formulario precargado de la información que se tiene agregada -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <b>Empleado</b>
+                                            <input type="number" class="form-control" id="number-employed-company" placeholder="Código de Acceso">
+                                            <input type="email" class="form-control my-1" id="email-employed-company" placeholder="Correo Empresarial">
+                                            <input type="text" class="form-control" id="first-name-company" placeholder="Nombres">
+                                            <input type="text" class="form-control my-1" id="last-name-company" placeholder="Apellidos">
+                                            <div class="custom-file overflow-hidden rounded-pill my-1">
+                                                <input id="customFile" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();">
+                                                <label for="customFile" class="custom-file-label rounded-pill">Logo</label>
+                                            </div>
+                                            <div class="custom-file overflow-hidden rounded-pill ">
+                                                <input id="customFile2" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();">
+                                                <label for="customFile2" class="custom-file-label rounded-pill">Banner</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <b>Empresa</b>
+                                            <input type="text" class="form-control" id="name-company" placeholder="Nombre de la Empresa">
+                                            <input type="address" class="form-control my-1" id="address-company" placeholder="Dirección">
+                                            <b>Localización</b>
+                                            <div id="map"></div>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                           <b>Contraseña</b>
+                                          <input type="password" class="form-control" id="password-company" placeholder="Contraseña">
+                                          <input type="password" class="form-control my-1" id="password-company-repeat" placeholder="Repita Contraseña">
+                                          <b>Redes Sociales</b>
+                                          <input type="text" class="form-control" id="code-company" placeholder="Nombres">
+                                          <input type="text" class="form-control my-1" id="user-company" placeholder="Apellidos">
+                                        <!-- Botón que se desbloqueará cuando el usuarío haga algún cambio -->
+                                        
+                                            <div class="form-row align-items-center pt-3">
+                                                <div class="col-auto mr-auto ml-auto">
+                                                    <button id="btn-promotion" type="submit" class="btn btn-lg shadow p-2 px-5 m-0 rounded-pill text-dark">Guardar</button>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/localization.js"></script>
+    <script src="js/control-client.js"></script>
+</body>
+</html>

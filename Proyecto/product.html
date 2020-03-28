@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <style>
     
         /* Background Main Window*/
@@ -36,84 +38,91 @@
         }
 
         #modal-body-admin{
-            background-image: url(img/login-admin.jpg);
+            background-image: url(img/buy-product.jpg);
             background-repeat: no-repeat;
             background-size:cover;
             height: 500px;
+        }
+
+        #map {
+           height: 160px;
+           width: 380px;
         }
 
     </style>
 </head>
 <body>
     <main>
-        <!-- Barra de Navegación Primer Parte LandingPage-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light animated bounceInDown">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <!-- Barra de Navegación Primer Parte LandingPage -->
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
             </button>
-            
-            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
-                <ul id="main-navbar" class="nav navbar-nav mr-auto px-5">
-                    <li class="nav-item">
-                        <div class="btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Iniciar Sesión</button>
-                            <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
-                                <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
-                                <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
+            <div class="collapse navbar-collapse" id="navbar-main">
+                <div class="row m-0 w-100">
+                    <ul id="main-navbar" class="nav navbar-nav mr-auto px-5 my-auto">
+                        <li class="nav-item">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user fa-fw" style="color: white;"></i>Iniciar Sesión</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
+                                    <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
+                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Registrarse</button>
-                            <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="register/register-client.html">Cliente</a>
-                                <a class="dropdown-item" href="register/register-company.html">Empresa</a>
-                                <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-plus fa-fw" style="color: white;"></i>Registrarse</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="register/register-client.html">Cliente</a>
+                                    <a class="dropdown-item" href="register/register-company.html">Empresa</a>
+                                    <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>       
-                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
-                <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
-                    <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6  class="text-dark">Iniciar Sesión Iniciar Inic</h6></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.html"><h6  class="text-white">Carrito</h6></a>
-                    </li>
-                </ul>
-            
-        
-            <div class="w-100">
+                        </li>
+                    </ul>       
+                    <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
+                    <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
+                        <li class="nav-item invisible">
+                            <a class="nav-link" href="#"><h6 class="text-white">Iniciar Sesión Iniciar Inic</h6></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html"><h6 class="text-white"><i class="fas fa-shopping-cart fa-fw" style="color: white;"></i>Carrito</h6></a>
+                        </li>
+                    </ul>
                 
-                    <ul id="main-navbar" class="nav navbar-nav px-5">
+            
+                </div>  
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <div id="navbar-menu" class="w-100">
+                    <ul class="nav navbar-nav px-5  my-auto">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="index.html"><h6  class="text-white">Inicio</h6></a>
+                            <a class="nav-link" href="index.html"><h6 class="text-white"><i class="fas fa-home fa-fw" style="color: white;"></i>Inicio</h6></a>
                       </li>
                         <li class="nav-item mr-auto ml-auto">
                             <div class="btn-group">
                                 <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Promociones</button>
+                                    <i class="fas fa-percent fa-fw" style="color: white;"></i>Promociones</button>
                                 <div class="dropdown-menu" >
-                                    <a class="dropdown-item" href="promotions/product-company-list.html">Productos y Empresas</a>
-                                    <a class="dropdown-item" href="promotions/categories.html">Categorías</a>
-                                    <a class="dropdown-item" href="promotions/last-products.html">Últimas Promociones</a>
+                                    <a class="dropdown-item" href="promotions/product-company-list.html"> <i class="fas fa-building fa-fw"></i>Productos y Empresas</a>
+                                    <a class="dropdown-item" href="promotions/categories.html"><i class="fas fa-th-large fa-fw"></i>Categorías</a>
+                                    <a class="dropdown-item" href="promotions/last-products.html"><i class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
                                 </div>
-                            </div>
-                            
+                            </div> 
                         </li>
                         <li class="nav-item ml-auto">
-                            <a class="nav-link" href="contact.html"><h6  class="text-white">Contactanos</h6></a>
+                            <a class="nav-link" href="contact.html"><h6 class="text-white"><i class="fas fa-phone-volume fa-fw" style="color: white;"></i>Contactanos</h6></a>
                         </li>
                     </ul>
-                
-            </div>
+                </div>
         </nav>
 
+        <!-- Modal Login Cliente-->
         <div class="modal fade" id="login-client" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -244,6 +253,44 @@
               </div>
             </div>
         </div>
+
+          <!-- Modal Buy Product -->
+          <div class="modal fade" id="buy-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div id="modal-header-buy-product" class="modal-header p-2 bg-dark">
+                    <div class="col-md-2 ml-auto">
+                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
+                    </div>
+                    <div class="col-md-1 ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                </div>
+                <div id="modal-body-buy-product" class="modal-body p-0 bg-white">
+                    <form id="modal-form-buy-product" action="" class="bg-light p-3">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto mr-auto ml-auto">
+                                <h4 id="exampleModalLabel">Compra</h4>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group mr-auto ml-auto">
+                                <!-- Aquí va el mapa para seleccionar la ubicación de entrega -->
+                                <h5>Selecciona ubicación de Entrega</h5>
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer ml-auto mr-auto bg-white">
+                        <button type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill bg-dark ml-auto mr-auto" onclick="">Comprar</button>
+                        <button type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill bg-dark ml-auto mr-auto" data-dismiss="modal">Cancelar</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+        </div>
         
         <!-- Formulario de Registro -->
         <for action="">
@@ -274,16 +321,16 @@
                                     <h5>Descripción del Producto</h5>
                                 </div>
                                 <div class="col-md-4">
-                                    <h4 class="bg-white rounded-pill px-1 my-3">L 900.00</h4>
+                                    <h5 class="bg-white rounded-pill px-1 my-3">L 900.00</h5>
                                 </div>
                                 <!-- Mostrar en tiempo real el tiempo faltante -->
                                 <div id="clock" class="col-12"></div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
-                            <button type="submit" id="btn-buy-product" class="btn btn-lg px-5  shadow my-3 text-dark  rounded-pill">Comprar</button>                            
-                            <button type="submit" id="btn-add-fav-product" class="btn btn-lg shadow my-3 text-dark rounded-pill">Añadir a Favoritos</button>                            
-                            <button type="submit" id="btn-add-cart-product" class="btn btn-lg px-4 shadow my-3 text-dark rounded-pill">Añadir al Carrito</button>                            
+                            <button type="button" id="btn-buy-product" class="btn  px-5  shadow my-3 text-dark  rounded-pill" data-toggle="modal" data-target="#buy-product">Comprar</button>                            
+                            <button type="submit" id="btn-add-fav-product" class="btn px-3 shadow my-3 text-dark rounded-pill">Añadir a Favoritos</button>                            
+                            <button type="submit" id="btn-add-cart-product" class="btn  px-4 shadow my-3 text-dark rounded-pill">Añadir al Carrito</button>                            
                         </div>
                         <div class="container">
                             
@@ -313,6 +360,7 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/localization.js"></script>
     <script src="js/control-product.js"></script>
 </body>
 </html>

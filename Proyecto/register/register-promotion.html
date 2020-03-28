@@ -25,53 +25,78 @@
 </head>
 <body>
     <main>
-        <!-- Barra de Navegación -->
-        <nav class="navbar navbar-expand-lg navbar-dark animated bounceInDown">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Barra de Navegación Primer Parte LandingPage -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
             </button>
-            
-            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
-                <ul id="main-navbar" class="nav navbar-nav mr-auto px-5">
-                    <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión</h6></a>
-                    </li>
-                    <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6 id="white-text">Registrarse</h6></a>
-                    </li>
-                </ul>       
-                <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="../img/icon/MiniMall.png"></a>
-                <ul id="main-navbar" class="nav navbar-nav ml-auto px-5">
-                    <li class="nav-item invisible ">
-                        <a class="nav-link" href="#"><h6 id="white-text">Iniciar Sesión Iniciar Inic</h6></a>
-                    </li>
-                    <li class="nav-item invisible">
-                        <a class="nav-link" href="#"><h6 id="white-text">Carrito</h6></a>
-                    </li>
-                </ul>
-            
-        
-            <div class="w-100">
-                
-                    <ul id="main-navbar" class="nav navbar-nav px-5">
-                        <li class="nav-item mr-auto">
-                            <a class="nav-link" href="../index.html"><h6 class="text-white">Inicio</h6></a>
-                       </li>
-                        <li class="nav-item mr-auto ml-auto invisible">
-                            <a class="nav-link" href="#"><h6 class="text-white">Promociones</h6></a>
+            <div class="collapse navbar-collapse" id="navbar-main">
+                <div class="row m-0 w-100">
+                    <ul id="main-navbar" class="nav navbar-nav mr-auto px-5 my-auto">
+                        <li class="nav-item invisible">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user fa-fw" style="color: white;"></i>Iniciar Sesión</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
+                                    <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
+                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
+                                </div>
+                            </div>
                         </li>
-                        <li class="nav-item ml-auto">
-                            <a class="nav-link" href="../contact.html"><h6 class="text-white">Contactanos</h6></a>
+                        <li class="nav-item invisible">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-plus fa-fw" style="color: white;"></i>Registrarse</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="register/register-client.html">Cliente</a>
+                                    <a class="dropdown-item" href="register/register-company.html">Empresa</a>
+                                    <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>       
+                    <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="../img/icon/MiniMall.png"></a>
+                    <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
+                        <li class="nav-item invisible">
+                            <a class="nav-link" href="#"><h6 class="text-white">Iniciar Sesión Iniciar Inic</h6></a>
+                        </li>
+                        <li class="nav-item invisible">
+                            <a class="nav-link" href="cart.html"><h6 class="text-white"><i class="fas fa-shopping-cart fa-fw" style="color: white;"></i>Carrito</h6></a>
                         </li>
                     </ul>
                 
+            
+                </div>  
             </div>
-        </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <div id="navbar-menu" class="w-100">
+                    <ul class="nav navbar-nav px-5  my-auto">
+                        <li class="nav-item mr-auto">
+                            <a class="nav-link" href="../index.html"><h6 class="text-white"><i class="fas fa-home fa-fw" style="color: white;"></i>Inicio</h6></a>
+                      </li>
+                        <li class="nav-item mr-auto ml-auto invisible">
+                            <div class="btn-group">
+                                <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-percent fa-fw" style="color: white;"></i>Promociones</button>
+                                <div class="dropdown-menu" >
+                                    <a class="dropdown-item" href="promotions/product-company-list.html"> <i class="fas fa-building fa-fw"></i>Productos y Empresas</a>
+                                    <a class="dropdown-item" href="promotions/categories.html"><i class="fas fa-th-large fa-fw"></i>Categorías</a>
+                                    <a class="dropdown-item" href="promotions/last-products.html"><i class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
+                                </div>
+                            </div> 
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link" href="../contact.html"><h6 class="text-white"><i class="fas fa-phone-volume fa-fw" style="color: white;"></i>Contactanos</h6></a>
+                        </li>
+                    </ul>
+                </div>
         </nav>
 
         <!-- Formulario de Registro -->
         <form action="">
-            <div class="col-6 mr-auto ml-auto p-3 animated zoomIn" id="form-promotion">
+            <div class="col-6 mr-auto ml-auto p-3 animated bounceInRight" id="form-promotion">
                 <div class="form-row align-items-center">
                     <div class="col-auto mr-auto ml-auto text-white">
                         <h4>Promoción</h4>

@@ -1,5 +1,5 @@
 var mymap = L.map('map', {
-	center: [14.077105, -87.200558],
+	center: [14.076304, -87.206158],
 	zoom: 15
 });
 
@@ -21,7 +21,8 @@ function onMapClick(e) {
     lat = e.latlng.lat;
     lon = e.latlng.lng;  
     marker = L.marker([lat,lon]).addTo(mymap);
-    lat_lon = [lat,lon];
-
+    
+    return lat_lon = [lat,lon];
 }
+
 mymap.on('click', onMapClick);

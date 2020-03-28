@@ -21,7 +21,7 @@ const countdown = (deadline, elem) => {
     const timerUpdate = setInterval(() => {
         let time = getRemainTime(deadline);
         el.innerHTML = `
-            <h6 class="text-white rounded-pill bg-danger px-3 py-2 text-center mx-2 my-2 ">Dias ${time.remainDays} Horas ${time.remainHours} Minutos ${time.remainMinutes} Segundos ${time.remainSeconds}</h6>
+            <h6 class="text-white rounded-pill bg-danger px-2 py-2 text-center mx-2 my-2 ">${time.remainDays} Dias | ${time.remainHours} Horas | ${time.remainMinutes} Minutos | ${time.remainSeconds} Segundos</h6>
             `;
         if (time.remainTime <= 1){
             clearInterval(timerUpdate);

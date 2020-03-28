@@ -1,3 +1,7 @@
+body{
+    font-family: 'Mirza', cursive;
+}
+
 #Mini-Mall-mainlogo{
     height: 60px;
     width: 90px;
@@ -7,7 +11,7 @@
     background-color: transparent !important;
 }
 
-.w-100{
+#navbar-menu{
     border-top: 2px solid #BBA99D !important;
     border-bottom: 2px solid #BBA99D !important;
 }
@@ -18,7 +22,7 @@
 }
 
 #lp-content-img {
-    position: relative;    /* para poder posicionar el texto de forma absoluta */
+    position:absolute;    /* para poder posicionar el texto de forma absoluta */
     display: inline-block; /* para que solo ocupe el ancho de la imagen */
     padding-left: 0;
 }
@@ -58,12 +62,12 @@
     box-shadow:none;
 }
 
-#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register, #btn-admin-register, #country-select-admin, #currency-select-admin, #modal-header-company, #btn-company-login, #btn-company-register-modal, #btn-branch, #btn-promotion, #product-select-promotion, #branch-select-promotion, #btn-comment-product, #btn-buy-product, #btn-add-fav-product, #btn-add-cart-product, #btn-comment-product{
+#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register, #btn-admin-register, #country-select-admin, #currency-select-admin, #modal-header-company, #btn-company-login, #btn-company-register-modal, #btn-branch, #btn-promotion, #product-select-promotion, #branch-select-promotion, #btn-comment-product, #btn-buy-product, #btn-add-fav-product, #btn-add-cart-product, #btn-comment-product, #tabs-company-profile, #sex-select-admin{
     background-color: #EEC058 !important;
     border:none !important;
 }
 
-#form-client, #form-branch, #modal-header-client, #btn-client-login, #btn-client-register-modal, #form-product{
+#form-client, #form-branch, #modal-header-client, #btn-client-login, #btn-client-register-modal, #form-product, #tabs-client-profile{
     background-color: #FBC987 !important;
     border:none !important;
 }
@@ -77,7 +81,7 @@
     color:black;
 }
 
-#country-select,#categories-select-product, #currency-select, #form-admin, #form-promotion, #modal-header-admin, #btn-admin-login, #btn-company-register, #btn-product, #image-product{
+#country-select,#categories-select-product, #currency-select, #form-admin, #form-promotion, #modal-header-admin, #btn-admin-login, #btn-company-register, #btn-product, #image-product, #sex-select-client, #tabs-admin-profile, #admin-photo-profile, #table-admin{
     background-color: #757575 !important;
     border:none !important;
 }
@@ -96,6 +100,31 @@ input.currency {
 
 #form-product{
     background-color: rgb(238, 193, 88, 0.2);
+}
+
+.fb-image-profile{
+    border-radius: 0.8rem;
+    border: 5px solid #FBC987 ;
+    width: 15rem;
+    height: 15rem; 
+}
+
+#company-photo-logo{
+    border: 5px solid #EEC058 !important;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 12rem;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.table-warning{
+    background-color: #EEC058;
 }
 
 
@@ -159,7 +188,9 @@ input.currency {
         display: block;
         visibility: visible;
     }
+    
 }
+
 @media (min-width: 768px) {
     .carousel-inner .active + .carousel-item + .carousel-item {
         display: block;
