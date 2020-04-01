@@ -105,39 +105,51 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <b class="text-white">Nombre Completo</b>
-                        <input type="text" class="form-control" id="first-name-admin" placeholder="Nombres">
-                        <input type="text" class="form-control my-1" id="last-name-admin" placeholder="Apellidos">
+                        <input type="text" class="form-control" id="first-name-admin" placeholder="Nombres" required minlength="3" maxlength="40">
+                        <small id="name-alert" class="form-text text-white"></small>
+                        <input type="text" class="form-control my-1" id="last-name-admin" placeholder="Apellidos" required minlength="3" maxlength="40">
+                        <small id="last-name-alert" class="form-text text-white"></small>
                     </div>
                     
                     <div class="form-group col-md-6">
                         <b class="text-white">País</b>
-                        <select id="country-select-admin" class="form-control text-white">
+                        <select id="country-select-admin" class="form-control text-white" required>
+                            <option selected>Seleccione un País</option>
                             <option>Honduras</option>
                             <option>Estados Unidos</option>
                         </select>
-                        <select id="currency-select-admin" class="form-control text-white my-1">
+                        <small id="country-alert" class="form-text text-white"></small>
+                        <select id="currency-select-admin" class="form-control text-white my-1" required>
+                            <option selected>Seleccione una Moneda</option>
                             <option>L Lempira</option>
                             <option>$ Dolar</option>
                         </select>
+                        <small id="currency-alert" class="form-text text-white"></small>
                     </div>
-
+                    
                     <div class="form-group col-md-6">
                         <b class="text-white">Acceso</b>
-                        <input type="number" class="form-control" id="code-admin" placeholder="Código de Acceso">
-                        <input type="text" class="form-control my-1" id="user-admin" placeholder="Nombre de Acceso">
-                        <input type="email" class="form-control" id="email-admin" placeholder="Email">
-                      </div>
-
+                        <input type="number" class="form-control" id="code-admin" placeholder="Código de Acceso de 4 Digitos" min="1000" max="9999">
+                        <small id="access-alert" class="form-text text-white"></small>
+                        <input type="text" class="form-control my-1" id="user-admin" placeholder="Nombre de Acceso" required minlength="5" maxlength="15" >
+                        <small id="user-alert" class="form-text text-white"></small>
+                        <input type="email" class="form-control" id="email-admin" placeholder="Email" required>
+                        <small id="email-alert" class="form-text text-white"></small>
+                    </div>
+                    
                     <div class="form-group col-md-6">
-                       <b class="text-white">Contraseña</b>
-                      <input type="password" class="form-control " id="password-admin" placeholder="Contraseña">
-                      <input type="password" class="form-control my-1" id="password-admin-repeat" placeholder="Repita Contraseña">
-                      <select id="sex-select-admin" class="form-control text-dark" required>
-                          <option selected>Seleccione Sexo</option>
-                          <option >Masculino</option>
-                          <option >Femenino</option>
-                          <option >Otro</option>
-                      </select>  
+                        <b class="text-white">Contraseña</b>
+                        <input type="password" class="form-control " id="password-admin" placeholder="Contraseña" required>
+                        <small id="pass-alert" class="form-text text-white"></small>
+                        <input type="password" class="form-control my-1" id="password-repeat-admin" placeholder="Repita Contraseña" required>
+                        <small id="pass-repeat-alert" class="form-text text-white"></small>
+                        <select id="sex-select-admin" class="form-control text-dark" required>
+                            <option selected>Seleccione Genero</option>
+                            <option >Masculino</option>
+                            <option >Femenino</option>
+                            <option >Otro</option>
+                        </select>  
+                        <small id="gen-alert" class="form-text text-white"></small>
                     </div>
                 </div>
 
@@ -146,7 +158,7 @@
                         <div class="form-group">
                             
                           </div>
-                          <button type="submit" id="btn-admin-register" class="btn btn-lg shadow p-2 px-5 mb-0 bg-white rounded-pill">Registrarse</button>
+                          <button type="button" id="btn-admin-register" class="btn btn-lg shadow p-2 px-5 mb-0 bg-white rounded-pill" onclick="ValidateForm();">Registrarse</button>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="gridCheck">
                             <label class="form-check-label" for="gridCheck">

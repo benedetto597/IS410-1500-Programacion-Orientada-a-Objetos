@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -30,6 +31,11 @@
            bottom: 0;
            height: 150px;
            width: 250px;
+        }
+
+        #map-promotions {
+            height: 250px;
+            width: 230px;
         }
     </style>
 </head>
@@ -172,69 +178,13 @@
                             </div>
                             <div id="estadisticas" class="container p-0 tab-pane fade">
                                 <div class="col-12 bg-white">
-                                    <div class="container-fluid p-5">
+                                    <div class="container-fluid p-3">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <b>Promociones</b>
-                                                <div class="table-wrapper-scroll-y my-custom-scrollbar ">
-                                                    <table class="table table-hover table-striped">
-                                                        <thead class="table-warning">
-                                                        <tr>
-                                                            <th scope="col">ID Producto</th>
-                                                            <th scope="col">Categoria</th>
-                                                            <th scope="col">Producto</th>
-                                                            
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>                                                           
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>                                                            
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td colspan="2">Larry the Bird</td>
-                                                        </tr>                                                   
-                                                        </tbody>
-                                                    </table>
-                                               </div>
+                                                <canvas id="bar-chart-horizontal"width="600" height="450" style="position: relative;"></canvas>
                                             </div>
                                             <div class="col-md-6">
-                                                <b>Empresas</b>
-                                                <div class="table-wrapper-scroll-y my-custom-scrollbar ">
-                                                    <table class="table table-hover table-striped">
-                                                        <thead class="table-warning">
-                                                        <tr>
-                                                            <th scope="col">ID Producto</th>
-                                                            <th scope="col">Categoria</th>
-                                                            <th scope="col">Producto</th>
-                                                            
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>                                                           
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>                                                            
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td colspan="2">Larry the Bird</td>
-                                                        </tr>                                                   
-                                                        </tbody>
-                                                    </table>
-                                               </div>
+                                                <canvas id="doughnut-chart"width="600" height="450" style="position: relative;"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -242,40 +192,47 @@
                             </div>
                             <div id="productos" class="container p-0 tab-pane fade">
                                 <div class="col-12 bg-white">
-                                    <div class="container-fluid p-5">
-                                        <b>Productos</b>
-                                        <div class="table-wrapper-scroll-y my-custom-scrollbar ">
-                                            <table class="table table-hover table-striped">
-                                                <thead class="table-warning">
-                                                <tr>
-                                                    <th scope="col">ID Producto</th>
-                                                    <th scope="col">Categoria</th>
-                                                    <th scope="col">Producto</th>
-                                                    <th scope="col">Producto</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>                                                           
-                                                    <td>Otto</td>                                                           
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>                                                            
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td >Larry the Bird</td>
-                                                    <td >Larry the Bird</td>
-                                                    <td >Larry the Bird</td>
-                                                </tr>                                                   
-                                                </tbody>
-                                            </table>
-                                       </div>
+                                    <div class="container-fluid p-3">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <b>Productos</b>
+                                                <div class="table-wrapper-scroll-y my-custom-scrollbar ">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead class="table-warning">
+                                                        <tr>
+                                                            <th scope="col">ID Producto</th>
+                                                            <th scope="col">Categoria</th>
+                                                            <th scope="col">Producto</th>
+                                                            <th scope="col">Producto</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mark</td>
+                                                            <td>Otto</td>                                                           
+                                                            <td>Otto</td>                                                           
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Jacob</td>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td >Larry the Bird</td>
+                                                            <td >Larry the Bird</td>
+                                                            <td >Larry the Bird</td>
+                                                        </tr>                                                   
+                                                        </tbody>
+                                                    </table>
+                                               </div>                                            </div>
+                                            <div class="col-md-4">
+                                                <b>Promociones</b>
+                                                <div id="map-promotions"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -333,6 +290,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="../js/localization.js"></script>
+    <script src="js/localization.js"></script>
+    <script src="js/estadistics.js"></script>
     <script src="js/control-client.js"></script>
 </body>
 </html>

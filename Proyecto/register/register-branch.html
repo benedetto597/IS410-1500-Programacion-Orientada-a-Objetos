@@ -152,23 +152,26 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <b>Nombre de la Sucursal</b>
-                        <input type="text" class="form-control" id="name-branch" placeholder="Sucursal">
+                        <input type="text" class="form-control" id="name-branch" minlength="5" maxlength="40" placeholder="Sucursal" required>
+                        <small id="name-alert" class="form-text text-dark"></small>
                     </div>
-
+                    
                     <div class="form-group col-md-6">
                         <b>Dirección</b>
-                        <input type="address" class="form-control" id="address-branch" placeholder="Dirección Completa">
-                      </div>
-
+                        <input type="address" class="form-control" id="address-branch" minlength="5" maxlength="40" placeholder="Dirección Completa" required>
+                        <small id="address-alert" class="form-text text-dark"></small>
+                    </div>
+                    
                     <div class="form-group col-md-12">
-                       <b>Seleccione Ubicación</b>
-                       <div id="map"></div>
+                        <b>Seleccione Ubicación</b>
+                        <div id="map"></div>
+                        <small id="lat-long-alert" class="form-text text-dark"></small>
                     </div>
                 </div>
 
                 <div class="form-row align-items-center">
                     <div class="col-auto mr-auto ml-auto">
-                        <button id="btn-branch" type="submit" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-dark" >Registrar Sucursal</button>
+                        <button id="btn-branch" type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-dark" onclick="ValidateForm();" >Registrar Sucursal</button>
                     </div>
                 </div>   
             </div>
@@ -176,7 +179,6 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/localization.js"></script>
     <script src="js/control-register-branch.js"></script>
 </body>
 </html>
