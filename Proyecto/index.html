@@ -1,291 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini-Mall</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="shortcut icon" href="img/icon/MiniMallicon.png">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
     <style>
-    
-    /* Background Main Window*/
-    main{
-        width:auto;
-        height:100vh;
-        background-image: url(img/lp-primary-image.jpeg);
-        background-repeat: no-repeat;
-        background-size:cover;
-        background-position:inherit;
-    }
+        /* Background Main Window*/
+        main {
+            width: auto;
+            height: 100vh;
+            background-image: url(img/lp-primary-image.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: inherit;
+        }
 
-    /* Background Second-main Window*/
-    #lp-second-part{
-        width:auto;
-        height: 100vh;
-        background-image: url(img/lp-second-image.jpeg);
-        background-repeat: no-repeat;
-        background-size:cover;
-        background-position:inherit;
-        
-    }
+        /* Background Second-main Window*/
+        #lp-second-part {
+            width: auto;
+            height: 100vh;
+            background-image: url(img/lp-second-image.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: inherit;
 
-    #modal-body-client{
-        background-image: url(img/login-client.jpeg);
-        background-repeat: no-repeat;
-        background-size:cover;
-        height: 500px;
-    }
+        }
 
-    #modal-body-company{
-        background-image: url(img/login-company.jpeg);
-        background-repeat: no-repeat;
-        background-size:cover;
-        height: 500px;
-    }
+        #modal-body-client {
+            background-image: url(img/login-client.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 500px;
+        }
 
-    #modal-body-admin{
-        background-image: url(img/login-admin.jpg);
-        background-repeat: no-repeat;
-        background-size:cover;
-        height: 500px;
-    }
+        #modal-body-company {
+            background-image: url(img/login-company.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 500px;
+        }
 
-    #map {
-           height: 230px;
-           width: 580px;
-    }
+        #modal-body-admin {
+            background-image: url(img/login-admin.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 500px;
+        }
 
+        #map {
+            height: 230px;
+            width: 580px;
+        }
     </style>
 </head>
+
 <body>
     <main>
         <!-- Barra de Navegación Primer Parte LandingPage -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" ></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main"
+                aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar-main">
                 <div class="row m-0 w-100">
                     <ul id="main-navbar" class="nav navbar-nav mr-auto px-5 my-auto">
                         <li class="nav-item">
                             <div class="btn-group dropright">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user fa-fw"></i>Iniciar Sesión</button>
-                                <div class="dropdown-menu" >
-                                    <a class="dropdown-item" href="#login-client" data-toggle="modal" data-target="#login-client">Cliente</a>
-                                    <a class="dropdown-item" href="#login-company" data-toggle="modal" data-target="#login-company">Empresa</a>
-                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal" data-target="#login-admin">Super Admin</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#login-client" data-toggle="modal"
+                                        data-target="#login-client">Cliente</a>
+                                    <a class="dropdown-item" href="#login-company" data-toggle="modal"
+                                        data-target="#login-company">Empresa</a>
+                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal"
+                                        data-target="#login-admin">Super Admin</a>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item">
                             <div class="btn-group dropright">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user-plus fa-fw"></i>Registrarse</button>
-                                <div class="dropdown-menu" >
+                                <div class="dropdown-menu">
                                     <a class="dropdown-item" href="register/register-client.html">Cliente</a>
                                     <a class="dropdown-item" href="register/register-company.html">Empresa</a>
                                     <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
                                 </div>
                             </div>
                         </li>
-                    </ul>       
-                    <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
+                    </ul>
+                    <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive"
+                            src="img/icon/MiniMall.png"></a>
                     <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
                         <li class="nav-item invisible">
-                            <a class="nav-link" href="#"><h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6></a>
+                            <a class="nav-link" href="#">
+                                <h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cart.html"><h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6></a>
+                            <a class="nav-link" href="cart.html">
+                                <h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6>
+                            </a>
                         </li>
                     </ul>
-                
-            
-                </div>  
+
+
+                </div>
             </div>
         </nav>
         <nav class="navbar navbar-expand-lg navbar-light bg-light animated bounceInDown">
-                <div id="navbar-menu" class="w-100">
-                    <ul class="nav navbar-nav px-5  my-auto">
-                        <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#"><h6 class="text-dark"><i class="fas fa-home fa-fw"></i>Inicio</h6></a>
-                      </li>
-                        <li class="nav-item mr-auto ml-auto">
-                            <div class="btn-group">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-percent fa-fw"></i>Promociones</button>
-                                <div class="dropdown-menu" >
-                                    <a class="dropdown-item" href="promotions/product-company-list.html"> <i class="fas fa-building fa-fw"></i>Productos y Empresas</a>
-                                    <a class="dropdown-item" href="promotions/categories.html"><i class="fas fa-th-large fa-fw"></i>Categorías</a>
-                                    <a class="dropdown-item" href="promotions/last-products.html"><i class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
-                                </div>
-                            </div> 
-                        </li>
-                        <li class="nav-item ml-auto">
-                            <a class="nav-link" href="contact.html"><h6 class="text-dark"><i class="fas fa-phone-volume fa-fw"></i>Contactanos</h6></a>
-                        </li>
-                    </ul>
-                </div>
+            <div id="navbar-menu" class="w-100">
+                <ul class="nav navbar-nav px-5  my-auto">
+                    <li class="nav-item mr-auto">
+                        <a class="nav-link" href="#">
+                            <h6 class="text-dark"><i class="fas fa-home fa-fw"></i>Inicio</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-auto ml-auto">
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-percent fa-fw"></i>Promociones</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="promotions/product-company-list.html"> <i
+                                        class="fas fa-building fa-fw"></i>Productos y Empresas</a>
+                                <a class="dropdown-item" href="promotions/categories.html"><i
+                                        class="fas fa-th-large fa-fw"></i>Categorías</a>
+                                <a class="dropdown-item" href="promotions/last-products.html"><i
+                                        class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="contact.html">
+                            <h6 class="text-dark"><i class="fas fa-phone-volume fa-fw"></i>Contactanos</h6>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
-          <!-- Modal Login Cliente -->
-          <div class="modal fade" id="login-client" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal Login Cliente -->
+        <div class="modal fade" id="login-client" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div id="modal-header-client" class="modal-header p-2">
-                    <div class="col-md-2 ml-auto">
-                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
-                    </div>
-                    <div class="col-md-1 ml-auto">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>  
-                </div>
-                <div id="modal-body-client" class="modal-body p-0">
-                    <form id="modal-form-client" action="" class="bg-light p-3">
-                        <div class="form-row align-items-center">
-                            <div class="col-auto mr-auto ml-auto">
-                                <h4 id="exampleModalLabel">Cliente</h4>
-                            </div>
+                <div class="modal-content">
+                    <div id="modal-header-client" class="modal-header p-2">
+                        <div class="col-md-2 ml-auto">
+                            <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-10 mr-auto ml-auto">
-                                <input type="text" class="form-control my-2" id="login-user-client" placeholder="Usuario">
-                                <input type="text" class="form-control my-2" id="login-pass-client" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
-                                <small id="passwordHelpBlock" class="form-text text-muted">
-                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
-                                </small>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="col-6 ml-auto mr-auto">
-                        <div class="card" style="border: none;" >
-                            <div class="card-body ml-auto mr-auto">
-                                <button type="submit" id="btn-client-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
-                                <button type="button" id="btn-client-register-modal" onclick="location.href='register-client.html'" class="btn btn-lg shadow  mb-0 rounded-pill my-2" style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
-                            </div>
+                        <div class="col-md-1 ml-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     </div>
+                    <div id="modal-body-client" class="modal-body p-0">
+                        <form id="modal-form-client" action="" class="bg-light p-3">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto mr-auto ml-auto">
+                                    <h4 id="exampleModalLabel">Cliente</h4>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-10 mr-auto ml-auto">
+                                    <input type="text" class="form-control my-2" id="login-user-client"
+                                        placeholder="Usuario" required minlength="5" maxlength="15">
+                                        <small id="user-client-alert" class="form-text text-dark"></small>
+                                    <input type="email" class="form-control my-2" id="email-login-client" placeholder="Email" required>
+                                    <small id="email-client-alert" class="form-text text-dark"></small>
+                                    <input type="password" class="form-control my-2" id="login-pass-client"
+                                        placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
+                                        minlength="5" maxlength="20">
+                                    <small id="pass-client-alert" class="form-text text-dark"></small>
+                                    <small id="passwordHelpBlock" class="form-text text-muted">
+                                        <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-6 ml-auto mr-auto">
+                            <div class="card" style="border: none;">
+                                <div class="card-body ml-auto mr-auto">
+                                    <button type="button" id="btn-client-login"
+                                        class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
+                                        onclick="ValidateClient();">Iniciar Sesión</button>
+                                    <button type="button" id="btn-client-register-modal"
+                                        onclick="location.href='register/register-client.html'"
+                                        class="btn btn-lg shadow  mb-0 rounded-pill my-2"
+                                        style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
 
-          <!-- Modal Login Empresa -->
-          <div class="modal fade" id="login-company" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal Login Empresa -->
+        <div class="modal fade" id="login-company" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div id="modal-header-company" class="modal-header p-2">
-                    <div class="col-md-2 ml-auto">
-                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
-                    </div>
-                    <div class="col-md-1 ml-auto">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>  
-                </div>
-                <div id="modal-body-company" class="modal-body p-0">
-                    <form id="modal-form-company" action="" class="bg-light p-3">
-                        <div class="form-row align-items-center">
-                            <div class="col-auto mr-auto ml-auto">
-                                <h4 id="exampleModalLabel">Empresa</h4>
-                            </div>
+                <div class="modal-content">
+                    <div id="modal-header-company" class="modal-header p-2">
+                        <div class="col-md-2 ml-auto">
+                            <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-10 mr-auto ml-auto">
-                                <input type="number" class="form-control my-2" id="login-code-company" placeholder="Código de Empleado">
-                                <input type="text" class="form-control my-2" id="login-pass-company" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
-                                <small id="passwordHelpBlock" class="form-text text-muted">
-                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
-                                </small>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="col-6 ml-auto mr-auto">
-                        <div class="card" style="border: none;" >
-                            <div class="card-body ml-auto mr-auto">
-                                <button type="submit" id="btn-company-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
-                                <button type="button" id="btn-company-register-modal" onclick="location.href='register-company.html'" class="btn btn-lg shadow  mb-0 rounded-pill my-2" style="padding-left:2rem; padding-right:2rem;">Registrarse</button>                            
-                            </div>
+                        <div class="col-md-1 ml-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     </div>
+                    <div id="modal-body-company" class="modal-body p-0">
+                        <form id="modal-form-company" action="" class="bg-light p-3">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto mr-auto ml-auto">
+                                    <h4 id="exampleModalLabel">Empresa</h4>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-10 mr-auto ml-auto">
+                                    <input type="number" class="form-control my-2" id="login-code-company"
+                                        placeholder="Código de Empleado" minlength="4" maxlength="4" required min="1000"
+                                        max="3999">
+                                    <small id="code-company-alert" class="form-text text-dark"></small>
+                                    <input type="email" class="form-control my-2" id="email-login-company" placeholder="Email" required>
+                                    <small id="email-company-alert" class="form-text text-dark"></small>
+                                    <input type="password" class="form-control my-2" id="login-pass-company"
+                                        placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
+                                        minlength="5" maxlength="20">
+                                    <small id="pass-company-alert" class="form-text text-dark"></small>
+                                    <small id="passwordHelpBlock" class="form-text text-muted">
+                                        <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-6 ml-auto mr-auto">
+                            <div class="card" style="border: none;">
+                                <div class="card-body ml-auto mr-auto">
+                                    <button type="button" id="btn-company-login"
+                                        class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
+                                        onclick="ValidateCompany();">Iniciar Sesión</button>
+                                    <button type="button" id="btn-company-register-modal"
+                                        onclick="location.href='register/register-company.html'"
+                                        class="btn btn-lg shadow  mb-0 rounded-pill my-2"
+                                        style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
 
-          <!-- Modal Login Administrador -->
-          <div class="modal fade" id="login-admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal Login Administrador -->
+        <div class="modal fade" id="login-admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div id="modal-header-admin" class="modal-header p-2">
-                    <div class="col-md-2 ml-auto">
-                        <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
-                    </div>
-                    <div class="col-md-1 ml-auto">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>  
-                </div>
-                <div id="modal-body-admin" class="modal-body p-0">
-                    <form id="modal-form-admin" action="" class="bg-light p-3">
-                        <div class="form-row align-items-center">
-                            <div class="col-auto mr-auto ml-auto">
-                                <h4 id="exampleModalLabel">Administrador</h4>
-                            </div>
+                <div class="modal-content">
+                    <div id="modal-header-admin" class="modal-header p-2">
+                        <div class="col-md-2 ml-auto">
+                            <img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-10 mr-auto ml-auto">
-                                <input type="number" class="form-control" id="login-code-admin" placeholder="Código de Acceso">
-                                <input type="text" class="form-control my-2" id="login-user-admin" placeholder="Usuario">
-                                <input type="text" class="form-control my-2" id="login-pass-admin" placeholder="Contraseña" aria-describedby="passwordHelpBlock">
-                                <small id="passwordHelpBlock" class="form-text text-muted">
-                                    <a class="text-dark" href="#">¿Olvido su contraseña?</a>
-                                </small>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="col-6 ml-auto mr-auto">
-                        <div class="card" style="border: none;" >
-                            <div class="card-body ml-auto mr-auto">
-                                <button type="submit" id="btn-admin-login" class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2">Iniciar Sesión</button>
-                            </div>
+                        <div class="col-md-1 ml-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     </div>
+                    <div id="modal-body-admin" class="modal-body p-0">
+                        <form id="modal-form-admin" action="" class="bg-light p-3">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto mr-auto ml-auto">
+                                    <h4 id="exampleModalLabel">Administrador</h4>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-10 mr-auto ml-auto">
+                                    <input type="number" class="form-control" id="login-code-admin"
+                                        placeholder="Código de Acceso" required minlength="4" maxlength="5" min="1000"
+                                        max="9999">
+                                    <small id="code-admin-alert" class="form-text text-dark"></small>
+                                    <input type="text" class="form-control my-2" id="login-user-admin"
+                                        placeholder="Usuario" required minlength="5" maxlength="20">
+                                    <small id="user-admin-alert" class="form-text text-dark"></small>
+                                    <input type="email" class="form-control my-2" id="email-login-admin" placeholder="Email" required>
+                                    <small id="email-admin-alert" class="form-text text-dark"></small>
+                                    <input type="password" class="form-control my-2" id="login-pass-admin"
+                                        placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
+                                        minlength="5" maxlength="20">
+                                    <small id="pass-admin-alert" class="form-text text-dark"></small>
+                                    <small id="passwordHelpBlock" class="form-text text-muted">
+                                        <a class="text-dark" href="#">¿Olvido su contraseña?</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-6 ml-auto mr-auto">
+                            <div class="card" style="border: none;">
+                                <div class="card-body ml-auto mr-auto">
+                                    <button type="button" id="btn-admin-login"
+                                        class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
+                                        onclick="ValidateAdmin();">Iniciar Sesión</button>
+                                    <button type="button" id="btn-admin-register-modal"
+                                        onclick="location.href='register/register-company.html'"
+                                        class="btn btn-lg shadow  mb-0 rounded-pill my-2"
+                                        style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-
+        </div>
 
         <!-- Contenido Primer Parte LandinPage -->
         <div class="row px-4">
             <div class="col-xl-2 col-lg-2 col-md-3 col-xs-3 col-sm-3 animated bounceInDown">
                 <div class="card" id="lp-content-img">
                     <div class="card-body">
-                        <a href="promotions/last-products.html"><img class="card-img-top" src="img/lp-content-image.jpeg" alt="Card image cap"></a>
+                        <a href="promotions/last-products.html"><img class="card-img-top"
+                                src="img/lp-content-image.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Últimas Promociones</h6>
-                    </div>  
+                    </div>
                 </div>
-                            
+
             </div>
             <div class="col-xl-2 col-lg-2 col-md-3 col-xs-3 col-sm-3 animated bounceInDown">
-                <div class="card"  id="lp-content-img">
+                <div class="card" id="lp-content-img">
                     <div class="card-body">
-                        <a href="promotions/categories.html"><img class="card-img-top" src="img/lp-content-categories.jpeg" alt="Card image cap"></a>
+                        <a href="promotions/categories.html"><img class="card-img-top"
+                                src="img/lp-content-categories.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Categorías</h6>
-                    </div> 
+                    </div>
                 </div>
             </div>
-        </div>   
+        </div>
     </main>
 
     <!-- Segunda Parte LandingPage-->
@@ -296,28 +365,36 @@
                 <div id="carousel-products" class="carousel slide animated bounceInLeft" data-ride="carousel">
                     <div class="carousel-inner row w-75 mx-auto" role="listbox">
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img1">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img1">
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img2">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img2">
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img3">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img3">
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img4">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img4">
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img5">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img5">
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img6">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img6">
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img7">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img7">
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="img/lp-second-product1.jpeg" class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img8">
+                            <img src="img/lp-second-product1.jpeg"
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img8">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carousel-products" role="button" data-slide="prev">
@@ -335,105 +412,122 @@
         <!-- Listas de Empresas y Productos -->
         <div class="row">
             <nav class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12 sidebar px-5 animated bounceInLeft">
-              <div class="sidebar-sticky p-3">
-                <ul class="nav flex-column my-3">
-                    <li class=" nav-item row">
-                        <div class="col-lg-6 ">
-                            <div class="px-0 text-right">
-                                <h5 class="card-text">Listado de las principales empresas que compiten en está web para alcanzar el mayor número de clientes</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <a href="#"><img src="img/lp-second-companylist.jpeg" class="card-img-right img-fluid rounded" ></a>
-                    </div>
-                </li>
-                </ul>
-                <ul class="nav flex-column my-3">
-                    <li class="nav-item row">
-                        <div class="col-lg-6 ">
-                            <div class="px-0 text-right">
-                                <a href="#"><img src="img/lp-second-productlist.jpeg" class="card-img-right img-fluid rounded" ></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <h5 class="card-text">Listado de las principales empresas que compiten en está web para alcanzar el mayor número de clientes</h5>
-                    </div>
-                </li>
-                </ul>
-            </nav>
-           
-            <!-- Mapa y Comentario -->
-            <nav class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-xs-12 col-md-12 d-md-block bg-dark sidebar animated bounceInRight" id="lp-second-map">
                 <div class="sidebar-sticky p-3">
-                  <ul class="nav flex-column my-3">
-                      <li class=" nav-item row">
-                        <div class="col-lg-12">
-                            <div id="map"></div>                     
-                        </div>
-                    </li>
-                </ul>
-                <ul class="nav flex-column my-3 px-5">
-                    <li class=" nav-item row">
-                        <div class="col-lg-12">
-                            <a href="#lp-card-comments"><img src="img/lp-second-commentsjpg"  class="img-fluid" ></a>
-                        </div>    
-                    </li>
-                </ul>
-              </nav>
+                    <ul class="nav flex-column my-3">
+                        <li class=" nav-item row">
+                            <div class="col-lg-6 ">
+                                <div class="px-0 text-right">
+                                    <h5 class="card-text">Listado de las principales empresas que compiten en está web
+                                        para alcanzar el mayor número de clientes</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="#"><img src="img/lp-second-companylist.jpeg"
+                                        class="card-img-right img-fluid rounded"></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column my-3">
+                        <li class="nav-item row">
+                            <div class="col-lg-6 ">
+                                <div class="px-0 text-right">
+                                    <a href="#"><img src="img/lp-second-productlist.jpeg"
+                                            class="card-img-right img-fluid rounded"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="card-text">Listado de las principales empresas que compiten en está web para
+                                    alcanzar el mayor número de clientes</h5>
+                            </div>
+                        </li>
+                    </ul>
+            </nav>
+
+            <!-- Mapa y Comentario -->
+            <nav class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-xs-12 col-md-12 d-md-block bg-dark sidebar animated bounceInRight"
+                id="lp-second-map">
+                <div class="sidebar-sticky p-3">
+                    <ul class="nav flex-column my-3">
+                        <li class=" nav-item row">
+                            <div class="col-lg-12">
+                                <div id="map"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column my-3 px-5">
+                        <li class=" nav-item row">
+                            <div class="col-lg-12">
+                                <a href="#lp-card-comments"><img src="img/lp-second-commentsjpg" class="img-fluid"></a>
+                            </div>
+                        </li>
+                    </ul>
+            </nav>
         </div>
     </div>
     <!-- Tercera Parte LandingPage -->
     <div id="lp-third-part">
-            <div class="row">
-                <nav class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 bg-dark sidebar ">
-                    <div class="sidebar-sticky">
-                        <img src="img/lp-content-third-image.jpeg" style="height:100vh; width: 100vw;">
-                    </div>
-                </nav>
-                
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0 animated bounceInRight">
-                        <div class="card" id="lp-card-company">
-                            <a href="#"><img src="img/icon/MiniMallicon.png" class="card-img-top p-3  img-thumbnail" alt="logo-icon">
-                            <div class="card-body">
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></a>
-                            </div>
-                          </div>
-                    </div>
-              
-                <nav  class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-xs-12 col-md-4 d-md-block sidebar animated bounceInRight" id="lp-sidebar-comment">
-                    <div class="sidebar-sticky p-5">
-                        <div id="lp-card-comments" class="card form-group">
-                            <div class="card-body">
-                                <textarea name="" id="" class="form-control"></textarea>
-                                <input type="text" placeholder="Comenta tu opinión aquí" class="form-control my-3">
-                                <button type="button" class="btn btn-danger btn-block ">Publicar Comentario</button>     
-                            </div>
-                        </div>
-                    </div>
-                  </nav>
-                  <footer class="col-12">
-                    <ul class="nav px-5">
-                        <li class="nav-item ">
-                            <a class="nav-link active p-1" href="https://es-la.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active p-1" href="https://twitter.com/login?lang=es"><i class="fab fa-twitter-square fa-2x"></i></a>
-                        </li>   
-                        <li class="nav-item">
-                            <a class="nav-link active p-1" href="https://www.instagram.com/?hl=es-la"><i class="fab fa-instagram fa-2x"></i></a>
-                        </li>
-                        <li class="nav-item ml-auto ">
-                          <a class="nav-link active" href="contact.html"><i class="fas fa-phone-volume fa-fw"></i>Contactenos</a>
-                        </li>
-                    </ul>
-                  </footer>
+        <div class="row">
+            <nav class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 bg-dark sidebar ">
+                <div class="sidebar-sticky">
+                    <img src="img/lp-content-third-image.jpeg" style="height:100vh; width: 100vw;">
+                </div>
+            </nav>
+
+            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0 animated bounceInRight">
+                <div class="card" id="lp-card-company">
+                    <a href="#"><img src="img/icon/MiniMallicon.png" class="card-img-top p-3  img-thumbnail"
+                            alt="logo-icon">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                    </a>
+                </div>
             </div>
+        </div>
+
+        <nav class="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-xs-12 col-md-4 d-md-block sidebar animated bounceInRight"
+            id="lp-sidebar-comment">
+            <div class="sidebar-sticky p-5">
+                <div id="lp-card-comments" class="card form-group">
+                    <div class="card-body">
+                        <textarea name="" id="" class="form-control"></textarea>
+                        <input type="text" placeholder="Comenta tu opinión aquí" class="form-control my-3">
+                        <button type="button" class="btn btn-danger btn-block ">Publicar Comentario</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <footer class="col-12">
+            <ul class="nav px-5">
+                <li class="nav-item ">
+                    <a class="nav-link active p-1" href="https://es-la.facebook.com/"><i
+                            class="fab fa-facebook-square fa-2x"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active p-1" href="https://twitter.com/login?lang=es"><i
+                            class="fab fa-twitter-square fa-2x"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active p-1" href="https://www.instagram.com/?hl=es-la"><i
+                            class="fab fa-instagram fa-2x"></i></a>
+                </li>
+                <li class="nav-item ml-auto ">
+                    <a class="nav-link active" href="contact.html"><i
+                            class="fas fa-phone-volume fa-fw"></i>Contactenos</a>
+                </li>
+            </ul>
+        </footer>
+    </div>
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/localization.js"></script>
     <script src="js/places.js"></script>
+    <script src="js/login-validation.js"></script>
     <script src="js/control-index.js"></script>
 </body>
+
 </html>
