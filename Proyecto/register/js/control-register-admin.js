@@ -103,8 +103,9 @@ function ValidateCurrency() {
 }
 
 function ValidateAccess() {
-    if (document.getElementById('code-admin').value == '' || document.getElementById('code-admin').value > 9999) {
-        document.getElementById('access-alert').innerHTML = `Ingrese un código de acceso valido (4 digitos máximo)`;
+    // Comprobar también que no haya nadíe más registrado como administrador.
+    if (document.getElementById('code-admin').value == '' || document.getElementById('code-admin').value != 1905) {
+        document.getElementById('access-alert').innerHTML = `Ingrese el código de acceso valido (4 digitos máximo)`;
         return false;
     } else {
         document.getElementById('access-alert').innerHTML = ``;

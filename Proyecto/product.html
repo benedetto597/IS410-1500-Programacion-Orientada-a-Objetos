@@ -360,17 +360,19 @@
                                 <h4 class="px-3">Categoría del Producto</h4>
                             </a>
                             <div class="row m-2">
-                                <div class="col-md-8 bg-white rounded">
+                                <div class="col-md-12 bg-white rounded">
                                     <h5>Descripción del Producto</h5>
+                                    <!-- Mostrar en tiempo real el tiempo faltante -->
                                 </div>
-                                <div class="col-md-4">
-                                    <h5 class="bg-white rounded-pill px-1 my-3">L 900.00</h5>
+                                <div class="col-md-12 rounded">
+                                    <div id="clock" class="col-12"></div>
                                 </div>
-                                <!-- Mostrar en tiempo real el tiempo faltante -->
-                                <div id="clock" class="col-12"></div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                            <div class="col-md-10">
+                                <h5 class="bg-secundary text-white py-2 rounded-pill px-2 my-3 text-center">L 900.00</h5>
+                            </div>
                             <button type="button" id="btn-buy-product"
                                 class="btn  px-5  shadow my-3 text-dark  rounded-pill" data-toggle="modal"
                                 data-target="#buy-product">Comprar</button>
