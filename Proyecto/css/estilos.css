@@ -62,7 +62,7 @@ body{
     box-shadow:none;
 }
 
-#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register, #btn-admin-register, #country-select-admin, #currency-select-admin, #modal-header-company, #btn-company-login, #btn-company-register-modal, #btn-branch, #btn-promotion, #product-select-promotion, #branch-select-promotion, #btn-comment-product, #btn-buy-product, #btn-add-fav-product, #btn-add-cart-product, #btn-comment-product, #tabs-company-profile, #sex-select-admin{
+#lp-card-company , #lp-sidebar-comment, .bg-dark, footer, .img-thumbnail, #form-company, #btn-client-register, #btn-admin-register, #country-select-admin, #currency-select-admin, #modal-header-company, #btn-company-login, #btn-company-register-modal, #btn-branch, #btn-promotion, #product-select-promotion, #branch-select-promotion, #btn-comment-product, #btn-buy-product, #btn-add-fav-product, #btn-add-cart-product, #btn-comment-product, #tabs-company-profile, #sex-select-admin, #btn-update-info{
     background-color: #EEC058 !important;
     border:none !important;
 }

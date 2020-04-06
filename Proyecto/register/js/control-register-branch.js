@@ -66,6 +66,7 @@ function ValidateDir() {
     let symbols = /([!-/:-@{-¿])/;
     if (document.getElementById('address-branch').value == '' || chars.test(document.getElementById('address-branch').value) == false || symbols.test(document.getElementById('address-branch').value) == true) {
         document.getElementById('address-alert').innerHTML = `Ingrese la dirección completa del sucursal (sin comas ni puntos)`;
+        
         return false;
     } else {
         document.getElementById('address-alert').innerHTML = ``;

@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="shortcut icon" href="../img/icon/MiniMallicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <style>
         /* Background Main Window*/
         main {
@@ -141,13 +146,27 @@
                         <small id="img-alert" class="form-text text-dark"></small>
                     </div>
                     <div class="form-group col-md-6">
-                        <b>Precio</b>
-                        <div class="input-group">
-                            <span class="input-group-addon pt-2 px-2"><b id="currency-company">L</b></span>
-                            <input type="number" min="0" max="100000" step="5" data-number-to-fixed="2"
-                                data-number-stepfactor="100" class="form-control currency" id="price-product" required>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b>Precio</b>
+                                <div class="input-group">
+                                    <span class="input-group-addon pt-2 px-2"><b id="currency-company">L</b></span>
+                                    <input type="number" min="0" max="100000" step="5" data-number-to-fixed="2"
+                                        data-number-stepfactor="100" class="form-control currency" id="price-product"
+                                        required>
+                                </div>
+                                <small id="price-alert" class="form-text text-dark"></small>
+                            </div>
+                            <div class="col-md-8">
+                                <b>Sucursales</b>
+                                <select id="branch-select-product" class="form-control mul-select" multiple="true" style="width:17rem;" required>
+                                    <option value="Sucursal">Sucursal</option>
+                                    <option value="Sucursal">Sucursal</option>
+                                    <option value="Sucursal">Sucursal</option>
+                                </select>
+                                <small id="branch-alert" class="form-text text-dark"></small>
+                            </div>
                         </div>
-                        <small id="price-alert" class="form-text text-dark"></small>
                     </div>
 
                     <div class="form-group col-md-6">
@@ -170,7 +189,7 @@
                         <b>Descripción</b>
                         <textarea name="" id="description-product" class="form-control" required minlength="15"
                             maxlength="200"></textarea>
-                        <small id="categories-alert" class="form-text text-dark"></small>
+                        <small id="description-alert" class="form-text text-dark"></small>
                     </div>
                 </div>
                 <div class="form-row align-items-center">
@@ -186,11 +205,16 @@
 
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="../js/bootstrap.min.js"></script>
     <script src="js/control-register-product.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".mul-select").select2({
+                    placeholder: "Seleccione Sucursal", //placeholder
+                    tags: true,
+                    tokenSeparators: ['/',',',';'," "] 
+                });
+            })
+    </script>
 </body>
 
 </html>

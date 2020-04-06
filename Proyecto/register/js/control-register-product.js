@@ -1,9 +1,11 @@
+//Centralizar los JSON en aspecto con el de prfile-company
 var product = {
     name: "",
     img: "",
     price:"",
     category: "",
-    description: ""
+    description: "",
+    branch:""
 }
 
 function ValidateForm() {
@@ -12,13 +14,15 @@ function ValidateForm() {
     let price = ValidatePrice();
     let category = ValidateCategory();
     let description = ValidateDescription();
+    let branch = ValidateBranch();
 
-    if (name == true && img == true && price == true && category == true && description == true) {
+    if (name == true && img == true && price == true && category == true && description == true && branch == true) {
         product.name = document.getElementById('name-product').value;
         product.img = document.getElementById('file-product').value;
         product.price = parseFloat(document.getElementById('price-product').value).toFixed(2);
         product.category = document.getElementById('categories-select-product').options[document.getElementById('categories-select-product').selectedIndex].value;
         product.description = document.getElementById('description-product').value;
+        product.branch = $("#branch-select-product").val();
     }
 }
 
@@ -76,10 +80,21 @@ function ValidateCategory() {
 function ValidateDescription() {
     let chars = /([A-Za-z0-9!-/])\w+/;
     if (document.getElementById('description-product').value == '' || chars.test(document.getElementById('description-product').value) == false) {
-        document.getElementById('name-alert').innerHTML = `Ingrese una Descripción de producto valida`;
+        document.getElementById('description-alert').innerHTML = `Ingrese una Descripción de producto valida`;
         return false;
     } else {
-        document.getElementById('name-alert').innerHTML = ``;
+        document.getElementById('description-alert').innerHTML = ``;
+        return true;
+    }
+    return false;
+}
+
+function ValidateBranch() {
+    if ($("#branch-select-product").val() == null) {
+        document.getElementById('branch-alert').innerHTML = `Seleccione Sucursales de las disponibles`;
+        return false;
+    } else {
+        document.getElementById('branch-alert').innerHTML = ``;
         return true;
     }
     return false;
