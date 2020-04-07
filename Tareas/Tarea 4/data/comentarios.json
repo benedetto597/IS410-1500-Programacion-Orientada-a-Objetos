@@ -1,0 +1,9 @@
+[
+{"codigoComentario":1,"codigoPost":1,"usuario":"Goku","comentario":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto."},
+{"codigoComentario":2,"codigoPost":1,"usuario":"Vegeta","comentario":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto."},
+{"codigoComentario":3,"codigoPost":2,"usuario":"Videl","comentario":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto."},
+{"codigoComentario":4,"codigoPost":2,"usuario":"Trunks","comentario":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto."},
+{"codigoComentario":5,"codigoPost":3,"usuario":"Patricio","comentario":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto."},
+{"codigoComentario":6,"codigoPost":3,"usuario":"Goten","comentario":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto."},
+{"codigoComentario":7,"codigoPost":2,"usuario":"Gohan","comentario":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto."}
+]
