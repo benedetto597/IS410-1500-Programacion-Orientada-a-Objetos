@@ -3,12 +3,12 @@
     class Usuario{
         private $codigoUsuario;
         private $nombreUsuario;
-        private $playlist;
+        private $playlists;
 
-        public function __construct($codigoUsuario,$nombreUsuario,$playlist){
+        public function __construct($codigoUsuario,$nombreUsuario,$playlists){
             $this->codigoUsuario = $codigoUsuario;
             $this->nombreUsuario = $nombreUsuario;
-            $this->playlist = $playlist;
+            $this->playlists = $playlists;
         }
  
         public function getCodigoUsuario()
@@ -25,31 +25,31 @@
  
         public function getNombreUsuario()
         {
-                return $this->getNombreUsuario;
+                return $this->nombreUsuario;
         }
 
-        public function setNombreUsuario($getNombreUsuario)
+        public function setNombreUsuario($nombreUsuario)
         {
-                $this->getNombreUsuario = $getNombreUsuario;
+                $this->nombreUsuario = $nombreUsuario;
 
                 return $this;
         }
  
-        public function getPlaylist()
+        public function getPlaylists()
         {
-                return $this->playlist;
+                return $this->playlists;
         }
 
-        public function setPlaylist($playlist)
+        public function setPlaylists($playlists)
         {
-                $this->playlist = $playlist;
+                $this->playlists = $playlists;
 
                 return $this;
         }
  
         public function __toString(){
             return $this->codigoUsuario ." ".$this->nombreUsuario.
-            " ".$this->playlist;
+            " ".$this->playlists;
         }
 
         public static function obtenerUsuarios(){
@@ -57,9 +57,21 @@
                 echo $usuarios;                
         }
 
-        public function agregarEnPlaylist($cancion, $artista, $album){
-                
+        public function agregarEnPlaylists($indice){
+                $contenidoArchivo = file_get_contents("../data/usuarios.json");
+                $usuarios = json_decode($contenidoArchivo, true);
+                $usuario = array(
+                        'codigoUsuario'=> $this->codigoUsuario,
+                        'nombreUsuario'=> $this->nombreUsuario,
+                        'playlists'=> $this->playlists
+                );
+                $usuarios[$indice] = $usuario;
+                $archivo = fopen('../data/usuarios.json', 'w');
+                fwrite($archivo, json_encode($usuarios));
+                fclose($archivo);     
+                echo json_encode($usuarios);
         }
+
     }
 
 ?>
