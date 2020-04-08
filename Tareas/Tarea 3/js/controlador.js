@@ -257,7 +257,7 @@ function guardarEnPlaylist() {
 
             $.ajax({
                 url: `php/usuarios.php?id=${usuarioSeleccionado}`,
-                method: 'post',
+                method: 'put',
                 data: JSON.stringify(usuarioActualizar),
                 dataType: 'json',
                 success: function (usuariosActualizados) {
