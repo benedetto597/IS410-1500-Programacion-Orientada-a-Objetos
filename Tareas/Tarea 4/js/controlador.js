@@ -66,20 +66,20 @@ function obtenerPosts(codigoUsuario, usuario, imagenUsuario) {
         responseType: 'json'
     }).then(resPosts => {
         this.posts = resPosts.data;
-        obtenerComentarios(codigoUsuario, usuario, imagenUsuario, posts);
+        obtenerComentarios(codigoUsuario, posts);
     }).catch(error => {
         console.error(error);
     });
 }
 
-function obtenerComentarios(codigoUsuario, usuario, imagenUsuario, posts) {
+function obtenerComentarios(codigoUsuario, posts) {
     axios({
         method: 'GET',
         url: 'axios/comentarios.php',
         responseType: 'json'
     }).then(resComentarios => {
         this.comentarios = resComentarios.data;
-        mostrarPosts(codigoUsuario, usuario, imagenUsuario, posts, comentarios);
+        mostrarPosts(codigoUsuario, posts, comentarios);
         
     }).catch(error => {
         console.error(error);
@@ -138,11 +138,11 @@ function verHistoria(codigoHistoria) {
     $('#ver-historia').modal('show');  
 }
 
-function mostrarPosts(codUsuario, nombreUsuario, imagenUsuario, posts, comentarios) {
+function mostrarPosts(codUsuario, posts, comentarios) {
 
     document.getElementById('posts').innerHTML = ``;
     for (let i = 0; i < posts.length; i++) {
-        if (posts[i].codigoUsuario == codUsuario) {
+        if (posts[i].codigoUsuario == codUsuario -1) {
             if(i+1 < posts.length){
                 i++;
             }else{
@@ -153,15 +153,15 @@ function mostrarPosts(codUsuario, nombreUsuario, imagenUsuario, posts, comentari
         <div class="col-lg-12">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <img class="img-fluid img-thumbnail rounded-circle" src="${imagenUsuario}">    
-                    <span>${nombreUsuario}</span>
+                    <img class="img-fluid img-thumbnail rounded-circle" src="${usuarios[posts[i].codigoUsuario].imagen}">    
+                    <span>${usuarios[posts[i].codigoUsuario].nombre}</span>
                 </div>
                 <div class="card-body px-0 py-0">
                     <div class="image-post" style="background-image: url(${posts[i].imagen});">
                     </div>
                     <div class="px-3 py-3 post">
                         <span class="pointer" onclick="like(${posts[i].codigoPost} );"><i class="far fa-heart" id="heart-${posts[i].codigoPost}"></i></span>&nbsp;${posts[i].cantidadLikes} Likes<br>
-                        <span class="post-user">${nombreUsuario}</span>
+                        <span class="post-user">${usuarios[posts[i].codigoUsuario].nombre}</span>
                         <span class="post-content">${posts[i].contenidoPost}</span>
                         <hr>
                         <b>Comments</b><br>
@@ -236,7 +236,7 @@ function comentar(codigoPost) {
 function publicarPost(){
     let nuevoPost = {
         'codigoPost': (posts.length) +1,
-        'codigoUsuario': parseInt( codUsuarioSeleccionado),
+        'codigoUsuario': (parseInt(codUsuarioSeleccionado)) -1,
         'contenidoPost': document.getElementById('contenido-post').value,
         'imagen': document.getElementById('url-imagen').value,
         'cantidadLikes': 0
