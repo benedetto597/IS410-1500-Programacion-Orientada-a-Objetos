@@ -13,12 +13,7 @@
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <img src="img/logo.png" class="img-fluid my-0 mr-md-auto ">
     <!--Aqui deben estar tooodos los usuarios-->
-    <select id="usuario-actual" class="form-control" style="width: 200px;">
-      <option value="1">Patricio</option>
-      <option value="2">Goku</option>
-      <option value="3">Vegeta</option>
-      <option value="4">Trunks</option>
-      <option value="5">Goten</option>
+    <select id="usuario-actual" class="form-control" style="width: 200px;" onchange="usuarioSeleccionado();">
     </select>
     &nbsp;
     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#nuevo-post">
@@ -34,170 +29,14 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-          <div class="row" id="posts">
-
-            <!--Post1-->
-            <div class="col-lg-12">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <img class="img-fluid img-thumbnail rounded-circle" src="img/profile-pics/patricio.jpg">    
-                    <span>Patricio</span>
-                </div>
-                <div class="card-body px-0 py-0">
-                  <div class="image-post" style="background-image: url(img/posts/1.jpg);">
-
-                  </div>
-                  <div class="px-3 py-3 post">
-                    <span class="pointer" onclick="like(1);"><i class="far fa-heart"></i></span>&nbsp;3 Likes<br>
-                    <span class="post-user">Patricio</span>
-                    <span class="post-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa distinctio libero perspiciatis a fugit iusto, beatae ab voluptates quaerat voluptatem magni dolor expedita ipsa eius unde. Earum reprehenderit ab doloremque.</span>
-                    <hr>
-                    <b>Comments</b><br>
-                    <div>
-                      <span class="post-user">Goku</span>
-                      <span class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto.</span>
-                    </div>
-                    <div>
-                      <span class="post-user">Bulma</span>
-                      <span class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto.</span>
-                    </div>
-                    <hr>
-                    <div class="px-0">
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Comment" id="comentario-post-1">
-                        <div class="input-group-append">
-                            <button type="button" onclick="comentar(1);" class="btn btn-outline-danger"><i class="far fa-paper-plane"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!--Post2-->
-            <div class="col-lg-12">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <img class="img-fluid img-thumbnail rounded-circle" src="img/profile-pics/goku.jpg">    
-                    <span>Goku</span>
-                </div>
-                <div class="card-body px-0 py-0">
-                  <div class="image-post" style="background-image: url(img/posts/2.jpg);">
-
-                  </div>
-                  <div class="px-3 py-3 post">
-                    <span class="pointer" onclick="like(2);"><i class="far fa-heart"></i></span>&nbsp;4 Likes<br>
-                    <span class="post-user">Goku</span>
-                    <span class="post-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa distinctio libero perspiciatis a fugit iusto, beatae ab voluptates quaerat voluptatem magni dolor expedita ipsa eius unde. Earum reprehenderit ab doloremque.</span>
-                    <hr>
-                    <b>Comments</b><br>
-                    <div>
-                      <span class="post-user">Videl</span>
-                      <span class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto.</span>
-                    </div>
-                    <div>
-                      <span class="post-user">Dende</span>
-                      <span class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto.</span>
-                    </div>
-                    <hr>
-                    <div class="px-0">
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Comment" id="comentario-post-2">
-                        <div class="input-group-append">
-                            <button type="button" onclick="comentar(2);" class="btn btn-outline-danger"><i class="far fa-paper-plane"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!--Post3-->
-            <div class="col-lg-12">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <img class="img-fluid img-thumbnail rounded-circle" src="img/profile-pics/vegeta.jpg">    
-                    <span>Goku</span>
-                </div>
-                <div class="card-body px-0 py-0">
-                  <div class="image-post" style="background-image: url(img/posts/3.jpg);">
-
-                  </div>
-                  <div class="px-3 py-3 post">
-                    <span class="pointer" onclick="like(3);"><i class="far fa-heart"></i></span>&nbsp;4 Likes<br>
-                    <span class="post-user">Vegeta</span>
-                    <span class="post-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa distinctio libero perspiciatis a fugit iusto, beatae ab voluptates quaerat voluptatem magni dolor expedita ipsa eius unde. Earum reprehenderit ab doloremque.</span>
-                    <hr>
-                    <b>Comments</b><br>
-                    <div>
-                      <span class="post-user">Gohan</span>
-                      <span class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto.</span>
-                    </div>
-                    <div>
-                      <span class="post-user">Trunks</span>
-                      <span class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, iusto.</span>
-                    </div>
-                    <hr>
-                    <div class="px-0">
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Comment" id="comentario-post-3">
-                        <div class="input-group-append">
-                            <button type="button" onclick="comentar(3);" class="btn btn-outline-danger"><i class="far fa-paper-plane"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            
+          <div class="row" id="posts">     
           </div><!--Fin div posts-->
       </div>
       <div class="col-lg-4">
         <div class="row">
             <!--Historias-->
             <div class="col-lg-12">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                  Stories
-                </div>
-                
-                <!--Item1-->
-                <div class="px-1 py-2 story-card pointer" onclick="verHistoria(1,1);">
-                    <div class="fl">
-                      <img class="img-fluid img-thumbnail rounded-circle img-thumbnail-historia" src="img/profile-pics/goku.jpg">
-                    </div>  
-                    <div class="py-1 px-1 fl">
-                      <small><b>Goku(2)</b></small><br>
-                      <small class="muted">12/12/2012</small>
-                    </div>
-                </div>
-
-                <!--Item2-->
-                <div class="px-1 py-2 story-card pointer" onclick="verHistoria(1,2);">
-                    <div class="fl">
-                      <img class="img-fluid img-thumbnail rounded-circle img-thumbnail-historia" src="img/profile-pics/vegeta.jpg">
-                    </div>  
-                    <div class="py-1 px-1 fl">
-                      <small><b>Vegeta(3)</b></small><br>
-                      <small class="muted">12/12/2012</small>
-                    </div>
-                </div>
-
-                <!--Item3-->
-                <div class="px-1 py-2 story-card pointer" onclick="verHistoria(1,3);">
-                    <div class="fl">
-                      <img class="img-fluid img-thumbnail rounded-circle img-thumbnail-historia" src="img/profile-pics/dende.jpg">
-                    </div>  
-                    <div class="py-1 px-1 fl">
-                      <small><b>Dende(1)</b></small><br>
-                      <small class="muted">12/12/2012</small>
-                    </div>
-                </div>
-
+              <div class="card mb-4 shadow-sm" id="historias-siguiendo">
               </div>
             </div><!--Fin Historias-->
           </div>
@@ -221,47 +60,24 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-danger">Publicar</button>
+              <button type="button" class="btn btn-danger" onclick="publicarPost();">Publicar</button>
             </div>
           </div>
         </div>
       </div>
 
       <!--Ventana modal para ver historias-->
-    <div class="modal fade" id="ver-historia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ver-historia" tabindex="-1" role="dialog" aria-labelledby="viendo-historias" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Viendo Historias de {}</h5>
+              <h5 class="modal-title" id="viendo-historias"></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <div class="historia">
-                <div class="historia-image-post" style="background-image: url(img/historias/4.jpg)">
-                    <div class="historia-titulo">Hay que reunirlas para salvar el periodo T T</div>
-                </div>
-              </div>
-
-              <div class="historia">
-                <div class="historia-image-post" style="background-image: url(img/historias/1.jpg)">
-                    <div class="historia-titulo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi officiis laborum, quod modi neque doloribus!</div>
-                </div>
-              </div>
-
-              <div class="historia">
-                <div class="historia-image-post" style="background-image: url(img/historias/2.jpg)">
-                  <div class="historia-titulo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi officiis laborum, quod modi neque doloribus!</div>
-                </div>
-              </div>
-
-              <div class="historia">
-                <div class="historia-image-post" style="background-image: url(img/historias/3.jpg)">
-                  <div class="historia-titulo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi officiis laborum, quod modi neque doloribus!</div>
-                </div>
-              </div>
-
+            
+            <div class="modal-body" id="mostrar-historias">
 
             </div>
             <div class="modal-footer">
@@ -279,6 +95,7 @@
     </footer>
   </div>
   <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/controlador.js"></script>
 </body>
