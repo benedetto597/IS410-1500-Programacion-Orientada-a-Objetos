@@ -9,7 +9,6 @@ var clientUser = {
     pass: "",
 };
 
-
 function ValidateForm() {
     let name = ValidateFirstName();
     let lastName = ValidateLastName();

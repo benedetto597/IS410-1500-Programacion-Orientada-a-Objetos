@@ -1,108 +1,5 @@
-// --------------------------- Estadisticas --------------------------- //
-var months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-var week = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-var day = new Date();
 
-new Chart(document.getElementById("bar-chart-horizontal-day"), {
-    type: 'horizontalBar',
-    data: {
-        // Aquí deben ir los productos que tengán más ventas
-        labels: ["Mascarilla", "Jabón liquido", "Pasta de Dientes", "Papel Higienico", "Arroz Blanco"],
-        datasets: [{
-            label: "Population (millions)",
-            backgroundColor: ["#008f39 ", "#c45850", "#8e5ea2", "#3cba9f", "#e8c3b9"],
-            //Cantidad de los productos vendidos
-            data: [4478, 3267, 2734, 3784, 2433]
-        }]
-    },
-    options: {
-        legend: {
-            display: false
-        },
-        title: {
-            display: true,
-            text: `Productos más vendidos Hoy ${week[day.getDay()] + ", " + day.getDate() + " de " + months[day.getMonth()] + " de " + day.getFullYear()}`
-        }
-    }
-});
-
-new Chart(document.getElementById("bar-chart-horizontal-month"), {
-    type: 'horizontalBar',
-    data: {
-        // Aquí deben ir los productos que tengán más ventas en todo el mes
-        labels: ["Mascarilla", "Jabón liquido", "Pasta de Dientes", "Papel Higienico", "Arroz Blanco"],
-        datasets: [{
-            label: "Population (millions)",
-            backgroundColor: ["#008f39 ", "#c45850", "#8e5ea2", "#3cba9f", "#e8c3b9"],
-            //Cantidad de los productos vendidos
-            data: [4478, 3267, 2734, 3784, 2433]
-        }]
-    },
-    options: {
-        legend: {
-            display: false
-        },
-        title: {
-            display: true,
-            text: `Productos más vendidos del mes ${months[day.getMonth()] + " de " + day.getFullYear()}`
-        }
-    }
-});
-
-// ------------------------- Mapa de sucursales con promoción y de Actualizar Perfil ------------------------- //
-var mapPromo = L.map('map-promotions').setView([14.076304, -87.206158], 15);
-var mapForm = L.map('map-update').setView([14.076304, -87.206158], 15);
-//Aquí las sucursales
-var places = [
-    ["Torre Morazan", 14.101202, -87.182246],
-    ["Hospital Escuela", 14.096210, -87.190303],
-    ["Hotel Marriot", 14.089406, -87.190225],
-    ["PriceMart", 14.086822, -87.184021],
-    ["Injupemp", 14.083893, -87.189184],
-    ["Tu posición", 14.076304, -87.208158]
-];
-
-for (var i = 0; i < places.length; i++) {
-    marker = L.marker([places[i][1], places[i][2]])
-        .bindPopup(places[i][0])
-        .addTo(mapPromo);
-}
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
-}).addTo(mapForm);
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
-}).addTo(mapPromo);
-
-
-var lat;
-var long;
-var marker;
-
-function onMapClick(e) {
-    if (marker != undefined) {
-        mapForm.removeLayer(marker);
-    };
-
-    lat = e.latlng.lat;
-    long = e.latlng.lng;
-    marker = L.marker([lat, long]).addTo(mapForm);
-    document.getElementById('btn-update-info').disabled = false;
-}
-
-mapForm.on('click', onMapClick);
-
-// -------------------------------- Validaciones para actualizar perfil -------------------------------- //
-
-//Obtener la información por petición en formato JSON
+//Obtener la información por petición en formato JSON fragmentar los JSON dependiendo como gestione la base de datos
 var companyUser = {
     firstName: "Juan",
     lastName: "Lopez",
@@ -319,6 +216,109 @@ var companyUser = {
     ]
 };
 
+// --------------------------- Estadisticas --------------------------- //
+var months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+var week = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+var day = new Date();
+
+new Chart(document.getElementById("bar-chart-horizontal-day"), {
+    type: 'horizontalBar',
+    data: {
+        // Aquí deben ir los productos que tengán más ventas
+        labels: ["Mascarilla", "Jabón liquido", "Pasta de Dientes", "Papel Higienico", "Arroz Blanco"],
+        datasets: [{
+            label: "Population (millions)",
+            backgroundColor: ["#008f39 ", "#c45850", "#8e5ea2", "#3cba9f", "#e8c3b9"],
+            //Cantidad de los productos vendidos
+            data: [4478, 3267, 2734, 3784, 2433]
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: `Productos más vendidos Hoy ${week[day.getDay()] + ", " + day.getDate() + " de " + months[day.getMonth()] + " de " + day.getFullYear()}`
+        }
+    }
+});
+
+new Chart(document.getElementById("bar-chart-horizontal-month"), {
+    type: 'horizontalBar',
+    data: {
+        // Aquí deben ir los productos que tengán más ventas en todo el mes
+        labels: ["Mascarilla", "Jabón liquido", "Pasta de Dientes", "Papel Higienico", "Arroz Blanco"],
+        datasets: [{
+            label: "Population (millions)",
+            backgroundColor: ["#008f39 ", "#c45850", "#8e5ea2", "#3cba9f", "#e8c3b9"],
+            //Cantidad de los productos vendidos
+            data: [4478, 3267, 2734, 3784, 2433]
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: `Productos más vendidos del mes ${months[day.getMonth()] + " de " + day.getFullYear()}`
+        }
+    }
+});
+
+// ------------------------- Mapa de sucursales con promoción y de Actualizar Perfil ------------------------- //
+var mapPromo = L.map('map-promotions').setView([14.076304, -87.206158], 15);
+var mapForm = L.map('map-update').setView([14.076304, -87.206158], 15);
+//Aquí las sucursales
+var places = [
+    ["Torre Morazan", 14.101202, -87.182246],
+    ["Hospital Escuela", 14.096210, -87.190303],
+    ["Hotel Marriot", 14.089406, -87.190225],
+    ["PriceMart", 14.086822, -87.184021],
+    ["Injupemp", 14.083893, -87.189184],
+    ["Tu posición", 14.076304, -87.208158]
+];
+
+for (var i = 0; i < places.length; i++) {
+    marker = L.marker([places[i][1], places[i][2]])
+        .bindPopup(places[i][0])
+        .addTo(mapPromo);
+}
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
+}).addTo(mapForm);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
+}).addTo(mapPromo);
+
+
+var lat = companyUser.companyLat;
+var long =  companyUser.companyLong;
+var marker;
+
+function onMapClick(e) {
+    if (marker != undefined) {
+        mapForm.removeLayer(marker);
+    };
+
+    lat = e.latlng.lat;
+    long = e.latlng.lng;
+    marker = L.marker([lat, long]).addTo(mapForm);
+    document.getElementById('btn-update-info').disabled = false;
+}
+
+mapForm.on('click', onMapClick);
+
+// -------------------------------- Validaciones para actualizar perfil -------------------------------- //
 
 //Mostrar los datos Obtenidos
 function ShowInfo() {
@@ -330,7 +330,7 @@ function ShowInfo() {
 
     //Sección Información
     document.getElementById('info-company-name').innerHTML = companyUser.companyName;
-    document.getElementById('info-compnay-country').innerHTML = companyUser.country;
+    document.getElementById('info-company-country').innerHTML = companyUser.country;
     document.getElementById('info-company-dir').innerHTML = companyUser.companyDir;
     document.getElementById('info-company-currency').innerHTML = companyUser.currency;
     document.getElementById('info-company-employed').innerHTML = `${companyUser.firstName} ${companyUser.lastName}`;
@@ -347,6 +347,8 @@ function ShowInfo() {
     document.getElementById('last-name-company').value = companyUser.lastName;
     document.getElementById('name-company').value = companyUser.companyName;
     document.getElementById('address-company').value = companyUser.companyDir;
+    document.getElementById('plan-company').value = companyUser.companyPlan;
+    document.getElementById('number-employed-company').value = companyUser.code;
     document.getElementById('facebook-company').value = companyUser.companyFb;
     document.getElementById('whatsapp-company').value = companyUser.companyWha;
     document.getElementById('instagram-company').value = companyUser.companyIg;
@@ -388,6 +390,7 @@ function CompanyContact(country, number) {
 //Desbloquear el botón
 function EnableChange() {
     document.getElementById('btn-update-info').disabled = false;
+    VerifyData();
 }
 
 //Verificación de Datos nuevos
@@ -406,7 +409,6 @@ function VerifyData() {
     ValidatePasswordRepeat();
     ValidateCompanyLogo();
     ValidateCompanyBanner();
-    console.log(companyUser);
 }
 
 
@@ -438,7 +440,6 @@ function ValidateLastName() {
         companyUser.lastName = document.getElementById('last-name-company').value;
         return true;
     }
-    return false;
 }
 
 function ValidateCompanyName() {
@@ -454,7 +455,6 @@ function ValidateCompanyName() {
         companyUser.companyName = document.getElementById('name-company').value;
         return true;
     }
-    return false;
 }
 
 function ValidateCompanyDir() {
@@ -498,7 +498,6 @@ function ValidateCompanyFb() {
         companyUser.companyFb = document.getElementById('facebook-company').value;
         return true;
     }
-    return false;
 }
 
 function ValidateCompanyIg() {
@@ -510,7 +509,6 @@ function ValidateCompanyIg() {
         companyUser.companyIg = document.getElementById('instagram-company').value;
         return true;
     }
-    return false;
 }
 
 function ValidateCompanyWha() {
@@ -524,7 +522,6 @@ function ValidateCompanyWha() {
         companyUser.companyWha = document.getElementById('whatsapp-company').value;
         return true;
     }
-    return false;
 }
 
 function ValidateCompanyTwit() {
@@ -536,7 +533,6 @@ function ValidateCompanyTwit() {
         companyUser.companyTwit = document.getElementById('twitter-company').value;
         return true;
     }
-    return false;
 }
 
 function ValidateEmail() {
@@ -561,7 +557,6 @@ function ValidatePassword() {
         document.getElementById('pass-company-alert').innerHTML = ``;
         return true;
     }
-    return false;
 }
 
 function ValidatePasswordRepeat() {
@@ -575,11 +570,10 @@ function ValidatePasswordRepeat() {
         companyUser.pass = document.getElementById('password-company-repeat').value;
         return true;
     }
-    return true;
 }
 
 function ValidateCompanyLatLong() {
-    if (lat == null && long == null) {
+    if (lat != companyUser.companyLat && long != companyUser.companyLong) {
         document.getElementById('lat-long-company-alert').innerHTML = `Seleccione en el mapa la ubicación de la tienda Principal`;
         return false;
     } else {

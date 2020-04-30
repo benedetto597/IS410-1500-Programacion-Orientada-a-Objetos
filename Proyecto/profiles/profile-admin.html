@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Mall | Cliente</title>
+    <title>Mini Mall | Administrador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/estilos.css">
@@ -26,7 +26,7 @@
 
     </style>
 </head>
-<body>
+<body onload="ShowInfo();">
     <div class="row">
         <main class="col-12">
                 <!-- Barra de Navegación Primer Parte LandingPage -->
@@ -112,9 +112,9 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 animated bounceInUp mt-5" >
                     <div class="card mt-5 bg-transparent border-0 ml-auto mr-auto p-2" style="width: 18rem;">
                         <div class="card-body text-center mt-5">
-                          <h5 class="card-text text-white">Nombre Cliente</h5>
-                          <h5 class="card-text text-white">Nombre de Usuario</h5>
-                          <h5 class="card-text text-white">Correo Electronico</h5>
+                          <h5 class="card-text text-white" id="admin-name"></h5>
+                          <h5 class="card-text text-white" id="admin-user"></h5>
+                          <h5 class="card-text text-white" id="admin-email"></h5>
                         </div>
                     </div>
                 </div>
@@ -140,20 +140,20 @@
                                     <div class="container-fluid p-5">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <b>Nombre Completo</b>
-                                                <h6>Nombre del Administrador</h6><br>
-                                                <b>Nombre de Acceso</b>
-                                                <h6>Acceso</h6><br>
-                                                <b>Correo Electronico</b>
-                                                <h6>Correo</h6>
+                                                <b><i class="fas fa-user fa-fw"></i> Nombre Completo</b>
+                                                <h6 id="info-admin-name">Nombre del Administrador</h6><br>
+                                                <b><i class="fas fa-user fa-fw"></i> Nombre de Acceso</b>
+                                                <h6 id="info-admin-user">Acceso</h6><br>
+                                                <b><i class="fas fa-at"></i>Correo Electronico</b>
+                                                <h6 id="info-admin-email">Correo</h6>
                                             </div>
                                             <div class="col-md-6">
-                                                <b>País</b>
-                                                <h6>País</h6><br>
-                                                <b>Moneda</b>
-                                                <h6>Moneda</h6><br>
-                                                <b>Sexo</b>
-                                                <h6>Sexo</h6>
+                                                <b><i class="fas fa-globe-americas"></i> País</b>
+                                                <h6 id="info-admin-country">País</h6><br>
+                                                <b><i class="fas fa-money-bill"></i> Moneda</b>
+                                                <h6 id="info-admin-currency">Moneda</h6><br>
+                                                <b><i class="fas fa-universal-access"></i> Genero</b>
+                                                <h6 id="info-admin-gen">Genero</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -164,32 +164,22 @@
                                     <div class="container-fluid p-5">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <b>Promociones</b>
+                                                <b>Empresas Suscritas</b>
                                                 <div class="table-wrapper-scroll-y my-custom-scrollbar ">
                                                     <table class="table table-hover table-striped">
                                                         <thead id="table-admin">
                                                         <tr>
-                                                            <th scope="col">ID Producto</th>
-                                                            <th scope="col">Categoria</th>
-                                                            <th scope="col">Producto</th>
-                                                            
+                                                            <th scope="col">Nombre</th>
+                                                            <th scope="col">Suscripción</th>
+                                                                <th scope="col">País</th>
+                                                                <th scope="col">Moneda</th>
+                                                                <th scope="col">Dirección</th>
+                                                                <th scope="col">Telefono</th>
+                                                                <th scope="col">Sucursales</th>
+                                                                <th scope="col">Correo</th>
                                                         </tr>
                                                         </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>                                                           
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>                                                            
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td colspan="2">Larry the Bird</td>
-                                                        </tr>                                                   
+                                                        <tbody id="suscribe-companies">                         
                                                         </tbody>
                                                     </table>
                                                </div>
@@ -205,14 +195,14 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <b>Nombre Completo</b>
-                                            <input type="text" class="form-control" id="first-name-client" placeholder="Nombres">
-                                            <input type="text" class="form-control my-1" id="last-name-client" placeholder="Apellidos">
+                                            <input type="text" class="form-control" id="first-name-admin" placeholder="Nombres" required onchange="EnableChange();">
+                                            <input type="text" class="form-control my-1" id="last-name-admin" placeholder="Apellidos"  required onchange="EnableChange();">
                                             <div class="custom-file overflow-hidden rounded-pill my-2">
-                                                <input id="customFile1" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();">
+                                                <input id="customFile1" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();" required onchange="EnableChange();">
                                                 <label for="customFile1" class="custom-file-label rounded-pill">Subir foto de perfil</label>
                                             </div>
                                             <div class="custom-file overflow-hidden rounded-pill ">
-                                                <input id="customFile2" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();">
+                                                <input id="customFile2" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();"  required onchange="EnableChange();">
                                                 <label for="customFile2" class="custom-file-label rounded-pill">Subir foto de Portada</label>
                                             </div>
                                             
@@ -220,36 +210,40 @@
                                         
                                         <div class="form-group col-md-4">
                                             <b>Usuario</b>
-                                            <input type="text" class="form-control" id="user-client" placeholder="Nombre de Usuario">
-                                            <input type="email" class="form-control my-1" id="email-client" placeholder="Email">
+                                            <input type="text" class="form-control" id="user-admin" placeholder="Nombre de Usuario"  required onchange="EnableChange();">
+                                            <input type="email" class="form-control my-1" id="email-admin" placeholder="Email"  required onchange="EnableChange();">
                                             <b>Contraseña</b>
-                                            <input type="password" class="form-control" id="password-client" placeholder="Contraseña">
-                                            <input type="password" class="form-control my-1" id="password-client-repeat" placeholder="Repita Contraseña">
+                                            <input type="password" class="form-control" id="password-admin" placeholder="Contraseña"  required onchange="EnableChange();">
+                                            <input type="password" class="form-control my-1" id="password-admin-repeat" placeholder="Repita Contraseña"  required onchange="EnableChange();">
                                         </div>
 
                                         <div class="form-group col-md-4">
                                             <b>País</b>
-                                            <select id="country-select" class="form-control text-white">
+                                            <select id="country-select" class="form-control text-white"  required onchange="EnableChange();">
                                                 <option selected>Seleccione País</option>
-                                                <option>Honduras</option>
-                                                <option>Estados Unidos</option>
+                                                <option value="Honduras">Honduras</option>
+                                                <option value="Estados Unidos">Estados Unidos</option>
                                             </select>
-                                            <select id="currency-select" class="form-control text-white my-1">
+                                            <small id="country-alert" class="form-text text-dark"></small>
+                                            <select id="currency-select" class="form-control text-white my-1"  required onchange="EnableChange();">
                                                 <option selected>Seleccione Moneda</option>
-                                                <option>L Lempira</option>
-                                                <option>$ Dolar</option>
+                                                <option value="Lempira">L Lempira</option>
+                                                <option value="Dolar">$ Dolar</option>
                                             </select>
-                                            <b class="text-dark">Sexo</b>
-                                            <select id="sex-select-client" class="form-control text-white m-0" required>
-                                                <option selected>Seleccione Sexo</option>
-                                                <option >Masculino</option>
-                                                <option >Femenino</option>
-                                                <option >Otro</option>
+                                            <small id="currency-alert" class="form-text text-dark"></small>
+                                            <b class="text-dark">Genero</b>
+                                            <select id="sex-select-admin-update" class="form-control text-white m-0"  required onchange="EnableChange();" >
+                                                <option>Seleccione Genero</option>
+                                                <option value="Masculino">Masculino</option>
+                                                <option value="Femenino">Femenino</option>
+                                                <option value="Otro">Otro</option>
                                             </select>
+                                            <small id="gen-alert" class="form-text text-dark"></small>
+
                                             <!-- Botón que se desbloqueará cuando el usuarío haga algún cambio -->
                                             <div class="form-row align-items-center pt-3">
                                                 <div class="col-auto mr-auto ml-auto">
-                                                    <button id="btn-promotion" type="submit" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-dark">Guardar</button>
+                                                    <button id="btn-update-info-admin" type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white">Guardar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -265,6 +259,6 @@
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/control-client.js"></script>
+    <script src="js/control-admin.js"></script>
 </body>
 </html>

@@ -81,7 +81,7 @@ body{
     color:black;
 }
 
-#country-select,#categories-select-product, #currency-select, #plan-select, #form-admin, #form-promotion, #modal-header-admin, #btn-admin-login, #btn-company-register, #btn-product, #image-product, #sex-select-client, #tabs-admin-profile, #admin-photo-profile, #table-admin, #btn-admin-register-modal, .bg-secundary{
+#country-select,#categories-select-product, #currency-select, #plan-select, #form-admin, #form-promotion, #modal-header-admin, #btn-admin-login, #btn-company-register, #btn-product, #image-product, #sex-select-client, #tabs-admin-profile, #admin-photo-profile, #table-admin, #btn-admin-register-modal, .bg-secundary, #sex-select-admin-update, #btn-update-info-admin{
     background-color: #757575 !important;
     border:none !important;
 }
