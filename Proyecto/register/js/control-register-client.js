@@ -45,30 +45,47 @@ function ValidateForm() {
 function ValidateFirstName() {
     let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('first-name-client').value == '' || nums.test(document.getElementById('first-name-client').value) == true || letters.test(document.getElementById('first-name-client').value) == false) {
-        document.getElementById('name-alert').innerHTML = `Ingrese nombres que sean valido (sin numeros ni simbolos, sólo letras)`;
+    let symbols = /([!-/:-@{-¿])/;
+    if (nums.test(document.getElementById('first-name-client').value) == true || symbols.test(document.getElementById('first-name-client').value) == true ) {
+        document.getElementById('first-name-client').value = '';
+        document.getElementById('first-name-client').style.borderColor = 'red';
+        document.getElementById('first-name-client').placeholder = 'No usar simbolos ni números';
         return false;
-    } else {
+    } else if(document.getElementById('first-name-client').value == ''){
+        document.getElementById('first-name-client').value = '';
+        document.getElementById('first-name-client').style.borderColor = 'red';
+        document.getElementById('first-name-client').placeholder = 'Ingrese al menos un Nombre';
+        return false;
+    } else{
+        document.getElementById('first-name-client').style.borderColor = 'grey';
         document.getElementById('name-alert').innerHTML = ``;
         let upperName = document.getElementById('first-name-client').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
         document.getElementById('first-name-client').value = upperName;
         return true;
+
     }
 }
 
 function ValidateLastName() {
     let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('last-name-client').value == '' || letters.test(document.getElementById('last-name-client').value) == false || nums.test(document.getElementById('last-name-client').value) == true) {
-        document.getElementById('last-name-alert').innerHTML = `Ingrese apellidos que sean validos (sin numeros ni simbolos, sólo letras)`;
+    let symbols = /([!-/:-@{-¿])/;
+    if (nums.test(document.getElementById('last-name-client').value) == true || symbols.test(document.getElementById('last-name-client').value) == true) {
+        document.getElementById('last-name-client').value = '';
+        document.getElementById('last-name-client').style.borderColor = 'red';
+        document.getElementById('last-name-client').placeholder = 'No usar simbolos ni números';
+        return false;
+    } else if(document.getElementById('last-name-client').value == ''){
+        document.getElementById('last-name-client').value = '';
+        document.getElementById('last-name-client').style.borderColor = 'red';
+        document.getElementById('last-name-client').placeholder = 'Ingrese al menos un Apellido';
         return false;
     } else {
-        document.getElementById('last-name-alert').innerHTML = ``;
+        document.getElementById('last-name-client').style.borderColor = 'grey';
         let upperLastName = document.getElementById('last-name-client').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
         document.getElementById('last-name-client').value = upperLastName;
         return true;
     }
-    return false;
 }
 
 function ValidateCountry() {
@@ -80,7 +97,6 @@ function ValidateCountry() {
         document.getElementById('country-alert').innerHTML = ``;
         return true;
     }
-    return false;
 }
 
 function ValidateCurrency() {
@@ -92,30 +108,37 @@ function ValidateCurrency() {
         document.getElementById('currency-alert').innerHTML = ``;
         return true;
     }
-    return false;
 }
 
 function ValidateUser() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
-    if (document.getElementById('user-client').value == '' || chars.test(document.getElementById('user-client').value) == false || symbols.test(document.getElementById('user-client').value) == true) {
-        document.getElementById('user-alert').innerHTML = `Ingrese un nombre de usario valido (sin simbolos, sólo letras y números)`;
+    if (symbols.test(document.getElementById('user-client').value) == true) {
+        document.getElementById('user-client').value = '';
+        document.getElementById('user-client').style.borderColor = 'red';
+        document.getElementById('user-client').placeholder = 'Sólo usar letras y números';
+        return false;
+    } else if(document.getElementById('user-client').value == '' || chars.test(document.getElementById('user-client').value) == false){
+        document.getElementById('user-client').value = '';
+        document.getElementById('user-client').style.borderColor = 'red';
+        document.getElementById('user-client').placeholder = 'Ingrese un nombre de Usuario';
         return false;
     } else {
-        document.getElementById('user-alert').innerHTML = ``;
+        document.getElementById('user-client').style.borderColor = 'grey';
         return true;
     }
-    return false;
 }
 
 function ValidateEmail() {
     let email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     console.log(email.test(document.getElementById('email-client').value));
     if (email.test(document.getElementById('email-client').value) == true) {
-        document.getElementById('email-alert').innerHTML = ``;
+        document.getElementById('email-client').style.borderColor = 'grey';
         return true;
     } else {
-        document.getElementById('email-alert').innerHTML = `Ingrese un correo valido`;
+        document.getElementById('email-client').value = '';
+        document.getElementById('email-client').style.borderColor = 'red';
+        document.getElementById('email-client').placeholder = 'Ingrese un correo valido';
         return false;
     }
 }
@@ -123,27 +146,32 @@ function ValidateEmail() {
 function ValidatePassword() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
-    if (document.getElementById('password-client').value == '' || chars.test(document.getElementById('password-client').value) == false || symbols.test(document.getElementById('password-client').value) == true) {
-        document.getElementById('pass-alert').innerHTML = `Ingrese una contraseña valida (sin simbolos, sólo letras y números)`;
+    if (symbols.test(document.getElementById('password-client').value) == true) {
+        document.getElementById('password-client').value = '';
+        document.getElementById('password-client').style.borderColor = 'red';
+        document.getElementById('password-client').placeholder = 'Sólo usar letras y números';
+        return false;
+    } else if(document.getElementById('password-client').value == '' || chars.test(document.getElementById('password-client').value) == false){
+        document.getElementById('password-client').value = '';
+        document.getElementById('password-client').style.borderColor = 'red';
+        document.getElementById('password-client').placeholder = 'Ingrese una contraseña';
         return false;
     } else {
-        document.getElementById('pass-alert').innerHTML = ``;
+        document.getElementById('password-client').style.borderColor = 'grey';
         return true;
     }
-    return false;
 }
 
 function ValidatePasswordRepeat() {
     if (document.getElementById('password-client').value != document.getElementById('password-client-repeat').value) {
-        document.getElementById('pass-repeat-alert').innerHTML = `Contraseñas Distintas`;
-        document.getElementById('password-client-repeat').style.color = 'red';
+        document.getElementById('password-client-repeat').value = '';
+        document.getElementById('password-client-repeat').style.borderColor = 'red';
+        document.getElementById('password-client-repeat').placeholder = 'Contraseñas Distintas';
         return false;
     } else {
-        document.getElementById('password-client-repeat').style.color = 'black';
-        document.getElementById('pass-repeat-alert').innerHTML = ``;
+        document.getElementById('password-client-repeat').style.borderColor = 'grey';
         return true;
     }
-    return false;
 }
 
 function ValidateGen() {
@@ -155,5 +183,4 @@ function ValidateGen() {
         document.getElementById('gen-alert').innerHTML = ``;
         return true;
     }
-    return false;
 }

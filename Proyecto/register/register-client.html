@@ -126,22 +126,20 @@
                     <div class="form-group col-md-6">
                         <b>Nombre Completo</b>
                         <input type="text" class="form-control" id="first-name-client" placeholder="Nombres" required
-                            minlength="3" maxlength="40">
-                        <small id="name-alert" class="form-text text-dark"></small>
+                            minlength="3" maxlength="40" onchange="ValidateFirstName()">
                         <input type="text" class="form-control my-1" id="last-name-client" placeholder="Apellidos"
-                            required minlength="3" maxlength="40">
-                        <small id="last-name-alert" class="form-text text-dark"></small>
+                            required minlength="3" maxlength="40" onchange="ValidateLastName()">
                     </div>
 
                     <div class="form-group col-md-6">
                         <b>País</b>
-                        <select id="country-select" class="form-control text-white" required>
+                        <select id="country-select" class="form-control text-white" required onchange="ValidateCountry()">
                             <option selected>Seleccione un País</option>
                             <option>Honduras</option>
                             <option>Estados Unidos</option>
                         </select>
                         <small id="country-alert" class="form-text text-dark"></small>
-                        <select id="currency-select" class="form-control text-white my-1" required>
+                        <select id="currency-select" class="form-control text-white my-1" required onchange="ValidateCurrency()">
                             <option selected>Seleccione una Moneda</option>
                             <option>L Lempira</option>
                             <option>$ Dolar</option>
@@ -152,25 +150,21 @@
                     <div class="form-group col-md-6">
                         <b>Usuario</b>
                         <input type="text" class="form-control" id="user-client" placeholder="Nombre de Usuario"
-                            required minlength="5" maxlength="15">
-                        <small id="user-alert" class="form-text text-dark"></small>
-                        <input type="email" class="form-control my-1" id="email-client" placeholder="Email" required>
-                        <small id="email-alert" class="form-text text-dark"></small>
+                            required minlength="5" maxlength="15" onchange="ValidateUser()">
+                        <input type="email" class="form-control my-1" id="email-client" placeholder="Email" required onchange="ValidateEmail()">
                     </div>
 
                     <div class="form-group col-md-6">
                         <b>Contraseña</b>
                         <input type="password" class="form-control" id="password-client" placeholder="Contraseña"
-                            required minlength="5" maxlength="20">
-                        <small id="pass-alert" class="form-text text-dark"></small>
+                            required minlength="5" maxlength="20" onchange="ValidatePassword()">
                         <input type="password" class="form-control my-1" id="password-client-repeat"
-                            placeholder="Repita Contraseña" required>
-                        <small id="pass-repeat-alert" class="form-text text-dark"></small>
+                            placeholder="Repita Contraseña" required onchange="ValidatePasswordRepeat()">
                     </div>
 
                     <div class="form-group col-md-6">
                         <b class="text-dark">Sexo</b>
-                        <select id="sex-select-client" class="form-control text-white" required>
+                        <select id="sex-select-client" class="form-control text-white" required onchange="ValidateGen()">
                             <option selected>Seleccione Genero</option>
                             <option>Masculino</option>
                             <option>Femenino</option>

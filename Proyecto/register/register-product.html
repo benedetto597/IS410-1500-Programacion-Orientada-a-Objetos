@@ -134,13 +134,13 @@
                     <div class="form-group col-md-6">
                         <b>Nombre del Producto</b>
                         <input type="text" class="form-control" id="name-product" placeholder="Nombre" required
-                            minlength="5" maxlength="50">
+                            minlength="5" maxlength="50" onchange="ValidateName()">
                         <small id="name-alert" class="form-text text-dark"></small>
                     </div>
                     <div class="form-group col-md-6">
                         <b>Subir Imagen</b>
                         <div class="custom-file overflow-hidden rounded-pill ">
-                            <input id="file-product" type="file" class="custom-file-input rounded-pill" required>
+                            <input id="file-product" type="file" class="custom-file-input rounded-pill" required onchange="ValidateImg()">
                             <label for="file-product" class="custom-file-label rounded-pill">Foto del Producto</label>
                         </div>
                         <small id="img-alert" class="form-text text-dark"></small>
@@ -153,13 +153,14 @@
                                     <span class="input-group-addon pt-2 px-2"><b id="currency-company">L</b></span>
                                     <input type="number" min="0" max="100000" step="5" data-number-to-fixed="2"
                                         data-number-stepfactor="100" class="form-control currency" id="price-product"
-                                        required>
+                                        required onchange="ValidatePrice()">
                                 </div>
                                 <small id="price-alert" class="form-text text-dark"></small>
                             </div>
                             <div class="col-md-8">
                                 <b>Sucursales</b>
-                                <select id="branch-select-product" class="form-control mul-select" multiple="true" style="width:17rem;" required>
+                                <select id="branch-select-product" class="form-control mul-select" multiple="true" style="width:17rem;" required onchange="ValidateBranch()">
+                                    <option selected value="Seleccione Sucursal">Seleccione Sucursal</option>
                                     <option value="Sucursal">Sucursal</option>
                                     <option value="Sucursal">Sucursal</option>
                                     <option value="Sucursal">Sucursal</option>
@@ -171,7 +172,7 @@
 
                     <div class="form-group col-md-6">
                         <b>Categorías</b>
-                        <select id="categories-select-product" class="form-control text-white" required>
+                        <select id="categories-select-product" class="form-control text-white" required onchange="ValidateCategory()">
                             <option selected>Seleccione una Categoría</option>
                             <option>Comida</option>
                             <option>Bebida</option>
@@ -188,7 +189,7 @@
                     <div class="form-group col-md-12">
                         <b>Descripción</b>
                         <textarea name="" id="description-product" class="form-control" required minlength="15"
-                            maxlength="200"></textarea>
+                            maxlength="200" onchange="ValidateDescription()"></textarea>
                         <small id="description-alert" class="form-text text-dark"></small>
                     </div>
                 </div>

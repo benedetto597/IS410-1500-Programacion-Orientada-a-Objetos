@@ -58,10 +58,12 @@ function ValidateProduct() {
 
 function ValidateDiscount() {
     if (document.getElementById('discount-product').value == '') {
-        document.getElementById('discount-alert').innerHTML = `Ingrese el descuento a aplicar`;
+        document.getElementById('discount-product').value = '';
+        document.getElementById('discount-product').style.borderColor = 'red';
+        document.getElementById('discount-product').placeholder = 'Ingrese un descuento a aplicar';
         return false;
     } else {
-        document.getElementById('discount-alert').innerHTML = ``;
+        document.getElementById('discount-product').style.borderColor = 'grey';
         return true;
     }
     return false;

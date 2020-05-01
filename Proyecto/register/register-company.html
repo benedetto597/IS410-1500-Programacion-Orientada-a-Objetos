@@ -142,40 +142,34 @@
                     <div class="form-group col-md-4">
                         <b>Nombre Completo</b>
                         <input type="text" class="form-control" id="first-name-company" placeholder="Nombres" required
-                            minlength="3" maxlength="40">
-                        <small id="name-alert" class="form-text text-dark"></small>
+                            minlength="3" maxlength="40" onchange="ValidateFirstName()">
                         <input type="text" class="form-control my-1" id="last-name-company" placeholder="Apellidos"
-                            required minlength="3" maxlength="40">
-                        <small id="last-name-alert" class="form-text text-dark"></small>
+                            required minlength="3" maxlength="40" onchange="ValidateLastName()">
                     </div>
                     <div class="form-group col-md-4">
                         <b>Empresa</b>
                         <input type="text" class="form-control" id="name-company" placeholder="Nombre de la Empresa"
-                            required minlength="5" maxlength="40">
-                        <small id="name-company-alert" class="form-text text-dark"></small>
+                            required minlength="5" maxlength="40" onchange="ValidateCompanyName()">
                         <input type="address" class="form-control my-1" id="address-company" placeholder="Dirección"
-                            required maxlength="50" minlength="8">
-                        <small id="address-company-alert" class="form-text text-dark"></small>
+                            required maxlength="50" minlength="8" onchange="ValidateCompanyDir()">
                     </div>
                     <div class="form-group col-md-4">
-                        <b>Empleado</b>
-                        <input type="number" class="form-control" id="number-employed-company"
-                            placeholder="Código de Acceso" disabled>
-                        <small id="code-alert" class="form-text text-dark"></small>
-                        <input type="email" class="form-control my-1" id="email-employed-company"
-                            placeholder="Correo Empresarial" required>
-                        <small id="email-company-alert" class="form-text text-dark"></small>
+                        <b>Contraseña</b>
+                        <input type="password" class="form-control" id="password-company" placeholder="Contraseña"
+                            required minlength="5" maxlength="30" onchange="ValidatePassword()">
+                        <input type="password" class="form-control my-1" id="password-company-repeat"
+                            placeholder="Repita Contraseña" required minlength="5" maxlength="30" onchange="ValidatePassword()">                        
                     </div>
 
                     <div class="form-group col-md-4">
                         <b>País</b>
-                        <select id="country-select" class="form-control text-white" required>
+                        <select id="country-select" class="form-control text-white" required onchange="ValidateCountry()">
                             <option selected>Seleccione un País</option>
                             <option>Honduras</option>
                             <option>Estados Unidos</option>
                         </select>
                         <small id="country-company-alert" class="form-text text-dark"></small>
-                        <select id="currency-select" class="form-control text-white my-1" required>
+                        <select id="currency-select" class="form-control text-white my-1" required onchange="ValidateCurrency()">
                             <option selected>Seleccione una Moneda</option>
                             <option>L Lempira</option>
                             <option>$ Dolar</option>
@@ -185,27 +179,25 @@
                         <small id="lat-long-company-alert" class="form-text text-dark"></small>
                     </div>
                     <div class="form-group col-md-4">
-                        <b>Contraseña</b>
-                        <input type="password" class="form-control" id="password-company" placeholder="Contraseña"
-                            required minlength="5" maxlength="30">
-                        <small id="pass-company-alert" class="form-text text-dark"></small>
-                        <input type="password" class="form-control my-1" id="password-company-repeat"
-                            placeholder="Repita Contraseña" required minlength="5" maxlength="30">
-                        <small id="pass-repeat-company-alert" class="form-text text-dark"></small>
-                        <select id="plan-select" class="form-control text-white my-1">
+                        <b>Plan Empresarial</b>
+                        <select id="plan-select" class="form-control text-white my-1" required onchange="ValidateCompanyPlan()">
                             <option selected>Seleccione un Plan</option>
                             <option>Regular</option>
                             <option>Premium</option>
                             <option>Platinum</option>
                         </select>
                         <small id="plan-company-alert" class="form-text text-dark"></small>
+                        <input type="number" class="form-control" id="number-employed-company"
+                            placeholder="Código de Acceso" disabled>
+                        <input type="email" class="form-control my-1" id="email-employed-company"
+                            placeholder="Correo Empresarial" required onchange="ValidateEmail()">                        
                         <div class="custom-file overflow-hidden rounded-pill ">
-                            <input id="logo-file" type="file" class="custom-file-input rounded-pill" required>
+                            <input id="logo-file" type="file" class="custom-file-input rounded-pill" required onchange="ValidateCompanyLogo()">
                             <label for="logo-file" class="custom-file-label rounded-pill">Logo</label>
                         </div>
                         <small id="logo-alert" class="form-text text-dark"></small>
                         <div class="custom-file overflow-hidden rounded-pill mt-1">
-                            <input id="banner-file" type="file" class="custom-file-input rounded-pill" required>
+                            <input id="banner-file" type="file" class="custom-file-input rounded-pill" required onchange="ValidateCompanyBanner()">
                             <label for="banner-file" class="custom-file-label rounded-pill">Banner</label>
                         </div>
                         <small id="banner-alert" class="form-text text-dark"></small>
@@ -214,16 +206,13 @@
                     <div class="form-group col-md-4">
                         <b>Redes Sociales</b>
                         <input type="text" class="form-control" id="facebook-company"
-                            placeholder="URL Página de Facebook" required>
-                        <small id="fb-alert" class="form-text text-dark"></small>
+                            placeholder="URL Página de Facebook" required onchange="ValidateCompanyFb()">
                         <input type="number" class="form-control my-1" id="whatsapp-company"
-                            placeholder="Número de WhatsApp" required minlength="12" maxlenth="12">
-                        <small id="wha-alert" class="form-text text-dark"></small>
+                            placeholder="Número de WhatsApp" required minlength="12" maxlenth="12" onchange="ValidateCompanyIg()">
                         <input type="text" class="form-control my-1" id="instagram-company"
                             placeholder="URL Página de Instagram" required>
-                        <small id="ig-alert" class="form-text text-dark"></small>
                         <input type="text" class="form-control my-1" id="twitter-company"
-                            placeholder="URL Página de Twitter" required>
+                            placeholder="URL Página de Twitter" required onchange="ValidateCompanyWha()">
                         <small id="twit-alert" class="form-text text-dark"></small>
                         <div class="form-row align-items-center">
                             <div class="col-auto mr-auto ml-auto">

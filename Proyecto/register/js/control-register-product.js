@@ -30,11 +30,12 @@ function ValidateName() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
     if (document.getElementById('name-product').value == '' || chars.test(document.getElementById('name-product').value) == false || symbols.test(document.getElementById('name-product').value) == true) {
-        document.getElementById('name-alert').innerHTML = `Ingrese un nombre de producto valido (sin simbolos, sólo letras y números)`;
+        document.getElementById('name-product').value = '';
+        document.getElementById('name-product').style.borderColor = 'red';
+        document.getElementById('name-product').placeholder = 'Solo usar letras y números';
         return false;
     } else {
-        document.getElementById('name-alert').innerHTML = ``;
-        let upperLastName = document.getElementById('name-product').value.replace(/\b[a-z]/, upper => upper.toUpperCase());
+        document.getElementById('name-product').style.borderColor = 'grey';
         document.getElementById('name-product').value = upperLastName;
         return true;
     }
@@ -80,17 +81,19 @@ function ValidateCategory() {
 function ValidateDescription() {
     let chars = /([A-Za-z0-9!-/])\w+/;
     if (document.getElementById('description-product').value == '' || chars.test(document.getElementById('description-product').value) == false) {
-        document.getElementById('description-alert').innerHTML = `Ingrese una Descripción de producto valida`;
+        document.getElementById('description-product').value = '';
+        document.getElementById('description-product').style.borderColor = 'red';
+        document.getElementById('description-product').placeholder = 'Escriba una descripción valida';
         return false;
     } else {
-        document.getElementById('description-alert').innerHTML = ``;
+        document.getElementById('description-product').style.borderColor = 'grey';
         return true;
     }
     return false;
 }
 
 function ValidateBranch() {
-    if ($("#branch-select-product").val() == null) {
+    if ($("#branch-select-product").val() == null || $("#branch-select-product").val() == 'Seleccione Sucursal') {
         document.getElementById('branch-alert').innerHTML = `Seleccione Sucursales de las disponibles`;
         return false;
     } else {
