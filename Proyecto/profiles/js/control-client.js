@@ -170,7 +170,8 @@ function VerifyData() {
 function ValidateFirstName() {
     let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('first-name-client').value == '' || nums.test(document.getElementById('first-name-client').value) == true || letters.test(document.getElementById('first-name-client').value) == false) {
+    let symbols = /([!-/:-@{-¿])/;
+    if (document.getElementById('first-name-client').value == '' || nums.test(document.getElementById('first-name-client').value) == true || letters.test(document.getElementById('first-name-client').value) == false ||  symbols.test(document.getElementById('first-name-client').value) == true) {
         document.getElementById('first-name-client').value = '';
         document.getElementById('first-name-client').style.borderColor = 'red';
         document.getElementById('first-name-client').placeholder = 'No usar simbolos ni números';
@@ -188,7 +189,8 @@ function ValidateFirstName() {
 function ValidateLastName() {
     let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('last-name-client').value == '' || nums.test(document.getElementById('last-name-client').value) == true || letters.test(document.getElementById('last-name-client').value) == false) {
+    let symbols = /([!-/:-@{-¿])/;
+    if (document.getElementById('last-name-client').value == '' || nums.test(document.getElementById('last-name-client').value) == true || letters.test(document.getElementById('last-name-client').value) == false ||  symbols.test(document.getElementById('last-name-client').value) == true) {
         document.getElementById('last-name-client').value = '';
         document.getElementById('last-name-client').style.borderColor = 'red';
         document.getElementById('last-name-client').placeholder = 'No usar simbolos ni números';

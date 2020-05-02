@@ -38,7 +38,7 @@ function ValidateCompany() {
     let code = ValidateCodeCompany();
     let email = ValidateEmailCompany();
     let pass = ValidatePassCompany();
-
+    console.log(code,email,pass);
     if (code == true && pass == true && email == true) {
         //aquí la petición asincrona
         console.log(loginCompany);
@@ -59,10 +59,12 @@ function ValidateAdmin() {
 
 function ValidateUserClient() {
     if (document.getElementById('login-user-client').value == '' || chars.test(document.getElementById('login-user-client').value) == false || symbols.test(document.getElementById('login-user-client').value) == true) {
-        document.getElementById('user-client-alert').innerHTML = `Usuario incorrecto`;
+        document.getElementById('login-user-client').value = '';
+        document.getElementById('login-user-client').style.borderColor = 'red';
+        document.getElementById('login-user-client').placeholder = 'Ingrese un usuarío valido';
         return false;
     } else {
-        document.getElementById('user-client-alert').innerHTML = ``;
+        document.getElementById('login-user-client').style.borderColor = 'grey';
         loginClient.user = document.getElementById('login-user-client').value;
         return true;
     }
@@ -71,10 +73,12 @@ function ValidateUserClient() {
 
 function ValidatePassClient() {
     if (document.getElementById('login-pass-client').value == '' || chars.test(document.getElementById('login-pass-client').value) == false || symbols.test(document.getElementById('login-pass-client').value) == true) {
-        document.getElementById('pass-client-alert').innerHTML = `Contraseña Incorrecta`;
+        document.getElementById('login-pass-client').value = '';
+        document.getElementById('login-pass-client').style.borderColor = 'red';
+        document.getElementById('login-pass-client').placeholder = 'Contraseña incorrecta';
         return false;
     } else {
-        document.getElementById('pass-client-alert').innerHTML = ``;
+        document.getElementById('login-pass-client').style.borderColor = 'grey';
         loginClient.pass = document.getElementById('login-pass-client').value;
         return true;
     }
@@ -83,20 +87,25 @@ function ValidatePassClient() {
 
 function ValidateCodeCompany() {
     if (document.getElementById('login-code-company').value == '' || document.getElementById('login-code-company').value < 1000 || document.getElementById('login-code-company').value > 3999 || all.test(document.getElementById('login-code-company').value) == true) {
-        document.getElementById('code-company-alert').innerHTML = `Código Invalido`;
+        document.getElementById('login-code-company').value = '';
+        document.getElementById('login-code-company').style.borderColor = 'red';
+        document.getElementById('login-code-company').placeholder = 'Código incorrecto';
         return false;
     } else {
-        document.getElementById('code-company-alert').innerHTML = ``;
+        document.getElementById('login-code-company').style.borderColor = 'grey';
         loginCompany.code = parseInt(document.getElementById('login-code-company').value);
+        return true;
     }
 }
 
 function ValidatePassCompany() {
     if (document.getElementById('login-pass-company').value == '' || chars.test(document.getElementById('login-pass-company').value) == false || symbols.test(document.getElementById('login-pass-company').value) == true) {
-        document.getElementById('pass-company-alert').innerHTML = `Contraseña Incorrecta`;
+        document.getElementById('login-pass-company').value = '';
+        document.getElementById('login-pass-company').style.borderColor = 'red';
+        document.getElementById('login-pass-company').placeholder = 'Contraseña incorrecta';
         return false;
     } else {
-        document.getElementById('pass-company-alert').innerHTML = ``;
+        document.getElementById('login-pass-company').style.borderColor = 'grey';
         loginCompany.pass = document.getElementById('login-pass-company').value;
         return true;
     }
@@ -104,11 +113,13 @@ function ValidatePassCompany() {
 }
 
 function ValidateCodeAdmin() {
-    if (document.getElementById('login-code-admin').value == '' || document.getElementById('login-code-admin').value > 9999 || all.test(document.getElementById('login-code-admin').value) == true || document.getElementById('login-code-admin').value < 1000) {
-        document.getElementById('code-admin-alert').innerHTML = `Código Invalido`;
+    if (document.getElementById('login-code-admin').value == '' || document.getElementById('login-code-admin').value != 1905) {
+        document.getElementById('login-code-admin').value = '';
+        document.getElementById('login-code-admin').style.borderColor = 'red';
+        document.getElementById('login-code-admin').placeholder = 'Código incorrecto';
         return false;
     } else {
-        document.getElementById('code-admin-alert').innerHTML = ``;
+        document.getElementById('login-code-admin').style.borderColor = 'grey';
         loginAdmin.code = parseInt(document.getElementById('login-code-admin').value);
         return true;
     }
@@ -117,10 +128,12 @@ function ValidateCodeAdmin() {
 
 function ValidateUserAdmin() {
     if (document.getElementById('login-user-admin').value == '' || chars.test(document.getElementById('login-user-admin').value) == false || symbols.test(document.getElementById('login-user-admin').value) == true) {
-        document.getElementById('user-admin-alert').innerHTML = `Usuario incorrecto`;
+        document.getElementById('login-user-admin').value = '';
+        document.getElementById('login-user-admin').style.borderColor = 'red';
+        document.getElementById('login-user-admin').placeholder = 'Ingrese un usuarío valido';
         return false;
     } else {
-        document.getElementById('user-admin-alert').innerHTML = ``;
+        document.getElementById('login-user-admin').style.borderColor = 'grey';
         loginAdmin.user = document.getElementById('login-user-admin').value;
         return true;
     }
@@ -129,10 +142,12 @@ function ValidateUserAdmin() {
 
 function ValidatePassAdmin() {
     if (document.getElementById('login-pass-admin').value == '' || chars.test(document.getElementById('login-pass-admin').value) == false || symbols.test(document.getElementById('login-pass-admin').value) == true) {
-        document.getElementById('pass-admin-alert').innerHTML = `Contraseña Incorrecta`;
+        document.getElementById('login-pass-admin').value = '';
+        document.getElementById('login-pass-admin').style.borderColor = 'red';
+        document.getElementById('login-pass-admin').placeholder = 'Contraseña incorrecta';
         return false;
     } else {
-        document.getElementById('pass-admin-alert').innerHTML = ``;
+        document.getElementById('login-pass-admin').style.borderColor = 'grey';
         loginAdmin.pass = document.getElementById('login-pass-admin').value;
         return true;
     }
@@ -141,11 +156,13 @@ function ValidatePassAdmin() {
 
 function ValidateEmailClient() {
     if (email.test(document.getElementById('email-login-client').value) == true) {
-        document.getElementById('email-client-alert').innerHTML = ``;
+        document.getElementById('email-login-client').style.borderColor = 'grey';
         loginClient.email = document.getElementById('email-login-client').value;
         return true;
     } else {
-        document.getElementById('email-client-alert').innerHTML = `Correo Invalido`;
+        document.getElementById('email-login-client').value = '';
+        document.getElementById('email-login-client').style.borderColor = 'red';
+        document.getElementById('email-login-client').placeholder = 'Ingrese un correo valido';
         return false;
     }
     return false;
@@ -153,11 +170,13 @@ function ValidateEmailClient() {
 
 function ValidateEmailCompany() {
     if (email.test(document.getElementById('email-login-company').value) == true) {
-        document.getElementById('email-company-alert').innerHTML = ``;
+        document.getElementById('email-login-company').style.borderColor = 'grey';
         loginCompany.email = document.getElementById('email-login-company').value;
         return true;
     } else {
-        document.getElementById('email-company-alert').innerHTML = `Correo Invalido`;
+        document.getElementById('email-login-company').value = '';
+        document.getElementById('email-login-company').style.borderColor = 'red';
+        document.getElementById('email-login-company').placeholder = 'Ingrese un correo valido';
         return false;
     }
     return false;
@@ -165,11 +184,13 @@ function ValidateEmailCompany() {
 
 function ValidateEmailAdmin() {
     if (email.test(document.getElementById('email-login-admin').value) == true) {
-        document.getElementById('email-admin-alert').innerHTML = ``;
+        document.getElementById('email-login-admin').style.borderColor = 'grey';
         loginAdmin.email = document.getElementById('email-login-admin').value;
         return true;
     } else {
-        document.getElementById('email-admin-alert').innerHTML = `Correo Invalido`;
+        document.getElementById('email-login-admin').value = '';
+        document.getElementById('email-login-admin').style.borderColor = 'red';
+        document.getElementById('email-login-admin').placeholder = 'Ingrese un correo valido';
         return false;
     }
     return false;

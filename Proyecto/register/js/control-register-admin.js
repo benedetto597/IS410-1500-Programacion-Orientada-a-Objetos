@@ -12,16 +12,26 @@ var adminUser = {
 
 
 function ValidateForm() {
-    if (ValidateFirstName() == true &&
-        ValidateLastName() == true &&
-        ValidateCountry() == true &&
-        ValidateCurrency() == true &&
-        ValidateAccess() == true &&
-        ValidateUser() == true &&
-        ValidateEmail() == true &&
-        ValidatePassword() == true &&
-        ValidatePasswordRepeat() == true &&
-        ValidateGen() == true) {
+    let firstName = ValidateFirstName();
+    let lastName = ValidateLastName();
+    let country = ValidateCountry();
+    let currency = ValidateCurrency();
+    let access = ValidateAccess();
+    let user = ValidateUser();
+    let email = ValidateEmail();
+    let pass = ValidatePassword();
+    let passRepeat= ValidatePasswordRepeat();
+    let gen = ValidateGen();
+    if (firstName == true &&
+        lastName == true &&
+        country == true &&
+        currency == true &&
+        access == true &&
+        user == true &&
+        email == true &&
+        pass == true &&
+        passRepeat == true &&
+        gen ==  true) {
 
         adminUser.firstName = document.getElementById('first-name-admin').value;
         adminUser.lastName = document.getElementById('last-name-admin').value;
@@ -31,32 +41,29 @@ function ValidateForm() {
         adminUser.accessCode = document.getElementById('code-admin').value;
         adminUser.user = document.getElementById('user-admin').value;
         adminUser.email = document.getElementById('email-admin').value;
-        adminUser.pass = document.getElementById('password-repeat-admin').value;
-
-    } else {
-        ValidateFirstName();
-        ValidateLastName();
-        ValidateCountry();
-        ValidateCurrency();
-        ValidateAccess();
-        ValidateUser();
-        ValidateEmail();
-        ValidatePassword();
-        ValidatePasswordRepeat();
-        ValidateGen();
+        adminUser.pass = document.getElementById('password-admin-repeat').value;
+        
     }
 }
 
 
 
 function ValidateFirstName() {
-    let letters = /([A-Za-z])\w+/;
+    let chars = /([A-Za-z])\w+/;
+    let symbols = /([!-/:-@{-¿])/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('first-name-admin').value == '' || nums.test(document.getElementById('first-name-admin').value) == true || letters.test(document.getElementById('first-name-admin').value) == false) {
-        document.getElementById('name-alert').innerHTML = `Ingrese nombres que sean valido (sin numeros ni simbolos, sólo letras)`;
+    if (symbols.test(document.getElementById('first-name-admin').value) == true || nums.test(document.getElementById('first-name-admin').value) == true) {        
+        document.getElementById('first-name-admin').value = '';
+        document.getElementById('first-name-admin').style.borderColor = 'red';
+        document.getElementById('first-name-admin').placeholder = 'Sólo usar letras';
+        return false;
+    } else if(document.getElementById('first-name-admin').value == '' || chars.test(document.getElementById('first-name-admin').value) == false ){
+        document.getElementById('first-name-admin').value = '';
+        document.getElementById('first-name-admin').style.borderColor = 'red';
+        document.getElementById('first-name-admin').placeholder = 'Ingrese al menos un nombre';
         return false;
     } else {
-        document.getElementById('name-alert').innerHTML = ``;
+        document.getElementById('first-name-admin').style.borderColor = 'grey';
         let upperName = document.getElementById('first-name-admin').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
         document.getElementById('first-name-admin').value = upperName;
         return true;
@@ -64,18 +71,25 @@ function ValidateFirstName() {
 }
 
 function ValidateLastName() {
-    let letters = /([A-Za-z])\w+/;
+    let chars = /([A-Za-z])\w+/;
+    let symbols = /([!-/:-@{-¿])/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('last-name-admin').value == '' || letters.test(document.getElementById('last-name-admin').value) == false || nums.test(document.getElementById('last-name-admin').value) == true) {
-        document.getElementById('last-name-alert').innerHTML = `Ingrese apellidos que sean validos (sin numeros ni simbolos, sólo letras)`;
+    if (symbols.test(document.getElementById('last-name-admin').value) == true || nums.test(document.getElementById('last-name-admin').value) == true) {        
+        document.getElementById('last-name-admin').value = '';
+        document.getElementById('last-name-admin').style.borderColor = 'red';
+        document.getElementById('last-name-admin').placeholder = 'Sólo usar letras';
+        return false;
+    } else if(document.getElementById('last-name-admin').value == ''){
+        document.getElementById('last-name-admin').value = '';
+        document.getElementById('last-name-admin').style.borderColor = 'red';
+        document.getElementById('last-name-admin').placeholder = 'Ingrese al menos un apellido';
         return false;
     } else {
-        document.getElementById('last-name-alert').innerHTML = ``;
-        let upperLastName = document.getElementById('last-name-admin').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
-        document.getElementById('last-name-admin').value = upperLastName;
+        document.getElementById('last-name-admin').style.borderColor = 'grey';
+        let upperName = document.getElementById('last-name-admin').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
+        document.getElementById('last-name-admin').value = upperName;
         return true;
     }
-    return false;
 }
 
 function ValidateCountry() {
@@ -105,10 +119,12 @@ function ValidateCurrency() {
 function ValidateAccess() {
     // Comprobar también que no haya nadíe más registrado como administrador.
     if (document.getElementById('code-admin').value == '' || document.getElementById('code-admin').value != 1905) {
-        document.getElementById('access-alert').innerHTML = `Ingrese el código de acceso valido (4 digitos máximo)`;
+        document.getElementById('code-admin').value = '';
+        document.getElementById('code-admin').style.borderColor = 'red';
+        document.getElementById('code-admin').placeholder = 'Ingrese código único';
         return false;
     } else {
-        document.getElementById('access-alert').innerHTML = ``;
+        document.getElementById('code-admin').style.borderColor = 'grey';
         return true;
     }
     return true;
@@ -117,24 +133,31 @@ function ValidateAccess() {
 function ValidateUser() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
-    if (document.getElementById('user-admin').value == '' || chars.test(document.getElementById('user-admin').value) == false || symbols.test(document.getElementById('user-admin').value) == true) {
-        document.getElementById('user-alert').innerHTML = `Ingrese un nombre de usario valido (sin simbolos, sólo letras y números)`;
+    if (symbols.test(document.getElementById('user-admin').value) == true) {        
+        document.getElementById('user-admin').value = '';
+        document.getElementById('user-admin').style.borderColor = 'red';
+        document.getElementById('user-admin').placeholder = 'Sólo usar letras y números';
+        return false;
+    } else if(document.getElementById('user-admin').value == '' || chars.test(document.getElementById('user-admin').value) == false ){
+        document.getElementById('user-admin').value = '';
+        document.getElementById('user-admin').style.borderColor = 'red';
+        document.getElementById('user-admin').placeholder = 'Ingrese un nombre de Usuario';
         return false;
     } else {
-        document.getElementById('user-alert').innerHTML = ``;
+        document.getElementById('user-admin').style.borderColor = 'grey';
         return true;
     }
-    return true;
 }
 
 function ValidateEmail() {
     let email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    console.log(email.test(document.getElementById('email-admin').value));
     if (email.test(document.getElementById('email-admin').value) == true) {
-        document.getElementById('email-alert').innerHTML = ``;
+        document.getElementById('email-admin').style.borderColor = 'grey';
         return true;
     } else {
-        document.getElementById('email-alert').innerHTML = `Ingrese un correo valido`;
+        document.getElementById('email-admin').value = '';
+        document.getElementById('email-admin').style.borderColor = 'red';
+        document.getElementById('email-admin').placeholder = 'Ingrese un correo valido';
         return false;
     }
 }
@@ -142,27 +165,32 @@ function ValidateEmail() {
 function ValidatePassword() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
-    if (document.getElementById('password-admin').value == '' || chars.test(document.getElementById('password-admin').value) == false || symbols.test(document.getElementById('password-admin').value) == true) {
-        document.getElementById('pass-alert').innerHTML = `Ingrese una contraseña valida (sin simbolos, sólo letras y números)`;
+    if (symbols.test(document.getElementById('password-admin').value) == true) {
+        document.getElementById('password-admin').value = '';
+        document.getElementById('password-admin').style.borderColor = 'red';
+        document.getElementById('password-admin').placeholder = 'Sólo usar letras y números';
+        return false;
+    } else if(document.getElementById('password-admin').value == '' || chars.test(document.getElementById('password-admin').value) == false){
+        document.getElementById('password-admin').value = '';
+        document.getElementById('password-admin').style.borderColor = 'red';
+        document.getElementById('password-admin').placeholder = 'Ingrese una contraseña';
         return false;
     } else {
-        document.getElementById('pass-alert').innerHTML = ``;
+        document.getElementById('password-admin').style.borderColor = 'grey';
         return true;
     }
-    return true;
 }
 
 function ValidatePasswordRepeat() {
-    if (document.getElementById('password-admin').value != document.getElementById('password-repeat-admin').value) {
-        document.getElementById('pass-repeat-alert').innerHTML = `Contraseñas Distintas`;
-        document.getElementById('password-repeat-admin').style.color = 'red';
+    if (document.getElementById('password-admin').value != document.getElementById('password-admin-repeat').value) {
+        document.getElementById('password-admin-repeat').value = '';
+        document.getElementById('password-admin-repeat').style.borderColor = 'red';
+        document.getElementById('password-admin-repeat').placeholder = 'Contraseñas Distintas';
         return false;
     } else {
-        document.getElementById('password-repeat-admin').style.color = 'black';
-        document.getElementById('pass-repeat-alert').innerHTML = ``;
+        document.getElementById('password-admin-repeat').style.borderColor = 'grey';
         return true;
     }
-    return true;
 }
 
 function ValidateGen() {
@@ -174,5 +202,4 @@ function ValidateGen() {
         document.getElementById('gen-alert').innerHTML = ``;
         return true;
     }
-    return true;
 }

@@ -38,6 +38,7 @@ function ValidateForm() {
         clientUser.email = document.getElementById('email-client').value;
         clientUser.pass = document.getElementById('password-client-repeat').value;
 
+        console.log(clientUser);
     }
 }
 
@@ -58,7 +59,6 @@ function ValidateFirstName() {
         return false;
     } else{
         document.getElementById('first-name-client').style.borderColor = 'grey';
-        document.getElementById('name-alert').innerHTML = ``;
         let upperName = document.getElementById('first-name-client').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
         document.getElementById('first-name-client').value = upperName;
         return true;
@@ -67,7 +67,6 @@ function ValidateFirstName() {
 }
 
 function ValidateLastName() {
-    let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
     if (nums.test(document.getElementById('last-name-client').value) == true || symbols.test(document.getElementById('last-name-client').value) == true) {

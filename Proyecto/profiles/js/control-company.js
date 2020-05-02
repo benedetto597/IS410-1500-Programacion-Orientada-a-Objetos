@@ -1,4 +1,3 @@
-
 //Obtener la información por petición en formato JSON fragmentar los JSON dependiendo como gestione la base de datos
 var companyUser = {
     firstName: "Juan",
@@ -302,7 +301,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 
 var lat = companyUser.companyLat;
-var long =  companyUser.companyLong;
+var long = companyUser.companyLong;
 var marker;
 
 function onMapClick(e) {
@@ -364,8 +363,8 @@ function FillProductList() {
     for (let i = 0; i < companyUser.branch.length; i++) {
         for (let j = 0; j < companyUser.branch[i].branchProduct.length; j++) {
             for (let k = 0; k < companyUser.branch[i].branchProduct[j].productPromotion.length; k++) {
-                document.getElementById('product-list').innerHTML += 
-                `<tr>
+                document.getElementById('product-list').innerHTML +=
+                    `<tr>
                     <th scope="row">${companyUser.branch[i].branchProduct[j].productName}</th>
                     <td>${companyUser.branch[i].branchProduct[j].productCategory}</td>
                     <td>${companyUser.branch[i].branchProduct[j].productRealPrice}</td>
@@ -415,11 +414,15 @@ function VerifyData() {
 function ValidateFirstName() {
     let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('first-name-company').value == '' || nums.test(document.getElementById('first-name-company').value) == true || letters.test(document.getElementById('first-name-company').value) == false) {
-        document.getElementById('name-alert').innerHTML = `Ingrese nombres que sean valido (sin numeros ni simbolos, sólo letras)`;
+    let symbols = /([!-/:-@{-¿])/;
+    if (document.getElementById('first-name-company').value == '' || nums.test(document.getElementById('first-name-company').value) == true || symbols.test(document.getElementById('first-name-company').value) == true || letters.test(document.getElementById('first-name-company').value) == false) {
+        document.getElementById('first-name-company').value = '';
+        document.getElementById('first-name-company').style.borderColor = 'red';
+        document.getElementById('first-name-company').placeholder = 'No usar simbolos ni números';
         return false;
     } else {
-        document.getElementById('name-alert').innerHTML = ``;
+        document.getElementById('first-name-company').placeholder = `Nombre`;
+        document.getElementById('first-name-company').style.borderColor = 'grey';
         let upperName = document.getElementById('first-name-company').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
         document.getElementById('first-name-company').value = upperName;
         companyUser.firstName = document.getElementById('first-name-company').value;
@@ -430,13 +433,17 @@ function ValidateFirstName() {
 function ValidateLastName() {
     let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
-    if (document.getElementById('last-name-company').value == '' || letters.test(document.getElementById('last-name-company').value) == false || nums.test(document.getElementById('last-name-company').value) == true) {
-        document.getElementById('last-name-alert').innerHTML = `Ingrese apellidos que sean validos (sin numeros ni simbolos, sólo letras)`;
+    let symbols = /([!-/:-@{-¿])/;
+    if (document.getElementById('last-name-company').value == '' || nums.test(document.getElementById('last-name-company').value) == true || symbols.test(document.getElementById('last-name-company').value) == true || letters.test(document.getElementById('last-name-company').value) == false) {
+        document.getElementById('last-name-company').value = '';
+        document.getElementById('last-name-company').style.borderColor = 'red';
+        document.getElementById('last-name-company').placeholder = 'No usar simbolos ni números';
         return false;
     } else {
-        document.getElementById('last-name-alert').innerHTML = ``;
-        let upperLastName = document.getElementById('last-name-company').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
-        document.getElementById('last-name-company').value = upperLastName;
+        document.getElementById('last-name-company').placeholder = `Apellido`;
+        document.getElementById('last-name-company').style.borderColor = 'grey';
+        let upperName = document.getElementById('last-name-company').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
+        document.getElementById('last-name-company').value = upperName;
         companyUser.lastName = document.getElementById('last-name-company').value;
         return true;
     }
@@ -446,12 +453,14 @@ function ValidateCompanyName() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
     if (document.getElementById('name-company').value == '' || chars.test(document.getElementById('name-company').value) == false || symbols.test(document.getElementById('name-company').value) == true) {
-        document.getElementById('name-company-alert').innerHTML = `Ingrese un nombre de sucursal valido (sin simbolos, sólo letras y números)`;
+        document.getElementById('name-company').value = '';
+        document.getElementById('name-company').style.borderColor = 'red';
+        document.getElementById('name-company').placeholder = 'No usar simbolos';
         return false;
     } else {
-        document.getElementById('name-company-alert').innerHTML = ``;
+        document.getElementById('name-company').style.borderColor = 'greys';
         let upperLastName = document.getElementById('name-company').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
-        document.getElementById('name-company').value = upperLastName;
+        document.getElementById('name-company').value = uname - companypperLastName;
         companyUser.companyName = document.getElementById('name-company').value;
         return true;
     }
@@ -461,9 +470,12 @@ function ValidateCompanyDir() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
     if (document.getElementById('address-company').value == '' || chars.test(document.getElementById('address-company').value) == false || symbols.test(document.getElementById('address-company').value) == true) {
-        document.getElementById('address-company-alert').innerHTML = `Ingrese la dirección completa del sucursal (sin comas ni puntos)`;
+        document.getElementById('address-company').value = '';
+        document.getElementById('address-company').style.borderColor = 'red';
+        document.getElementById('address-company').placeholder = 'No usar simbolos ni números';
         return false;
     } else {
+        document.getElementById('address-company').style.borderColor = 'grey';
         document.getElementById('address-company-alert').innerHTML = ``;
         companyUser.companyDir = document.getElementById('address-company').value;
         return true;
@@ -488,25 +500,26 @@ function ValidateCompanyBanner() {
     }
     return false;
 }
-
 function ValidateCompanyFb() {
     if (document.getElementById('facebook-company').value == '') {
-        document.getElementById('fb-alert').innerHTML = `Pegue la url de su página de Facebook`;
+        document.getElementById('facebook-company').value = '';
+        document.getElementById('facebook-company').style.borderColor = 'red';
+        document.getElementById('facebook-company').placeholder = 'Pegue url de su página de Facebook';
         return false;
     } else {
-        document.getElementById('fb-alert').innerHTML = ``;
-        companyUser.companyFb = document.getElementById('facebook-company').value;
+        document.getElementById('facebook-company').style.borderColor = 'grey';
         return true;
     }
 }
 
 function ValidateCompanyIg() {
     if (document.getElementById('instagram-company').value == '') {
-        document.getElementById('ig-alert').innerHTML = `Pegue la url de su página de Instagram`;
+        document.getElementById('instagram-company').value = '';
+        document.getElementById('instagram-company').style.borderColor = 'red';
+        document.getElementById('instagram-company').placeholder = 'Pegue url de su página de Instagram';
         return false;
     } else {
-        document.getElementById('ig-alert').innerHTML = ``;
-        companyUser.companyIg = document.getElementById('instagram-company').value;
+        document.getElementById('instagram-company').style.borderColor = 'grey';
         return true;
     }
 }
@@ -515,34 +528,38 @@ function ValidateCompanyWha() {
     let structure = /([0-9]{8})/;
     console.log(structure.test(document.getElementById('whatsapp-company').value));
     if (document.getElementById('whatsapp-company').value == '' || structure.test(document.getElementById('whatsapp-company').value) == false) {
-        document.getElementById('wha-alert').innerHTML = `Ingrese su número Whatsapp ejem: 99999999`;
+        document.getElementById('whatsapp-company').value = '';
+        document.getElementById('whatsapp-company').style.borderColor = 'red';
+        document.getElementById('whatsapp-company').placeholder = 'Ingrese WhatsApp: 99839932';
         return false;
     } else {
-        document.getElementById('wha-alert').innerHTML = ``;
-        companyUser.companyWha = document.getElementById('whatsapp-company').value;
+        document.getElementById('whatsapp-company').style.borderColor = 'grey';
         return true;
     }
 }
 
 function ValidateCompanyTwit() {
     if (document.getElementById('twitter-company').value == '') {
-        document.getElementById('twit-alert').innerHTML = `Pegue la url de su página de Twitter`;
+        document.getElementById('twitter-company').value = '';
+        document.getElementById('twitter-company').style.borderColor = 'red';
+        document.getElementById('twitter-company').placeholder = 'Pegue url de su perfil de Twitter';
         return false;
     } else {
-        document.getElementById('twit-alert').innerHTML = ``;
-        companyUser.companyTwit = document.getElementById('twitter-company').value;
+        document.getElementById('twitter-company').style.borderColor = 'grey';
         return true;
     }
 }
 
 function ValidateEmail() {
     let email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    if (email.test(document.getElementById('email-employed-company').value) == true) {
-        document.getElementById('email-alert').innerHTML = ``;
+    if (email.test(document.getElementById('email-employed-company').value) == true || email.test(document.getElementById('email-employed-company').value) == '') {
+        document.getElementById('email-employed-company').value = '';
+        document.getElementById('email-employed-company').style.borderColor = 'red';
+        document.getElementById('email-employed-company').placeholder = 'Ingrese un correo Valido';
         return true;
     } else {
-        document.getElementById('email-alert').innerHTML = `Ingrese un correo valido`;
-        companyUser.email = document.getElementById('email-employed-company').value;
+        document.getElementById('email-employed-company').style.borderColor = 'grey';
+        document.getElementById('email-company-alert').innerHTML = `Ingrese un correo valido`;
         return false;
     }
 }
@@ -551,10 +568,12 @@ function ValidatePassword() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
     if (document.getElementById('password-company').value == '' || chars.test(document.getElementById('password-company').value) == false || symbols.test(document.getElementById('password-company').value) == true) {
-        document.getElementById('pass-company-alert').innerHTML = `Ingrese una contraseña valida (sin simbolos, sólo letras y números)`;
+        document.getElementById('password-company').value = '';
+        document.getElementById('password-company').style.borderColor = 'red';
+        document.getElementById('password-company').placeholder = 'Solo usar letras y números';
         return false;
     } else {
-        document.getElementById('pass-company-alert').innerHTML = ``;
+        document.getElementById('password-company').style.borderColor = 'red';
         return true;
     }
 }
@@ -567,10 +586,11 @@ function ValidatePasswordRepeat() {
     } else {
         document.getElementById('password-company-repeat').style.color = 'black';
         document.getElementById('pass-repeat-company-alert').innerHTML = ``;
-        companyUser.pass = document.getElementById('password-company-repeat').value;
         return true;
     }
+    return true;
 }
+
 
 function ValidateCompanyLatLong() {
     if (lat != companyUser.companyLat && long != companyUser.companyLong) {

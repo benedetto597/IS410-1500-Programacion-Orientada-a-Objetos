@@ -128,22 +128,20 @@
                     <div class="form-group col-md-6">
                         <b class="text-white">Nombre Completo</b>
                         <input type="text" class="form-control" id="first-name-admin" placeholder="Nombres" required
-                            minlength="3" maxlength="40">
-                        <small id="name-alert" class="form-text text-white"></small>
+                            minlength="3" maxlength="40" onchange="ValidateFirstName()">
                         <input type="text" class="form-control my-1" id="last-name-admin" placeholder="Apellidos"
-                            required minlength="3" maxlength="40">
-                        <small id="last-name-alert" class="form-text text-white"></small>
+                            required minlength="3" maxlength="40" onchange="ValidateLastName()">
                     </div>
 
                     <div class="form-group col-md-6">
                         <b class="text-white">País</b>
-                        <select id="country-select-admin" class="form-control text-white" required>
+                        <select id="country-select-admin" class="form-control text-white" required onchange="ValidateCountry()">
                             <option selected>Seleccione un País</option>
                             <option>Honduras</option>
                             <option>Estados Unidos</option>
                         </select>
                         <small id="country-alert" class="form-text text-white"></small>
-                        <select id="currency-select-admin" class="form-control text-white my-1" required>
+                        <select id="currency-select-admin" class="form-control text-white my-1" required onchange="ValidateCurrency()">
                             <option selected>Seleccione una Moneda</option>
                             <option>L Lempira</option>
                             <option>$ Dolar</option>
@@ -154,24 +152,19 @@
                     <div class="form-group col-md-6">
                         <b class="text-white">Acceso</b>
                         <input type="number" class="form-control" id="code-admin"
-                            placeholder="Código de Acceso de 4 Digitos" min="1000" max="9999">
-                        <small id="access-alert" class="form-text text-white"></small>
+                            placeholder="Código de Acceso de 4 Digitos" min="1000" max="9999" onchange="ValidateAccess()">
                         <input type="text" class="form-control my-1" id="user-admin" placeholder="Nombre de Acceso"
-                            required minlength="5" maxlength="15">
-                        <small id="user-alert" class="form-text text-white"></small>
-                        <input type="email" class="form-control" id="email-admin" placeholder="Email" required>
-                        <small id="email-alert" class="form-text text-white"></small>
+                            required minlength="5" maxlength="15" onchange="ValidateUser()">
+                        <input type="email" class="form-control" id="email-admin" placeholder="Email" required onchange="ValidateEmail()">
                     </div>
 
                     <div class="form-group col-md-6">
                         <b class="text-white">Contraseña</b>
                         <input type="password" class="form-control " id="password-admin" placeholder="Contraseña"
-                            required>
-                        <small id="pass-alert" class="form-text text-white"></small>
-                        <input type="password" class="form-control my-1" id="password-repeat-admin"
-                            placeholder="Repita Contraseña" required>
-                        <small id="pass-repeat-alert" class="form-text text-white"></small>
-                        <select id="sex-select-admin" class="form-control text-white" required>
+                            required onchange="ValidatePassword()">
+                        <input type="password" class="form-control my-1" id="password-admin-repeat"
+                            placeholder="Repita Contraseña" required onchange="ValidatePasswordRepeat()">
+                        <select id="sex-select-admin" class="form-control text-white" required onchange="ValidateGen()">
                             <option selected>Seleccione Genero</option>
                             <option>Masculino</option>
                             <option>Femenino</option>
