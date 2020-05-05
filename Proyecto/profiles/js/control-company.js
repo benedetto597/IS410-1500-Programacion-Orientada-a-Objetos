@@ -408,6 +408,7 @@ function VerifyData() {
     ValidatePasswordRepeat();
     ValidateCompanyLogo();
     ValidateCompanyBanner();
+    ValidatePlan();
 }
 
 
@@ -460,7 +461,7 @@ function ValidateCompanyName() {
     } else {
         document.getElementById('name-company').style.borderColor = 'greys';
         let upperLastName = document.getElementById('name-company').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
-        document.getElementById('name-company').value = uname - companypperLastName;
+        document.getElementById('name-company').value = upperLastName;
         companyUser.companyName = document.getElementById('name-company').value;
         return true;
     }
@@ -552,14 +553,13 @@ function ValidateCompanyTwit() {
 
 function ValidateEmail() {
     let email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    if (email.test(document.getElementById('email-employed-company').value) == true || email.test(document.getElementById('email-employed-company').value) == '') {
+    if (email.test(document.getElementById('email-employed-company').value) == false || email.test(document.getElementById('email-employed-company').value) == '') {
         document.getElementById('email-employed-company').value = '';
         document.getElementById('email-employed-company').style.borderColor = 'red';
         document.getElementById('email-employed-company').placeholder = 'Ingrese un correo Valido';
         return true;
     } else {
         document.getElementById('email-employed-company').style.borderColor = 'grey';
-        document.getElementById('email-company-alert').innerHTML = `Ingrese un correo valido`;
         return false;
     }
 }
@@ -600,6 +600,17 @@ function ValidateCompanyLatLong() {
         document.getElementById('lat-long-company-alert').innerHTML = ``;
         companyUser.companyLat = lat;
         companyUser.companyLong = long;
+        return true;
+    }
+}
+
+function ValidatePlan(){
+    let planSelected = document.getElementById('plan-company');
+    if (planSelected.options[planSelected.selectedIndex].value == 'Seleccione Moneda') {
+        document.getElementById('plan-alert').innerHTML = `Seleccione un nuevo plan`;
+        return false;
+    } else {
+        document.getElementById('plan-alert').innerHTML = `Cambio de plan incurre gastos extra`;
         return true;
     }
 }

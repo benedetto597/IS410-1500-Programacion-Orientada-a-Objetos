@@ -1,0 +1,13 @@
+{
+    "name": "personal/proyecto",
+    "description": "Proyecto POO 1500 I PAC 2020 Mini-Mall",
+    "authors": [
+        {
+            "name": "benedetto597",
+            "email": "ejbg597@gmail.com"
+        }
+    ],
+    "require": {
+        "kreait/firebase-php": "^5.2"
+    }
+}

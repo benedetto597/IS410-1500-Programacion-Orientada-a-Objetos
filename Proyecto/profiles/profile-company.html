@@ -249,7 +249,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <b>Promociones</b>
+                                                <b>Sucursales</b>
                                                 <div id="map-promotions"></div>
                                             </div>
                                         </div>
@@ -262,11 +262,16 @@
                                     <!-- Formulario precargado de la información que se tiene agregada -->
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <b>Empleado</b>
+                                            <b>Empleado</b><br><small class="form-text text-dark" style="display: inline;" id="plan-alert"></small>
                                             <div class="row px-2">
                                                 <div class="col-md-6 px-1">
-                                                    <input type="text" class="form-control" id="plan-company"
-                                                        placeholder="Plan Seleccionado" disabled>
+                                                    <select id="plan-company" class="form-control text-dark my-1"
+                                                        onchange="EnableChange()">
+                                                        <option>Seleccione Plan</option>
+                                                        <option value="Regular">Regular</option>
+                                                        <option value="Premium">Premium</option>
+                                                        <option value="Platinum">Platinum</option>
+                                                    </select>   
                                                 </div>
                                                 <div class="col-md-6 px-1">
                                                     <input type="number" class="form-control"
@@ -350,7 +355,7 @@
                                                 <div class="col-auto mr-auto ml-auto">
                                                     <button id="btn-update-info" type="button"
                                                         class="btn btn-lg shadow p-2 px-3 m-0 rounded-pill text-dark"
-                                                        onclick="VerifyData();" >Guardar
+                                                        onclick="VerifyData();">Guardar
                                                         Cambios</button>
                                                 </div>
                                             </div>
