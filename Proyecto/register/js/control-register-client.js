@@ -7,6 +7,7 @@ var clientUser = {
     user: "",
     email: "",
     pass: "",
+    profileImg: ""
 };
 
 function ValidateForm() {

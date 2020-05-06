@@ -9,17 +9,18 @@
         private $keyFile = '../secret/proyecto-poo-271914-946d58aed0ea.json';
         private $URI = 'https://proyecto-poo-271914.firebaseio.com/';
         private $db;
-    }
-    public function __construct(){
-        $firebase = (new Factory)
-            ->withServiceAccount($this->getkeyFile);
-            ->withDatabaseUri($this->getURI());
 
-        $this->db = $firebase->createDatabase();
-    }
-
-    public function getDB(){
-        return $this->db;
+        public function __construct(){
+            $firebase = (new Factory)
+                ->withServiceAccount($this->getkeyFile)
+                ->withDatabaseUri($this->getURI());
+    
+            $this->db = $firebase->createDatabase();
+        }
+    
+        public function getDB(){
+            return $this->db;
+        }
     }
 
     /* Agregar a la base de datos

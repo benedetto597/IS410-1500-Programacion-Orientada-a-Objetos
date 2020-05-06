@@ -1,36 +1,24 @@
 <?php 
 
 abstract class Usuario{
-    private $token;
     private $nombre;
     private $apellido;
+    private $nombreUsuario;
     private $genero;
     private $pais;
     private $moneda;
     private $correo;
     private $contraseña;
 
-    public function __construct($token,$nombre,$apellido,$genero,$pais,$moneda,$correo,$contraseña){
-        $this->token = $token;
+    public function __construct($nombre,$apellido,$nombreUsuario,$genero,$pais,$moneda,$correo,$contraseña){
         $this->nombre = $nombre;
         $this->apellido = $apellido;
+        $this->$nombreUsuario = $$nombreUsuario;
         $this->genero = $genero;
         $this->pais = $pais;
         $this->moneda = $moneda;
         $this->correo = $correo;
         $this->contraseña = $contraseña;
-    }
- 
-    public function getToken()
-    {
-        return $this->token;
-    }
- 
-    public function setToken($token)
-    {
-        $this->token = $token;
-
-        return $this;
     }
  
     public function getNombre()
@@ -53,6 +41,18 @@ abstract class Usuario{
     public function setApellido($apellido)
     {
         $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    public function getNombreUsuario()
+    {
+        return $this->nombreUsuario;
+    }
+ 
+    public function setNombreUsuario($nombreUsuario)
+    {
+        $this->nombreUsuario = $nombreUsuario;
 
         return $this;
     }
@@ -109,7 +109,7 @@ abstract class Usuario{
     {
         return $this->contraseña;
     }
- 
+
     public function setContraseña($contraseña)
     {
         $this->contraseña = $contraseña;
@@ -117,5 +117,6 @@ abstract class Usuario{
         return $this;
     }
 
+}
     
 ?>

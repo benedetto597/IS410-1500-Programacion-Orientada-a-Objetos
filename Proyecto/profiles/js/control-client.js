@@ -7,6 +7,7 @@ var clientUser = {
     user: "benedetto597",
     email: "example@example.com",
     pass: "asdfasdf1234",
+    profileImg: ""
 };
 
 //Se debe usar un token o un identificador de que son los favoritos de este usuario trayendolos de la base de datos

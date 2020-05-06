@@ -8,6 +8,8 @@ var adminUser = {
     user: "",
     email: "",
     pass: "",
+    profileImg: "",
+    coverImg: ""
 };
 
 

@@ -8,6 +8,8 @@ var adminUser = {
     user: "benedetto597",
     email: "example@example.com",
     pass: "asdfasdf1234",
+    profilePhoto: "",
+    coverPhoto: ""
 };
 
 var suscribeCompanies = [{

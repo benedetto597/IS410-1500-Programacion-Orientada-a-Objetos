@@ -1,0 +1,26 @@
+<?php
+    include_once('../class/class-database.php');
+    include_once('../class/class-promotions.php');
+    
+    header("Content-Type: application/json");
+    switch($_SERVER['REQUEST_METHOD']){
+        case 'POST':
+            $_POST = json_decode(file_get_contents('php://input'),true);
+            $resultado["mensaje"] = "Guardar usuario, informacion:". json_encode($_POST);
+            echo json_encode($resultado);
+        break;
+        case 'GET':
+            if (isset($_GET['id'])){
+                $resultado["mensaje"] = "Retornar el usuario con el id: " . $_GET['id'];
+                echo json_encode($resultado);
+            }else{
+                $resultado["mensaje"] = "Retornar todos los usuarios";
+                echo json_encode($resultado);
+            }
+        break;
+        case 'DELETE':
+            $resultado["mensaje"] = "Eliminar un usuario con el id: ".$_GET['id'];
+            echo json_encode($resultado);
+        break;
+    }
+?>
