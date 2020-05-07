@@ -1,32 +1,29 @@
 <?php
+    header("Content-Type: application/json");
     include_once('../class/class-database.php');
     include_once('../class/class-branch.php');
     
-    header("Content-Type: application/json");
+    $database = new Database();
     switch($_SERVER['REQUEST_METHOD']){
         case 'POST':
             $_POST = json_decode(file_get_contents('php://input'),true);
-            $resultado["mensaje"] = "Guardar usuario, informacion:". json_encode($_POST);
-            echo json_encode($resultado);
+            $sucursal = new Sucursal($_POST["name"], $_POST["direction"], $_POST["latitud"], $_POST["longitud"]);
+            echo $sucursal->crearSucursal($database->getDB());
         break;
         case 'GET':
             if (isset($_GET['id'])){
-                $resultado["mensaje"] = "Retornar el usuario con el id: " . $_GET['id'];
-                echo json_encode($resultado);
+                Sucursal::obtenerSucursal($database->getDB(), $_GET['id']);
             }else{
-                $resultado["mensaje"] = "Retornar todos los usuarios";
-                echo json_encode($resultado);
+                Sucursal::obtenerSucursales($database->getDB());
             }
         break;
         case 'PUT':
             $_PUT = json_decode(file_get_contents('php://input'),true);
-            $resultado["mensaje"] =  "Actualizar un usuario con el id: " .$_GET['id'].
-                                    ",  Informacion a actualizar: ".json_encode($_PUT);
-            echo json_encode($resultado);
+            $sucursal = new Sucursal($_PUT["name"], $_PUT["direction"], $_PUT["latitud"], $_PUT["longitud"]);
+            echo $sucursal->actualizarSucursal($database->getDB(),$_GET['id']);
         break;
         case 'DELETE':
-            $resultado["mensaje"] = "Eliminar un usuario con el id: ".$_GET['id'];
-            echo json_encode($resultado);
+            Sucursal::eliminarSucursal($database->getDB(),$_GET['id']);
         break;
     }
 ?>

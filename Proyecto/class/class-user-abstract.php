@@ -13,7 +13,7 @@ abstract class Usuario{
     public function __construct($nombre,$apellido,$nombreUsuario,$genero,$pais,$moneda,$correo,$contraseña){
         $this->nombre = $nombre;
         $this->apellido = $apellido;
-        $this->$nombreUsuario = $$nombreUsuario;
+        $this->$nombreUsuario = $nombreUsuario;
         $this->genero = $genero;
         $this->pais = $pais;
         $this->moneda = $moneda;

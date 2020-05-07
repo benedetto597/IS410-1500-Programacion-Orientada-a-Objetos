@@ -12,8 +12,8 @@
 
         public function __construct(){
             $firebase = (new Factory)
-                ->withServiceAccount($this->getkeyFile)
-                ->withDatabaseUri($this->getURI());
+                ->withServiceAccount($this->keyFile)
+                ->withDatabaseUri($this->URI);
     
             $this->db = $firebase->createDatabase();
         }

@@ -61,24 +61,57 @@ class Sucursal{
         return $this;
     }
     
-    public function obtenerSucursal(){
-        
+    public function obtenerSucursal($db, $id){
+        $respuesta = $db->getReference('sucursales')
+            ->getChild($id)
+            ->getValue();
+
+        echo json_encode($respuesta);
     }
 
-    public function obtenerSucursales(){
-        
+    public function obtenerSucursales($db){
+        $respuesta = $db->getReference('sucursales')
+            ->getSnapshot()
+            ->getValue();
+
+        echo json_encode($respuesta);
     }
 
-    public function guardarSucursal(){
-
+    public function crearSucursal($db){
+        $sucursal = $this->obtenerInfo();
+        $respuesta = $db->getReference('sucursales')
+            ->push($sucursal);
+               
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al guardar el registro"}';
     }
 
-    public function actualizarSucursal(){
-
+    public function actualizarSucursal($db, $id){
+        $respuesta = $db->getReference('sucursales')
+            ->getChild($id)
+            ->set($this->obtenerInfo());
+            
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al actualizar el registro"}';
     }
 
-    public function eliminarSucursal(){
+    public function eliminarSucursal($db, $id){
+        $db->getReference('sucursales')
+            ->getChild($id)
+            ->remove();
+        echo '{"mensaje":"Se eliminó el elemento '.$id.'"}';
+    }
 
+    public function obtenerInfo(){
+        $datos['nombreSucursal'] = $this->nombreSucursal;
+        $datos['dirSucursall'] = $this->dirSucursal;
+        $datos['latSucursal'] = $this->latSucursal;
+        $datos['longSucursal'] = $this->longSucursal;
+        return $datos;
     }
 }
     

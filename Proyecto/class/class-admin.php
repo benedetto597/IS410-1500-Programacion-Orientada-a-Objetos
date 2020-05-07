@@ -1,5 +1,5 @@
 <?php 
-include_once('class/class-user-abstract.php');
+include_once('class-user-abstract.php');
 
 class Administrador extends Usuario{
     private $codigoAdmin;
@@ -49,20 +49,64 @@ class Administrador extends Usuario{
         return $this;
     }
     
-    public function obtenerAdmin(){
-        
+    public function obtenerAdmin($db, $id){
+        $respuesta = $db->getReference('administradores')
+            ->getChild($id)
+            ->getValue();
+
+        echo json_encode($respuesta);
     }
 
-    public function guardarAdmin(){
+    public function obtenerAdmins($db){
+        $respuesta = $db->getReference('administradores')
+            ->getSnapshot()
+            ->getValue();
 
+        echo json_encode($respuesta);
     }
 
-    public function actualizarAdmin(){
-
+    public function crearAdmin($db){
+        $administrador = $this->obtenerInfo();
+        $respuesta = $db->getReference('administradores')
+            ->push($administrador);
+               
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al guardar el registro"}';
     }
 
-    public function eliminarAdmin(){
-
+    public function actualizarAdmin($db, $id){
+        $respuesta = $db->getReference('administradores')
+            ->getChild($id)
+            ->set($this->obtenerInfo());
+            
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al actualizar el registro"}';
     }
 
+    public function eliminarAdmin($db, $id){
+        $db->getReference('administradores')
+            ->getChild($id)
+            ->remove();
+        echo '{"mensaje":"Se eliminó el elemento '.$id.'"}';
+    }
+
+    public function obtenerInfo(){
+        $datos['nombre'] = parent::getNombre();
+        $datos['apellido'] = parent::getApellido();
+        $datos['nombreUsuario'] = parent::getNombreUsuario();
+        $datos['genero'] = parent::getGenero();
+        $datos['pais'] = parent::getPais();
+        $datos['moneda'] = parent::getMoneda();
+        $datos['correo'] = parent::getCorreo();
+        $datos['contraseña'] = parent::getContraseña();
+        $datos['codigoAdmin'] = $this->codigoAdmin;
+        $datos['fotoAdmin'] = $this->fotoAdmin;
+        $datos['coverAdmin'] = $this->coverAdmin;
+        return $datos;
+    }
 }
+?>
