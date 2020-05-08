@@ -158,7 +158,8 @@
                         <input type="password" class="form-control" id="password-company" placeholder="Contraseña"
                             required minlength="5" maxlength="30" onchange="ValidatePassword()">
                         <input type="password" class="form-control my-1" id="password-company-repeat"
-                            placeholder="Repita Contraseña" required minlength="5" maxlength="30" onchange="ValidatePassword()">                        
+                        placeholder="Repita Contraseña" required minlength="5" maxlength="30" onchange="ValidatePasswordRepeat()">                        
+                        <small id="pass-repeat-company-alert" class="form-text text-dark"></small>
                     </div>
 
                     <div class="form-group col-md-4">
@@ -208,11 +209,11 @@
                         <input type="text" class="form-control" id="facebook-company"
                             placeholder="URL Página de Facebook" required onchange="ValidateCompanyFb()">
                         <input type="number" class="form-control my-1" id="whatsapp-company"
-                            placeholder="Número de WhatsApp" required minlength="12" maxlenth="12" onchange="ValidateCompanyIg()">
+                            placeholder="Número de WhatsApp" required minlength="12" maxlenth="12" onchange="ValidateCompanyWha()">
                         <input type="text" class="form-control my-1" id="instagram-company"
-                            placeholder="URL Página de Instagram" required>
+                            placeholder="URL Página de Instagram" required onchange="ValidateCompanyIg()">
                         <input type="text" class="form-control my-1" id="twitter-company"
-                            placeholder="URL Página de Twitter" required onchange="ValidateCompanyWha()">
+                            placeholder="URL Página de Twitter" required onchange="ValidateCompanyTwit()">
                         <small id="twit-alert" class="form-text text-dark"></small>
                         <div class="form-row align-items-center">
                             <div class="col-auto mr-auto ml-auto">
@@ -233,9 +234,9 @@
         </form>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="js/control-register-company.js"></script>
 </body>

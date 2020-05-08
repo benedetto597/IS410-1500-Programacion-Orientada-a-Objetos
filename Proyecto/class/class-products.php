@@ -96,24 +96,59 @@ class Producto{
         return $this;
     }
 
-    public function obtenerProducto(){
-        
+    public function obtenerProducto($db, $id){
+        $respuesta = $db->getReference('productos')
+            ->getChild($id)
+            ->getValue();
+
+        echo json_encode($respuesta);
     }
 
-    public function obtenerProductos(){
-        
+    public function obtenerProductos($db){
+        $respuesta = $db->getReference('productos')
+            ->getSnapshot()
+            ->getValue();
+
+        echo json_encode($respuesta);
     }
 
-    public function guardarProducto(){
-
+    public function crearProducto($db){
+        $producto = $this->obtenerInfo();
+        $respuesta = $db->getReference('productos')
+            ->push($producto);
+               
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al guardar el registro"}';
     }
 
-    public function actualizarProducto(){
-
+    public function actualizarProducto($db, $id){
+        $respuesta = $db->getReference('productos')
+            ->getChild($id)
+            ->set($this->obtenerInfo());
+            
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al actualizar el registro"}';
     }
 
-    public function eliminarProducto(){
+    public function eliminarProducto($db, $id){
+        $db->getReference('productos')
+            ->getChild($id)
+            ->remove();
+        echo '{"mensaje":"Se eliminó el elemento '.$id.'"}';
+    }
 
+    public function obtenerInfo(){
+        $datos['nombreProducto'] = $this->nombreProducto;
+        $datos['imgProducto'] = $this->imgProducto;
+        $datos['precioProducto'] = $this->precioProducto;
+        $datos['categoriaProducto'] = $this->categoriaProducto;
+        $datos['descripcionProducto'] = $this->descripcionProducto;
+        $datos['sucursalProducto'] = $this->sucursalProducto;
+        return $datos;
     }
 }
 ?>

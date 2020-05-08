@@ -1,12 +1,11 @@
 <?php 
-include_once('class/class-user-abstract.php');
+include_once('class-user-abstract.php');
 
 class Empresa extends Usuario{
-    private $nombreEmpresa;
     private $dirEmpresa;
     private $latEmpresa;
     private $longEmpresa;
-    private $planEmpresa;
+    private $sucursalesEmpresa;
     private $logoEmpresa;
     private $bannerEmpresa;
     private $codigoEmpresa;
@@ -15,13 +14,12 @@ class Empresa extends Usuario{
     private $whaEmpresa;
     private $twitEmpresa;
 
-    public function __construct($nombre,$apellido,$genero,$pais,$moneda,$correo,$contraseña,$nombreEmpresa,$dirEmpresa,$latEmpresa,$longEmpresa,$planEmpresa,$logoEmpresa,$bannerEmpresa,$codigoEmpresa,$fbEmpresa,$igEmpresa,$whaEmpresa,$twitEmpresa){
-        parent::__construct($nombre,$apellido,$genero,$pais,$moneda,$correo,$contraseña);
-        $this->nombreEmpresa = $nombreEmpresa;
+    public function __construct($nombre,$apellido,$nombreUsuario,$genero,$pais,$moneda,$correo,$contraseña,$dirEmpresa,$latEmpresa,$longEmpresa,$sucursalesEmpresa,$logoEmpresa,$bannerEmpresa,$codigoEmpresa,$fbEmpresa,$igEmpresa,$whaEmpresa,$twitEmpresa){
+        parent::__construct($nombre,$apellido,$nombreUsuario,$genero,$pais,$moneda,$correo,$contraseña);
         $this->dirEmpresa = $dirEmpresa;
         $this->latEmpresa = $latEmpresa;
         $this->longEmpresa = $longEmpresa;
-        $this->planEmpresa = $planEmpresa;
+        $this->sucursalesEmpresa = $sucursalesEmpresa;
         $this->logoEmpresa = $logoEmpresa;
         $this->bannerEmpresa = $bannerEmpresa;
         $this->codigoEmpresa = $codigoEmpresa;
@@ -79,14 +77,14 @@ class Empresa extends Usuario{
         return $this;
     }
  
-    public function getPlanEmpresa()
+    public function getSucursalesEmpresa()
     {
-        return $this->planEmpresa;
+        return $this->sucursalesEmpresa;
     }
  
-    public function setPlanEmpresa($planEmpresa)
+    public function setSucursalesEmpresa($sucursalesEmpresa)
     {
-        $this->planEmpresa = $planEmpresa;
+        $this->sucursalesEmpresa = $sucursalesEmpresa;
 
         return $this;
     }
@@ -175,24 +173,73 @@ class Empresa extends Usuario{
         return $this;
     }
     
-    public function obtenerEmpresa(){
-        
+    public function obtenerEmpresa($db, $id){
+        $respuesta = $db->getReference('empresas')
+            ->getChild($id)
+            ->getValue();
+
+        echo json_encode($respuesta);
     }
 
-    public function obtenerEmpresas(){
-        
+    public function obtenerEmpresas($db){
+        $respuesta = $db->getReference('empresas')
+            ->getSnapshot()
+            ->getValue();
+
+        echo json_encode($respuesta);
+    }
+    
+    public function crearEmpresa($db){
+        $empresa = $this->obtenerInfo();
+        $respuesta = $db->getReference('empresas')
+            ->push($empresa);
+               
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al guardar el registro"}';
+    }
+    
+    public function actualizarEmpresa($db, $id){
+        $respuesta = $db->getReference('empresas')
+            ->getChild($id)
+            ->set($this->obtenerInfo());
+            
+        if ($respuesta->getKey() != null)
+            return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';
+        else 
+            return '{"mensaje":"Error al actualizar el registro"}';
+
     }
 
-    public function guardarEmpresa(){
-
+    public function eliminarEmpresa($db, $id){
+        $db->getReference('empresas')
+            ->getChild($id)
+            ->remove();
+        echo '{"mensaje":"Se eliminó el elemento '.$id.'"}';
     }
 
-    public function actualizarEmpresa(){
-
-    }
-
-    public function eliminarEmpresa(){
-
+    public function obtenerInfo(){
+        $datos['nombre'] = parent::getNombre();
+        $datos['apellido'] = parent::getApellido();
+        $datos['nombreEmpresa'] = parent::getNombreUsuario();
+        $datos['plan'] = parent::getGenero();
+        $datos['pais'] = parent::getPais();
+        $datos['moneda'] = parent::getMoneda();
+        $datos['correo'] = parent::getCorreo();
+        $datos['contraseña'] = parent::getContraseña();
+        $datos['dirEmpresa'] = $this->dirEmpresa;
+        $datos['latEmpresa'] = $this->latEmpresa;
+        $datos['longEmpresa'] = $this->longEmpresa;
+        $datos['sucursalesEmpresa'] = $this->sucursalesEmpresa;
+        $datos['logoEmpresa'] = $this->logoEmpresa;
+        $datos['bannerEmpresa'] = $this->bannerEmpresa;
+        $datos['codigoEmpresa'] = $this->codigoEmpresa;
+        $datos['fbEmpresa'] = $this->fbEmpresa;
+        $datos['igEmpresa'] = $this->igEmpresa;
+        $datos['whaEmpresa'] = $this->whaEmpresa;
+        $datos['twitEmpresa'] = $this->twitEmpresa;
+        return $datos;
     }
 }
     

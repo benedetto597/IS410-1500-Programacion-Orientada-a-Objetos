@@ -22,7 +22,7 @@ class Cliente extends Usuario{
     }
     
     public function obtenerCliente($db, $id){
-        $respuesta = $db->getReference('administradores')
+        $respuesta = $db->getReference('clientes')
             ->getChild($id)
             ->getValue();
 

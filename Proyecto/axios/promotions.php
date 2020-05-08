@@ -1,26 +1,30 @@
 <?php
+    header("Content-Type: application/json");
     include_once('../class/class-database.php');
     include_once('../class/class-promotions.php');
     
-    header("Content-Type: application/json");
+    $database = new Database();
     switch($_SERVER['REQUEST_METHOD']){
         case 'POST':
             $_POST = json_decode(file_get_contents('php://input'),true);
-            $resultado["mensaje"] = "Guardar usuario, informacion:". json_encode($_POST);
-            echo json_encode($resultado);
+            $promocion = new Promocion($_POST["product"], $_POST["branch"], $_POST["realPrice"], $_POST["discount"],$_POST["discountPrice"], $_POST["start"],  $_POST["end"]);
+            echo $promocion->crearPromocion($database->getDB());
+            
         break;
         case 'GET':
             if (isset($_GET['id'])){
-                $resultado["mensaje"] = "Retornar el usuario con el id: " . $_GET['id'];
-                echo json_encode($resultado);
+                Promocion::obtenerPromocion($database->getDB(), $_GET['id']);
             }else{
-                $resultado["mensaje"] = "Retornar todos los usuarios";
-                echo json_encode($resultado);
+                Promocion::obtenerPromociones($database->getDB());
             }
         break;
+        case 'PUT':
+            $_PUT = json_decode(file_get_contents('php://input'),true);
+            $promocion = new Promocion($_PUT["product"], $_PUT["branch"], $_PUT["realPrice"], $_PUT["discount"],$_PUT["discountPrice"], $_PUT["start"],  $_PUT["end"]);
+            echo $promocion->actualizarPromocion($database->getDB(),$_GET['id']);
+        break;
         case 'DELETE':
-            $resultado["mensaje"] = "Eliminar un usuario con el id: ".$_GET['id'];
-            echo json_encode($resultado);
+            Promocion::eliminarPromocion($database->getDB(),$_GET['id']);
         break;
     }
 ?>

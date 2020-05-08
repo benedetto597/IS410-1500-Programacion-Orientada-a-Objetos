@@ -107,13 +107,41 @@ function ValidateForm() {
         companyUser.banner = document.getElementById('banner-file').value;
 
         console.log(companyUser);
+        axios({
+            method: 'POST',
+            url: '../axios/companies.php',
+            responseType: 'json',
+            data: companyUser
+        }).then(resAdmin =>{
+            window.location.href = '../profiles/profile-company.html';
+        }).catch(error =>{
+            if (error.response) {
+                /*
+                 * The request was made and the server responded with a
+                 * status code that falls out of the range of 2xx
+                 */
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                /*
+                 * The request was made but no response was received, `error.request`
+                 * is an instance of XMLHttpRequest in the browser and an instance
+                 * of http.ClientRequest in Node.js
+                 */
+                console.log(error.request);
+            } else {
+                // Something happened in setting up the request and triggered an Error
+                console.log('Error', error.message);
+            }
+            console.log(error);
+        });
     }
 }
 
 var planSelected;
 
 function ValidateFirstName() {
-    let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
     if (nums.test(document.getElementById('first-name-company').value) == true || symbols.test(document.getElementById('first-name-company').value) == true) {
@@ -136,7 +164,6 @@ function ValidateFirstName() {
 }
 
 function ValidateLastName() {
-    let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
     if ( nums.test(document.getElementById('last-name-company').value) == true || symbols.test(document.getElementById('last-name-company').value) == true) {
@@ -183,7 +210,7 @@ function ValidateCompanyName() {
 function ValidateCompanyDir() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
-    if (chars.test(document.getElementById('address-company').value) == true || symbols.test(document.getElementById('address-company').value) == true) {
+    if (chars.test(document.getElementById('address-company').value) == false || symbols.test(document.getElementById('address-company').value) == true) {
         document.getElementById('address-company').value = '';
         document.getElementById('address-company').style.borderColor = 'red';
         document.getElementById('address-company').placeholder = 'Solo usar letras y números';
@@ -280,9 +307,9 @@ function ValidateCompanyIg() {
 }
 
 function ValidateCompanyWha() {
+    let chars = /([A-Za-z])\w+/;
     let structure = /([0-9]{8})/;
-    console.log(structure.test(document.getElementById('whatsapp-company').value));
-    if (document.getElementById('whatsapp-company').value == '' || structure.test(document.getElementById('whatsapp-company').value) == false) {
+    if (document.getElementById('whatsapp-company').value == '' || structure.test(document.getElementById('whatsapp-company').value) == false || chars.test(document.getElementById('whatsapp-company').value) == true) {
         document.getElementById('whatsapp-company').value = '';
         document.getElementById('whatsapp-company').style.borderColor = 'red';
         document.getElementById('whatsapp-company').placeholder = 'Ingrese WhatsApp: 99839932';
@@ -316,38 +343,32 @@ function ValidateCode() {
         if (planSelected.options[planSelected.selectedIndex].value == 'Regular') {
             //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
             document.getElementById('number-employed-company').value = 3000;
-            document.getElementById('code-alert').innerHTML = ``;
             return true;
         }
         if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
             //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
             document.getElementById('number-employed-company').value = 2000;
-            document.getElementById('code-alert').innerHTML = ``;
             return true;
         }
-        if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
+        if (planSelected.options[planSelected.selectedIndex].value == 'Platinum') {
             //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-            document.getElementById('number-employed-company').value = 2000;
-            document.getElementById('code-alert').innerHTML = ``;
+            document.getElementById('number-employed-company').value =1000;
             return true;
         }
-
-        document.getElementById('code-alert').innerHTML = `Debe seleccione un Plan para generar el código de Acceso`;
         return false;
     }
 }
 
 function ValidateEmail() {
     let email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    if (email.test(document.getElementById('email-employed-company').value) == true || email.test(document.getElementById('email-employed-company').value) == '') {
+    if (email.test(document.getElementById('email-employed-company').value) == false || email.test(document.getElementById('email-employed-company').value) == '') {
         document.getElementById('email-employed-company').value = '';
         document.getElementById('email-employed-company').style.borderColor = 'red';
         document.getElementById('email-employed-company').placeholder = 'Ingrese un correo Valido';
-        return true;
+        return false;
     } else {
         document.getElementById('email-employed-company').style.borderColor = 'grey';
-        document.getElementById('email-company-alert').innerHTML = `Ingrese un correo valido`;
-        return false;
+        return true;
     }
 }
 
@@ -371,8 +392,8 @@ function ValidatePasswordRepeat() {
         document.getElementById('password-company-repeat').style.color = 'red';
         return false;
     } else {
-        document.getElementById('password-company-repeat').style.color = 'black';
         document.getElementById('pass-repeat-company-alert').innerHTML = ``;
+        document.getElementById('password-company-repeat').style.color = 'black';
         return true;
     }
     return true;
