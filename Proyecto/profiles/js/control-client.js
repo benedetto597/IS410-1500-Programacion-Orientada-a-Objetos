@@ -90,6 +90,19 @@ var favoriteCompanies = [{
     email: "example@example.com"
 }];
 
+function logout(){
+    axios({
+        method: 'GET',
+        url: '../backend/axios/clients.php',
+        responseType: 'json',
+    }).then(resAdmin =>{
+        window.location.href = '../index.html';
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
+
 function ShowInfo() {
     document.getElementById('btn-update-info').disabled = true;
 

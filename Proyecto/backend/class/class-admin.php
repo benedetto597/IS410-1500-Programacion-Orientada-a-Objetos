@@ -49,7 +49,7 @@ class Administrador extends Usuario{
         return $this;
     }
     
-    public function obtenerAdmin($db, $id){
+    public static function obtenerAdmin($db, $id){
         $respuesta = $db->getReference('administradores')
             ->getChild($id)
             ->getValue();
@@ -57,7 +57,7 @@ class Administrador extends Usuario{
         echo json_encode($respuesta);
     }
 
-    public function obtenerAdmins($db){
+    public static function obtenerAdmins($db){
         $respuesta = $db->getReference('administradores')
             ->getSnapshot()
             ->getValue();
@@ -87,7 +87,7 @@ class Administrador extends Usuario{
             return '{"mensaje":"Error al actualizar el registro"}';
     }
 
-    public function eliminarAdmin($db, $id){
+    public static function eliminarAdmin($db, $id){
         $db->getReference('administradores')
             ->getChild($id)
             ->remove();
@@ -97,16 +97,64 @@ class Administrador extends Usuario{
     public function obtenerInfo(){
         $datos['nombre'] = parent::getNombre();
         $datos['apellido'] = parent::getApellido();
-        $datos['nombreUsuario'] = parent::getNombreUsuario();
+        $datos['nombreUsuario'] = parent::getUsuario();
         $datos['genero'] = parent::getGenero();
         $datos['pais'] = parent::getPais();
         $datos['moneda'] = parent::getMoneda();
         $datos['correo'] = parent::getCorreo();
-        $datos['contraseña'] = parent::getContraseña();
-        $datos['codigoAdmin'] = $this->codigoAdmin;
+        $datos['contraseña'] = password_hash(parent::getContraseña(), PASSWORD_DEFAULT);
+        $datos['codigoAdmin'] = password_hash($this->codigoAdmin, PASSWORD_DEFAULT);
         $datos['fotoAdmin'] = $this->fotoAdmin;
         $datos['coverAdmin'] = $this->coverAdmin;
         return $datos;
+    }
+
+    public static function login($codigo, $admin, $correo, $contraseña, $db){
+        $resultado = $db->getReference('administradores')
+            ->orderByChild('correo')
+            ->equalTo($correo)
+            ->getSnapshot()
+            ->getValue();
+
+        $key = array_key_first($resultado);
+        $contra = password_verify($contraseña, $resultado[$key]['contraseña']);
+        $cod = password_verify($codigo, $resultado[$key]['codigoAdmin']);
+        $valido = $contra * $cod;
+        $respuesta['valido'] = $valido==1?true:false;
+        if($respuesta['valido']){
+            $respuesta['key'] = $key;
+            $respuesta['correo'] = $resultado[$key]["correo"];
+            //Generar cadena de 16 bytes
+            $respuesta['token'] = bin2hex(openssl_random_pseudo_bytes(16));
+            setcookie('key', $respuesta["key"],time() + (86400 * 30), "/"); 
+            setcookie('correo', $respuesta["correo"],time() + (86400 * 30), "/"); 
+            setcookie('token', $respuesta["token"],time() + (86400 * 30), "/"); 
+            //Guardado de token de autenticación
+            $db->getReference('administradores/'.$key.'/token')
+                ->set($respuesta["token"]);
+            }
+            echo json_encode($respuesta);
+        }
+        
+    public static function logout(){
+        setcookie('key', $respuesta["key"],time() -3600, "/"); 
+        setcookie('correo', $respuesta["correo"],time() -3600, "/"); 
+        setcookie('token', $respuesta["token"],time() -3600, "/");
+    }
+
+    public static function verificarAutenticacion($db){
+        if(!isset($_COOKIE['key']))
+            return false;
+            
+        $respuesta = $db->getReference('administradores')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+
+        if($respuesta["token"]==$_COOKIE["token"]){
+            return true;
+        }else{
+            return false;
+        }        
     }
 }
 ?>

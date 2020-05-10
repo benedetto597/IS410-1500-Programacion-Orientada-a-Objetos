@@ -1,3 +1,11 @@
+<?php 
+    //Verificando si esta logeado el usuario
+    require_once('backend/class/class-clients.php');
+    require_once('backend/class/class-database.php');
+    $database = new Database();
+    if(!Cliente::verificarAutenticacion($database->getDB()))
+        header("Location: index.html");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -303,8 +311,9 @@
                 </div>
             </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>    <script src="js/bootstrap.min.js"></script>
     <script src="js/control-cart.js"></script>
 </body>
 </html>

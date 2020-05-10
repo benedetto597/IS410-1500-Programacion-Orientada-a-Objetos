@@ -41,6 +41,18 @@ var suscribeCompanies = [{
     branches: 4
 }];
 
+function logout(){
+    axios({
+        method: 'GET',
+        url: '../backend/axios/admin.php?action=logout',
+        responseType: 'json',
+    }).then(resAdmin =>{
+        window.location.href = '../index.html';
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
 function ShowInfo() {
     document.getElementById('btn-update-info-admin').disabled = true;
 

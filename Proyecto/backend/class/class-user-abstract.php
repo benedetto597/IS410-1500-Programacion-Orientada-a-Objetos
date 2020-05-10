@@ -3,17 +3,17 @@
 abstract class Usuario{
     private $nombre;
     private $apellido;
-    private $nombreUsuario;
+    private $usuario;
     private $genero;
     private $pais;
     private $moneda;
     private $correo;
     private $contraseña;
 
-    public function __construct($nombre,$apellido,$nombreUsuario,$genero,$pais,$moneda,$correo,$contraseña){
+    public function __construct($nombre,$apellido,$usuario,$genero,$pais,$moneda,$correo,$contraseña){
         $this->nombre = $nombre;
         $this->apellido = $apellido;
-        $this->$nombreUsuario = $nombreUsuario;
+        $this->usuario = $usuario;
         $this->genero = $genero;
         $this->pais = $pais;
         $this->moneda = $moneda;
@@ -41,18 +41,6 @@ abstract class Usuario{
     public function setApellido($apellido)
     {
         $this->apellido = $apellido;
-
-        return $this;
-    }
-
-    public function getNombreUsuario()
-    {
-        return $this->nombreUsuario;
-    }
- 
-    public function setNombreUsuario($nombreUsuario)
-    {
-        $this->nombreUsuario = $nombreUsuario;
 
         return $this;
     }
@@ -117,6 +105,17 @@ abstract class Usuario{
         return $this;
     }
 
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
 }
     
 ?>

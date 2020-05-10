@@ -109,7 +109,7 @@ function ValidateForm() {
         console.log(companyUser);
         axios({
             method: 'POST',
-            url: '../axios/companies.php',
+            url: '../backend/axios/companies.php',
             responseType: 'json',
             data: companyUser
         }).then(resAdmin =>{

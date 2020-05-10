@@ -29,8 +29,28 @@ function ValidateClient() {
     let pass = ValidatePassClient();
 
     if (user == true && pass == true && email == true) {
-        //aquí la petición asincrona
-        console.log(loginClient)
+        axios({
+            method: 'POST',
+            url: 'backend/axios/clients.php?action=login',
+            responseType: 'json',
+            data: loginClient
+        }).then(resClient =>{
+            if(resClient.data.valido == true){
+                document.getElementById('login-user-client').style.borderColor = 'grey';
+                document.getElementById('login-pass-client').style.borderColor = 'grey';
+                document.getElementById('email-login-client').style.borderColor = 'grey';
+                document.getElementById('warning-client').innerHTML = '';
+                window.location.href = 'profiles/profile-client.html';
+            }else{
+                document.getElementById('login-user-client').style.borderColor = 'red';
+                document.getElementById('login-pass-client').style.borderColor = 'red';
+                document.getElementById('email-login-client').style.borderColor = 'red';
+                document.getElementById('warning-client').innerHTML = 'Credenciales no validas';
+
+            }
+        }).catch(error =>{
+            console.log(error);
+        });
     }
 }
 
@@ -38,10 +58,8 @@ function ValidateCompany() {
     let code = ValidateCodeCompany();
     let email = ValidateEmailCompany();
     let pass = ValidatePassCompany();
-    console.log(code,email,pass);
     if (code == true && pass == true && email == true) {
-        //aquí la petición asincrona
-        console.log(loginCompany);
+        console.log(code,email,pass);
     }
 }
 
@@ -52,8 +70,32 @@ function ValidateAdmin() {
     let pass = ValidatePassAdmin();
 
     if (code == true && pass == true && user == true && email == true) {
-        //aquí la petición asincrona
-        console.log(loginAdmin);
+        
+        axios({
+            method: 'POST',
+            url: 'backend/axios/admin.php?action=login',
+            responseType: 'json',
+            data: loginAdmin
+        }).then(resAdmin =>{
+            if(resAdmin.data.valido == true){
+                document.getElementById('login-user-admin').style.borderColor = 'grey';
+                document.getElementById('login-pass-admin').style.borderColor = 'grey';
+                document.getElementById('login-code-admin').style.borderColor = 'grey';
+                document.getElementById('email-login-admin').style.borderColor = 'grey';
+                document.getElementById('warning-admin').innerHTML = '';
+                window.location.href = 'profiles/profile-admin.html';
+            }else{
+                document.getElementById('login-user-admin').style.borderColor = 'red';
+                document.getElementById('login-pass-admin').style.borderColor = 'red';
+                document.getElementById('login-code-admin').style.borderColor = 'red';
+                document.getElementById('email-login-admin').style.borderColor = 'red';
+                document.getElementById('warning-admin').innerHTML = 'Credenciales no validas';
+
+            }
+        }).catch(error =>{
+            console.log(error);
+        });
+   
     }
 }
 

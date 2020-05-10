@@ -1,12 +1,12 @@
 <?php
 
 //Código para conectar con el servidor
-    require_once('../vendor/autoload.php');
+    require_once(__DIR__.'../../vendor/autoload.php');
 
     use Kreait\Firebase\Factory;
 
     class Database{
-        private $keyFile = '../secret/proyecto-poo-271914-946d58aed0ea.json';
+        private $keyFile = __DIR__.'../../secret/proyecto-poo-271914-946d58aed0ea.json';
         private $URI = 'https://proyecto-poo-271914.firebaseio.com/';
         private $db;
 
@@ -22,13 +22,4 @@
             return $this->db;
         }
     }
-
-    /* Agregar a la base de datos
-    $newPost = $database
-        ->getReference('users')
-        ->push([
-            'firstName' => 'Juan',
-            'lastName' => 'Perez'
-        ]);
-        */
     ?>
