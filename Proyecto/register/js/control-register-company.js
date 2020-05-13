@@ -45,7 +45,16 @@ var companyUser = {
     code: "",
     email: "",
     pass: "",
+    branches: []
 };
+
+var companyBranch = {
+    branch: "Principal",
+    name: "",
+    direction: "",
+    latitud: "",
+    longitud: ""
+}
 
 
 function ValidateForm() {
@@ -105,8 +114,12 @@ function ValidateForm() {
         companyUser.pass = document.getElementById('password-company-repeat').value;
         companyUser.logo = document.getElementById('logo-file').value;
         companyUser.banner = document.getElementById('banner-file').value;
-
-        console.log(companyUser);
+        companyBranch.name = companyUser.companyName;
+        companyBranch.direction = companyUser.companyDir;
+        companyBranch.latitud = companyUser.companyLat;
+        companyBranch.longitud = companyUser.companyLong;
+        companyUser.branches.push(companyBranch);
+        
         axios({
             method: 'POST',
             url: '../backend/axios/companies.php',
@@ -115,25 +128,6 @@ function ValidateForm() {
         }).then(resAdmin =>{
             window.location.href = '../profiles/profile-company.html';
         }).catch(error =>{
-            if (error.response) {
-                /*
-                 * The request was made and the server responded with a
-                 * status code that falls out of the range of 2xx
-                 */
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                /*
-                 * The request was made but no response was received, `error.request`
-                 * is an instance of XMLHttpRequest in the browser and an instance
-                 * of http.ClientRequest in Node.js
-                 */
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request and triggered an Error
-                console.log('Error', error.message);
-            }
             console.log(error);
         });
     }

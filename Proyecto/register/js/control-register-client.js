@@ -39,16 +39,19 @@ function ValidateForm() {
         clientUser.email = document.getElementById('email-client').value;
         clientUser.pass = document.getElementById('password-client-repeat').value;
         
+        //Crear el usuario en la base de datos
         axios({
             method: 'POST',
             url: '../backend/axios/clients.php',
             responseType: 'json',
             data: clientUser
         }).then(resClient =>{
-            window.location.href = '../index.html';
+            window.location.href = '../profiles/profile-client.html';
         }).catch(error =>{
             console.log(error);
         });
+
+        //Iniciar sesion con otra petición asincrona
 
     }
 }

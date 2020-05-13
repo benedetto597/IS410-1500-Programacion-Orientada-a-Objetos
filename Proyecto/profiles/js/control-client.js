@@ -93,7 +93,7 @@ var favoriteCompanies = [{
 function logout(){
     axios({
         method: 'GET',
-        url: '../backend/axios/clients.php',
+        url: '../backend/axios/clients.php?action=logout',
         responseType: 'json',
     }).then(resAdmin =>{
         window.location.href = '../index.html';

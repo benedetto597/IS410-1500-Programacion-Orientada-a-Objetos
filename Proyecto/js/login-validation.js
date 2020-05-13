@@ -59,7 +59,28 @@ function ValidateCompany() {
     let email = ValidateEmailCompany();
     let pass = ValidatePassCompany();
     if (code == true && pass == true && email == true) {
-        console.log(code,email,pass);
+        axios({
+            method: 'POST',
+            url: 'backend/axios/companies.php?action=login',
+            responseType: 'json',
+            data: loginCompany
+        }).then(resCompany =>{
+            if(resCompany.data.valido == true){
+                document.getElementById('login-code-company').style.borderColor = 'grey';
+                document.getElementById('login-pass-company').style.borderColor = 'grey';
+                document.getElementById('email-login-company').style.borderColor = 'grey';
+                document.getElementById('warning-company').innerHTML = '';
+                window.location.href = 'profiles/profile-company.html';
+            }else{
+                document.getElementById('login-code-company').style.borderColor = 'red';
+                document.getElementById('login-pass-company').style.borderColor = 'red';
+                document.getElementById('email-login-company').style.borderColor = 'red';
+                document.getElementById('warning-company').innerHTML = 'Credenciales no validas';
+
+            }
+        }).catch(error =>{
+            console.log(error);
+        });
     }
 }
 
@@ -128,7 +149,7 @@ function ValidatePassClient() {
 }
 
 function ValidateCodeCompany() {
-    if (document.getElementById('login-code-company').value == '' || document.getElementById('login-code-company').value < 1000 || document.getElementById('login-code-company').value > 3999 || all.test(document.getElementById('login-code-company').value) == true) {
+    if (document.getElementById('login-code-company').value == '' || document.getElementById('login-code-company').value < 1000 || document.getElementById('login-code-company').value > 3999 || symbols.test(document.getElementById('login-code-company').value) == true) {
         document.getElementById('login-code-company').value = '';
         document.getElementById('login-code-company').style.borderColor = 'red';
         document.getElementById('login-code-company').placeholder = 'Código incorrecto';

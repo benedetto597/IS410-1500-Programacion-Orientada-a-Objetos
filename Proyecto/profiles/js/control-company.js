@@ -614,3 +614,17 @@ function ValidatePlan(){
         return true;
     }
 }
+
+// ---------------------------------------- Sesion ---------------------------------------- //
+
+function logout(){
+    axios({
+        method: 'GET',
+        url: '../backend/axios/companies.php?action=logout',
+        responseType: 'json',
+    }).then(resAdmin =>{
+        window.location.href = '../index.html';
+    }).catch(error =>{
+        console.log(error);
+    });
+}

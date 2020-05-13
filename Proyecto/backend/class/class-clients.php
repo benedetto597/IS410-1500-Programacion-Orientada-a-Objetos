@@ -46,6 +46,7 @@ class Cliente extends Usuario{
             return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
         else 
             return '{"mensaje":"Error al guardar el registro"}';
+
     }
 
     public function actualizarCliente($db, $id){
@@ -98,17 +99,17 @@ class Cliente extends Usuario{
             setcookie('correo', $respuesta["correo"],time() + (86400 * 30), "/"); 
             setcookie('token', $respuesta["token"],time() + (86400 * 30), "/"); 
             //Guardado de token de autenticación
-            $db->getReference('administradores/'.$key.'/token')
+            $db->getReference('clientes/'.$key.'/token')
                 ->set($respuesta["token"]);
             }
             echo json_encode($respuesta);
         }
         
-    public static function logout(){
-        setcookie('key', $respuesta["key"],time() -3600, "/"); 
-        setcookie('correo', $respuesta["correo"],time() -3600, "/"); 
-        setcookie('token', $respuesta["token"],time() -3600, "/");
-    }
+        public static function logout(){
+            setcookie('key', $respuesta["key"],time() -3600, "/"); 
+            setcookie('correo', $respuesta["correo"],time() -3600, "/"); 
+            setcookie('token', $respuesta["token"],time() -3600, "/");
+        }
 
     public static function verificarAutenticacion($db){
         if(!isset($_COOKIE['key']))
