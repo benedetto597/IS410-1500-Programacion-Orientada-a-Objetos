@@ -36,8 +36,20 @@ function ValidateForm() {
         productPromotion.start = [document.getElementById('date-init-promotion').value, document.getElementById('time-init-promotion').value];
         productPromotion.end = [document.getElementById('date-end-promotion').value, document.getElementById('time-end-promotion').value];
         productPromotion.branch = $("#branch-select-promotion").val();
+
+        axios({
+            method: 'POST',
+            url: '../backend/axios/promotions.php',
+            responseType: 'json',
+            data: productPromotion
+        }).then(res =>{
+            console.log(res.data);
+            //window.location.href = '../profiles/profile-company.html';
+        }).catch(error =>{
+            console.log(error);
+        });
     }
-    console.log(productPromotion);
+    
 }
 
 var selectedProduct;
@@ -124,4 +136,54 @@ function ValidateEnd() {
         return true;
     }
     return false;
+}
+
+function showInfo(){
+
+    axios({
+        method: 'GET',
+        url: '../backend/axios/branch.php',
+        responseType: 'json'
+    }).then(resBranch =>{
+
+        let branches = resBranch.data;
+        for(let i = 0; i<branches.length; i++){
+            document.getElementById('branch-select-promotion').innerHTML += `
+                <option value="${branches[i].nombreSucursal}">${branches[i].nombreSucursal}</option>
+            `;
+        }
+
+        fillInfo(branches);
+        
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
+function fillInfo(branches){
+    axios({
+        method: 'GET',
+        url: '../backend/axios/products.php',
+        responseType: 'json'
+    }).then(resProducts =>{
+
+        let products = resProducts.data;
+        let values = Object.values(products);
+        for(let i = 0; i<values.length; i++){
+            let count = 0;
+            for(let j = 0; j<values[i].sucursalProducto.length; j++){   
+                if(count < branches.length){
+                    while(count != branches.length){
+                        if(values[i].sucursalProducto[j] == branches[count].nombreSucursal){
+                            document.getElementById('product-select-promotion').innerHTML +=
+                            `<option value="${i}">${values[i].nombreProducto}</option>`;
+                        }
+                        count++;
+                    } 
+                }
+            }
+        }
+    }).catch(error =>{
+        console.log(error);
+    });
 }

@@ -7,6 +7,7 @@ class Producto{
     private $categoriaProducto;
     private $descripcionProducto;
     private $sucursalProducto;
+    private $promocionesProducto;
 
     public function __construct(
     $nombreProducto,
@@ -14,7 +15,8 @@ class Producto{
     $precioProducto,
     $categoriaProducto,
     $descripcionProducto,
-    $sucursalProducto){
+    $sucursalProducto,
+    $promocionesProducto){
 
         $this->nombreProducto = $nombreProducto;
         $this->imgProducto = $imgProducto;
@@ -22,6 +24,7 @@ class Producto{
         $this->categoriaProducto = $categoriaProducto;
         $this->descripcionProducto = $descripcionProducto;
         $this->sucursalProducto = $sucursalProducto;
+        $this->promocionesProducto = $promocionesProducto;
     }
  
     public function getNombreProducto()
@@ -95,8 +98,21 @@ class Producto{
 
         return $this;
     }
+    
+    public function getPromocionesProducto()
+    {
+        return $this->promocionesProducto;
+    }
+
+    public function setPromocionesProducto($promocionesProducto)
+    {
+        $this->promocionesProducto = $promocionesProducto;
+
+        return $this;
+    }
 
     public function obtenerProducto($db, $id){
+        
         $respuesta = $db->getReference('productos')
             ->getChild($id)
             ->getValue();
@@ -148,7 +164,23 @@ class Producto{
         $datos['categoriaProducto'] = $this->categoriaProducto;
         $datos['descripcionProducto'] = $this->descripcionProducto;
         $datos['sucursalProducto'] = $this->sucursalProducto;
+        $datos['promocionesProductos'] = $this->promocionesProductos;
         return $datos;
+    }
+
+    public static function verificarAutenticacion($db){
+        if(!isset($_COOKIE['key']))
+            return false;
+            
+        $respuesta = $db->getReference('empresas')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+
+        if($respuesta["token"]==$_COOKIE["token"]){
+            return true;
+        }else{
+            return false;
+        }        
     }
 }
 ?>

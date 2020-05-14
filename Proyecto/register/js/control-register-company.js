@@ -49,11 +49,11 @@ var companyUser = {
 };
 
 var companyBranch = {
-    branch: "Principal",
-    name: "",
-    direction: "",
-    latitud: "",
-    longitud: ""
+    Sucursal: "Principal",
+    nombreSucursal: "",
+    direccionSucursal: "",
+    latitudSucursal: "",
+    longitudSucursal: ""
 }
 
 
@@ -114,10 +114,10 @@ function ValidateForm() {
         companyUser.pass = document.getElementById('password-company-repeat').value;
         companyUser.logo = document.getElementById('logo-file').value;
         companyUser.banner = document.getElementById('banner-file').value;
-        companyBranch.name = companyUser.companyName;
-        companyBranch.direction = companyUser.companyDir;
-        companyBranch.latitud = companyUser.companyLat;
-        companyBranch.longitud = companyUser.companyLong;
+        companyBranch.nombreSucursal = companyUser.companyName;
+        companyBranch.direccionSucursal = companyUser.companyDir;
+        companyBranch.latitudSucursal = companyUser.companyLat;
+        companyBranch.longitudSucursal = companyUser.companyLong;
         companyUser.branches.push(companyBranch);
         
         axios({

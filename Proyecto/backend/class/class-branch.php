@@ -5,12 +5,14 @@ class Sucursal{
     private $dirSucursal;
     private $latSucursal;
     private $longSucursal;
+    private $productosSucursal;
 
-    public function __construct($nombreSucursal,$dirSucursal,$latSucursal,$longSucursal){
+    public function __construct($nombreSucursal,$dirSucursal,$latSucursal,$longSucursal,$productosSucursal){
         $this->nombreSucursal = $nombreSucursal;
         $this->dirSucursal = $dirSucursal;
         $this->latSucursal = $latSucursal;
         $this->longSucursal = $longSucursal;
+        $this->productosSucursal = $productosSucursal;
     }
  
     public function getNombreSucursal()
@@ -60,17 +62,30 @@ class Sucursal{
 
         return $this;
     }
+
+    public function getProductosSucursal()
+    {
+        return $this->productosSucursal;
+    }
+
+    public function setProductosSucursal($productosSucursal)
+    {
+        $this->productosSucursal = $productosSucursal;
+
+        return $this;
+    }
     
-    public function obtenerSucursal($db, $id){
-        $respuesta = $db->getReference('sucursales')
+    public static function obtenerSucursal($db, $id){
+        //El id es el número de posicion en la lista 
+        $respuesta = $db->getReference('empresas/'.$_COOKIE['key'].'/sucursalesEmpresa')
             ->getChild($id)
             ->getValue();
 
         echo json_encode($respuesta);
     }
 
-    public function obtenerSucursales($db){
-        $respuesta = $db->getReference('sucursales')
+    public static function obtenerSucursales($db){
+        $respuesta = $db->getReference('empresas/'.$_COOKIE['key'].'/sucursalesEmpresa')
             ->getSnapshot()
             ->getValue();
 
@@ -79,28 +94,32 @@ class Sucursal{
 
     public function crearSucursal($db){
         $sucursal = $this->obtenerInfo();
-        $respuesta = $db->getReference('sucursales')
-            ->push($sucursal);
-               
-        if ($respuesta->getKey() != null)
-            return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
-        else 
-            return '{"mensaje":"Error al guardar el registro"}';
+        $resultado = $db->getReference('empresas')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+        
+        $resultado['sucursalesEmpresa'][] = $sucursal;
+        $respuesta = $db->getReference('empresas/'.$_COOKIE['key'].'/sucursalesEmpresa')
+            ->set($resultado['sucursalesEmpresa']);
+
+        return '{"mensaje":"Registro almacenado"}';
     }
 
     public function actualizarSucursal($db, $id){
-        $respuesta = $db->getReference('sucursales')
-            ->getChild($id)
-            ->set($this->obtenerInfo());
-            
-        if ($respuesta->getKey() != null)
-            return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';
-        else 
-            return '{"mensaje":"Error al actualizar el registro"}';
+        $sucursal = $this->obtenerInfo();
+        $resultado = $db->getReference('empresas')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+        
+        $resultado['sucursalesEmpresa'][$id] = $sucursal;
+        $respuesta = $db->getReference('empresas/'.$_COOKIE['key'].'/sucursalesEmpresa')
+            ->set($resultado['sucursalesEmpresa']);
+
+        return '{"mensaje":"Registro actualizado","key":"'.$_COOKIE['key'].'"}';
     }
 
-    public function eliminarSucursal($db, $id){
-        $db->getReference('sucursales')
+    public static function eliminarSucursal($db, $id){
+        $respuesta = $db->getReference('empresas/'.$_COOKIE['key'].'/sucursalesEmpresa')
             ->getChild($id)
             ->remove();
         echo '{"mensaje":"Se eliminó el elemento '.$id.'"}';
@@ -108,10 +127,26 @@ class Sucursal{
 
     public function obtenerInfo(){
         $datos['nombreSucursal'] = $this->nombreSucursal;
-        $datos['dirSucursall'] = $this->dirSucursal;
-        $datos['latSucursal'] = $this->latSucursal;
-        $datos['longSucursal'] = $this->longSucursal;
+        $datos['direccionSucursal'] = $this->dirSucursal;
+        $datos['latitudSucursal'] = $this->latSucursal;
+        $datos['longitudSucursal'] = $this->longSucursal;
+        $datos['productosSucursal'] = $this->productosSucursal;
         return $datos;
+    }
+
+    public static function verificarAutenticacion($db){
+        if(!isset($_COOKIE['key']))
+            return false;
+            
+        $respuesta = $db->getReference('empresas')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+
+        if($respuesta["token"]==$_COOKIE["token"]){
+            return true;
+        }else{
+            return false;
+        }        
     }
 }
     

@@ -30,7 +30,8 @@ var companyBranch = {
     name: "",
     direction: "",
     latitud: "",
-    longitud: ""
+    longitud: "",
+    products: []
 }
 
 function ValidateForm() {
@@ -39,6 +40,16 @@ function ValidateForm() {
         companyBranch.direction = document.getElementById('address-branch').value;
         companyBranch.latitud = lat;
         companyBranch.longitud = long;
+        axios({
+            method: 'POST',
+            url: '../backend/axios/branch.php',
+            responseType: 'json',
+            data: companyBranch
+        }).then(resBranch =>{
+            window.location.href = '../profiles/profile-company.html';
+        }).catch(error =>{
+            console.log(error);
+        });
     } else {
         ValidateName();
         ValidateDir();

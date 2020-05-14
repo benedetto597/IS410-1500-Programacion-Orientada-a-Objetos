@@ -29,7 +29,7 @@
     </style>
 </head>
 
-<body>
+<body onload="showBranches()">
     <main>
         <!-- Barra de Navegación Primer Parte LandingPage -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -150,7 +150,7 @@
                             <div class="col-md-4">
                                 <b>Precio</b>
                                 <div class="input-group">
-                                    <span class="input-group-addon pt-2 px-2"><b id="currency-company">L</b></span>
+                                    <span class="input-group-addon pt-2 px-2"><b id="currency-company"></b></span>
                                     <input type="number" min="0" max="100000" step="5" data-number-to-fixed="2"
                                         data-number-stepfactor="100" class="form-control currency" id="price-product"
                                         required onchange="ValidatePrice()">
@@ -160,10 +160,7 @@
                             <div class="col-md-8">
                                 <b>Sucursales</b>
                                 <select id="branch-select-product" class="form-control mul-select" multiple="true" style="width:17rem;" required onchange="ValidateBranch()">
-                                    <option selected value="Seleccione Sucursal">Seleccione Sucursal</option>
-                                    <option value="Sucursal">Sucursal</option>
-                                    <option value="Sucursal">Sucursal</option>
-                                    <option value="Sucursal">Sucursal</option>
+                                    <!-- Sucursales de la empresa registrada -->
                                 </select>
                                 <small id="branch-alert" class="form-text text-dark"></small>
                             </div>

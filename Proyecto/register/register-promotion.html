@@ -29,7 +29,7 @@
 
         </style>
 </head>
-<body>
+<body onload="showInfo()">
     <main>
         <!-- Barra de Navegación Primer Parte LandingPage -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -113,7 +113,7 @@
                         <b class="text-white">Producto</b>
                         <select id="product-select-promotion" class="form-control text-dark" onchange="ValidateProduct()">
                             <option selected>Seleccione un Producto</option>
-                            <option >Producto</option>
+                            
                         </select>
                         <small id="select-product-alert" class="form-text text-white"></small>
                     </div>
@@ -155,13 +155,7 @@
                     <div class="form-group col-md-6">
                         <b class="text-white">Sucursal</b>
                         <select class="mul-select" id="branch-select-promotion" multiple="true" style="width:20rem;" required onchange="ValidateBranch()">
-                            <option value="Cambodia">Cambodia</option>
-                            <option value="Khmer">Khmer</option>
-                            <option value="Thiland">Thiland</option>
-                            <option value="Koren">Koren</option>
-                            <option value="China">China</option>
-                            <option value="English">English</option>
-                            <option value="USA">USA</option>
+
                         </select>
                         <small id="select-branch-alert" class="form-text text-white"></small>
                     </div>

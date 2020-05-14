@@ -111,45 +111,75 @@ class Promocion{
     }
 
     public function obtenerPromocion($db, $id){
-        $respuesta = $db->getReference('promociones')
-            ->getChild($id)
-            ->getValue();
-
-        echo json_encode($respuesta);
-    }
-
-    public function obtenerPromociones($db){
-        $respuesta = $db->getReference('promociones')
+        $resultado = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
             ->getSnapshot()
             ->getValue();
 
-        echo json_encode($respuesta);
+        echo json_encode($resultado['promocionesProducto'][$id]);
+    }
+
+    public function obtenerPromociones($db){
+        $resultado = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+
+        echo json_encode($resultado['promocionesProducto']);
     }
 
     public function crearPromocion($db){
+        //Reparar que producto sea un arreglo y que se muestre el precio real y el de oferta (lado del cliente)
         $promocion = $this->obtenerInfo();
-        $respuesta = $db->getReference('promociones')
-            ->push($promocion);
-               
-        if ($respuesta->getKey() != null)
-            return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
+
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+            
+        $key = array_key_first($producto);
+        
+        $producto['promocionesProducto'][] = $promocion;
+        $respuesta = $db->getReference('productos/'.$key.'/promocionesProducto')
+            ->set($producto['promocionesProducto']);
+
+        if ($key != null)
+            return '{"mensaje":"Registro creado","key":"'.$key.'"}';
         else 
-            return '{"mensaje":"Error al guardar el registro"}';
+            return '{"mensaje":"Error al crear el registro"}';
+
     }
 
     public function actualizarPromocion($db, $id){
-        $respuesta = $db->getReference('promociones')
-            ->getChild($id)
-            ->set($this->obtenerInfo());
-            
-        if ($respuesta->getKey() != null)
-            return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';
+        $promocion = $this->obtenerInfo();
+
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+        $key = array_key_first($producto);
+        $producto['promocionesProducto'][$id] = $promocion;
+        $respuesta = $db->getReference('productos/'.$key.'promocionesProducto')
+            ->set($producto['promocionesProducto']);
+
+        if ($key != null)
+            return '{"mensaje":"Registro actualizado","key":"'.$key.'"}';
         else 
             return '{"mensaje":"Error al actualizar el registro"}';
     }
 
     public function eliminarPromocion($db, $id){
-        $db->getReference('promociones')
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+        $key = array_key_first($producto);
+        $respuesta = $db->getReference('productos/'.$key.'promocionesProducto')
             ->getChild($id)
             ->remove();
         echo '{"mensaje":"Se eliminó el elemento '.$id.'"}';
@@ -164,6 +194,21 @@ class Promocion{
         $datos['inicioPromocion'] = $this->inicioPromocion;
         $datos['finPromocion'] = $this->finPromocion;
         return $datos;
+    }
+
+    public static function verificarAutenticacion($db){
+        if(!isset($_COOKIE['key']))
+            return false;
+            
+        $respuesta = $db->getReference('empresas')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+
+        if($respuesta["token"]==$_COOKIE["token"]){
+            return true;
+        }else{
+            return false;
+        }        
     }
 
 }

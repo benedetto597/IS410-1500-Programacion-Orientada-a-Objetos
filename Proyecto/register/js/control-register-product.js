@@ -5,7 +5,8 @@ var product = {
     price:"",
     category: "",
     description: "",
-    branch:""
+    branch:"",
+    promotions:[]
 }
 
 function ValidateForm() {
@@ -23,6 +24,17 @@ function ValidateForm() {
         product.category = document.getElementById('categories-select-product').options[document.getElementById('categories-select-product').selectedIndex].value;
         product.description = document.getElementById('description-product').value;
         product.branch = $("#branch-select-product").val();
+
+        axios({
+            method: 'POST',
+            url: '../backend/axios/products.php',
+            responseType: 'json',
+            data: product
+        }).then(resBranch =>{
+            window.location.href = '../profiles/profile-company.html';
+        }).catch(error =>{
+            console.log(error);
+        });
     }
 }
 
@@ -36,7 +48,6 @@ function ValidateName() {
         return false;
     } else {
         document.getElementById('name-product').style.borderColor = 'grey';
-        document.getElementById('name-product').value = upperLastName;
         return true;
     }
     return false;
@@ -101,4 +112,56 @@ function ValidateBranch() {
         return true;
     }
     return false;
+}
+
+function showBranches(){
+    axios({
+        method: 'GET',
+        url: '../backend/axios/branch.php',
+        responseType: 'json'
+    }).then(resBranch =>{
+        let branches = resBranch.data;
+        for(let i = 0; i<branches.length; i++){
+            document.getElementById('branch-select-product').innerHTML += `
+                <option value="${branches[i].nombreSucursal}">${branches[i].nombreSucursal}</option>
+            `;
+        }
+        
+    }).catch(error =>{
+        console.log(error);
+    });
+
+    let key = readCookie('key');
+
+    axios({
+        method: 'GET',
+        url: `../backend/axios/companies.php?id=${key}`,
+        responseType: 'json'
+    }).then(resBranch =>{
+        let company = resBranch.data;
+        if(company.moneda == 'Lempira')
+            document.getElementById('currency-company').innerHTML = 'L';
+        else
+            document.getElementById('currency-company').innerHTML = '$';
+    }).catch(error =>{
+        console.log(error);
+    });
+
+}
+
+//Leer un elemento especifico de las cookies
+function readCookie(name) {
+
+    let nameEQ = name + "="; 
+    let ca = document.cookie.split(';');
+  
+    for(let i=0;i < ca.length;i++) {
+  
+        let c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) {
+            return decodeURIComponent( c.substring(nameEQ.length,c.length) );
+        }
+  
+    }
 }
