@@ -164,7 +164,7 @@ class Producto{
         $datos['categoriaProducto'] = $this->categoriaProducto;
         $datos['descripcionProducto'] = $this->descripcionProducto;
         $datos['sucursalProducto'] = $this->sucursalProducto;
-        $datos['promocionesProductos'] = $this->promocionesProductos;
+        $datos['promocionesProducto'] = $this->promocionesProducto;
         return $datos;
     }
 

@@ -9,16 +9,6 @@ var productPromotion = {
     end: ""
 }
 
-function ShowProduct(){
-    //Mostrar los productos y dependiendo del que escoja mostrar las sucursales en las que está disponible el producto
-    console.log("Mostrar");
-}
-
-function ShowBranch() {
-    //Función que mostrará las sucursales al cambiar lo seleccionado en el producto (onchange)
-    console.log("Mostrar");
-}
-
 function ValidateForm() {
     let product = ValidateProduct();
     let discount = ValidateDiscount();
@@ -31,12 +21,13 @@ function ValidateForm() {
     if (product == true && discount == true && realPrice == true && discountPrice == true && start == true && end == true && branch == true) {
         productPromotion.product = document.getElementById('product-select-promotion').options[document.getElementById('product-select-promotion').selectedIndex].value;
         productPromotion.discount = `${document.getElementById('discount-product').value}%`;
-        productPromotion.realPrice = document.getElementById('real-price-promotion').innerHTML;
+        productPromotion.realPrice = productPrice;
         productPromotion.discountPrice = parseFloat(priceDiscount).toFixed(2);
         productPromotion.start = [document.getElementById('date-init-promotion').value, document.getElementById('time-init-promotion').value];
         productPromotion.end = [document.getElementById('date-end-promotion').value, document.getElementById('time-end-promotion').value];
         productPromotion.branch = $("#branch-select-promotion").val();
-
+        
+        console.log(productPromotion);
         axios({
             method: 'POST',
             url: '../backend/axios/promotions.php',
@@ -54,6 +45,8 @@ function ValidateForm() {
 
 var selectedProduct;
 var priceDiscount;
+var values;
+var productPrice;
 
 function ValidateProduct() {
     let productSelected = document.getElementById('product-select-promotion');
@@ -63,9 +56,10 @@ function ValidateProduct() {
         return false;
     } else {
         document.getElementById('select-product-alert').innerHTML = ``;
+        getPrice();
         return true;
     }
-    return false;
+    
 }
 
 function ValidateDiscount() {
@@ -76,27 +70,65 @@ function ValidateDiscount() {
         return false;
     } else {
         document.getElementById('discount-product').style.borderColor = 'grey';
+        CalculatePrice();
         return true;
     }
-    return false;
 }
 
 function getPrice() {
-    //Obtener el precio del producto por petición
+    for(let i=0; i<values.length; i++){
+        if(values[i].nombreProducto == selectedProduct){
+            productPrice = values[i].precioProducto;
+            document.getElementById('real-price-promotion').innerHTML = `${companyCurrency() ? "$" : "L"} ${values[i].precioProducto}`;
+        }
+    }
     return true;
+}
+
+function companyCurrency(){
+    let key = readCookie('key');
+    axios({
+        method: 'GET',
+        url: `../backend/axios/companies.php?id=${key}`,
+        responseType: 'json'
+    }).then(resBranch =>{
+        let company = resBranch.data;
+        if(company.moneda == 'Lempira'){
+            return true;
+        }else{
+            return false;
+        }
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
+function readCookie(name) {
+
+    let nameEQ = name + "="; 
+    let ca = document.cookie.split(';');
+  
+    for(let i=0;i < ca.length;i++) {
+  
+        let c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) {
+            return decodeURIComponent( c.substring(nameEQ.length,c.length) );
+        }
+  
+    }
 }
 
 function CalculatePrice() {
     let discount = `0.${document.getElementById('discount-product').value}`;
     //Calcular el precio con descuento del precio obtenido anteriormente
-    priceDiscount = 900 - (900 * (parseFloat(discount)));
+    priceDiscount = productPrice - (productPrice * (parseFloat(discount)));
     if (priceDiscount > 1) {
-        document.getElementById('discount-price-product').innerHTML = `L ${parseFloat(priceDiscount).toFixed(2)}`;
+        document.getElementById('discount-price-product').innerHTML = `${companyCurrency() ? "$" : "L"} ${parseFloat(priceDiscount).toFixed(2)}`;
         return true;
     } else {
         return false;
     }
-    return false;
 }
 
 function ValidateBranch() {
@@ -107,7 +139,6 @@ function ValidateBranch() {
         document.getElementById('select-branch-alert').innerHTML = ``;
         return true;
     }
-    return false;
 }
 
 // Validar que las fechas no choquen con ninguna otra promoción
@@ -119,7 +150,6 @@ function ValidateStart() {
         document.getElementById('date-start-alert').innerHTML = ``;
         return true;
     }
-    return false;
 }
 
 function ValidateEnd() {
@@ -168,7 +198,7 @@ function fillInfo(branches){
     }).then(resProducts =>{
 
         let products = resProducts.data;
-        let values = Object.values(products);
+        values = Object.values(products);
         for(let i = 0; i<values.length; i++){
             let count = 0;
             for(let j = 0; j<values[i].sucursalProducto.length; j++){   
@@ -176,13 +206,14 @@ function fillInfo(branches){
                     while(count != branches.length){
                         if(values[i].sucursalProducto[j] == branches[count].nombreSucursal){
                             document.getElementById('product-select-promotion').innerHTML +=
-                            `<option value="${i}">${values[i].nombreProducto}</option>`;
+                            `<option value="${values[i].nombreProducto}">${values[i].nombreProducto}</option>`;
                         }
                         count++;
                     } 
                 }
             }
         }
+        getPrice();
     }).catch(error =>{
         console.log(error);
     });

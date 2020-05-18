@@ -116,7 +116,6 @@
                           <h5 class="card-text text-white" id="admin-user"></h5>
                           <h5 class="card-text text-white" id="admin-email"></h5>
                           <button type="button" class="card-text" onclick="logout()">Cerrar Sesión</button>
-
                         </div>
                     </div>
                 </div>
@@ -200,12 +199,14 @@
                                             <input type="text" class="form-control" id="first-name-admin" placeholder="Nombres" required onchange="EnableChange();">
                                             <input type="text" class="form-control my-1" id="last-name-admin" placeholder="Apellidos"  required onchange="EnableChange();">
                                             <div class="custom-file overflow-hidden rounded-pill my-2">
-                                                <input id="customFile1" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();" required onchange="EnableChange();">
-                                                <label for="customFile1" class="custom-file-label rounded-pill">Subir foto de perfil</label>
+                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" onclick="uploadImageProfile();" required onchange="EnableChange();">
+                                                <label for="pp-photo" class="custom-file-label rounded-pill">Subir foto de perfil</label>
+                                                <h1 style="visibility: hidden;" id="pp-url"></h1>
                                             </div>
                                             <div class="custom-file overflow-hidden rounded-pill ">
-                                                <input id="customFile2" type="file" class="custom-file-input rounded-pill" onclick="FileUploaded();"  required onchange="EnableChange();">
-                                                <label for="customFile2" class="custom-file-label rounded-pill">Subir foto de Portada</label>
+                                                <input id="banner-photo" type="file" class="custom-file-input rounded-pill" onclick="uploadImageBanner();"  required onchange="EnableChange();">
+                                                <label for="banner-photo" class="custom-file-label rounded-pill">Subir foto de Portada</label>
+                                                <h1 style="visibility: hidden;" id="banner-url"></h1>
                                             </div>
                                             
                                         </div>
@@ -245,7 +246,7 @@
                                             <!-- Botón que se desbloqueará cuando el usuarío haga algún cambio -->
                                             <div class="form-row align-items-center pt-3">
                                                 <div class="col-auto mr-auto ml-auto">
-                                                    <button id="btn-update-info-admin" type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white">Guardar</button>
+                                                    <button id="btn-update-info-admin" type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white" onclick="VerifyData()">Guardar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -258,7 +259,58 @@
             </div>
         </div>
     </div>
-    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8",
+    authDomain: "proyecto-poo-271914.firebaseapp.com",
+    databaseURL: "https://proyecto-poo-271914.firebaseio.com",
+    projectId: "proyecto-poo-271914",
+    storageBucket: "proyecto-poo-271914.appspot.com",
+    messagingSenderId: "220442033339",
+    appId: "1:220442033339:web:cccf003c2c6a8daa2c7d9e",
+    measurementId: "G-1JTVDET0HF"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  function uploadImageProfile() {
+      const ref = firebase.storage().ref('/admin-users');
+      const file = document.querySelector('#profile-photo').files[0];
+      const name = file.name;
+      const metadata = {
+        contentType: file.type
+      };
+      const task = ref.child(name).put(file, metadata);
+      task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            console.log(url);
+                document.getElementById('pp-url').innerHTML = url;
+
+        })
+        .catch(console.error);
+    }
+  function uploadImageBanner() {
+      const ref = firebase.storage().ref('/admin-users');
+      const file = document.querySelector('#banner-photo').files[0];
+      const name = file.name;
+      const metadata = {
+        contentType: file.type
+      };
+      const task = ref.child(name).put(file, metadata);
+      task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            console.log(url);
+                document.getElementById('banner-url').innerHTML = url;
+
+        })
+        .catch(console.error);
+    }
+</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>    <script src="js/bootstrap.min.js"></script>

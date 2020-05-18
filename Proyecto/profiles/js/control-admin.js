@@ -108,15 +108,69 @@ function FillCompanies(){
 }
 
 function VerifyData() {
-    ValidateFirstName();
-    ValidateLastName();
-    ValidateUser();
-    ValidateEmail();
-    ValidateCountry();
-    ValidateCurrency();
-    ValidateGender();
-    ValidatePassword();
-    ValidatePasswordRepeat();
+    let pp = ValidateProfilePhoto();
+    let banner = ValidateProfileBanner();
+    let name = ValidateFirstName();
+    let lastname = ValidateLastName();
+    let user = ValidateUser();
+    let email = ValidateEmail();
+    let country = ValidateCountry();
+    let currency = ValidateCurrency();
+    let gender = ValidateGender();
+    let pass = ValidatePassword();
+    let repPass = ValidatePasswordRepeat();
+    
+    if(
+        pp == true,
+        banner == true,
+        name == true,
+        lastname == true,
+        user == true,
+        email == true,
+        country == true,
+        currency == true,
+        gender == true,
+        pass == true,
+        repPass == true
+    ){
+        //Arreglar el update
+        axios({
+            method: 'PUT',
+            url: '../backend/axios/admin.php',
+            responseType: 'json',
+            data: adminUser
+        }).then(resAdmin =>{
+            window.location.href = '../profiles/profile-company.html';
+        }).catch(error =>{
+            console.log(error);
+        });
+    }
+}
+
+function ValidateProfilePhoto() {
+    //Restringir la ruta
+    if (document.getElementById('pp-photo').value == '') {
+        //document.getElementById('logo-alert').innerHTML = `Seleccione una imagen de logo`;
+        return false;
+    } else {
+        //document.getElementById('logo-alert').innerHTML = ``;
+        let logoUrl = document.getElementById('pp-url');
+        adminUser.profilePhoto = logoUrl.innerHTML;
+        return true;
+    }
+}
+
+function ValidateProfileBanner() {
+    //Restringir la ruta
+    if (document.getElementById('banner-photo').value == '') {
+        //document.getElementById('banner-alert').innerHTML = `Seleccione una imagen de banner`;
+        return false;
+    } else {
+        //document.getElementById('banner-alert').innerHTML = ``;
+        let bannerUrl = document.getElementById('banner-url');
+        adminUser.coverPhoto = bannerUrl.innerHTML;
+        return true;
+    }
 }
 
 

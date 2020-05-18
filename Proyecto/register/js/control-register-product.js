@@ -6,7 +6,7 @@ var product = {
     category: "",
     description: "",
     branch:"",
-    promotions:[]
+    promotions:[{"mensaje": "hola"}]
 }
 
 function ValidateForm() {

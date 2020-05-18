@@ -56,8 +56,13 @@ var companyBranch = {
     longitudSucursal: ""
 }
 
+var images = {};
+var paths = {}; 
 
 function ValidateForm() {
+
+    let logo = ValidateCompanyLogo();
+    let banner = ValidateCompanyBanner();
     let name = ValidateFirstName();
     let lastName = ValidateLastName();
     let country = ValidateCountry();
@@ -74,9 +79,8 @@ function ValidateForm() {
     let email = ValidateEmail();
     let pass = ValidatePassword();
     let passRepeat = ValidatePasswordRepeat();
-    let logo = ValidateCompanyLogo();
-    let banner = ValidateCompanyBanner();
 
+    
     if (name == true &&
         lastName == true &&
         country == true &&
@@ -94,8 +98,9 @@ function ValidateForm() {
         companyTwit == true &&
         logo == true &&
         banner == true &&
-        code == true) {
+        code == true) {     
 
+        //NO APLICABLE ---> getImageNames();
         companyUser.firstName = document.getElementById('first-name-company').value;
         companyUser.lastName = document.getElementById('last-name-company').value;
         companyUser.country = document.getElementById('country-select').options[document.getElementById('country-select').selectedIndex].value;
@@ -112,14 +117,32 @@ function ValidateForm() {
         companyUser.code = parseInt(document.getElementById('number-employed-company').value);
         companyUser.email = document.getElementById('email-employed-company').value;
         companyUser.pass = document.getElementById('password-company-repeat').value;
-        companyUser.logo = document.getElementById('logo-file').value;
-        companyUser.banner = document.getElementById('banner-file').value;
+        let logoUrl = document.getElementById('logo-url');
+        companyUser.logo = logoUrl.innerHTML;
+        let bannerUrl = document.getElementById('banner-url');
+        companyUser.banner = bannerUrl.innerHTML;
         companyBranch.nombreSucursal = companyUser.companyName;
         companyBranch.direccionSucursal = companyUser.companyDir;
         companyBranch.latitudSucursal = companyUser.companyLat;
         companyBranch.longitudSucursal = companyUser.companyLong;
         companyUser.branches.push(companyBranch);
-        
+
+        /* NO FUNCIONAL
+        let form = ($('#form-images').serializeArray());
+        let formData = new FormData(form[0]);
+        console.log(form);
+         axios.post('../company-logo.php', formData)
+             .then(res => {
+                 console.log(res.data);
+             }).catch(error =>{
+                 console.log(error);
+             });
+
+
+             //TEST Imagen almacenada en firebase
+             document.getElementById('image').innerHTML = `<img src="${companyUser.logo}"></img>`;
+             document.getElementById('image').innerHTML += `<img src="${companyUser.banner}"></img>`
+        */ 
         axios({
             method: 'POST',
             url: '../backend/axios/companies.php',
@@ -130,8 +153,21 @@ function ValidateForm() {
         }).catch(error =>{
             console.log(error);
         });
+        
     }
+    
 }
+ 
+/* NO APLICABLE 
+function getImageNames(){
+    let variable = {};
+    $('input').each(function () {
+        let fileName = this.value.replace(/^.*\\/, "");
+        images[this.name] = fileName;
+        paths[this.name] = this.value;
+    });  
+}
+*/
 
 var planSelected;
 
@@ -249,7 +285,7 @@ function ValidateCompanyPlan() {
         document.getElementById('plan-company-alert').innerHTML = `Seleccione un Plan de los disponibles`;
         return false;
     } else {
-        document.getElementById('plan-company-alert').innerHTML = ``;
+        //document.getElementById('plan-company-alert').innerHTML = ``;
         return true;
     }
 }

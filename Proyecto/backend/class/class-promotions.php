@@ -131,7 +131,6 @@ class Promocion{
     }
 
     public function crearPromocion($db){
-        //Reparar que producto sea un arreglo y que se muestre el precio real y el de oferta (lado del cliente)
         $promocion = $this->obtenerInfo();
 
         $producto = $db->getReference('productos')
@@ -141,13 +140,17 @@ class Promocion{
             ->getValue();
             
         $key = array_key_first($producto);
+
+        $resultado = $db->getReference('productos')
+            ->getChild($key)
+            ->getValue();
         
-        $producto['promocionesProducto'][] = $promocion;
+        $resultado['promocionesProducto'][] = $promocion;
         $respuesta = $db->getReference('productos/'.$key.'/promocionesProducto')
-            ->set($producto['promocionesProducto']);
+            ->set($resultado['promocionesProducto']);
 
         if ($key != null)
-            return '{"mensaje":"Registro creado","key":"'.$key.'"}';
+            return '{"mensaje":"Registro de promocion creado","key":"'.$key.'"}';
         else 
             return '{"mensaje":"Error al crear el registro"}';
 
