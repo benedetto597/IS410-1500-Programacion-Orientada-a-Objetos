@@ -115,7 +115,7 @@
                           <h5 class="card-text text-white" id="admin-name"></h5>
                           <h5 class="card-text text-white" id="admin-user"></h5>
                           <h5 class="card-text text-white" id="admin-email"></h5>
-                          <button type="button" class="card-text" onclick="logout()">Cerrar Sesión</button>
+                          <button type="button" id="btn-logout-admin" class="card-text  btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white" onclick="logout()">Cerrar Sesión</button>
                         </div>
                     </div>
                 </div>
@@ -199,12 +199,12 @@
                                             <input type="text" class="form-control" id="first-name-admin" placeholder="Nombres" required onchange="EnableChange();">
                                             <input type="text" class="form-control my-1" id="last-name-admin" placeholder="Apellidos"  required onchange="EnableChange();">
                                             <div class="custom-file overflow-hidden rounded-pill my-2">
-                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" onclick="uploadImageProfile();" required onchange="EnableChange();">
+                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" required onchange="EnableChange();">
                                                 <label for="pp-photo" class="custom-file-label rounded-pill">Subir foto de perfil</label>
                                                 <h1 style="visibility: hidden;" id="pp-url"></h1>
                                             </div>
                                             <div class="custom-file overflow-hidden rounded-pill ">
-                                                <input id="banner-photo" type="file" class="custom-file-input rounded-pill" onclick="uploadImageBanner();"  required onchange="EnableChange();">
+                                                <input id="banner-photo" type="file" class="custom-file-input rounded-pill"  required onchange="EnableChange();">
                                                 <label for="banner-photo" class="custom-file-label rounded-pill">Subir foto de Portada</label>
                                                 <h1 style="visibility: hidden;" id="banner-url"></h1>
                                             </div>
@@ -246,7 +246,7 @@
                                             <!-- Botón que se desbloqueará cuando el usuarío haga algún cambio -->
                                             <div class="form-row align-items-center pt-3">
                                                 <div class="col-auto mr-auto ml-auto">
-                                                    <button id="btn-update-info-admin" type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white" onclick="VerifyData()">Guardar</button>
+                                                    <button id="btn-update-info-admin" type="button" class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white" onclick="updateInfo()">Guardar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -278,7 +278,8 @@
     firebase.initializeApp(firebaseConfig);
   function uploadImageProfile() {
       const ref = firebase.storage().ref('/admin-users');
-      const file = document.querySelector('#profile-photo').files[0];
+      if(document.querySelector('#pp-photo') != ''){
+        const file = document.querySelector('#pp-photo').files[0];
       const name = file.name;
       const metadata = {
         contentType: file.type
@@ -287,15 +288,18 @@
       task
         .then(snapshot => snapshot.ref.getDownloadURL())
         .then(url => {
-            console.log(url);
-                document.getElementById('pp-url').innerHTML = url;
+            document.getElementById('pp-url').innerHTML = url;
+            console.log(document.getElementById('pp-url').innerHTML);
 
         })
         .catch(console.error);
+      }
+      
     }
   function uploadImageBanner() {
       const ref = firebase.storage().ref('/admin-users');
-      const file = document.querySelector('#banner-photo').files[0];
+      if(document.querySelector('#banner-photo') != ''){
+        const file = document.querySelector('#banner-photo').files[0];
       const name = file.name;
       const metadata = {
         contentType: file.type
@@ -304,11 +308,12 @@
       task
         .then(snapshot => snapshot.ref.getDownloadURL())
         .then(url => {
-            console.log(url);
-                document.getElementById('banner-url').innerHTML = url;
-
+            document.getElementById('banner-url').innerHTML = url;  
+            console.log(document.getElementById('banner-url').innerHTML);
         })
         .catch(console.error);
+      }
+      
     }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">

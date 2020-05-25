@@ -86,6 +86,11 @@ body{
     border:none !important;
 }
 
+#btn-logout-admin{
+    background-color: #222222 !important;
+    border:none !important;
+}
+
 input.currency {
     text-align: right;
     padding-right: 15px;

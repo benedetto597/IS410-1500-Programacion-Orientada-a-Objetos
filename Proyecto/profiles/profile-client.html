@@ -135,7 +135,7 @@
                             <h5 id="client-name" class="card-text">Nombre Cliente</h5>
                             <h5 id="client-user" class="card-text">Nombre de Usuario</h5>
                             <h5 id="client-email" class="card-text">Correo Electronico</h5>
-                            <button type="button" class="card-text" onclick="logout()">Cerrar Sesión</button>
+                            <button type="button" id="btn-logout-admin" class="card-text  btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white" onclick="logout()">Cerrar Sesión</button>
                         </div>
                     </div>
                 </div>
@@ -282,11 +282,10 @@
                                                 <option value="Otro">Otro</option>
                                             </select>
                                             <small id="gen-alert" class="form-text text-dark"></small>
-                                            <div class="custom-file overflow-hidden rounded-pill my-1">
-                                                <input id="customFile2" type="file"
-                                                    class="custom-file-input rounded-pill" onclick="FileUploaded();">
-                                                <label for="customFile2" class="custom-file-label rounded-pill">Subir
-                                                    foto de perfil</label>
+                                            <div class="custom-file overflow-hidden rounded-pill my-2">
+                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" required onchange="EnableChange();">
+                                                <label for="pp-photo" class="custom-file-label rounded-pill">Subir foto de perfil</label>
+                                                <h1 style="visibility: hidden;" id="pp-url"></h1>
                                             </div>
                                         </div>
 
@@ -297,7 +296,7 @@
                                                 <div class="col-auto mr-auto ml-auto">
                                                     <button id="btn-update-info" type="button"
                                                         class="btn btn-lg shadow p-2 px-3 mb-0 rounded-pill text-dark"
-                                                        onclick="VerifyData();">Guardar Cambios</button>
+                                                        onclick="updateInfo();">Guardar Cambios</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -310,9 +309,47 @@
             </div>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+        <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+  
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8",
+      authDomain: "proyecto-poo-271914.firebaseapp.com",
+      databaseURL: "https://proyecto-poo-271914.firebaseio.com",
+      projectId: "proyecto-poo-271914",
+      storageBucket: "proyecto-poo-271914.appspot.com",
+      messagingSenderId: "220442033339",
+      appId: "1:220442033339:web:cccf003c2c6a8daa2c7d9e",
+      measurementId: "G-1JTVDET0HF"
+    };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    function uploadImageProfile() {
+        const ref = firebase.storage().ref('/client-users');
+        if(document.querySelector('#pp-photo') != ''){
+          const file = document.querySelector('#pp-photo').files[0];
+        const name = file.name;
+        const metadata = {
+          contentType: file.type
+        };
+        const task = ref.child(name).put(file, metadata);
+        task
+          .then(snapshot => snapshot.ref.getDownloadURL())
+          .then(url => {
+              document.getElementById('pp-url').innerHTML = url;
+              console.log(document.getElementById('pp-url').innerHTML);
+  
+          })
+          .catch(console.error);
+        }
+        
+      }
+  </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>    <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/control-client.js"></script>
 </body>

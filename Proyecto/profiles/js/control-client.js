@@ -181,6 +181,50 @@ function VerifyData() {
     ValidatePasswordRepeat();
 }
 
+function updateInfo(){
+    uploadImageProfile();
+    let timer = setInterval(update, 3000);
+    function update(){
+        pp = ValidateProfilePhoto();
+        if(
+            pp == true
+        ){
+            //console.log(clientUser);
+            let key = getCookie('key');
+            axios({
+                method: 'PUT',
+                url: '../backend/axios/clients.php?id=' + key ,
+                responseType: 'json',
+                data: clientUser
+            }).then(resClient =>{
+                //console.log(resClient.data);
+                clearInterval(timer);
+                window.location.href = '../profiles/profile-clients.html';
+            }).catch(error =>{
+                console.log(error);
+            });
+            
+        }
+    }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function ValidateProfilePhoto() {
+    
+    if (document.getElementById('pp-url').innerHTML == '') {
+        return false;
+    } else {
+        let logoUrl = document.getElementById('pp-url');
+        clientUser.profileImg = logoUrl.innerHTML;
+        return true;
+    }
+}
+
 function ValidateFirstName() {
     let letters = /([A-Za-z])\w+/;
     let nums = /([0-9])\w+/;

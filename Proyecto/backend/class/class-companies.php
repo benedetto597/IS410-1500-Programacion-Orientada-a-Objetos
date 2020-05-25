@@ -201,9 +201,12 @@ class Empresa extends Usuario{
     }
     
     public function actualizarEmpresa($db, $id){
+        $empresa = $this->obtenerInfo();
+        //Guardar el token para que no se cierre la sesión
+        $empresa['token'] = $_COOKIE["token"];
         $respuesta = $db->getReference('empresas')
             ->getChild($id)
-            ->set($this->obtenerInfo());
+            ->set($empresa);
             
         if ($respuesta->getKey() != null)
             return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';

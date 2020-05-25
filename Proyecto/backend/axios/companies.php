@@ -34,9 +34,9 @@
             if(!Empresa::verificarAutenticacion($database->getDB())){
                 echo '{"mensaje:"Acceso no autorizado"}';
                 exit();
-            }
+            }   
             $_PUT = json_decode(file_get_contents('php://input'),true);
-            $empresa = new Empresa($_PUT["firstName"], $_PUT["lastName"], $_PUT["companyName"], $_PUT["code"], $_PUT["companyPlan"],$_PUT["country"], $_PUT["currency"], $_PUT["email"],  $_PUT["pass"], $_PUT["companyDir"], $_PUT["companyLat"], $_PUT["companyLong"],$_PUT["branches"],$_PUT["logo"],$_PUT["banner"], $_PUT["companyFb"], $_PUT["companyIg"], $_PUT["companyWha"],$_PUT["companyTwit"]);
+            $empresa = new Empresa($_PUT["firstName"], $_PUT["lastName"], $_PUT["companyName"], $_PUT["companyPlan"],$_PUT["country"], $_PUT["currency"], $_PUT["email"],  $_PUT["pass"], $_PUT["companyDir"], $_PUT["companyLat"], $_PUT["companyLong"],$_PUT["branch"],$_PUT["logo"],$_PUT["banner"],$_PUT["code"], $_PUT["companyFb"], $_PUT["companyIg"], $_PUT["companyWha"],$_PUT["companyTwit"]);
             echo $empresa->actualizarEmpresa($database->getDB(),$_GET['id']);
         break;
         case 'DELETE':

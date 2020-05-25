@@ -192,18 +192,15 @@
                             placeholder="Código de Acceso" disabled>
                         <input type="email" class="form-control my-1" id="email-employed-company"
                             placeholder="Correo Empresarial" required onchange="ValidateEmail()">
+                            <div class="custom-file overflow-hidden rounded-pill my-2">
+                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" required >
+                                <label for="pp-photo" class="custom-file-label rounded-pill">Subir logo</label>
+                                <h1 style="visibility: hidden;" id="pp-url"></h1>
+                            </div>
                             <div class="custom-file overflow-hidden rounded-pill ">
-                                <input id="logo-file" name="image-logo" type="file" class="custom-file-input rounded-pill" required accept="image/*" onchange="uploadImageLogo()">
-                                <label for="logo-file"  class="custom-file-label rounded-pill">Logo</label>
-                                    <h1 style="visibility: hidden;" id="logo-url"></h1>
-                             </div>
-                            
-                            <small id="logo-alert" class="form-text text-dark"></small>
-                            <div class="custom-file overflow-hidden rounded-pill mt-1">
-                                <input id="banner-file" type="file" name="image-banner" class="custom-file-input rounded-pill" accept="image/*" onchange="uploadImageBanner()" required>
-                                <label for="banner-file" class="custom-file-label rounded-pill">Banner</label>
-                                    <h1 style="visibility: hidden;" id="banner-url"></h1>
-                               
+                                <input id="banner-photo" type="file" class="custom-file-input rounded-pill"  required >
+                                <label for="banner-photo" class="custom-file-label rounded-pill">Subir Banner</label>
+                                <h1 style="visibility: hidden;" id="banner-url"></h1>
                             </div>
                         <small id="banner-alert" class="form-text text-dark"></small>
                     </div>
@@ -223,7 +220,7 @@
                             <div class="col-auto mr-auto ml-auto">
                                 <button id="btn-company-register" type="button"
                                     class="btn btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white"
-                                    onclick="ValidateForm();">Registrar</button>
+                                    onclick="updateInfo();">Registrar</button>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck">
                                     <label class="form-check-label" for="gridCheck">
@@ -237,66 +234,66 @@
             </div>
         </form>
     </main>
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
-
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8",
-    authDomain: "proyecto-poo-271914.firebaseapp.com",
-    databaseURL: "https://proyecto-poo-271914.firebaseio.com",
-    projectId: "proyecto-poo-271914",
-    storageBucket: "proyecto-poo-271914.appspot.com",
-    messagingSenderId: "220442033339",
-    appId: "1:220442033339:web:cccf003c2c6a8daa2c7d9e",
-    measurementId: "G-1JTVDET0HF"
-  };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  function uploadImageLogo() {
-      const ref = firebase.storage().ref('/company-users');
-      const file = document.querySelector('#logo-file').files[0];
-      const name = file.name;
-      const metadata = {
-        contentType: file.type
-      };
-      const task = ref.child(name).put(file, metadata);
-      task
-        .then(snapshot => snapshot.ref.getDownloadURL())
-        .then(url => {
-            console.log(url);
-                document.getElementById('logo-url').innerHTML = url;
-
-        })
-        .catch(console.error);
-    }
-    //https://firebasestorage.googleapis.com/v0/b/proyecto-poo-271914.appspot.com/o/company-users%2Flp-second-product2.jpeg?alt=media&token=51232576-42d9-4c55-9f53-3167d4810c79
-
-    //https://firebasestorage.googleapis.com/v0/b/proyecto-poo-271914.appspot.com/o/company-users%2Flp-second-product2.jpeg?alt=media&amp;token=51232576-42d9-4c55-9f53-3167d4810c79"
-    function uploadImageBanner() {
-      const ref = firebase.storage().ref('/company-users');
-      const file = document.querySelector('#banner-file').files[0];
-      const name = file.name;
-      const metadata = {
-        contentType: file.type
-      };
-      const task = ref.child(name).put(file, metadata);
-      task
-        .then(snapshot => snapshot.ref.getDownloadURL())
-        .then(url => {
-            console.log(url);
-                document.getElementById('banner-url').innerHTML = url;
-                console.log(document.getElementById('banner-url').innerHTML);   
-            
-        })
-        .catch(console.error);
-    }
-
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+     <!-- Firebase -->
+     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+   
+     <script>
+       var firebaseConfig = {
+         apiKey: "AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8",
+       authDomain: "proyecto-poo-271914.firebaseapp.com",
+       databaseURL: "https://proyecto-poo-271914.firebaseio.com",
+       projectId: "proyecto-poo-271914",
+       storageBucket: "proyecto-poo-271914.appspot.com",
+       messagingSenderId: "220442033339",
+       appId: "1:220442033339:web:cccf003c2c6a8daa2c7d9e",
+       measurementId: "G-1JTVDET0HF"
+     };
+       // Initialize Firebase
+       firebase.initializeApp(firebaseConfig);
+     function uploadImageProfile() {
+         const ref = firebase.storage().ref('/company-users');
+         if(document.querySelector('#pp-photo') != ''){
+           const file = document.querySelector('#pp-photo').files[0];
+         const name = file.name;
+         const metadata = {
+           contentType: file.type
+         };
+         const task = ref.child(name).put(file, metadata);
+         task
+           .then(snapshot => snapshot.ref.getDownloadURL())
+           .then(url => {
+               document.getElementById('pp-url').innerHTML = url;
+               console.log(document.getElementById('pp-url').innerHTML);
+   
+           })
+           .catch(console.error);
+         }
+         
+       }
+       function uploadImageBanner() {
+         const ref = firebase.storage().ref('/company-users');
+         if(document.querySelector('#banner-photo') != ''){
+             const file = document.querySelector('#banner-photo').files[0];
+         const name = file.name;
+         const metadata = {
+             contentType: file.type
+         };
+         const task = ref.child(name).put(file, metadata);
+         task
+             .then(snapshot => snapshot.ref.getDownloadURL())
+             .then(url => {
+                 document.getElementById('banner-url').innerHTML = url;  
+                 console.log(document.getElementById('banner-url').innerHTML);
+             })
+             .catch(console.error);
+         }
+         
+         }
+   </script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+       </script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>    
     <script src="../js/bootstrap.min.js"></script>
     <script src="js/control-register-company.js"></script>
 </body>

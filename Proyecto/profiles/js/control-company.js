@@ -406,11 +406,45 @@ function VerifyData() {
     ValidateEmail();
     ValidatePassword();
     ValidatePasswordRepeat();
-    ValidateCompanyLogo();
-    ValidateCompanyBanner();
     ValidatePlan();
 }
 
+// --------------------------------- Actualizar la información ---------------------------------
+function updateInfo(){
+    uploadImageProfile();
+    uploadImageBanner();
+    let timer = setInterval(update, 4000);
+    function update(){
+        pp = ValidateCompanyLogo();
+        banner = ValidateCompanyBanner();
+        if(
+           pp == true && banner == true
+        ){
+            //console.log(companyUser);
+            let key = getCookie('key');
+            axios({
+                method: 'PUT',
+                url: '../backend/axios/companies.php?id=' + key ,
+                responseType: 'json',
+                data: companyUser
+            }).then(resCompany =>{
+                //console.log(resCompany.data);
+                clearInterval(timer);
+                window.location.href = '../profiles/profile-company.html';
+            }).catch(error =>{
+                console.log(error);
+            });
+            
+        }
+    }
+    
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
 function ValidateFirstName() {
     let letters = /([A-Za-z])\w+/;
@@ -486,8 +520,8 @@ function ValidateCompanyDir() {
 
 function ValidateCompanyLogo() {
     //Restringir la ruta
-    if (document.getElementById('logo-company').value != '') {
-        companyUser.logo = document.getElementById('logo-company').value;
+    if (document.getElementById('pp-url').innerHTML != '') {
+        companyUser.logo = document.getElementById('pp-url').innerHTML;
         return true;
     }
     return false;
@@ -495,8 +529,8 @@ function ValidateCompanyLogo() {
 
 function ValidateCompanyBanner() {
     //Restringir la ruta
-    if (document.getElementById('banner-company').value == '') {
-        companyUser.logo = document.getElementById('banner-company').value;
+    if (document.getElementById('banner-url').innerHTML != '') {
+        companyUser.banner = document.getElementById('banner-url').innerHTML;
         return true;
     }
     return false;

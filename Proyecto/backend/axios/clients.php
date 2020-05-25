@@ -38,6 +38,7 @@
             $_PUT = json_decode(file_get_contents('php://input'),true);
             $cliente = new Cliente($_PUT["firstName"], $_PUT["lastName"], $_PUT["user"], $_PUT["gen"],$_PUT["country"], $_PUT["currency"], $_PUT["email"],  $_PUT["pass"] , $_PUT["profileImg"]);
             echo $cliente->actualizarCliente($database->getDB(),$_GET['id']);
+            
         break;
         case 'DELETE':
             if(!Cliente::verificarAutenticacion($database->getDB())){

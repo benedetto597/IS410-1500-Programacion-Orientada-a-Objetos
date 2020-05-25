@@ -74,12 +74,17 @@ class Administrador extends Usuario{
             return '{"mensaje":"Registro almacenado","key":"'.$respuesta->getKey().'"}';
         else 
             return '{"mensaje":"Error al guardar el registro"}';
+
+        //Luego de crear el usuario se debe verificar con correo para poder iniciarle sesión
     }
 
     public function actualizarAdmin($db, $id){
+        $admin = $this->obtenerInfo();
+        //Guardar el token para que no se cierre la sesión
+        $admin['token'] = $_COOKIE["token"];
         $respuesta = $db->getReference('administradores')
             ->getChild($id)
-            ->set($this->obtenerInfo());
+            ->set($admin);
             
         if ($respuesta->getKey() != null)
             return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';

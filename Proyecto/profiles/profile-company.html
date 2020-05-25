@@ -154,7 +154,7 @@
                             <h5 class="card-text" id="employed-name"></h5>
                             <h5 class="card-text" id="company-email"></h5>
                             <h5 class="card-text" id="company-contact"></h5>
-                            <button type="button" class="card-text" onclick="logout()">Cerrar Sesión</button>
+                            <button type="button" id="btn-logout-admin" class="card-text  btn-lg shadow p-2 px-5 mb-0 rounded-pill text-white" onclick="logout()">Cerrar Sesión</button>
                         </div>
                     </div>
                 </div>
@@ -291,18 +291,15 @@
                                                 placeholder="Apellidos" minlength="3" maxlength="40"
                                                 onchange="EnableChange()">
                                             <small id="last-name-alert" class="form-text text-dark"></small>
-                                            <div class="custom-file overflow-hidden rounded-pill my-1">
-                                                <input id="logo-company" type="file"
-                                                    class="custom-file-input rounded-pill" onchange="EnableChange()">
-                                                <label for="logo-company"
-                                                    class="custom-file-label rounded-pill">Logo</label>
+                                            <div class="custom-file overflow-hidden rounded-pill my-2">
+                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" required onchange="EnableChange();">
+                                                <label for="pp-photo" class="custom-file-label rounded-pill">Subir logo</label>
+                                                <h1 style="visibility: hidden;" id="pp-url"></h1>
                                             </div>
-                                            <small id="logo-alert" class="form-text text-dark"></small>
                                             <div class="custom-file overflow-hidden rounded-pill ">
-                                                <input id="banner-company" type="file"
-                                                    class="custom-file-input rounded-pill" onchange="EnableChange()">
-                                                <label for="banner-company"
-                                                    class="custom-file-label rounded-pill">Banner</label>
+                                                <input id="banner-photo" type="file" class="custom-file-input rounded-pill"  required onchange="EnableChange();">
+                                                <label for="banner-photo" class="custom-file-label rounded-pill">Subir Banner</label>
+                                                <h1 style="visibility: hidden;" id="banner-url"></h1>
                                             </div>
                                             <small id="banner-alert" class="form-text text-dark"></small>
                                         </div>
@@ -369,10 +366,66 @@
                 </div>
             </div>
         </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+      
+        <script>
+          var firebaseConfig = {
+            apiKey: "AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8",
+          authDomain: "proyecto-poo-271914.firebaseapp.com",
+          databaseURL: "https://proyecto-poo-271914.firebaseio.com",
+          projectId: "proyecto-poo-271914",
+          storageBucket: "proyecto-poo-271914.appspot.com",
+          messagingSenderId: "220442033339",
+          appId: "1:220442033339:web:cccf003c2c6a8daa2c7d9e",
+          measurementId: "G-1JTVDET0HF"
+        };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+        function uploadImageProfile() {
+            const ref = firebase.storage().ref('/company-users');
+            if(document.querySelector('#pp-photo') != ''){
+              const file = document.querySelector('#pp-photo').files[0];
+            const name = file.name;
+            const metadata = {
+              contentType: file.type
+            };
+            const task = ref.child(name).put(file, metadata);
+            task
+              .then(snapshot => snapshot.ref.getDownloadURL())
+              .then(url => {
+                  document.getElementById('pp-url').innerHTML = url;
+                  console.log(document.getElementById('pp-url').innerHTML);
+      
+              })
+              .catch(console.error);
+            }
+            
+          }
+          function uploadImageBanner() {
+            const ref = firebase.storage().ref('/company-users');
+            if(document.querySelector('#banner-photo') != ''){
+                const file = document.querySelector('#banner-photo').files[0];
+            const name = file.name;
+            const metadata = {
+                contentType: file.type
+            };
+            const task = ref.child(name).put(file, metadata);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    document.getElementById('banner-url').innerHTML = url;  
+                    console.log(document.getElementById('banner-url').innerHTML);
+                })
+                .catch(console.error);
+            }
+            
+            }
+      </script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+          </script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>    <script src="js/bootstrap.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="js/control-company.js"></script>
 </body>

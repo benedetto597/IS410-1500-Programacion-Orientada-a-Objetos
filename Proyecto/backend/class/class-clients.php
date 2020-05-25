@@ -50,9 +50,12 @@ class Cliente extends Usuario{
     }
 
     public function actualizarCliente($db, $id){
+        $cliente = $this->obtenerInfo();
+        //Guardar el token para que no se cierre la sesión
+        $cliente['token'] = $_COOKIE["token"];
         $respuesta = $db->getReference('clientes')
             ->getChild($id)
-            ->set($this->obtenerInfo());
+            ->set($cliente);
             
         if ($respuesta->getKey() != null)
             return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';

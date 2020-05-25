@@ -8,8 +8,8 @@ var adminUser = {
     user: "benedetto597",
     email: "example@example.com",
     pass: "asdfasdf1234",
-    profilePhoto: "",
-    coverPhoto: ""
+    profileImg: "",
+    coverImg: ""
 };
 
 var suscribeCompanies = [{
@@ -107,68 +107,100 @@ function FillCompanies(){
     }
 }
 
+var pp;
+var banner;
+var name;
+var lastname;
+var user;
+var email;
+var country;
+var currency;
+var gender;
+var pass;
+var repPass;
+
 function VerifyData() {
-    let pp = ValidateProfilePhoto();
-    let banner = ValidateProfileBanner();
-    let name = ValidateFirstName();
-    let lastname = ValidateLastName();
-    let user = ValidateUser();
-    let email = ValidateEmail();
-    let country = ValidateCountry();
-    let currency = ValidateCurrency();
-    let gender = ValidateGender();
-    let pass = ValidatePassword();
-    let repPass = ValidatePasswordRepeat();
     
-    if(
-        pp == true,
-        banner == true,
-        name == true,
-        lastname == true,
-        user == true,
-        email == true,
-        country == true,
-        currency == true,
-        gender == true,
-        pass == true,
-        repPass == true
-    ){
-        //Arreglar el update
-        axios({
-            method: 'PUT',
-            url: '../backend/axios/admin.php',
-            responseType: 'json',
-            data: adminUser
-        }).then(resAdmin =>{
-            window.location.href = '../profiles/profile-company.html';
-        }).catch(error =>{
-            console.log(error);
-        });
+    name = ValidateFirstName();
+    lastname = ValidateLastName();
+    user = ValidateUser();
+    email = ValidateEmail();
+    country = ValidateCountry();
+    currency = ValidateCurrency();
+    gender = ValidateGender();
+    pass = ValidatePassword();
+    repPass = ValidatePasswordRepeat();
+}
+
+function updateInfo(){
+    uploadImageProfile();
+    uploadImageBanner();
+    let timer = setInterval(update, 5000);
+    function update(){
+        pp = ValidateProfilePhoto();
+        banner = ValidateProfileBanner();
+        if(
+           
+            name == true,
+            lastname == true,
+            user == true,
+            email == true,
+            country == true,
+            currency == true,
+            gender == true,
+            pass == true,
+            repPass == true
+        ){
+            //console.log(adminUser);
+            let key = getCookie('key');
+            axios({
+                method: 'PUT',
+                url: '../backend/axios/admin.php?id=' + key ,
+                responseType: 'json',
+                data: adminUser
+            }).then(resAdmin =>{
+                //console.log(resAdmin.data);
+                clearInterval(timer);
+                window.location.href = '../profiles/profile-admin.html';
+            }).catch(error =>{
+                console.log(error);
+            });
+            
+        }
     }
+    
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
 function ValidateProfilePhoto() {
+    
     //Restringir la ruta
-    if (document.getElementById('pp-photo').value == '') {
+    if (document.getElementById('pp-url').innerHTML == '') {
         //document.getElementById('logo-alert').innerHTML = `Seleccione una imagen de logo`;
         return false;
     } else {
         //document.getElementById('logo-alert').innerHTML = ``;
         let logoUrl = document.getElementById('pp-url');
-        adminUser.profilePhoto = logoUrl.innerHTML;
+        adminUser.profileImg = logoUrl.innerHTML;
         return true;
     }
 }
 
 function ValidateProfileBanner() {
+    
     //Restringir la ruta
-    if (document.getElementById('banner-photo').value == '') {
+    if (document.getElementById('banner-url').innerHTML == '') {
         //document.getElementById('banner-alert').innerHTML = `Seleccione una imagen de banner`;
         return false;
     } else {
         //document.getElementById('banner-alert').innerHTML = ``;
         let bannerUrl = document.getElementById('banner-url');
-        adminUser.coverPhoto = bannerUrl.innerHTML;
+        adminUser.coverImg = bannerUrl.innerHTML;
         return true;
     }
 }

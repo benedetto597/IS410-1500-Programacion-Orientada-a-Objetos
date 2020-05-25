@@ -56,120 +56,131 @@ var companyBranch = {
     longitudSucursal: ""
 }
 
-var images = {};
-var paths = {}; 
+var name;
+var lastName;
+var country;
+var currency;
+var companyName;
+var companyDir;
+var companyLatLong;
+var companyPlan;
+var companyFb;
+var companyIg;
+var companyWha;
+var companyTwit;
+var code;
+var email;
+var pass;
+var passRepeat;
 
 function ValidateForm() {
+     name = ValidateFirstName();
+     lastName = ValidateLastName();
+     country = ValidateCountry();
+     currency = ValidateCurrency();
+     companyName = ValidateCompanyName();
+     companyDir = ValidateCompanyDir();
+     companyLatLong = ValidateCompanyLatLong();
+     companyPlan = ValidateCompanyPlan();
+     companyFb = ValidateCompanyFb();
+     companyIg = ValidateCompanyIg();
+     companyWha = ValidateCompanyWha();
+     companyTwit = ValidateCompanyTwit();
+     code = ValidateCode();
+     email = ValidateEmail();
+     pass = ValidatePassword();
+     passRepeat = ValidatePasswordRepeat();
+}
 
-    let logo = ValidateCompanyLogo();
-    let banner = ValidateCompanyBanner();
-    let name = ValidateFirstName();
-    let lastName = ValidateLastName();
-    let country = ValidateCountry();
-    let currency = ValidateCurrency();
-    let companyName = ValidateCompanyName();
-    let companyDir = ValidateCompanyDir();
-    let companyLatLong = ValidateCompanyLatLong();
-    let companyPlan = ValidateCompanyPlan();
-    let companyFb = ValidateCompanyFb();
-    let companyIg = ValidateCompanyIg();
-    let companyWha = ValidateCompanyWha();
-    let companyTwit = ValidateCompanyTwit();
-    let code = ValidateCode();
-    let email = ValidateEmail();
-    let pass = ValidatePassword();
-    let passRepeat = ValidatePasswordRepeat();
-
+function updateInfo(){
     
-    if (name == true &&
-        lastName == true &&
-        country == true &&
-        currency == true &&
-        email == true &&
-        pass == true &&
-        passRepeat == true &&
-        companyName == true &&
-        companyDir == true &&
-        companyLatLong == true &&
-        companyPlan == true &&
-        companyFb == true &&
-        companyIg == true &&
-        companyWha == true &&
-        companyTwit == true &&
-        logo == true &&
-        banner == true &&
-        code == true) {     
+    ValidateForm();
+    if (name == true ,
+        lastName == true ,
+        country == true ,
+        currency == true ,
+        email == true ,
+        pass == true ,
+        passRepeat == true ,
+        companyName == true ,
+        companyDir == true ,
+        companyLatLong == true ,
+        companyPlan == true ,
+        companyFb == true ,
+        companyIg == true ,
+        companyWha == true ,
+        companyTwit == true ,
+        code == true 
+        ) { 
+            uploadImageProfile();
+            uploadImageBanner(); 
+        let timer = setInterval(update, 4000);
+        function update(){
+            pp = ValidateCompanyLogo();
+            banner = ValidateCompanyBanner();   
+            if(pp == true &&
+                banner == true){
 
-        //NO APLICABLE ---> getImageNames();
-        companyUser.firstName = document.getElementById('first-name-company').value;
-        companyUser.lastName = document.getElementById('last-name-company').value;
-        companyUser.country = document.getElementById('country-select').options[document.getElementById('country-select').selectedIndex].value;
-        companyUser.currency = document.getElementById('currency-select').options[document.getElementById('currency-select').selectedIndex].value.slice(2, document.getElementById('currency-select').options[document.getElementById('currency-select').selectedIndex].value.length);
-        companyUser.companyName = document.getElementById('name-company').value;
-        companyUser.companyDir = document.getElementById('address-company').value;
-        companyUser.companyLat = lat;
-        companyUser.companyLong = long;
-        companyUser.companyPlan = document.getElementById('plan-select').options[document.getElementById('plan-select').selectedIndex].value;
-        companyUser.companyFb = document.getElementById('facebook-company').value;
-        companyUser.companyIg = document.getElementById('instagram-company').value;
-        companyUser.companyWha = document.getElementById('whatsapp-company').value;
-        companyUser.companyTwit = document.getElementById('twitter-company').value;
-        companyUser.code = parseInt(document.getElementById('number-employed-company').value);
-        companyUser.email = document.getElementById('email-employed-company').value;
-        companyUser.pass = document.getElementById('password-company-repeat').value;
-        let logoUrl = document.getElementById('logo-url');
-        companyUser.logo = logoUrl.innerHTML;
-        let bannerUrl = document.getElementById('banner-url');
-        companyUser.banner = bannerUrl.innerHTML;
-        companyBranch.nombreSucursal = companyUser.companyName;
-        companyBranch.direccionSucursal = companyUser.companyDir;
-        companyBranch.latitudSucursal = companyUser.companyLat;
-        companyBranch.longitudSucursal = companyUser.companyLong;
-        companyUser.branches.push(companyBranch);
-
-        /* NO FUNCIONAL
-        let form = ($('#form-images').serializeArray());
-        let formData = new FormData(form[0]);
-        console.log(form);
-         axios.post('../company-logo.php', formData)
-             .then(res => {
-                 console.log(res.data);
-             }).catch(error =>{
-                 console.log(error);
-             });
-
-
-             //TEST Imagen almacenada en firebase
-             document.getElementById('image').innerHTML = `<img src="${companyUser.logo}"></img>`;
-             document.getElementById('image').innerHTML += `<img src="${companyUser.banner}"></img>`
-        */ 
-        axios({
-            method: 'POST',
-            url: '../backend/axios/companies.php',
-            responseType: 'json',
-            data: companyUser
-        }).then(resAdmin =>{
-            window.location.href = '../profiles/profile-company.html';
-        }).catch(error =>{
-            console.log(error);
-        });
-        
+                companyUser.firstName = document.getElementById('first-name-company').value;
+                companyUser.lastName = document.getElementById('last-name-company').value;
+                companyUser.country = document.getElementById('country-select').options[document.getElementById('country-select').selectedIndex].value;
+                companyUser.currency = document.getElementById('currency-select').options[document.getElementById('currency-select').selectedIndex].value.slice(2, document.getElementById('currency-select').options[document.getElementById('currency-select').selectedIndex].value.length);
+                companyUser.companyName = document.getElementById('name-company').value;
+                companyUser.companyDir = document.getElementById('address-company').value;
+                companyUser.companyLat = lat;
+                companyUser.companyLong = long;
+                companyUser.companyPlan = document.getElementById('plan-select').options[document.getElementById('plan-select').selectedIndex].value;
+                companyUser.companyFb = document.getElementById('facebook-company').value;
+                companyUser.companyIg = document.getElementById('instagram-company').value;
+                companyUser.companyWha = document.getElementById('whatsapp-company').value;
+                companyUser.companyTwit = document.getElementById('twitter-company').value;
+                companyUser.code = parseInt(document.getElementById('number-employed-company').value);
+                companyUser.email = document.getElementById('email-employed-company').value;
+                companyUser.pass = document.getElementById('password-company-repeat').value;
+                companyBranch.nombreSucursal = companyUser.companyName;
+                companyBranch.direccionSucursal = companyUser.companyDir;
+                companyBranch.latitudSucursal = companyUser.companyLat;
+                companyBranch.longitudSucursal = companyUser.companyLong;
+                companyUser.branches.push(companyBranch);
+                
+                console.log(companyUser);
+                axios({
+                    method: 'POST',
+                    url: '../backend/axios/companies.php',
+                    responseType: 'json',
+                    data: companyUser
+                }).then(resCompany =>{
+                    console.log(resCompany.data)
+                    clearInterval(timer);
+                    //window.location.href = '../profiles/profile-company.html';
+                }).catch(error =>{
+                    clearInterval(timer);
+                    console.log(error);
+                });
+                
+                }
+            }    
     }
-    
 }
- 
-/* NO APLICABLE 
-function getImageNames(){
-    let variable = {};
-    $('input').each(function () {
-        let fileName = this.value.replace(/^.*\\/, "");
-        images[this.name] = fileName;
-        paths[this.name] = this.value;
-    });  
-}
-*/
+
 
 var planSelected;
+
+function ValidateCompanyLogo() {
+    if (document.getElementById('pp-url').innerHTML != '') {
+        companyUser.logo = document.getElementById('pp-url').innerHTML;
+        return true;
+    }
+    return false;
+}
+
+function ValidateCompanyBanner() {
+    if (document.getElementById('banner-url').innerHTML != '') {
+        companyUser.banner = document.getElementById('banner-url').innerHTML;
+        return true;
+    }
+    return false;
+}
 
 function ValidateFirstName() {
     let nums = /([0-9])\w+/;
@@ -286,28 +297,6 @@ function ValidateCompanyPlan() {
         return false;
     } else {
         //document.getElementById('plan-company-alert').innerHTML = ``;
-        return true;
-    }
-}
-
-function ValidateCompanyLogo() {
-    //Restringir la ruta
-    if (document.getElementById('logo-file').value == '') {
-        document.getElementById('logo-alert').innerHTML = `Seleccione una imagen de logo`;
-        return false;
-    } else {
-        document.getElementById('logo-alert').innerHTML = ``;
-        return true;
-    }
-}
-
-function ValidateCompanyBanner() {
-    //Restringir la ruta
-    if (document.getElementById('banner-file').value == '') {
-        document.getElementById('banner-alert').innerHTML = `Seleccione una imagen de banner`;
-        return false;
-    } else {
-        document.getElementById('banner-alert').innerHTML = ``;
         return true;
     }
 }
@@ -430,10 +419,11 @@ function ValidatePasswordRepeat() {
 }
 
 function ValidateCompanyLatLong() {
-    if (lat == null && long == null) {
+    if (lat == '' && long == '') {
         document.getElementById('lat-long-company-alert').innerHTML = `Seleccione en el mapa la ubicación de la tienda Principal`;
         return false;
     } else {
+        
         document.getElementById('lat-long-company-alert').innerHTML = ``;
         return true;
     }
