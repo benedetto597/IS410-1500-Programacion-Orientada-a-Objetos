@@ -138,7 +138,7 @@ function FillCompanies(){
         console.log(error);
     });
 }
-//Tu mama es mala
+
 function deleteCompany(position){
     let key = suscribeCompanies[position].key;
         axios({
