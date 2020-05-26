@@ -139,6 +139,7 @@ function FillCompanies(){
     });
 }
 //proando 
+//probando mas cosas 
 function deleteCompany(position){
     let key = suscribeCompanies[position].key;
         axios({
