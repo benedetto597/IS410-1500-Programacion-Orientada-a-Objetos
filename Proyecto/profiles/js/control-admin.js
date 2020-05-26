@@ -138,7 +138,7 @@ function FillCompanies(){
         console.log(error);
     });
 }
-
+//proando 
 function deleteCompany(position){
     let key = suscribeCompanies[position].key;
         axios({
