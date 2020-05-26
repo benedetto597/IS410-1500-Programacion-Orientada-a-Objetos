@@ -16,6 +16,15 @@
             }
         break;
         case 'GET':
+            if(Empresa::verificarAutenticacionAdmin($database->getDB())){
+                if(isset($_GET['action'])=='all'){
+                    Empresa::obtenerEmpresas($database->getDB());
+                    exit();
+                }
+            }else{
+                echo '{"mensaje:"Acceso no autorizado"}';
+                exit(); 
+            }
             if(!Empresa::verificarAutenticacion($database->getDB())){
                 echo '{"mensaje:"Acceso no autorizado"}';
                 exit();
@@ -40,7 +49,7 @@
             echo $empresa->actualizarEmpresa($database->getDB(),$_GET['id']);
         break;
         case 'DELETE':
-            if(!Empresa::verificarAutenticacion($database->getDB())){
+            if(!Empresa::verificarAutenticacionAdmin($database->getDB())){
                 echo '{"mensaje:"Acceso no autorizado"}';
                 exit();
             }

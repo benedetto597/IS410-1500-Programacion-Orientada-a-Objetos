@@ -6,37 +6,42 @@ var product = {
     category: "",
     description: "",
     branch:"",
-    promotions:[{"mensaje": "hola"}]
+    promotions:[]
 }
 
 function ValidateForm() {
-    let name = ValidateName();
-    let img = ValidateImg();
-    let price = ValidatePrice();
-    let category = ValidateCategory();
-    let description = ValidateDescription();
-    let branch = ValidateBranch();
+    uploadImage();
+    let timer = setInterval(create, 4000);
+    function create(){
+        let img = ValidateImg();
+        let name = ValidateName();
+        let price = ValidatePrice();
+        let category = ValidateCategory();
+        let description = ValidateDescription();
+        let branch = ValidateBranch();
 
-    if (name == true && img == true && price == true && category == true && description == true && branch == true) {
-        product.name = document.getElementById('name-product').value;
-        product.img = document.getElementById('file-product').value;
-        product.price = parseFloat(document.getElementById('price-product').value).toFixed(2);
-        product.category = document.getElementById('categories-select-product').options[document.getElementById('categories-select-product').selectedIndex].value;
-        product.description = document.getElementById('description-product').value;
-        product.branch = $("#branch-select-product").val();
+        if (name == true , img == true , price == true , category == true , description == true , branch == true, img == true) {
+            product.name = document.getElementById('name-product').value;
+            product.price = parseFloat(document.getElementById('price-product').value).toFixed(2);
+            product.category = document.getElementById('categories-select-product').options[document.getElementById('categories-select-product').selectedIndex].value;
+            product.description = document.getElementById('description-product').value;
+            product.branch = $("#branch-select-product").val();
 
-        axios({
-            method: 'POST',
-            url: '../backend/axios/products.php',
-            responseType: 'json',
-            data: product
-        }).then(resBranch =>{
-            window.location.href = '../profiles/profile-company.html';
-        }).catch(error =>{
-            console.log(error);
-        });
+                axios({
+                    method: 'POST',
+                    url: '../backend/axios/products.php',
+                    responseType: 'json',
+                    data: product
+                }).then(resProduct =>{
+                    window.location.href = '../profiles/profile-company.html';
+                    clearInterval(timer);
+                }).catch(error =>{
+                    console.log(error);
+                });
+        }
     }
 }
+
 
 function ValidateName() {
     let chars = /([A-Za-z0-9])\w+/;
@@ -50,19 +55,20 @@ function ValidateName() {
         document.getElementById('name-product').style.borderColor = 'grey';
         return true;
     }
-    return false;
+
 }
 
 function ValidateImg() {
-    //Restringir la ruta
-    if (document.getElementById('file-product').value == '') {
-        document.getElementById('img-alert').innerHTML = `Seleccione una imagen `;
+    
+    if (document.getElementById('product-url').innerHTML == '') {
+        document.getElementById('img-alert').innerHTML = 'Suba una imagen del producto';
         return false;
     } else {
-        document.getElementById('img-alert').innerHTML = ``;
+        document.getElementById('img-alert').innerHTML = '';
+        let logoUrl = document.getElementById('product-url');
+        product.img = logoUrl.innerHTML;
         return true;
     }
-    return false;
 }
 
 function ValidatePrice() {
@@ -74,7 +80,7 @@ function ValidatePrice() {
         document.getElementById('price-product').value = parseFloat(document.getElementById('price-product').value).toFixed(2);
         return true;
     }
-    return false;
+
 }
 
 function ValidateCategory() {
@@ -86,7 +92,7 @@ function ValidateCategory() {
         document.getElementById('categories-alert').innerHTML = ``;
         return true;
     }
-    return false;
+
 }
 
 function ValidateDescription() {
@@ -100,7 +106,7 @@ function ValidateDescription() {
         document.getElementById('description-product').style.borderColor = 'grey';
         return true;
     }
-    return false;
+
 }
 
 function ValidateBranch() {
@@ -111,7 +117,7 @@ function ValidateBranch() {
         document.getElementById('branch-alert').innerHTML = ``;
         return true;
     }
-    return false;
+
 }
 
 function showBranches(){
@@ -165,3 +171,4 @@ function readCookie(name) {
   
     }
 }
+

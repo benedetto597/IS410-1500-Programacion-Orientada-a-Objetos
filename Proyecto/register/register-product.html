@@ -139,9 +139,10 @@
                     </div>
                     <div class="form-group col-md-6">
                         <b>Subir Imagen</b>
-                        <div class="custom-file overflow-hidden rounded-pill ">
-                            <input id="file-product" type="file" class="custom-file-input rounded-pill" required onchange="ValidateImg()">
-                            <label for="file-product" class="custom-file-label rounded-pill">Foto del Producto</label>
+                        <div class="custom-file overflow-hidden rounded-pill">
+                            <input id="product-img" type="file" class="custom-file-input rounded-pill" required>
+                            <label for="product-img" class="custom-file-label rounded-pill">Subir foto del producto</label>
+                            <h1 style="visibility: hidden;" id="product-url"></h1>
                         </div>
                         <small id="img-alert" class="form-text text-dark"></small>
                     </div>
@@ -203,7 +204,45 @@
 
     </main>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+            <!-- Firebase -->
+            <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+          
+            <script>
+              var firebaseConfig = {
+                apiKey: "AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8",
+              authDomain: "proyecto-poo-271914.firebaseapp.com",
+              databaseURL: "https://proyecto-poo-271914.firebaseio.com",
+              projectId: "proyecto-poo-271914",
+              storageBucket: "proyecto-poo-271914.appspot.com",
+              messagingSenderId: "220442033339",
+              appId: "1:220442033339:web:cccf003c2c6a8daa2c7d9e",
+              measurementId: "G-1JTVDET0HF"
+            };
+              // Initialize Firebase
+              firebase.initializeApp(firebaseConfig);
+            function uploadImage() {
+                const ref = firebase.storage().ref('/products');
+                if(document.querySelector('#product-img') != ''){
+                  const file = document.querySelector('#product-img').files[0];
+                const name = file.name;
+                const metadata = {
+                  contentType: file.type
+                };
+                const task = ref.child(name).put(file, metadata);
+                task
+                  .then(snapshot => snapshot.ref.getDownloadURL())
+                  .then(url => {
+                      document.getElementById('product-url').innerHTML = url;
+                      console.log(document.getElementById('product-url').innerHTML);
+          
+                  })
+                  .catch(console.error);
+                }
+                
+              }
+          </script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script> 
     <script src="js/control-register-product.js"></script>
     <script>
         $(document).ready(function(){

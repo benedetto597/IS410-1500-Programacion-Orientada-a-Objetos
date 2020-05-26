@@ -1,45 +1,18 @@
 var adminUser = {
-    firstName: "Edgar",
-    lastName: "Benedetto",
-    gen: "Masculino",
-    country: "Honduras",
-    currency: "Lempira",
-    accessCode: "1905",
-    user: "benedetto597",
-    email: "example@example.com",
-    pass: "asdfasdf1234",
+    firstName: "",
+    lastName: "",
+    gen: "",
+    country: "",
+    currency: "",
+    accessCode: "",
+    user: "",
+    email: "",
+    pass: "",
     profileImg: "",
     coverImg: ""
 };
 
-var suscribeCompanies = [{
-    companyName: "La Colonia",
-    suscription: "Regular",
-    companyDir: "Colonia Tiloarque",
-    country: "Honduras",
-    currency: "Lempira",
-    companyWha: "22900193",
-    email: "example@example.com",
-    branches: 7
-}, {
-    companyName: "La Colonia",
-    suscription: "Premium",
-    companyDir: "Colonia Tiloarque",
-    country: "Honduras",
-    currency: "Lempira",
-    companyWha: "22900193",
-    email: "example@example.com",
-    branches: 4
-}, {
-    companyName: "La Colonia",
-    suscription: "Platinum",
-    companyDir: "Colonia Tiloarque",
-    country: "Honduras",
-    currency: "Lempira",
-    companyWha: "22900193",
-    email: "example@example.com",
-    branches: 4
-}];
+var suscribeCompanies = [];
 
 function logout(){
     axios({
@@ -55,34 +28,64 @@ function logout(){
 
 function ShowInfo() {
     document.getElementById('btn-update-info-admin').disabled = true;
+    let key = getCookie('key');
+    axios({
+        method: 'GET',
+        url: '../backend/axios/admin.php?id=' + key,
+        responseType: 'json',
+    }).then(resAdmin =>{
+        let admin = resAdmin.data;
+        adminUser.firstName = admin.nombre;
+        adminUser.lastName = admin.apellido;
+        adminUser.gen = admin.genero;
+        adminUser.country = admin.pais;
+        adminUser.currency = admin.moneda;
+        adminUser.accessCode = admin.codigoAdmin;
+        adminUser.user = admin.nombreUsuario;
+        adminUser.email = admin.correo;
+        adminUser.pass = admin.contraseña;
+        adminUser.profileImg = admin.fotoAdmin;
+        adminUser.coverImg = admin.coverAdmin;
+        //Cargar Imagenes 
+        document.getElementById('profile-photo').innerHTML = `<img id="admin-photo-profile" class="fb-image-profile thumbnail" src="${adminUser.profileImg}" alt="Profile image"/>`;
+        document.getElementById('main').style.backgroundImage = `url("${adminUser.coverImg}")`;
 
-    //Información debajo de la foto de perfil
-    document.getElementById('admin-name').innerHTML = `<i class="fas fa-user-circle" style="color:white"></i> ${adminUser.firstName} ${adminUser.lastName}`;
-    document.getElementById('admin-user').innerHTML = `<i class="fas fa-user fa-fw" style="color:white"></i> ${adminUser.user}`;
-    document.getElementById('admin-email').innerHTML = `<i class="fas fa-at" style="color:white"></i>${adminUser.email}`;
+    }).catch(error =>{
+        console.log(error);
+    });
+    let timer = setInterval(show, 2000);
 
-    //Sección Información
-    document.getElementById('info-admin-name').innerHTML = `${adminUser.firstName} ${adminUser.lastName}`;
-    document.getElementById('info-admin-user').innerHTML = adminUser.user;
-    document.getElementById('info-admin-email').innerHTML = adminUser.email;
-    document.getElementById('info-admin-country').innerHTML = adminUser.country;
-    document.getElementById('info-admin-currency').innerHTML = adminUser.currency;
-    document.getElementById('info-admin-gen').innerHTML = adminUser.gen;
+    function show(){
+        //Información debajo de la foto de perfil
+        document.getElementById('admin-name').innerHTML = `<i class="fas fa-user-circle" style="color:white"></i> ${adminUser.firstName} ${adminUser.lastName}`;
+        document.getElementById('admin-user').innerHTML = `<i class="fas fa-user fa-fw" style="color:white"></i> ${adminUser.user}`;
+        document.getElementById('admin-email').innerHTML = `<i class="fas fa-at" style="color:white"></i>${adminUser.email}`;
 
-    //Sección de Empresas inscritas
-    FillCompanies();
+        //Sección Información
+        document.getElementById('info-admin-name').innerHTML = `${adminUser.firstName} ${adminUser.lastName}`;
+        document.getElementById('info-admin-user').innerHTML = adminUser.user;
+        document.getElementById('info-admin-email').innerHTML = adminUser.email;
+        document.getElementById('info-admin-country').innerHTML = adminUser.country;
+        document.getElementById('info-admin-currency').innerHTML = adminUser.currency;
+        document.getElementById('info-admin-gen').innerHTML = adminUser.gen;
 
-    //Sección Editar Perfil
-    document.getElementById('first-name-admin').value = adminUser.firstName;
-    document.getElementById('last-name-admin').value = adminUser.lastName;
-    document.getElementById('user-admin').value = adminUser.user;
-    document.getElementById('email-admin').value = adminUser.email;
-    //Seleccionar con jquery
-    $(`#country-select option[value='${adminUser.country}']`).attr("selected", true);
-    $(`#currency-select option[value='${adminUser.currency}']`).attr("selected", true);
-    $(`#sex-select-admin-update option[value='${adminUser.gen}']`).attr("selected", true);
-    document.getElementById('password-admin').value = adminUser.pass;
-    document.getElementById('password-admin-repeat').value = adminUser.pass;
+        //Sección de Empresas inscritas
+        FillCompanies();
+
+        //Sección Editar Perfil
+        document.getElementById('first-name-admin').value = adminUser.firstName;
+        document.getElementById('last-name-admin').value = adminUser.lastName;
+        document.getElementById('user-admin').value = adminUser.user;
+        document.getElementById('email-admin').value = adminUser.email;
+        //Seleccionar con jquery
+        $(`#country-select option[value='${adminUser.country}']`).attr("selected", true);
+        $(`#currency-select option[value='${adminUser.currency}']`).attr("selected", true);
+        $(`#sex-select-admin-update option[value='${adminUser.gen}']`).attr("selected", true);
+        document.getElementById('password-admin').value = adminUser.pass;
+        document.getElementById('password-admin-repeat').value = adminUser.pass;
+        clearInterval(timer);
+    }
+    
 }
 
 function EnableChange() {
@@ -91,20 +94,63 @@ function EnableChange() {
 }
 
 function FillCompanies(){
-    for (let k = 0; k < suscribeCompanies.length; k++) {
-        document.getElementById('suscribe-companies').innerHTML += `
+    axios({
+        method: 'GET',
+        url: '../backend/axios/companies.php?action=all',
+        responseType: 'json',
+    }).then(resAdmin =>{
+        //Quitar loader 
+        let keys = Object.keys(resAdmin.data);
+        let values = Object.values(resAdmin.data);
+       
+        for(let i = 0; i<keys.length; i++){
+            let company = {};
+            company['key'] = keys[i];
+            company['companyName'] = values[i].nombreEmpresa;
+            company['suscription'] = values[i].plan;
+            company['companyDir'] = values[i].dirEmpresa;
+            company['country'] = values[i].pais;
+            company['currency'] = values[i].moneda;
+            company['companyWha'] = values[i].whaEmpresa;
+            company['email'] = values[i].correo;
+            company['branches'] = values[i].sucursalesEmpresa.length;
+            suscribeCompanies.push(company);
+        }
+        
+        for (let k = 0; k < suscribeCompanies.length; k++) {
+            document.getElementById('suscribe-companies').innerHTML += `
             <tr>
-                <th id="suscribe-company-name-${k}">${suscribeCompanies[k].companyName}</th>
-                <th id="suscribe-company-suscription-${k}">${suscribeCompanies[k].suscription}</th>
-                <td id="suscribe-company-country-${k}">${suscribeCompanies[k].country}</td>
-                <td id="suscribe-company-currency-${k}">${suscribeCompanies[k].currency}</td>
-                <td id="suscribe-company-dir-${k}">${suscribeCompanies[k].companyDir}</td>
-                <td id="suscribe-company-phone-${k}">${suscribeCompanies[k].companyWha}</td>
-                <td id="suscribe-product-branches-${k}">${suscribeCompanies[k].branches}</td>
-                <td id="suscribe-product-email-${k}">${suscribeCompanies[k].email}</td>
+            <th id="suscribe-company-name-${k}">${suscribeCompanies[k].companyName}</th>
+            <th id="suscribe-company-suscription-${k}">${suscribeCompanies[k].suscription}</th>
+            <td id="suscribe-company-country-${k}">${suscribeCompanies[k].country}</td>
+            <td id="suscribe-company-currency-${k}">${suscribeCompanies[k].currency}</td>
+            <td id="suscribe-company-dir-${k}">${suscribeCompanies[k].companyDir}</td>
+            <td id="suscribe-company-phone-${k}">${suscribeCompanies[k].companyWha}</td>
+            <td id="suscribe-product-branches-${k}">${suscribeCompanies[k].branches}</td>
+            <td id="suscribe-product-email-${k}">${suscribeCompanies[k].email}</td>
+            <td><button type="button" id="btn-delete-${k}" class="card-text bg-danger ml-auto mr-auto btn-sm shadow mb-0 rounded text-white" onclick="deleteCompany(${k})"><i class="fas fa-trash"></i></button></td>
             </tr>
             `;
-    }
+        }
+        //Ocultar Loader
+        $(".loader-wrapper").fadeOut("slow");
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
+function deleteCompany(position){
+    let key = suscribeCompanies[position].key;
+        axios({
+            method: 'DELETE',
+            url: '../backend/axios/companies.php?id='+ key,
+            responseType: 'json',
+        }).then(resAdmin =>{
+            console.log(resAdmin.data);
+            window.location.href = "../profiles/profile-admin.html";
+        }).catch(error =>{
+            console.log(error);
+        });
 }
 
 var pp;

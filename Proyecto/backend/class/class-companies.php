@@ -292,6 +292,21 @@ class Empresa extends Usuario{
             return false;
         }        
     }
+
+    public static function verificarAutenticacionAdmin($db){
+        if(!isset($_COOKIE['key']))
+            return false;
+            
+        $respuesta = $db->getReference('administradores')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+
+        if($respuesta["token"]==$_COOKIE["token"]){
+            return true;
+        }else{
+            return false;
+        }        
+    }
 }
     
 ?>
