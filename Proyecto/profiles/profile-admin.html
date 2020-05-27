@@ -201,12 +201,12 @@
                                             <input type="text" class="form-control" id="first-name-admin" placeholder="Nombres" required onchange="EnableChange();">
                                             <input type="text" class="form-control my-1" id="last-name-admin" placeholder="Apellidos"  required onchange="EnableChange();">
                                             <div class="custom-file overflow-hidden rounded-pill my-2">
-                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" required onchange="EnableChange();">
+                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" accept="image/*" onchange="EnableChange();">
                                                 <label for="pp-photo" class="custom-file-label rounded-pill">Subir foto de perfil</label>
                                                 <h1 style="visibility: hidden;" id="pp-url"></h1>
                                             </div>
                                             <div class="custom-file overflow-hidden rounded-pill ">
-                                                <input id="banner-photo" type="file" class="custom-file-input rounded-pill"  required onchange="EnableChange();">
+                                                <input id="banner-photo" type="file" class="custom-file-input rounded-pill" accept="image/*" onchange="EnableChange();">
                                                 <label for="banner-photo" class="custom-file-label rounded-pill">Subir foto de Portada</label>
                                                 <h1 style="visibility: hidden;" id="banner-url"></h1>
                                             </div>
@@ -269,6 +269,8 @@
   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
 
   <script>
+  document.querySelector('#pp-photo').value = '';
+  document.querySelector('#banner-photo').value = '';
     var firebaseConfig = {
       apiKey: "AIzaSyDHbIQpttJ5KwhJntjUa1aAKOTmuXIZRZ8",
     authDomain: "proyecto-poo-271914.firebaseapp.com",

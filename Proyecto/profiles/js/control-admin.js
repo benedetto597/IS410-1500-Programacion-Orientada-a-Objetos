@@ -79,7 +79,12 @@ function ShowInfo() {
         document.getElementById('email-admin').value = adminUser.email;
         //Seleccionar con jquery
         $(`#country-select option[value='${adminUser.country}']`).attr("selected", true);
-        $(`#currency-select option[value='${adminUser.currency}']`).attr("selected", true);
+        if(adminUser.currency == 'Lempira'){
+            $(`#currency-select option[value='${adminUser.currency}']`).attr("selected", true);
+        }
+        if(adminUser.currency == 'Dolar'){
+            $(`#currency-select option[value='${adminUser.currency}']`).attr("selected", true);
+        }
         $(`#sex-select-admin-update option[value='${adminUser.gen}']`).attr("selected", true);
         document.getElementById('password-admin').value = adminUser.pass;
         document.getElementById('password-admin-repeat').value = adminUser.pass;
@@ -167,7 +172,8 @@ var pass;
 var repPass;
 
 function VerifyData() {
-    
+    console.log(document.querySelector('#banner-photo').value); 
+    console.log(document.querySelector('#pp-photo').value); 
     name = ValidateFirstName();
     lastname = ValidateLastName();
     user = ValidateUser();
@@ -180,42 +186,52 @@ function VerifyData() {
 }
 
 function updateInfo(){
-    uploadImageProfile();
-    uploadImageBanner();
-    let timer = setInterval(update, 5000);
+    if(document.querySelector('#banner-photo').value != ''){
+        uploadImageBanner();
+    }else{
+        document.getElementById('banner-url').innerHTML = adminUser.coverImg;
+    }
+    if(document.querySelector('#pp-photo').value != ''){
+        uploadImageProfile();
+    }else{
+        document.getElementById('pp-url').innerHTML = adminUser.profileImg;
+    }
+    $(".loader-wrapper").fadeIn("slow");
+
+    let timer = setInterval(update, 3000);
     function update(){
         pp = ValidateProfilePhoto();
         banner = ValidateProfileBanner();
-        if(
-           
-            name == true,
-            lastname == true,
-            user == true,
-            email == true,
-            country == true,
-            currency == true,
-            gender == true,
-            pass == true,
-            repPass == true
-        ){
-            //console.log(adminUser);
-            let key = getCookie('key');
-            axios({
-                method: 'PUT',
-                url: '../backend/axios/admin.php?id=' + key ,
-                responseType: 'json',
-                data: adminUser
-            }).then(resAdmin =>{
-                //console.log(resAdmin.data);
-                clearInterval(timer);
-                window.location.href = '../profiles/profile-admin.html';
-            }).catch(error =>{
-                console.log(error);
-            });
-            
+        if(pp == true && banner == true){
+            if(
+                name == true,
+                lastname == true,
+                user == true,
+                email == true,
+                country == true,
+                currency == true,
+                gender == true,
+                pass == true,
+                repPass == true
+            ){
+                //console.log(adminUser);
+                let key = getCookie('key');
+                axios({
+                    method: 'PUT',
+                    url: '../backend/axios/admin.php?id=' + key ,
+                    responseType: 'json',
+                    data: adminUser
+                }).then(resAdmin =>{
+                    //console.log(resAdmin.data);
+                    clearInterval(timer);
+                    window.location.href = '../profiles/profile-admin.html';
+                }).catch(error =>{
+                    console.log(error);
+                });
+                
+            }
         }
     }
-    
 }
 
 function getCookie(name) {
@@ -298,28 +314,31 @@ function ValidateCountry() {
         return false;
     } else {
         document.getElementById('country-alert').innerHTML = ``;
+        adminUser.country = countrySelected.options[countrySelected.selectedIndex].value;
         return true;
     }
 }
 
 function ValidateCurrency() {
-    let countrySelected = document.getElementById('currency-select');
-    if (countrySelected.options[countrySelected.selectedIndex].value == 'Seleccione Moneda') {
+    let currencySelected = document.getElementById('currency-select');
+    if (currencySelected.options[currencySelected.selectedIndex].value == 'Seleccione Moneda') {
         document.getElementById('currency-alert').innerHTML = `Seleccione una Moneda de los disponibles`;
         return false;
     } else {
         document.getElementById('currency-alert').innerHTML = ``;
+        adminUser.currency = currencySelected.options[currencySelected.selectedIndex].value;
         return true;
     }
 }
 
 function ValidateGender() {
-    let countrySelected = document.getElementById('sex-select-admin-update');
-    if (countrySelected.options[countrySelected.selectedIndex].value == 'Seleccione Genero') {
+    let genderSelected = document.getElementById('sex-select-admin-update');
+    if (genderSelected.options[genderSelected.selectedIndex].value == 'Seleccione Genero') {
         document.getElementById('gen-alert').innerHTML = `Seleccione un genero de los disponibles`;
         return false;
     } else {
         document.getElementById('gen-alert').innerHTML = ``;
+        adminUser.gen = genderSelected.options[genderSelected.selectedIndex].value;
         return true;
     }
 }
@@ -334,6 +353,7 @@ function ValidateUser() {
         return false;
     } else {
         document.getElementById('user-admin').style.borderColor = 'grey';
+        adminUser.user = document.getElementById('user-admin').value;
         return true;
     }
 }
@@ -347,6 +367,7 @@ function ValidateEmail() {
         return true;
     } else {
         document.getElementById('email-admin').style.borderColor = 'grey';
+        adminUser.email = document.getElementById('email-admin').value;
         return false;
     }
 }
@@ -374,6 +395,7 @@ function ValidatePasswordRepeat() {
         return false;
     } else {
         document.getElementById('password-admin-repeat').style.borderColor = 'gray';
+        adminUser.pass = document.getElementById('password-admin').value;
         return true;
     }
     return false;
