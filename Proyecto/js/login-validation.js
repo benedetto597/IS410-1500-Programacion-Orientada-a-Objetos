@@ -40,7 +40,7 @@ function ValidateClient() {
                 document.getElementById('login-pass-client').style.borderColor = 'grey';
                 document.getElementById('email-login-client').style.borderColor = 'grey';
                 document.getElementById('warning-client').innerHTML = '';
-                window.location.href = 'profiles/profile-client.html';
+                window.location.href = 'profiles/profile-client.php';
             }else{
                 document.getElementById('login-user-client').style.borderColor = 'red';
                 document.getElementById('login-pass-client').style.borderColor = 'red';
@@ -91,27 +91,27 @@ function ValidateAdmin() {
     let pass = ValidatePassAdmin();
 
     if (code == true && pass == true && user == true && email == true) {
-        
         axios({
             method: 'POST',
             url: 'backend/axios/admin.php?action=login',
             responseType: 'json',
             data: loginAdmin
         }).then(resAdmin =>{
+            //console.log(resAdmin.data);
+            
             if(resAdmin.data.valido == true){
                 document.getElementById('login-user-admin').style.borderColor = 'grey';
                 document.getElementById('login-pass-admin').style.borderColor = 'grey';
                 document.getElementById('login-code-admin').style.borderColor = 'grey';
                 document.getElementById('email-login-admin').style.borderColor = 'grey';
                 document.getElementById('warning-admin').innerHTML = '';
-                window.location.href = 'profiles/profile-admin.html';
+                window.location.href = 'profiles/profile-admin.php';
             }else{
                 document.getElementById('login-user-admin').style.borderColor = 'red';
                 document.getElementById('login-pass-admin').style.borderColor = 'red';
                 document.getElementById('login-code-admin').style.borderColor = 'red';
                 document.getElementById('email-login-admin').style.borderColor = 'red';
                 document.getElementById('warning-admin').innerHTML = 'Credenciales no validas';
-
             }
         }).catch(error =>{
             console.log(error);

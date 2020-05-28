@@ -39,6 +39,8 @@ class Cliente extends Usuario{
 
     public function crearCliente($db){
         $cliente = $this->obtenerInfo();
+        $cliente['contraseña'] = password_hash(parent::getContraseña(),PASSWORD_DEFAULT);
+
         $respuesta = $db->getReference('clientes')
             ->push($cliente);
             
@@ -51,6 +53,7 @@ class Cliente extends Usuario{
 
     public function actualizarCliente($db, $id){
         $cliente = $this->obtenerInfo();
+        $cliente['contraseña'] = parent::getContraseña();
         //Guardar el token para que no se cierre la sesión
         $cliente['token'] = $_COOKIE["token"];
         $respuesta = $db->getReference('clientes')
@@ -78,7 +81,6 @@ class Cliente extends Usuario{
         $datos['pais'] = parent::getPais();
         $datos['moneda'] = parent::getMoneda();
         $datos['correo'] = parent::getCorreo();
-        $datos['contraseña'] = password_hash(parent::getContraseña(),PASSWORD_DEFAULT);
         $datos['fotoCliente'] = $this->fotoCliente;
         return $datos;
     }

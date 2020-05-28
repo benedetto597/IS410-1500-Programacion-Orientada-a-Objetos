@@ -1,12 +1,12 @@
 var clientUser = {
-    firstName: "Edgar",
-    lastName: "Benedetto",
-    gen: "Masculino",
-    country: "Honduras",
-    currency: "Lempira",
-    user: "benedetto597",
-    email: "example@example.com",
-    pass: "asdfasdf1234",
+    firstName: "",
+    lastName: "",
+    gen: "",
+    country: "",
+    currency: "",
+    user: "",
+    email: "",
+    pass: "",
     profileImg: ""
 };
 
@@ -91,6 +91,8 @@ var favoriteCompanies = [{
 }];
 
 function logout(){
+    $(".loader-wrapper").fadeIn("slow");
+
     axios({
         method: 'GET',
         url: '../backend/axios/clients.php?action=logout',
@@ -102,40 +104,80 @@ function logout(){
     });
 }
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
 function ShowInfo() {
-    document.getElementById('btn-update-info').disabled = true;
+    let key = getCookie('key');
+    axios({
+        method: 'GET',
+        url: '../backend/axios/clients.php?id=' + key,
+        responseType: 'json',
+    }).then(resClient =>{
+        let client = resClient.data;
+        clientUser.firstName= client.nombre;
+        clientUser.lastName= client.apellido;
+        clientUser.gen= client.genero;
+        clientUser.country= client.pais;
+        clientUser.currency= client.moneda;
+        clientUser.user= client.nombreUsuario;
+        clientUser.email= client.correo;
+        clientUser.pass= client.contraseña;
+        clientUser.profileImg= client.fotoCliente;
+        //Cargar Imagen
+        if(clientUser.profileImg != 'l' || clientUser.profileImg != ''){
+            document.getElementById('profile-photo').innerHTML = `<img id="admin-photo-profile" class="fb-image-profile thumbnail" src="${clientUser.profileImg}" alt="Profile image"/>`;
+        }
+    }).catch(error =>{
+        console.log(error);
+    });
+    let timer = setInterval(show, 4000);
 
-    //Información debajo de la foto de perfil
-    document.getElementById('client-name').innerHTML = `<i class="fas fa-user-circle"></i> ${clientUser.firstName} ${clientUser.lastName}`;
-    document.getElementById('client-user').innerHTML = `<i class="fas fa-user fa-fw"></i> ${clientUser.user}`;
-    document.getElementById('client-email').innerHTML = `<i class="fas fa-at"></i>${clientUser.email}`;
+    function show(){
+        document.getElementById('btn-update-info').disabled = true;
 
-    //Sección Información
-    document.getElementById('info-client-name').innerHTML = `${clientUser.firstName} ${clientUser.lastName}`;
-    document.getElementById('info-client-user').innerHTML = clientUser.user;
-    document.getElementById('info-client-email').innerHTML = clientUser.email;
-    document.getElementById('info-client-country').innerHTML = clientUser.country;
-    document.getElementById('info-client-currency').innerHTML = clientUser.currency;
-    document.getElementById('info-client-gen').innerHTML = clientUser.gen;
+        //Información debajo de la foto de perfil
+        document.getElementById('client-name').innerHTML = `<i class="fas fa-user-circle"></i> ${clientUser.firstName} ${clientUser.lastName}`;
+        document.getElementById('client-user').innerHTML = `<i class="fas fa-user fa-fw"></i> ${clientUser.user}`;
+        document.getElementById('client-email').innerHTML = `<i class="fas fa-at"></i>${clientUser.email}`;
 
-    //Sección de Productos Favoritos y Empresas Favoritos
-    FillFavorites();
+        //Sección Información
+        document.getElementById('info-client-name').innerHTML = `${clientUser.firstName} ${clientUser.lastName}`;
+        document.getElementById('info-client-user').innerHTML = clientUser.user;
+        document.getElementById('info-client-email').innerHTML = clientUser.email;
+        document.getElementById('info-client-country').innerHTML = clientUser.country;
+        document.getElementById('info-client-currency').innerHTML = clientUser.currency;
+        document.getElementById('info-client-gen').innerHTML = clientUser.gen;
 
-    //Sección Editar Perfil
-    document.getElementById('first-name-client').value = clientUser.firstName;
-    document.getElementById('last-name-client').value = clientUser.lastName;
-    document.getElementById('user-client').value = clientUser.user;
-    document.getElementById('email-client').value = clientUser.email;
-    //Seleccionar con jquery
-    $(`#country-select option[value='${clientUser.country}']`).attr("selected", true);
-    $(`#currency-select option[value='${clientUser.currency}']`).attr("selected", true);
-    $(`#sex-select-client option[value='${clientUser.gen}']`).attr("selected", true);
-    document.getElementById('password-client').value = clientUser.pass;
-    document.getElementById('password-client-repeat').value = clientUser.pass;
+        //Sección de Productos Favoritos y Empresas Favoritos
+        FillFavorites();
+
+        //Sección Editar Perfil
+        document.getElementById('first-name-client').value = clientUser.firstName;
+        document.getElementById('last-name-client').value = clientUser.lastName;
+        document.getElementById('user-client').value = clientUser.user;
+        document.getElementById('email-client').value = clientUser.email;
+        //Seleccionar con jquery
+        $(`#country-select option[value='${clientUser.country}']`).attr("selected", true);
+        if(clientUser.currency == 'Lempira'){
+            $(`#currency-select option[value='${clientUser.currency}']`).attr("selected", true);
+        }
+        if(clientUser.currency == 'Dolar'){
+            $(`#currency-select option[value='${clientUser.currency}']`).attr("selected", true);
+        }
+        $(`#sex-select-client option[value='${clientUser.gen}']`).attr("selected", true);
+        document.getElementById('password-client').value = clientUser.pass;
+        document.getElementById('password-client-repeat').value = clientUser.pass;
+        clearInterval(timer);
+    }
 }
 
 function FillFavorites() {
+    //Recibir todas los productos que añada a favoritos y quitar lo de las compañias
+    //habilitar el quitar de carrito y quitar de favoritos
     for (let i = 0; i < favoriteProducts.length; i++) {
         for (let j = 0; j < favoriteProducts[i].productPromotion.length; j++) {
             document.getElementById('favorite-products').innerHTML += `
@@ -162,6 +204,7 @@ function FillFavorites() {
             </tr>
             `;
     }
+    $(".loader-wrapper").fadeOut("slow");
 }
 
 function EnableChange() {
@@ -177,35 +220,56 @@ function VerifyData() {
     ValidateCountry();
     ValidateCurrency();
     ValidateGender();
-    ValidatePassword();
-    ValidatePasswordRepeat();
 }
 
 function updateInfo(){
-    uploadImageProfile();
-    let timer = setInterval(update, 3000);
-    function update(){
-        pp = ValidateProfilePhoto();
-        if(
-            pp == true
-        ){
-            //console.log(clientUser);
-            let key = getCookie('key');
-            axios({
-                method: 'PUT',
-                url: '../backend/axios/clients.php?id=' + key ,
-                responseType: 'json',
-                data: clientUser
-            }).then(resClient =>{
-                //console.log(resClient.data);
-                clearInterval(timer);
-                window.location.href = '../profiles/profile-clients.html';
-            }).catch(error =>{
-                console.log(error);
-            });
-            
+    console.log(ValidateFirstName());
+    console.log(ValidateLastName());
+    console.log(ValidateUser());
+    console.log(ValidateEmail());
+    console.log(ValidateCountry());
+    console.log(ValidateCurrency());
+    console.log(ValidateGender());
+    if(ValidateFirstName() &&
+    ValidateLastName() &&
+    ValidateUser() &&
+    ValidateEmail() &&
+    ValidateCountry() &&
+    ValidateCurrency() &&
+    ValidateGender() ){
+        document.getElementById('data-alert').innerHTML = '';
+        if(document.querySelector('#pp-photo').value != ''){
+            uploadImageProfile();
+        }else{
+            document.getElementById('pp-url').innerHTML = clientUser.profileImg;
         }
-    }
+        $(".loader-wrapper").fadeIn("slow");
+        let timer = setInterval(update, 3000);
+        function update(){
+            pp = ValidateProfilePhoto();
+            if(
+                pp 
+            ){
+                //console.log(clientUser);
+                let key = getCookie('key');
+                axios({
+                    method: 'PUT',
+                    url: '../backend/axios/clients.php?id=' + key ,
+                    responseType: 'json',
+                    data: clientUser
+                }).then(resClient =>{
+                    //console.log(resClient.data);
+                    clearInterval(timer);
+                    window.location.href = '../profiles/profile-client.php';
+                }).catch(error =>{
+                    console.log(error);
+                });
+                
+            }
+        }
+    }else{
+        document.getElementById('data-alert').innerHTML = 'Rellene todos los campos';
+    } 
 }
 
 function getCookie(name) {
@@ -316,10 +380,10 @@ function ValidateEmail() {
         document.getElementById('email-client').value = '';
         document.getElementById('email-client').style.borderColor = 'red';
         document.getElementById('email-client').placeholder = 'Ingresar un Email Valido';
-        return true;
+        return false;
     } else {
         document.getElementById('email-client').style.borderColor = 'grey';
-        return false;
+        return true;
     }
 }
 

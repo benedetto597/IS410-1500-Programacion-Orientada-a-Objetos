@@ -191,6 +191,8 @@ class Empresa extends Usuario{
     
     public function crearEmpresa($db){
         $empresa = $this->obtenerInfo();
+        $empresa['contraseña'] = password_hash(parent::getContraseña(), PASSWORD_DEFAULT);
+        $empresa['codigoEmpresa'] = password_hash($this->codigoEmpresa, PASSWORD_DEFAULT);
         $respuesta = $db->getReference('empresas')
             ->push($empresa);
                
@@ -202,6 +204,8 @@ class Empresa extends Usuario{
     
     public function actualizarEmpresa($db, $id){
         $empresa = $this->obtenerInfo();
+        $empresa['contraseña'] = parent::getContraseña();
+        $empresa['codigoEmpresa'] = $this->codigoEmpresa;
         //Guardar el token para que no se cierre la sesión
         $empresa['token'] = $_COOKIE["token"];
         $respuesta = $db->getReference('empresas')
@@ -230,14 +234,13 @@ class Empresa extends Usuario{
         $datos['pais'] = parent::getPais();
         $datos['moneda'] = parent::getMoneda();
         $datos['correo'] = parent::getCorreo();
-        $datos['contraseña'] = password_hash(parent::getContraseña(), PASSWORD_DEFAULT);
+        
         $datos['dirEmpresa'] = $this->dirEmpresa;
         $datos['latEmpresa'] = $this->latEmpresa;
         $datos['longEmpresa'] = $this->longEmpresa;
         $datos['sucursalesEmpresa'] = $this->sucursalesEmpresa;
         $datos['logoEmpresa'] = $this->logoEmpresa;
         $datos['bannerEmpresa'] = $this->bannerEmpresa;
-        $datos['codigoEmpresa'] = password_hash($this->codigoEmpresa, PASSWORD_DEFAULT);
         $datos['fbEmpresa'] = $this->fbEmpresa;
         $datos['igEmpresa'] = $this->igEmpresa;
         $datos['whaEmpresa'] = $this->whaEmpresa;

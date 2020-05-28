@@ -67,6 +67,8 @@ class Administrador extends Usuario{
 
     public function crearAdmin($db){
         $administrador = $this->obtenerInfo();
+        $administrador['contraseña'] = password_hash(parent::getContraseña(), PASSWORD_DEFAULT);
+        $administrador['codigoAdmin'] = password_hash($this->codigoAdmin, PASSWORD_DEFAULT);
         $respuesta = $db->getReference('administradores')
             ->push($administrador);
                
@@ -80,6 +82,8 @@ class Administrador extends Usuario{
 
     public function actualizarAdmin($db, $id){
         $admin = $this->obtenerInfo();
+        $admin['contraseña'] = parent::getContraseña();
+        $admin['codigoAdmin'] = $this->codigoAdmin;
         //Guardar el token para que no se cierre la sesión
         $admin['token'] = $_COOKIE["token"];
         $respuesta = $db->getReference('administradores')
@@ -107,8 +111,6 @@ class Administrador extends Usuario{
         $datos['pais'] = parent::getPais();
         $datos['moneda'] = parent::getMoneda();
         $datos['correo'] = parent::getCorreo();
-        $datos['contraseña'] = password_hash(parent::getContraseña(), PASSWORD_DEFAULT);
-        $datos['codigoAdmin'] = password_hash($this->codigoAdmin, PASSWORD_DEFAULT);
         $datos['fotoAdmin'] = $this->fotoAdmin;
         $datos['coverAdmin'] = $this->coverAdmin;
         return $datos;

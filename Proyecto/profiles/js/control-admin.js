@@ -53,7 +53,7 @@ function ShowInfo() {
     }).catch(error =>{
         console.log(error);
     });
-    let timer = setInterval(show, 2000);
+    let timer = setInterval(show, 4000);
 
     function show(){
         //Información debajo de la foto de perfil
@@ -71,7 +71,7 @@ function ShowInfo() {
 
         //Sección de Empresas inscritas
         FillCompanies();
-        //Probando prro
+        
         //Sección Editar Perfil
         document.getElementById('first-name-admin').value = adminUser.firstName;
         document.getElementById('last-name-admin').value = adminUser.lastName;
@@ -143,8 +143,7 @@ function FillCompanies(){
         console.log(error);
     });
 }
-//proando 
-//probando mas cosas 
+
 function deleteCompany(position){
     let key = suscribeCompanies[position].key;
         axios({
@@ -153,7 +152,7 @@ function deleteCompany(position){
             responseType: 'json',
         }).then(resAdmin =>{
             console.log(resAdmin.data);
-            window.location.href = "../profiles/profile-admin.html";
+            window.location.href = "../profiles/profile-admin.php";
         }).catch(error =>{
             console.log(error);
         });
@@ -168,12 +167,9 @@ var email;
 var country;
 var currency;
 var gender;
-var pass;
-var repPass;
+
 
 function VerifyData() {
-    console.log(document.querySelector('#banner-photo').value); 
-    console.log(document.querySelector('#pp-photo').value); 
     name = ValidateFirstName();
     lastname = ValidateLastName();
     user = ValidateUser();
@@ -181,57 +177,58 @@ function VerifyData() {
     country = ValidateCountry();
     currency = ValidateCurrency();
     gender = ValidateGender();
-    pass = ValidatePassword();
-    repPass = ValidatePasswordRepeat();
+
 }
 
 function updateInfo(){
-    if(document.querySelector('#banner-photo').value != ''){
-        uploadImageBanner();
-    }else{
-        document.getElementById('banner-url').innerHTML = adminUser.coverImg;
-    }
-    if(document.querySelector('#pp-photo').value != ''){
-        uploadImageProfile();
-    }else{
-        document.getElementById('pp-url').innerHTML = adminUser.profileImg;
-    }
-    $(".loader-wrapper").fadeIn("slow");
-
-    let timer = setInterval(update, 3000);
-    function update(){
-        pp = ValidateProfilePhoto();
-        banner = ValidateProfileBanner();
-        if(pp == true && banner == true){
-            if(
-                name == true,
-                lastname == true,
-                user == true,
-                email == true,
-                country == true,
-                currency == true,
-                gender == true,
-                pass == true,
-                repPass == true
-            ){
-                //console.log(adminUser);
-                let key = getCookie('key');
-                axios({
-                    method: 'PUT',
-                    url: '../backend/axios/admin.php?id=' + key ,
-                    responseType: 'json',
-                    data: adminUser
-                }).then(resAdmin =>{
-                    //console.log(resAdmin.data);
-                    clearInterval(timer);
-                    window.location.href = '../profiles/profile-admin.html';
-                }).catch(error =>{
-                    console.log(error);
-                });
-                
-            }
+    if(
+        name &&
+        lastname &&
+        user &&
+        email &&
+        country &&
+        currency &&
+        gender
+    ){
+        document.getElementById('data-alert').innerHTML = '';
+        if(document.querySelector('#banner-photo').value != ''){
+            uploadImageBanner();
+        }else{
+            document.getElementById('banner-url').innerHTML = adminUser.coverImg;
         }
-    }
+        if(document.querySelector('#pp-photo').value != ''){
+            uploadImageProfile();
+        }else{
+            document.getElementById('pp-url').innerHTML = adminUser.profileImg;
+        }
+        $(".loader-wrapper").fadeIn("slow");
+        
+        let timer = setInterval(update, 3000);
+        function update(){
+            pp = ValidateProfilePhoto();
+            banner = ValidateProfileBanner();
+         
+            if(pp == true && banner == true){
+                    
+                    //console.log(adminUser);
+                    let key = getCookie('key');
+                    axios({
+                        method: 'PUT',
+                        url: '../backend/axios/admin.php?id=' + key ,
+                        responseType: 'json',
+                        data: adminUser
+                    }).then(resAdmin =>{
+                        //console.log(resAdmin.data);
+                        clearInterval(timer);
+                        window.location.href = '../profiles/profile-admin.php';
+                    }).catch(error =>{
+                        console.log(error);
+                    });
+            }
+        }    
+    }else{
+        document.getElementById('data-alert').innerHTML = 'Rellene todos los campos';
+    }   
 }
 
 function getCookie(name) {
@@ -364,15 +361,15 @@ function ValidateEmail() {
         document.getElementById('email-admin').value = '';
         document.getElementById('email-admin').style.borderColor = 'red';
         document.getElementById('email-admin').placeholder = 'Ingresar un Email Valido';
-        return true;
+        return false;
     } else {
         document.getElementById('email-admin').style.borderColor = 'grey';
         adminUser.email = document.getElementById('email-admin').value;
-        return false;
+        return true;
     }
 }
 
-
+/*
 function ValidatePassword() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
@@ -398,5 +395,5 @@ function ValidatePasswordRepeat() {
         adminUser.pass = document.getElementById('password-admin').value;
         return true;
     }
-    return false;
 }
+*/
