@@ -71,7 +71,7 @@ function ShowInfo() {
 
         //Sección de Empresas inscritas
         FillCompanies();
-
+        //Probando prro
         //Sección Editar Perfil
         document.getElementById('first-name-admin').value = adminUser.firstName;
         document.getElementById('last-name-admin').value = adminUser.lastName;
