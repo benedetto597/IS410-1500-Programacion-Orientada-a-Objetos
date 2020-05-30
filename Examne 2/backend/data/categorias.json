@@ -1,0 +1,49 @@
+[{
+    "nombreCategoria": "Farmacias",
+    "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+    "color": "#9CD0FA",
+    "icono": "fas fa-briefcase-medical",
+    "empresas": [1, 2, 3]
+}, {
+    "nombreCategoria": "Restaurantes",
+    "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+    "color": "#FFA8AA",
+    "icono": "fas fa-bus-alt",
+    "empresas": [4, 5, 6]
+}, {
+    "nombreCategoria": "Salud",
+    "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+    "color": "#D3B7F3",
+    "icono": "fas fa-bug",
+    "empresas": [7, 8, 9]
+}, {
+    "nombreCategoria": "Caf\u00e9",
+    "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+    "color": "#0AD1AE",
+    "icono": "fas fa-box-open",
+    "empresas": [10, 11, 12]
+}, {
+    "nombreCategoria": "Bebidas",
+    "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+    "color": "#F4845E",
+    "icono": "fas fa-cannabis",
+    "empresas": [13, 14, 15]
+}, {
+    "nombreCategoria": "Perros",
+    "descripcion": "Perros de todos colores",
+    "color": "#5DC1B9",
+    "icono": "fas fa-dog",
+    "empresas": []
+}, {
+    "nombreCategoria": "Videojuegos",
+    "descripcion": "Videojuegos de todo tipo",
+    "color": "#ff0000",
+    "icono": "fas fa-gamepad",
+    "empresas": []
+}, {
+    "nombreCategoria": "Motocicletas",
+    "descripcion": "Motocicletas Honda",
+    "color": "#000000",
+    "icono": "fas fa-motorcycle",
+    "empresas": []
+}]

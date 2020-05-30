@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lugo</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/all.css"><!--FontAwesome-->
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #563D7C; height: 90px;">
+        <div class="container-fluid">
+                <a class="navbar-brand" href="/"><h2 id="logo">Lugo</h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <form class="form-inline my-2 my-lg-0 ml-auto">
+                <select name="" id="usuarioActual" class="form-control mr-3" onchange="cambiarUsuario()">
+                    
+                </select>
+                <button class="btn btn-secondary my-2 my-sm-0 mr-2" type="button" onclick="verOrdenes()" data-toggle="modal" data-target="#modalUser">Ver Ordenes</button>
+                <button type="button" class="btn btn-secondary my-2 my-sm-0" onclick="crearCategoria()">Agregar Nueva Categoria</button>
+                </form>
+            </div>
+        </div>    
+    </nav>
+        
+        <main role="main" class="container" style="min-height: 100vh;">
+            <div class="row mt-3 text-center mx-auto">
+                <div class="col-lg-6 mx-auto">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-12 col-sm-12">
+                    <h2 id="texto-hola">
+                        
+                    </h2>
+                    <span id="texto-pregunta">
+                        ¿Que Necesitas?
+                    </span>
+                </div>
+            </div>
+            <div id="contenedor-categorias" class="row mb-3">
+                
+            </div>
+        </main><!-- /.container -->
+        <br>
+        <footer style="height: 90px; background-color: #563D7C;"  class="mt-5">
+
+        </footer>  
+
+        <!---Zona Modales-->
+        <div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="modalUserLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #563D7C;">
+                        <h2 class="modal-title font-weight-bolder text-white" id="modalUserLabel"></h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="zona-productos" class="card p-3" style="border-radius: 12px;">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalCategorias" tabindex="-1" role="dialog" aria-labelledby="modalCategoriasLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #563D7C;">
+                        <h2 class="modal-title font-weight-bolder text-white" id="header-categorias"></h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="zona-categorias" class="modal-body row">
+        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="modal fade my-auto" id="modalPedidos" tabindex="-1" role="dialog" aria-labelledby="modalPedidosLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog modal-lg" role="document">
+              <br><br>
+              <br>
+              <br><br><br><br><br>
+              <div class="modal-content">
+                  <div class="modal-header" style="background-color: #563D7C;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div id="zona-pedidos" class="modal-body">
+        
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="modal fade my-auto" id="modalCreacionCategoria" tabindex="-1" role="dialog" aria-labelledby="modalCreacionCategoriaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-lg" role="document">
+            <br><br>
+            <br>
+            <br><br><br><br><br>
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #563D7C;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="zona-pedidos" class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="txt-nombre" placeholder="Digite Nombre">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="txt-descripcion" placeholder="Digite Descripcion">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="txt-color" placeholder="Digite Color">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="txt-icono" placeholder="Digite Icono">
+                        </div>
+                        <input onclick = "guardar()" type="button" class="btn btn-secondary" value="Guardar Categoria">
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controlador.js"></script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+[
+    {
+        "idEmpresa":1,
+        "nombreEmpresa": "Empresa 1",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto Farmancia 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 999949.99
+            },
+            {
+                "nombreProducto": "Producto Farmancia 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto Farmancia 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto Farmancia 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":2,
+        "nombreEmpresa": "Empresa 2",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":3,
+        "nombreEmpresa": "Empresa 3",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":4,
+        "nombreEmpresa": "Empresa 4",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":5,
+        "nombreEmpresa": "Empresa 5",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":6,
+        "nombreEmpresa": "Empresa 6",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":7,
+        "nombreEmpresa": "Empresa 7",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":8,
+        "nombreEmpresa": "Empresa 8",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":9,
+        "nombreEmpresa": "Empresa 9",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":10,
+        "nombreEmpresa": "Empresa 10",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":11,
+        "nombreEmpresa": "Empresa 11",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":12,
+        "nombreEmpresa": "Empresa 12",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":13,
+        "nombreEmpresa": "Empresa 13",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":14,
+        "nombreEmpresa": "Empresa 14",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    },
+    {
+        "idEmpresa":15,
+        "nombreEmpresa": "Empresa 15",
+        "imagen":"img/banner.jpg",
+        "productos":[
+            {
+                "nombreProducto": "Producto 1",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 2",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 3",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            },
+            {
+                "nombreProducto": "Producto 4",
+                "descripcion": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, modi!",
+                "precio": 49.99
+            }
+        ]
+    }
+]
