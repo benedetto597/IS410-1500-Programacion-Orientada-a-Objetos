@@ -7,6 +7,11 @@ body{
     width: 90px;
 }
 
+#check{
+    height: 90px;
+    width: 90px;
+}
+
 .navbar{
     background-color: transparent !important;
 }

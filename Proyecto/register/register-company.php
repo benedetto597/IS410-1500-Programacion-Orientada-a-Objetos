@@ -31,8 +31,8 @@
         #map {
 
             bottom: 0;
-            height: 130px;
-            width: 280px;
+            height: 145px;
+            width: 260px;
         }
     </style>
 </head>
@@ -131,7 +131,7 @@
 
 
         <!-- Formulario de Registro -->
-        <form action="">
+        <form action="" >
             <div class="col-8 mr-auto ml-auto p-3 animated bounceInLeft" id="form-company">
                 <div class="form-row align-items-center">
                     <div class="col-auto mr-auto ml-auto">
@@ -139,7 +139,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-4" >
                         <b>Nombre Completo</b>
                         <input type="text" class="form-control" id="first-name-company" placeholder="Nombres" required
                             minlength="3" maxlength="40" onchange="ValidateFirstName()">
@@ -232,6 +232,9 @@
                     </div>
                 </div>
             </div>
+        <?php 
+            include_once('../components/loader.php');
+        ?>
         </form>
     </main>
      <!-- Firebase -->
@@ -290,6 +293,7 @@
          }
          
          }
+
    </script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
        </script>

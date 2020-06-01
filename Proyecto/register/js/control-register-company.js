@@ -35,6 +35,8 @@ function onMapClick(e) {
 map.on('click', onMapClick);
 
 // --------------------------- Obtener Información --------------------------- //
+
+$(".loader-wrapper").fadeOut("slow");
 var companyUser = {
     firstName: "",
     lastName: "",
@@ -93,47 +95,44 @@ axios({
     console.log(error);
 });
 
-function ValidateForm() {
-     name = ValidateFirstName();
-     lastName = ValidateLastName();
-     country = ValidateCountry();
-     currency = ValidateCurrency();
-     companyName = ValidateCompanyName();
-     companyDir = ValidateCompanyDir();
-     companyLatLong = ValidateCompanyLatLong();
-     companyPlan = ValidateCompanyPlan();
-     companyFb = ValidateCompanyFb();
-     companyIg = ValidateCompanyIg();
-     companyWha = ValidateCompanyWha();
-     companyTwit = ValidateCompanyTwit();
-     code = ValidateCode();
-     email = ValidateEmail();
-     pass = ValidatePassword();
-     passRepeat = ValidatePasswordRepeat();
-}
-
 function updateInfo(){
-    
-    ValidateForm();
-    if (name == true ,
-        lastName == true ,
-        country == true ,
-        currency == true ,
-        email == true ,
-        pass == true ,
-        passRepeat == true ,
-        companyName == true ,
-        companyDir == true ,
-        companyLatLong == true ,
-        companyPlan == true ,
-        companyFb == true ,
-        companyIg == true ,
-        companyWha == true ,
-        companyTwit == true ,
+    $(".loader-wrapper").fadeIn("slow");
+    name = ValidateFirstName();
+    lastName = ValidateLastName();
+    country = ValidateCountry();
+    currency = ValidateCurrency();
+    companyName = ValidateCompanyName();
+    companyDir = ValidateCompanyDir();
+    companyLatLong = ValidateCompanyLatLong();
+    companyPlan = ValidateCompanyPlan();
+    companyFb = ValidateCompanyFb();
+    companyIg = ValidateCompanyIg();
+    companyWha = ValidateCompanyWha();
+    companyTwit = ValidateCompanyTwit();
+    code = ValidateCode();
+    email = ValidateEmail();
+    pass = ValidatePassword();
+    passRepeat = ValidatePasswordRepeat();
+    if (name == true &&
+        lastName == true &&
+        country == true &&
+        currency == true &&
+        email == true &&
+        pass == true &&
+        passRepeat == true &&
+        companyName == true &&
+        companyDir == true &&
+        companyLatLong == true &&
+        companyPlan == true &&
+        companyFb == true &&
+        companyIg == true &&
+        companyWha == true &&
+        companyTwit == true &&
         code == true 
         ) { 
             uploadImageProfile();
             uploadImageBanner(); 
+            
         let timer = setInterval(update, 4000);
         function update(){
             pp = ValidateCompanyLogo();
@@ -163,7 +162,6 @@ function updateInfo(){
                 companyBranch.longitudSucursal = companyUser.companyLong;
                 companyUser.branches.push(companyBranch);
                 
-                console.log(companyUser);
                 axios({
                     method: 'POST',
                     url: '../backend/axios/companies.php',
@@ -171,14 +169,31 @@ function updateInfo(){
                     data: companyUser
                 }).then(resCompany =>{
                     clearInterval(timer);
-                    window.location.href = '../profiles/profile-company.html';
+                    $(".loader-wrapper").fadeOut("slow");
+                    document.getElementById('form-company').innerHTML =
+                    `<div class="form-row align-items-center">
+                        <div class="col-auto mr-auto ml-auto">
+                            <h4>Empresa</h4>
+                            <img id="check" class="img-responsive"
+                            src="../img/icon/check.png"><br>
+                        </div>
+                        <b class="mr-auto ml-auto">Se ha envíado un correo con toda la información para poder iniciar seción</b>  
+                    </div>
+                    `;
                 }).catch(error =>{
                     clearInterval(timer);
                     console.log(error);
                 });
                 
+                let end = setInterval(endPage, 6000);
+                function endPage(){
+                    clearInterval(end);
+                    window.location.href = '../index.html';
+                }
                 }
             }    
+    }else{
+        $(".loader-wrapper").fadeOut("slow");
     }
 }
 
@@ -398,17 +413,17 @@ function ValidateCode() {
             if (planSelected.options[planSelected.selectedIndex].value == 'Regular') {
                 //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
                 
-                document.getElementById('number-employed-company').value = 3000 + regular;
+                document.getElementById('number-employed-company').value = 3000 + regular +1;
                 return true;
             }
             if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
                 //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-                document.getElementById('number-employed-company').value = 2000 + premium;
+                document.getElementById('number-employed-company').value = 2000 + premium + 1;
                 return true;
             }
             if (planSelected.options[planSelected.selectedIndex].value == 'Platinum') {
                 //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-                document.getElementById('number-employed-company').value =1000 + platinum   ;
+                document.getElementById('number-employed-company').value =1000 + platinum  +1 ;
                 return true;
             }
             return false;
