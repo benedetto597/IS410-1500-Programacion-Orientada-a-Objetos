@@ -15,6 +15,9 @@ var adminUser = {
 var suscribeCompanies = [];
 
 function logout(){
+    $(".loader-wrapper").fadeIn("slow");
+    document.getElementById('pp-photo').style="visibility: hidden;";
+    document.getElementById('banner-photo').style="visibility: hidden;";
     axios({
         method: 'GET',
         url: '../backend/axios/admin.php?action=logout',

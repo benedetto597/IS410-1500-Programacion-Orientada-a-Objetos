@@ -41,7 +41,7 @@
             <?php
                 include_once('../components/navbar-login-client.php');
             ?>
-            <div class="container mt-3 col-lg-10 animated bounceInUp ">
+            <div class="container mt-3 col-lg-10 animated ">
                 <div class="fb-profile" id="profile-photo">
                     <img  class="fb-image-profile thumbnail" src="../img/profile-client.jpeg" alt="Profile image" />
                 </div>
@@ -53,7 +53,7 @@
     <div id="tabs-client-profile" class="row p-0" style="height: 60vh">
         <div class="container p-0">
             <div class="row ">
-                <div class="col-lg-3 col-md-6 col-sm-6 animated bounceInUp mt-5">
+                <div class="col-lg-3 col-md-6 col-sm-6 animated mt-5">
                     <div class="card mt-5 bg-transparent border-0 ml-auto mr-auto p-2" style="width: 18rem;">
                         <div class="card-body text-center mt-5">
                             <h5 id="client-name" class="card-text">Nombre Cliente</h5>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-6 col-sm-6 animated bounceInUp">
+                <div class="col-lg-9 col-md-6 col-sm-6 animated">
                     <div class="container mt-3 mb-0">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs nav-fill">
@@ -207,7 +207,7 @@
                                             </select>
                                             <small id="gen-alert" class="form-text text-dark"></small>
                                             <div class="custom-file overflow-hidden rounded-pill my-2">
-                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" required onchange="EnableChange();">
+                                                <input id="pp-photo" type="file" class="custom-file-input rounded-pill" required accept="image/*">
                                                 <label for="pp-photo" class="custom-file-label rounded-pill">Subir foto de perfil</label>
                                                 <h1 style="visibility: hidden;" id="pp-url"></h1>
                                             </div>

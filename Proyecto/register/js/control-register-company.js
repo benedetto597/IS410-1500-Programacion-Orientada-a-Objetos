@@ -1,29 +1,38 @@
 // --------------------------- Generar Mapa --------------------------- //
-var mymap = L.map('map').setView([14.076304, -87.206158], 15);
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
-}).addTo(mymap);
-
 var lat;
 var long;
 var marker;
 
+var map = L.map('map');
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+function buscarLocalizacion(e) {
+    lat = e.latlng.lat;
+    long = e.latlng.lng
+   marker = L.marker(e.latlng).addTo(map);
+}
+
+function errorLocalizacion(e) {
+   alert("No es posible encontrar su ubicación. Es posible que tenga que activar la geolocalización.");
+}
+
+map.on('locationerror', errorLocalizacion);
+map.on('locationfound', buscarLocalizacion);
+
+map.locate({setView: true, maxZoom:12});
+
+
 function onMapClick(e) {
     if (marker != undefined) {
-        mymap.removeLayer(marker);
+        map.removeLayer(marker);
     };
 
     lat = e.latlng.lat;
     long = e.latlng.lng;
-    marker = L.marker([lat, long]).addTo(mymap);
+    marker = L.marker([lat, long]).addTo(map);
 
 }
 
-mymap.on('click', onMapClick);
+map.on('click', onMapClick);
 
 // --------------------------- Obtener Información --------------------------- //
 var companyUser = {
@@ -72,6 +81,17 @@ var code;
 var email;
 var pass;
 var passRepeat;
+var companies;
+
+axios({
+    method: 'GET',
+    url: '../backend/axios/companies.php?all',
+    responseType: 'json',
+}).then(resCompany =>{
+    companies = resCompany.data;
+}).catch(error =>{
+    console.log(error);
+});
 
 function ValidateForm() {
      name = ValidateFirstName();
@@ -150,9 +170,8 @@ function updateInfo(){
                     responseType: 'json',
                     data: companyUser
                 }).then(resCompany =>{
-                    console.log(resCompany.data)
                     clearInterval(timer);
-                    //window.location.href = '../profiles/profile-company.html';
+                    window.location.href = '../profiles/profile-company.html';
                 }).catch(error =>{
                     clearInterval(timer);
                     console.log(error);
@@ -185,7 +204,7 @@ function ValidateCompanyBanner() {
 function ValidateFirstName() {
     let nums = /([0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
-    if (nums.test(document.getElementById('first-name-company').value) == true || symbols.test(document.getElementById('first-name-company').value) == true) {
+        if (nums.test(document.getElementById('first-name-company').value) == true || symbols.test(document.getElementById('first-name-company').value) == true) {
         document.getElementById('first-name-company').value = '';
         document.getElementById('first-name-company').style.borderColor = 'red';
         document.getElementById('first-name-company').placeholder = 'No usar ni simbolos ni números';
@@ -200,7 +219,7 @@ function ValidateFirstName() {
         let upperName = document.getElementById('first-name-company').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
         document.getElementById('first-name-company').value = upperName;
         return true;
-
+        
     }
 }
 
@@ -229,7 +248,7 @@ function ValidateLastName() {
 function ValidateCompanyName() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
-    if (symbols.test(document.getElementById('name-company').value) == true) {
+        if (symbols.test(document.getElementById('name-company').value) == true) {
         document.getElementById('name-company').value = '';
         document.getElementById('name-company').style.borderColor = 'red';
         document.getElementById('name-company').placeholder = 'Solo usar letras y números';
@@ -244,7 +263,7 @@ function ValidateCompanyName() {
         let upperLastName = document.getElementById('name-company').value.replace(/\b[a-z]/g, upper => upper.toUpperCase());
         document.getElementById('name-company').value = upperLastName;
         return true;
-
+        
     }
 }
 
@@ -352,6 +371,7 @@ function ValidateCompanyTwit() {
 }
 
 function ValidateCode() {
+    planSelected = document.getElementById('plan-select');
 
     if (planSelected.options[planSelected.selectedIndex].value == 'Seleccione un Plan') {
         document.getElementById('number-employed-company').value = '';
@@ -359,22 +379,40 @@ function ValidateCode() {
         document.getElementById('number-employed-company').placeholder = 'Seleccione un Plan';
         return false
     } else {
-        if (planSelected.options[planSelected.selectedIndex].value == 'Regular') {
-            //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-            document.getElementById('number-employed-company').value = 3000;
-            return true;
-        }
-        if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
-            //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-            document.getElementById('number-employed-company').value = 2000;
-            return true;
-        }
-        if (planSelected.options[planSelected.selectedIndex].value == 'Platinum') {
-            //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-            document.getElementById('number-employed-company').value =1000;
-            return true;
-        }
-        return false;
+        
+            let values = Object.values(companies);
+            let regular = 0;
+            let premium = 0;
+            let platinum = 0;
+            for(let i = 0; i<values.length; i++){
+                if(values[i].plan == 'Regular'){
+                    regular++;
+                }
+                if(values[i].plan == 'Premium'){
+                    premium++;
+                }
+                if(values[i].plan == 'Platinum'){
+                    platinum++;
+                }
+            }
+            if (planSelected.options[planSelected.selectedIndex].value == 'Regular') {
+                //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+                
+                document.getElementById('number-employed-company').value = 3000 + regular;
+                return true;
+            }
+            if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
+                //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+                document.getElementById('number-employed-company').value = 2000 + premium;
+                return true;
+            }
+            if (planSelected.options[planSelected.selectedIndex].value == 'Platinum') {
+                //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+                document.getElementById('number-employed-company').value =1000 + platinum   ;
+                return true;
+            }
+            return false;
+        
     }
 }
 
@@ -400,7 +438,7 @@ function ValidatePassword() {
         document.getElementById('password-company').placeholder = 'Solo usar letras y números';
         return false;
     } else {
-        document.getElementById('password-company').style.borderColor = 'red';
+        document.getElementById('password-company').style.borderColor = 'grey';
         return true;
     }
 }

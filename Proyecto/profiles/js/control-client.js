@@ -92,7 +92,7 @@ var favoriteCompanies = [{
 
 function logout(){
     $(".loader-wrapper").fadeIn("slow");
-
+    document.getElementById('pp-photo').style="visibility: hidden;";
     axios({
         method: 'GET',
         url: '../backend/axios/clients.php?action=logout',
@@ -223,13 +223,6 @@ function VerifyData() {
 }
 
 function updateInfo(){
-    console.log(ValidateFirstName());
-    console.log(ValidateLastName());
-    console.log(ValidateUser());
-    console.log(ValidateEmail());
-    console.log(ValidateCountry());
-    console.log(ValidateCurrency());
-    console.log(ValidateGender());
     if(ValidateFirstName() &&
     ValidateLastName() &&
     ValidateUser() &&
@@ -334,28 +327,31 @@ function ValidateCountry() {
         return false;
     } else {
         document.getElementById('country-alert').innerHTML = ``;
+        clientUser.country = countrySelected.options[countrySelected.selectedIndex].value;
         return true;
     }
 }
 
 function ValidateCurrency() {
-    let countrySelected = document.getElementById('currency-select');
-    if (countrySelected.options[countrySelected.selectedIndex].value == 'Seleccione Moneda') {
+    let currencySelected = document.getElementById('currency-select');
+    if (currencySelected.options[currencySelected.selectedIndex].value == 'Seleccione Moneda') {
         document.getElementById('currency-alert').innerHTML = `Seleccione una Moneda de los disponibles`;
         return false;
     } else {
         document.getElementById('currency-alert').innerHTML = ``;
+        clientUser.currency = currencySelected.options[currencySelected.selectedIndex].value;
         return true;
     }
 }
 
 function ValidateGender() {
-    let countrySelected = document.getElementById('sex-select-client');
-    if (countrySelected.options[countrySelected.selectedIndex].value == 'Seleccione Genero') {
+    let genderSelected = document.getElementById('sex-select-client');
+    if (genderSelected.options[genderSelected.selectedIndex].value == 'Seleccione Genero') {
         document.getElementById('gen-alert').innerHTML = `Seleccione un genero de los disponibles`;
         return false;
     } else {
         document.getElementById('gen-alert').innerHTML = ``;
+        clientUser.gen = genderSelected.options[genderSelected.selectedIndex].value;
         return true;
     }
 }
@@ -370,6 +366,7 @@ function ValidateUser() {
         return false;
     } else {
         document.getElementById('user-client').style.borderColor = 'grey';
+        clientUser.user = document.getElementById('user-client').value;
         return true;
     }
 }
@@ -383,6 +380,7 @@ function ValidateEmail() {
         return false;
     } else {
         document.getElementById('email-client').style.borderColor = 'grey';
+        clientUser.email = document.getElementById('email-client').value;
         return true;
     }
 }
@@ -410,7 +408,7 @@ function ValidatePasswordRepeat() {
         return false;
     } else {
         document.getElementById('password-client-repeat').style.borderColor = 'gray';
+        clientUser.pass = document.getElementById('password-client-repeat').value;
         return true;
     }
-    return false;
 }

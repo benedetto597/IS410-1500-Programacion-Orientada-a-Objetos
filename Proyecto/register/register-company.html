@@ -166,8 +166,8 @@
                         <b>País</b>
                         <select id="country-select" class="form-control text-white" required onchange="ValidateCountry()">
                             <option selected>Seleccione un País</option>
-                            <option>Honduras</option>
-                            <option>Estados Unidos</option>
+                            <option value="Honduras">Honduras</option>
+                            <option value="Estados Unidos">Estados Unidos</option>
                         </select>
                         <small id="country-company-alert" class="form-text text-dark"></small>
                         <select id="currency-select" class="form-control text-white my-1" required onchange="ValidateCurrency()">
@@ -181,7 +181,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <b>Plan Empresarial</b>
-                        <select id="plan-select" class="form-control text-white my-1" required onchange="ValidateCompanyPlan()">
+                        <select id="plan-select" class="form-control text-white my-1" required onchange="ValidateCode()">
                             <option selected>Seleccione un Plan</option>
                             <option>Regular</option>
                             <option>Premium</option>

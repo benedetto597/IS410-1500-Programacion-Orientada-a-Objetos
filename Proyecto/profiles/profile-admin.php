@@ -206,9 +206,11 @@
             </div>
         </div>
     </div>
+    <div id="loder-admin">
     <?php 
         include_once('../components/loader.php');
     ?>
+    </div>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>

@@ -16,6 +16,10 @@
             }
         break;
         case 'GET':
+            if(isset($_GET['all'])){
+                Empresa::obtenerEmpresas($database->getDB());
+                exit();
+            }
             if(Empresa::verificarAutenticacionAdmin($database->getDB())){
                 if(isset($_GET['action'])=='all'){
                     Empresa::obtenerEmpresas($database->getDB());
@@ -38,6 +42,7 @@
             }else{
                 Empresa::obtenerEmpresas($database->getDB());
             }
+            
         break;
         case 'PUT':
             if(!Empresa::verificarAutenticacion($database->getDB())){
