@@ -1,3 +1,14 @@
+<?php 
+    //Verificando si esta logeado el usuario
+    require_once('../backend/class/class-clients.php');
+    require_once('../backend/class/class-companies.php');
+    require_once('../backend/class/class-database.php');
+    $database = new Database();
+    if(Cliente::verificarAutenticacion($database->getDB()))
+        header("Location: index.html");
+    if(Empresa::verificarAutenticacion($database->getDB()))
+        header("Location: index.html");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -182,11 +193,6 @@
                         <button type="button" id="btn-admin-register"
                             class="btn btn-lg shadow p-2 px-5 mb-0 bg-white rounded-pill"
                             onclick="ValidateForm();">Registrarse</button>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Recuerdame</label>
-                        </div>
                     </div>
                 </div>
             </div>

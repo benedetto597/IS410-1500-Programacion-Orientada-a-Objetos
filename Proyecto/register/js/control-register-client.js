@@ -20,16 +20,16 @@ function ValidateForm() {
     let pass = ValidatePassword();
     let passRepeat = ValidatePasswordRepeat();
     let gen = ValidateGen();
-    if (name == true &&
-        lastName == true &&
-        country == true &&
-        currency == true &&
-        user == true &&
-        email == true &&
-        pass == true &&
-        passRepeat == true &&
-        gen == true) {
-
+    if (name &&
+        lastName &&
+        country &&
+        currency &&
+        user &&
+        email &&
+        pass &&
+        passRepeat &&
+        gen) {
+        $(".loader-wrapper").fadeIn("slow");
         clientUser.firstName = document.getElementById('first-name-client').value;
         clientUser.lastName = document.getElementById('last-name-client').value;
         clientUser.gen = document.getElementById('sex-select-client').options[document.getElementById('sex-select-client').selectedIndex].value;
@@ -46,13 +46,24 @@ function ValidateForm() {
             responseType: 'json',
             data: clientUser
         }).then(resClient =>{
-            window.location.href = '../profiles/profile-client.html';
+            document.getElementById('form-client').innerHTML =
+                    `<div class="form-row align-items-center">
+                        <div class="col-auto mr-auto ml-auto">
+                            <h4>Cliente</h4>
+                            <img id="check" class="img-responsive"
+                            src="../img/icon/check.png"><br>
+                        </div>
+                        <b class="mr-auto ml-auto">Se ha envíado un correo con toda la información para poder iniciar seción</b>  
+                    </div>
+                    `;
+            let timer = setInterval(redirect, 6000);
+            function redirect(){
+                clearInterval(timer);
+                window.location.href = '../index.html';
+            }
         }).catch(error =>{
             console.log(error);
         });
-
-        //Iniciar sesion con otra petición asincrona
-
     }
 }
 

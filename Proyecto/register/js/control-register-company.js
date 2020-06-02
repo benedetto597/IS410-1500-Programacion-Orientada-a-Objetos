@@ -113,22 +113,23 @@ function updateInfo(){
     email = ValidateEmail();
     pass = ValidatePassword();
     passRepeat = ValidatePasswordRepeat();
-    if (name == true &&
-        lastName == true &&
-        country == true &&
-        currency == true &&
-        email == true &&
-        pass == true &&
-        passRepeat == true &&
-        companyName == true &&
-        companyDir == true &&
-        companyLatLong == true &&
-        companyPlan == true &&
-        companyFb == true &&
-        companyIg == true &&
-        companyWha == true &&
-        companyTwit == true &&
-        code == true 
+    
+    if (name &&
+        lastName &&
+        country &&
+        currency &&
+        email &&
+        pass &&
+        passRepeat &&
+        companyName &&
+        companyDir &&
+        companyLatLong &&
+        companyPlan &&
+        companyFb &&
+        companyIg &&
+        companyWha &&
+        companyTwit &&
+        code 
         ) { 
             uploadImageProfile();
             uploadImageBanner(); 

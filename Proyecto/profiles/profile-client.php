@@ -41,6 +41,37 @@
             <?php
                 include_once('../components/navbar-login-client.php');
             ?>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div id="navbar-menu" class="w-100">
+                <ul class="nav navbar-nav px-5  my-auto">
+                    <li class="nav-item mr-auto">
+                        <a class="nav-link" href="../index.php">
+                            <h6 class="text-dark"><i class="fas fa-home fa-fw"></i>Inicio</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-auto ml-auto">
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-percent fa-fw"></i>Promociones</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="../promotions/product-company-list.php"> <i
+                                        class="fas fa-building fa-fw"></i>Productos y Empresas</a>
+                                <a class="dropdown-item" href="../promotions/categories.php"><i
+                                        class="fas fa-th-large fa-fw"></i>Categorías</a>
+                                <a class="dropdown-item" href="../promotions/last-products.php"><i
+                                        class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="../contact.php">
+                            <h6 class="text-dark"><i class="fas fa-phone-volume fa-fw"></i>Contactanos</h6>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
             <div class="container mt-3 col-lg-10 animated ">
                 <div class="fb-profile" id="profile-photo">
                     <img  class="fb-image-profile thumbnail" src="../img/profile-client.jpeg" alt="Profile image" />

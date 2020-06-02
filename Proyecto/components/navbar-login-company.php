@@ -1,5 +1,5 @@
 <?php 
-echo '
+echo '<!-- Barra de Navegación Primer Parte LandingPage -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main"
         aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
@@ -12,10 +12,10 @@ echo '
                     <div class="btn-group dropright">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user fa-fw"></i>Cliente</button>
+                            <i class="fas fa-user fa-fw"></i>Empresa</button>
                         <div class="dropdown-menu">
-                        <a class="dropdown-item" href="./profiles/profile-client.php">Ver Perfil</a>
-                        <a class="dropdown-item" href="./profiles/profile-client.php">Editar Perfil</a>
+                        <a class="dropdown-item" href="../profiles/profile-client.php">Ver Perfil</a>
+                        <a class="dropdown-item" href="../profiles/profile-client.php">Editar Perfil</a>
                         <a class="dropdown-item" href="#" onclick="logout()">Cerrar Sesión</a>
                         </div>
                     </div>
@@ -42,8 +42,8 @@ echo '
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../cart.php">
-                        <h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6>
+                    <a class="nav-link" href="../products.php">
+                        <h6 class="text-dark"><i class="fas fa-building fa-fw"></i>Productos</h6>
                     </a>
                 </li>
             </ul>
@@ -51,5 +51,6 @@ echo '
 
         </div>
     </div>
-</nav>'
+</nav>
+'
 ?>

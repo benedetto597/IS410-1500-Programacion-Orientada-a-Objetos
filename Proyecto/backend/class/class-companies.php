@@ -211,7 +211,7 @@ class Empresa extends Usuario{
         $respuesta = $db->getReference('empresas')
             ->getChild($id)
             ->set($empresa);
-            
+           
         if ($respuesta->getKey() != null)
             return '{"mensaje":"Registro actualizado","key":"'.$respuesta->getKey().'"}';
         else 
@@ -288,12 +288,13 @@ class Empresa extends Usuario{
         $respuesta = $db->getReference('empresas')
             ->getChild($_COOKIE['key'])
             ->getValue();
-
-        if($respuesta["token"]==$_COOKIE["token"]){
-            return true;
-        }else{
-            return false;
-        }        
+        if($respuesta != null){
+            if($respuesta["token"]==$_COOKIE["token"]){
+                return true;
+            }else{
+                return false;
+            }        
+        }
     }
 
     public static function verificarAutenticacionAdmin($db){
@@ -303,12 +304,13 @@ class Empresa extends Usuario{
         $respuesta = $db->getReference('administradores')
             ->getChild($_COOKIE['key'])
             ->getValue();
-
-        if($respuesta["token"]==$_COOKIE["token"]){
-            return true;
-        }else{
-            return false;
-        }        
+        if($respuesta != null){
+            if($respuesta["token"]==$_COOKIE["token"]){
+                return true;
+            }else{
+                return false;
+            }        
+        }
     }
 }
     

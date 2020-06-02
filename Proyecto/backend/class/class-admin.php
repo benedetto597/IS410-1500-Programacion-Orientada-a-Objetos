@@ -156,12 +156,13 @@ class Administrador extends Usuario{
         $respuesta = $db->getReference('administradores')
             ->getChild($_COOKIE['key'])
             ->getValue();
-
-        if($respuesta["token"]==$_COOKIE["token"]){
-            return true;
-        }else{
-            return false;
-        }        
+        if($respuesta != null){
+            if($respuesta["token"]==$_COOKIE["token"]){
+                return true;
+            }else{
+                return false;
+            }        
+        }
     }
 }
 ?>

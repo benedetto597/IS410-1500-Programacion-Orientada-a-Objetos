@@ -22,48 +22,25 @@ echo '<nav class="navbar navbar-expand-lg navbar-light bg-light ">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-plus fa-fw"></i>Registrarse</button>
                     <div class="dropdown-menu" >
-                        <a class="dropdown-item" href="../register/register-client.html">Cliente</a>
-                        <a class="dropdown-item" href="../register/register-company.html">Empresa</a>
-                        <a class="dropdown-item" href="../register/register-admin.html">Super Admin</a>
+                        <a class="dropdown-item" href="register/register-client.php">Cliente</a>
+                        <a class="dropdown-item" href="register/register-company.php">Empresa</a>
+                        <a class="dropdown-item" href="register/register-admin.php">Super Admin</a>
                     </div>
                 </div>
             </li>
         </ul>       
-        <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="../img/icon/MiniMall.png"></a>
+        <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
         <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
             <li class="nav-item invisible">
                 <a class="nav-link" href="#"><h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../cart.html"><h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6></a>
+                <a class="nav-link" href="cart.php"><h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6></a>
             </li>
         </ul>
     
 
     </div>  
 </div>
-</nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div id="navbar-menu" class="w-100">
-        <ul class="nav navbar-nav px-5  my-auto">
-            <li class="nav-item mr-auto">
-                <a class="nav-link" href="../index.html"><h6 class="text-dark"><i class="fas fa-home fa-fw"></i>Inicio</h6></a>
-          </li>
-            <li class="nav-item mr-auto ml-auto">
-                <div class="btn-group">
-                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-percent fa-fw"></i>Promociones</button>
-                    <div class="dropdown-menu" >
-                        <a class="dropdown-item" href="../promotions/product-company-list.html"> <i class="fas fa-building fa-fw"></i>Productos y Empresas</a>
-                        <a class="dropdown-item" href="../promotions/categories.html"><i class="fas fa-th-large fa-fw"></i>Categorías</a>
-                        <a class="dropdown-item" href="../promotions/last-products.html"><i class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
-                    </div>
-                </div> 
-            </li>
-            <li class="nav-item ml-auto">
-                <a class="nav-link" href="../contact.html"><h6 class="text-dark"><i class="fas fa-phone-volume fa-fw"></i>Contactanos</h6></a>
-            </li>
-        </ul>
-    </div>
 </nav>'
 ?>

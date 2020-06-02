@@ -51,7 +51,21 @@ function ValidateForm() {
             responseType: 'json',
             data: adminUser
         }).then(resAdmin =>{
-            window.location.href = '../profiles/profile-admin.html';
+            document.getElementById('form-admin').innerHTML =
+                    `<div class="form-row align-items-center">
+                        <div class="col-auto mr-auto ml-auto">
+                            <h4 class="text-white">Administrador</h4>
+                            <img id="check" class="img-responsive"
+                            src="../img/icon/check.png"><br>
+                        </div>
+                        <b class="mr-auto ml-auto text-white">Se ha envíado un correo con toda la información para poder iniciar seción</b>  
+                    </div>
+                    `;
+            let timer = setInterval(redirect, 6000);
+            function redirect(){
+                clearInterval(timer);
+                window.location.href = '../index.html';
+            }
         }).catch(error =>{
             console.log(error);
         });
