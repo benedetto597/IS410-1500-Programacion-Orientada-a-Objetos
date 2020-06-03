@@ -21,20 +21,18 @@ echo '<nav class="navbar navbar-expand-lg navbar-light bg-light ">
                 <div class="btn-group dropright">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-plus fa-fw"></i>Registrarse</button>
-                    <div class="dropdown-menu" >
-                        <a class="dropdown-item" href="register/register-client.php">Cliente</a>
-                        <a class="dropdown-item" href="register/register-company.php">Empresa</a>
-                        <a class="dropdown-item" href="register/register-admin.php">Super Admin</a>
+                    <div class="dropdown-menu" id="register-dropdown">
+                        
                     </div>
                 </div>
             </li>
         </ul>       
-        <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png"></a>
+        <a class="navbar-brand" href="#" id="logo"></a>
         <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
             <li class="nav-item invisible">
                 <a class="nav-link" href="#"><h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item invisible">
                 <a class="nav-link" href="cart.php"><h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6></a>
             </li>
         </ul>

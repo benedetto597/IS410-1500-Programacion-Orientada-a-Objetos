@@ -33,7 +33,7 @@ function ValidateForm() {
                     responseType: 'json',
                     data: product
                 }).then(resProduct =>{
-                    window.location.href = '../profiles/profile-company.html';
+                    window.location.href = '../profiles/profile-company.php';
                     clearInterval(timer);
                 }).catch(error =>{
                     console.log(error);

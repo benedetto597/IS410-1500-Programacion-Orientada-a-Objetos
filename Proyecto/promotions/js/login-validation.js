@@ -31,7 +31,7 @@ function ValidateClient() {
     if (user == true && pass == true && email == true) {
         axios({
             method: 'POST',
-            url: 'backend/axios/clients.php?action=login',
+            url: '../backend/axios/clients.php?action=login',
             responseType: 'json',
             data: loginClient
         }).then(resClient =>{
@@ -40,7 +40,7 @@ function ValidateClient() {
                 document.getElementById('login-pass-client').style.borderColor = 'grey';
                 document.getElementById('email-login-client').style.borderColor = 'grey';
                 document.getElementById('warning-client').innerHTML = '';
-                window.location.href = 'profiles/profile-client.php';
+                window.location.href = '../profiles/profile-client.php';
             }else{
                 document.getElementById('login-user-client').style.borderColor = 'red';
                 document.getElementById('login-pass-client').style.borderColor = 'red';
@@ -61,7 +61,7 @@ function ValidateCompany() {
     if (code == true && pass == true && email == true) {
         axios({
             method: 'POST',
-            url: 'backend/axios/companies.php?action=login',
+            url: '../backend/axios/companies.php?action=login',
             responseType: 'json',
             data: loginCompany
         }).then(resCompany =>{
@@ -70,7 +70,7 @@ function ValidateCompany() {
                 document.getElementById('login-pass-company').style.borderColor = 'grey';
                 document.getElementById('email-login-company').style.borderColor = 'grey';
                 document.getElementById('warning-company').innerHTML = '';
-                window.location.href = 'profiles/profile-company.php';
+                window.location.href = '../profiles/profile-company.php';
             }else{
                 document.getElementById('login-code-company').style.borderColor = 'red';
                 document.getElementById('login-pass-company').style.borderColor = 'red';
@@ -93,7 +93,7 @@ function ValidateAdmin() {
     if (code == true && pass == true && user == true && email == true) {
         axios({
             method: 'POST',
-            url: 'backend/axios/admin.php?action=login',
+            url: '../backend/axios/admin.php?action=login',
             responseType: 'json',
             data: loginAdmin
         }).then(resAdmin =>{
@@ -105,7 +105,7 @@ function ValidateAdmin() {
                 document.getElementById('login-code-admin').style.borderColor = 'grey';
                 document.getElementById('email-login-admin').style.borderColor = 'grey';
                 document.getElementById('warning-admin').innerHTML = '';
-                window.location.href = 'profiles/profile-admin.php';
+                window.location.href = '../profiles/profile-admin.php';
             }else{
                 document.getElementById('login-user-admin').style.borderColor = 'red';
                 document.getElementById('login-pass-admin').style.borderColor = 'red';

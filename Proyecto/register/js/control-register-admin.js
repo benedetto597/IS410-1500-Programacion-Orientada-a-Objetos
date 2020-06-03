@@ -64,7 +64,7 @@ function ValidateForm() {
             let timer = setInterval(redirect, 6000);
             function redirect(){
                 clearInterval(timer);
-                window.location.href = '../index.html';
+                window.location.href = '../index.php';
             }
         }).catch(error =>{
             console.log(error);

@@ -189,7 +189,7 @@ function updateInfo(){
                 let end = setInterval(endPage, 6000);
                 function endPage(){
                     clearInterval(end);
-                    window.location.href = '../index.html';
+                    window.location.href = '../index.php';
                 }
                 }
             }    
@@ -395,11 +395,11 @@ function ValidateCode() {
         document.getElementById('number-employed-company').placeholder = 'Seleccione un Plan';
         return false
     } else {
-        
+        let regular = 0;
+        let premium = 0;
+        let platinum = 0;
+        if(companies != null){
             let values = Object.values(companies);
-            let regular = 0;
-            let premium = 0;
-            let platinum = 0;
             for(let i = 0; i<values.length; i++){
                 if(values[i].plan == 'Regular'){
                     regular++;
@@ -411,24 +411,24 @@ function ValidateCode() {
                     platinum++;
                 }
             }
-            if (planSelected.options[planSelected.selectedIndex].value == 'Regular') {
-                //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-                
-                document.getElementById('number-employed-company').value = 3000 + regular +1;
-                return true;
-            }
-            if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
-                //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-                document.getElementById('number-employed-company').value = 2000 + premium + 1;
-                return true;
-            }
-            if (planSelected.options[planSelected.selectedIndex].value == 'Platinum') {
-                //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
-                document.getElementById('number-employed-company').value =1000 + platinum  +1 ;
-                return true;
-            }
-            return false;
-        
+        }
+                if (planSelected.options[planSelected.selectedIndex].value == 'Regular') {
+                    //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+                    
+                    document.getElementById('number-employed-company').value = 3000 + regular +1;
+                    return true;
+                }
+                if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
+                    //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+                    document.getElementById('number-employed-company').value = 2000 + premium + 1;
+                    return true;
+                }
+                if (planSelected.options[planSelected.selectedIndex].value == 'Platinum') {
+                    //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+                    document.getElementById('number-employed-company').value =1000 + platinum  +1 ;
+                    return true;
+                }
+                return false;
     }
 }
 

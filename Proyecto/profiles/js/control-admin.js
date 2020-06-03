@@ -23,7 +23,7 @@ function logout(){
         url: '../backend/axios/admin.php?action=logout',
         responseType: 'json',
     }).then(resAdmin =>{
-        window.location.href = '../index.html';
+        window.location.href = '../index.php';
     }).catch(error =>{
         console.log(error);
     });
@@ -107,7 +107,7 @@ function FillCompanies(){
         url: '../backend/axios/companies.php?action=all',
         responseType: 'json',
     }).then(resAdmin =>{
-        //Quitar loader 
+        
         let keys = Object.keys(resAdmin.data);
         let values = Object.values(resAdmin.data);
        

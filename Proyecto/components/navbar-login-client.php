@@ -11,12 +11,10 @@ echo '
                 <li class="nav-item">
                     <div class="btn-group dropright">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                            aria-haspopup="true" aria-expanded="false" id="boton">
                             <i class="fas fa-user fa-fw"></i>Cliente</button>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="./profiles/profile-client.php">Ver Perfil</a>
-                        <a class="dropdown-item" href="./profiles/profile-client.php">Editar Perfil</a>
-                        <a class="dropdown-item" href="#" onclick="logout()">Cerrar Sesión</a>
+                        <div class="dropdown-menu" id="client-dropdown">
+                        
                         </div>
                     </div>
                 </li>
@@ -33,18 +31,15 @@ echo '
                     </div>
                 </li>
             </ul>
-            <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive"
-                    src="../img/icon/MiniMall.png"></a>
+            <a class="navbar-brand" href="#" id="logo"></a>
             <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
                 <li class="nav-item invisible">
                     <a class="nav-link" href="#">
                         <h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../cart.php">
-                        <h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6>
-                    </a>
+                <li class="nav-item" id="cart">
+                    
                 </li>
             </ul>
 

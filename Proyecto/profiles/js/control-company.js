@@ -1,218 +1,39 @@
+// --------------------------------- Barras de Navegacion ---------------------------------
+//Logo
+document.getElementById('logo').innerHTML = `<img id="Mini-Mall-mainlogo" class="img-responsive" src="../img/icon/MiniMall.png">`;
+
+//Dropdown de Empresa
+
+document.getElementById('Empresa').innerHTML = `<a class="nav-link" href="../register/register-product.php">
+<h6 class="text-dark"><i class="fas fa-plus fa-fw"></i>Producto</h6>
+</a>`;
+document.getElementById('Promociones').style = 'visibility: hidden';
+document.getElementById('branch').innerHTML = `<a class="nav-link" href="../register/register-branch.php">
+    <h6 class="text-dark"><i class="fas fa-plus fa-fw"></i>Sucursal</h6>
+    </a>
+    `;
+
 //Obtener la información por petición en formato JSON fragmentar los JSON dependiendo como gestione la base de datos
 var companyUser = {
-    firstName: "Juan",
-    lastName: "Lopez",
-    country: "Honduras",
-    currency: "Lempira",
-    companyName: "La Colonia",
-    companyDir: "Colonia Tiloarque",
-    companyLat: "14.076932534112121",
-    companyLong: "-87.20782756827248",
-    companyPlan: "Regular",
-    companyFb: "https://www.youtube.com/",
-    companyIg: "https://www.youtube.com/",
-    companyWha: "33333333",
-    companyTwit: "https://www.youtube.com/",
-    logo: "C:\\fakepath\\lp.jpeg",
-    banner: "C:\\fakepath\\lp.jpeg",
-    code: "1000",
-    email: "example@example.com",
-    pass: "111111",
-    branch: [{
-            branchName: "La Colonía N2",
-            branchDir: "Colonia Tepeyac",
-            branchLat: "14.076932534112121",
-            branchLong: "-87.20782756827248",
-            branchProduct: [{
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productComment: "",
-                    productQualification: "",
-                    productPromotion: [{
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                },
-                {
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                },
-                {
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                }
-            ]
-        },
-        {
-            branchName: "La Colonía N2",
-            branchDir: "Colonia Tepeyac",
-            branchLat: "14.076932534112121",
-            branchLong: "-87.20782756827248",
-            branchProduct: [{
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "60%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                },
-                {
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "80%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                },
-                {
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                }
-            ]
-        },
-        {
-            branchName: "La Colonía N2",
-            branchDir: "Colonia Tepeyac",
-            branchLat: "14.076932534112121",
-            branchLong: "-87.20782756827248",
-            branchProduct: [{
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                },
-                {
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                },
-                {
-                    productName: "Jabón liquido",
-                    productImg: "C:\\fakepath\\lp.jpeg",
-                    productRealPrice: "120.00",
-                    productCategory: "Hogar",
-                    productDescription: "Jabón para manos liquido",
-                    productSail: 87,
-                    productPromotion: [{
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-03-30", "21:02"],
-                        productPromoEnd: ["2020-04-12", "21:02"]
-                    }, {
-                        productDiscount: "50%",
-                        productPromoPrice: "60.00",
-                        productPromoStart: ["2020-05-10", "21:02"],
-                        productPromoEnd: ["2020-06-12", "21:02"]
-                    }]
-                }
-            ]
-        }
-    ]
+    firstName: "",
+    lastName: "",
+    country: "",
+    currency: "",
+    companyName: "",
+    companyDir: "",
+    companyLat: "",
+    companyLong: "",
+    companyPlan: "",
+    companyFb: "",
+    companyIg: "",
+    companyWha: "",
+    companyTwit: "",
+    logo: "",
+    banner: "",
+    code: "",
+    email: "",
+    pass: "",
+    branch: []
 };
 
 // --------------------------- Estadisticas --------------------------- //
@@ -267,8 +88,8 @@ new Chart(document.getElementById("bar-chart-horizontal-month"), {
 });
 
 // ------------------------- Mapa de sucursales con promoción y de Actualizar Perfil ------------------------- //
-var mapPromo = L.map('map-promotions').setView([14.076304, -87.206158], 15);
-var mapForm = L.map('map-update').setView([14.076304, -87.206158], 15);
+var mapPromo = L.map('map-promotions').setView([14.076304, -87.206158], 11);
+var mapForm = L.map('map-update').setView([14.076304, -87.206158], 11);
 //Aquí las sucursales
 var places = [
     ["Torre Morazan", 14.101202, -87.182246],
@@ -285,19 +106,9 @@ for (var i = 0; i < places.length; i++) {
         .addTo(mapPromo);
 }
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
-}).addTo(mapForm);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(mapForm);
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
-}).addTo(mapPromo);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(mapPromo);
 
 
 var lat = companyUser.companyLat;
@@ -318,45 +129,86 @@ function onMapClick(e) {
 mapForm.on('click', onMapClick);
 
 // -------------------------------- Validaciones para actualizar perfil -------------------------------- //
-
 //Mostrar los datos Obtenidos
 function ShowInfo() {
-    //Información debajo del logo
-    document.getElementById('company-name').innerHTML = `<i class="fas fa-building fa-fw"></i>${companyUser.companyName}`;
-    document.getElementById('employed-name').innerHTML = `<i class="fas fa-user fa-fw"></i>${companyUser.firstName} ${companyUser.lastName}`;
-    document.getElementById('company-email').innerHTML = `<i class="fas fa-at"></i>${companyUser.email}`;
-    document.getElementById('company-contact').innerHTML = `<i class="fab fa-whatsapp"></i>${CompanyContact(companyUser.country, companyUser.companyWha)}`;
+    let key = getCookie('key');
+    axios({
+        method: 'GET',
+        url: '../backend/axios/companies.php?id=' + key,
+        responseType: 'json',
+    }).then(resCompany => {
 
-    //Sección Información
-    document.getElementById('info-company-name').innerHTML = companyUser.companyName;
-    document.getElementById('info-company-country').innerHTML = companyUser.country;
-    document.getElementById('info-company-dir').innerHTML = companyUser.companyDir;
-    document.getElementById('info-company-currency').innerHTML = companyUser.currency;
-    document.getElementById('info-company-employed').innerHTML = `${companyUser.firstName} ${companyUser.lastName}`;
-    document.getElementById('info-company-email').innerHTML = companyUser.email;
-    document.getElementById('info-company-fb').innerHTML = `<i class="fab fa-facebook"></i> ${companyUser.companyFb}`;
-    document.getElementById('info-company-wha').innerHTML = `<i class="fab fa-whatsapp"></i> ${CompanyContact(companyUser.country, companyUser.companyWha)}`;
-    document.getElementById('info-company-twit').innerHTML = `<i class="fab fa-twitter"></i> ${companyUser.companyFb}`;
-    document.getElementById('info-company-ig').innerHTML = `<i class="fab fa-instagram"></i> ${companyUser.companyFb}`;
-    FillProductList();
-    //Sección de Productos
+        let company = resCompany.data;
+        companyUser.firstName = company.nombre;
+        companyUser.lastName = company.apellido;
+        companyUser.country = company.pais;
+        companyUser.currency = company.moneda;
+        companyUser.code = company.codigoEmpresa;
+        companyUser.user = company.nombreUsuario;
+        companyUser.email = company.correo;
+        companyUser.pass = company.contraseña;
+        companyUser.logo = company.logoEmpresa;
+        companyUser.banner = company.bannerEmpresa;
+        companyUser.companyDir = company.dirEmpresa;
+        companyUser.companyFb = company.fbEmpresa;
+        companyUser.companyIg = company.igEmpresa;
+        companyUser.companyTwit = company.twitEmpresa;
+        companyUser.companyWha = company.whaEmpresa;
+        companyUser.companyPlan = company.plan;
+        companyUser.companyName = company.nombreEmpresa;
+        companyUser.companyLat = company.latEmpresa;
+        companyUser.companyLong = company.longEmpresa;
+        lat = companyUser.companyLat;
+        long = companyUser.companyLong;
+        companyUser.branch = company.sucursalesEmpresa;
+        //Cargar Imagenes
+        document.getElementById('logo-photo').innerHTML = `<img id="company-photo-logo" class="fb-image-profile thumbnail" src="${companyUser.logo}" alt="Profile image"/>`;
+        document.getElementById('main').style.backgroundImage = `url("${companyUser.banner}")`;
 
-    //Sección Editar Perfil
-    document.getElementById('first-name-company').value = companyUser.firstName;
-    document.getElementById('last-name-company').value = companyUser.lastName;
-    document.getElementById('name-company').value = companyUser.companyName;
-    document.getElementById('address-company').value = companyUser.companyDir;
-    document.getElementById('plan-company').value = companyUser.companyPlan;
-    document.getElementById('number-employed-company').value = companyUser.code;
-    document.getElementById('facebook-company').value = companyUser.companyFb;
-    document.getElementById('whatsapp-company').value = companyUser.companyWha;
-    document.getElementById('instagram-company').value = companyUser.companyIg;
-    document.getElementById('twitter-company').value = companyUser.companyTwit;
-    document.getElementById('email-employed-company').value = companyUser.email;
-    document.getElementById('password-company').value = companyUser.pass;
-    document.getElementById('password-company-repeat').value = companyUser.pass;
-    document.getElementById('btn-update-info').disabled = true;
-    marker = L.marker([companyUser.companyLat, companyUser.companyLong]).addTo(mapForm);
+
+    }).catch(error => {
+        console.log(error);
+    });
+    let timer = setInterval(show, 4000);
+
+    function show() {
+        //Información debajo del logo
+        document.getElementById('company-name').innerHTML = `<i class="fas fa-building fa-fw"></i>${companyUser.companyName}`;
+        document.getElementById('employed-name').innerHTML = `<i class="fas fa-user fa-fw"></i>${companyUser.firstName} ${companyUser.lastName}`;
+        document.getElementById('company-email').innerHTML = `<i class="fas fa-at"></i>${companyUser.email}`;
+        document.getElementById('company-contact').innerHTML = `<i class="fab fa-whatsapp"></i>${CompanyContact(companyUser.country, companyUser.companyWha)}`;
+
+        //Sección Información
+        document.getElementById('info-company-name').innerHTML = companyUser.companyName;
+        document.getElementById('info-company-country').innerHTML = companyUser.country;
+        document.getElementById('info-company-dir').innerHTML = companyUser.companyDir;
+        document.getElementById('info-company-currency').innerHTML = companyUser.currency;
+        document.getElementById('info-company-employed').innerHTML = `${companyUser.firstName} ${companyUser.lastName}`;
+        document.getElementById('info-company-email').innerHTML = companyUser.email;
+        document.getElementById('info-company-fb').innerHTML = `<i class="fab fa-facebook"></i> ${companyUser.companyFb}`;
+        document.getElementById('info-company-wha').innerHTML = `<i class="fab fa-whatsapp"></i> ${CompanyContact(companyUser.country, companyUser.companyWha)}`;
+        document.getElementById('info-company-twit').innerHTML = `<i class="fab fa-twitter"></i> ${companyUser.companyFb}`;
+        document.getElementById('info-company-ig').innerHTML = `<i class="fab fa-instagram"></i> ${companyUser.companyFb}`;
+        //FillProductList();
+        //Sección de Productos
+
+        //Sección Editar Perfil
+        document.getElementById('first-name-company').value = companyUser.firstName;
+        document.getElementById('last-name-company').value = companyUser.lastName;
+        document.getElementById('name-company').value = companyUser.companyName;
+        document.getElementById('address-company').value = companyUser.companyDir;
+        document.getElementById('plan-company').value = companyUser.companyPlan;
+        document.getElementById('facebook-company').value = companyUser.companyFb;
+        document.getElementById('whatsapp-company').value = companyUser.companyWha;
+        document.getElementById('instagram-company').value = companyUser.companyIg;
+        document.getElementById('twitter-company').value = companyUser.companyTwit;
+        document.getElementById('email-employed-company').value = companyUser.email;
+       
+        document.getElementById('btn-update-info').disabled = true;
+        marker = L.marker([companyUser.companyLat, companyUser.companyLong]).addTo(mapForm);
+        $(".loader-wrapper").fadeOut("slow");
+        clearInterval(timer);
+    }
 }
 
 function FillProductList() {
@@ -386,58 +238,78 @@ function CompanyContact(country, number) {
     }
 }
 
-//Desbloquear el botón
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function EnableChange() {
+    //Desbloquear el botón de guardar
     document.getElementById('btn-update-info').disabled = false;
     VerifyData();
 }
 
+
 //Verificación de Datos nuevos
 function VerifyData() {
-    ValidateFirstName();
-    ValidateLastName();
-    ValidateCompanyName();
-    ValidateCompanyDir();
-    ValidateCompanyLatLong();
-    ValidateCompanyFb();
-    ValidateCompanyIg();
-    ValidateCompanyWha();
-    ValidateCompanyTwit();
-    ValidateEmail();
-    ValidatePassword();
-    ValidatePasswordRepeat();
-    ValidatePlan();
+    if (ValidateFirstName() &&
+        ValidateLastName() &&
+        ValidateCompanyName() &&
+        ValidateCompanyDir() &&
+        ValidateCompanyLatLong() &&
+        ValidateCompanyFb() &&
+        ValidateCompanyIg() &&
+        ValidateCompanyWha() &&
+        ValidateCompanyTwit() &&
+        ValidateEmail() ) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // --------------------------------- Actualizar la información ---------------------------------
-function updateInfo(){
-    uploadImageProfile();
-    uploadImageBanner();
-    let timer = setInterval(update, 4000);
-    function update(){
-        pp = ValidateCompanyLogo();
-        banner = ValidateCompanyBanner();
-        if(
-           pp == true && banner == true
-        ){
-            //console.log(companyUser);
-            let key = getCookie('key');
-            axios({
-                method: 'PUT',
-                url: '../backend/axios/companies.php?id=' + key ,
-                responseType: 'json',
-                data: companyUser
-            }).then(resCompany =>{
-                //console.log(resCompany.data);
-                clearInterval(timer);
-                window.location.href = '../profiles/profile-company.html';
-            }).catch(error =>{
-                console.log(error);
-            });
-            
+function updateInfo() {
+    if (VerifyData()) {
+        document.getElementById('data-alert').innerHTML = '';
+        if(document.querySelector('#banner-photo').value != ''){
+            uploadImageBanner();
+        }else{
+            document.getElementById('banner-url').innerHTML = companyUser.banner;
         }
+        if(document.querySelector('#pp-photo').value != ''){
+            uploadImageProfile();
+        }else{
+            document.getElementById('pp-url').innerHTML = companyUser.logo;
+        }
+        $(".loader-wrapper").fadeIn("slow");
+        let timer = setInterval(update, 4000);
+
+        function update() {
+            pp = ValidateCompanyLogo();
+            banner = ValidateCompanyBanner();
+            if (
+                pp  && banner 
+            ) {
+             let key = getCookie('key');
+                axios({
+                    method: 'PUT',
+                    url: '../backend/axios/companies.php?id=' + key,
+                    responseType: 'json',
+                    data: companyUser
+                }).then(resCompany => {
+                    console.log(resCompany.data);
+                    clearInterval(timer);
+                    window.location.href = '../profiles/profile-company.php';
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+        }
+    }else{
+        document.getElementById('data-alert').innerHTML = 'Rellene todos los campos';
     }
-    
 }
 
 function getCookie(name) {
@@ -519,7 +391,6 @@ function ValidateCompanyDir() {
 }
 
 function ValidateCompanyLogo() {
-    //Restringir la ruta
     if (document.getElementById('pp-url').innerHTML != '') {
         companyUser.logo = document.getElementById('pp-url').innerHTML;
         return true;
@@ -528,13 +399,13 @@ function ValidateCompanyLogo() {
 }
 
 function ValidateCompanyBanner() {
-    //Restringir la ruta
     if (document.getElementById('banner-url').innerHTML != '') {
         companyUser.banner = document.getElementById('banner-url').innerHTML;
         return true;
     }
     return false;
 }
+
 function ValidateCompanyFb() {
     if (document.getElementById('facebook-company').value == '') {
         document.getElementById('facebook-company').value = '';
@@ -543,6 +414,7 @@ function ValidateCompanyFb() {
         return false;
     } else {
         document.getElementById('facebook-company').style.borderColor = 'grey';
+        companyUser.companyFb = document.getElementById('facebook-company').value;
         return true;
     }
 }
@@ -555,13 +427,13 @@ function ValidateCompanyIg() {
         return false;
     } else {
         document.getElementById('instagram-company').style.borderColor = 'grey';
+        companyUser.companyIg = document.getElementById('instagram-company').value;
         return true;
     }
 }
 
 function ValidateCompanyWha() {
     let structure = /([0-9]{8})/;
-    console.log(structure.test(document.getElementById('whatsapp-company').value));
     if (document.getElementById('whatsapp-company').value == '' || structure.test(document.getElementById('whatsapp-company').value) == false) {
         document.getElementById('whatsapp-company').value = '';
         document.getElementById('whatsapp-company').style.borderColor = 'red';
@@ -569,6 +441,7 @@ function ValidateCompanyWha() {
         return false;
     } else {
         document.getElementById('whatsapp-company').style.borderColor = 'grey';
+        companyUser.companyWha = document.getElementById('whatsapp-company').value;
         return true;
     }
 }
@@ -581,6 +454,7 @@ function ValidateCompanyTwit() {
         return false;
     } else {
         document.getElementById('twitter-company').style.borderColor = 'grey';
+        companyUser.companyTwit = document.getElementById('twitter-company').value;
         return true;
     }
 }
@@ -591,13 +465,14 @@ function ValidateEmail() {
         document.getElementById('email-employed-company').value = '';
         document.getElementById('email-employed-company').style.borderColor = 'red';
         document.getElementById('email-employed-company').placeholder = 'Ingrese un correo Valido';
-        return true;
+        return false;
     } else {
         document.getElementById('email-employed-company').style.borderColor = 'grey';
-        return false;
+        companyUser.email = document.getElementById('email-employed-company').value;
+        return true;
     }
 }
-
+/*
 function ValidatePassword() {
     let chars = /([A-Za-z0-9])\w+/;
     let symbols = /([!-/:-@{-¿])/;
@@ -614,17 +489,18 @@ function ValidatePassword() {
 
 function ValidatePasswordRepeat() {
     if (document.getElementById('password-company').value != document.getElementById('password-company-repeat').value) {
+        document.getElementById('password-company-repeat').value = '';
         document.getElementById('pass-repeat-company-alert').innerHTML = `Contraseñas Distintas`;
         document.getElementById('password-company-repeat').style.color = 'red';
         return false;
     } else {
         document.getElementById('password-company-repeat').style.color = 'black';
         document.getElementById('pass-repeat-company-alert').innerHTML = ``;
+        companyUser.pass =  document.getElementById('password-company-repeat').value;
         return true;
     }
-    return true;
 }
-
+*/
 
 function ValidateCompanyLatLong() {
     if (lat != companyUser.companyLat && long != companyUser.companyLong) {
@@ -637,28 +513,73 @@ function ValidateCompanyLatLong() {
         return true;
     }
 }
-
-function ValidatePlan(){
+/*
+function ValidatePlan() {
     let planSelected = document.getElementById('plan-company');
-    if (planSelected.options[planSelected.selectedIndex].value == 'Seleccione Moneda') {
+    if (planSelected.options[planSelected.selectedIndex].value == 'Seleccione Plan') {
         document.getElementById('plan-alert').innerHTML = `Seleccione un nuevo plan`;
         return false;
     } else {
         document.getElementById('plan-alert').innerHTML = `Cambio de plan incurre gastos extra`;
-        return true;
+        let regular = 0;
+        let premium = 0;
+        let platinum = 0;
+        if (companies != null) {
+            let values = Object.values(companies);
+            for (let i = 0; i < values.length; i++) {
+                if (values[i].plan == 'Regular') {
+                    regular++;
+                }
+                if (values[i].plan == 'Premium') {
+                    premium++;
+                }
+                if (values[i].plan == 'Platinum') {
+                    platinum++;
+                }
+            }
+        }
+        if (planSelected.options[planSelected.selectedIndex].value == 'Regular') {
+            //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+            document.getElementById('number-employed-company').value = 3000 + regular + 1;
+            if (companyUser.companyPlan = 'Regular')
+                document.getElementById('number-employed-company').value = companyUser.code;
+            companyUser.code = document.getElementById('number-employed-company').value;
+            companyUser.companyPlan = 'Regular';
+            return true;
+        }
+        if (planSelected.options[planSelected.selectedIndex].value == 'Premium') {
+            //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+            document.getElementById('number-employed-company').value = 2000 + premium + 1;
+            if (companyUser.companyPlan = 'Premium')
+                document.getElementById('number-employed-company').value = companyUser.code;
+            companyUser.code = document.getElementById('number-employed-company').value;
+            companyUser.companyPlan = 'Premium';
+            return true;
+        }
+        if (planSelected.options[planSelected.selectedIndex].value == 'Platinum') {
+            //Dependiendo de cuantas empresas hayan con plan regular se asignara el código ejem 3001, 3002...
+            document.getElementById('number-employed-company').value = 1000 + platinum + 1;
+            if (companyUser.companyPlan = 'Platinum')
+                document.getElementById('number-employed-company').value = companyUser.code;
+            companyUser.code = document.getElementById('number-employed-company').value;
+            companyUser.companyPlan = 'Platinum';
+            return true;
+        }
+        return false;
     }
 }
-
+*/
 // ---------------------------------------- Sesion ---------------------------------------- //
 
-function logout(){
+function logout() {
+    $(".loader-wrapper").fadeIn("slow");
     axios({
         method: 'GET',
         url: '../backend/axios/companies.php?action=logout',
         responseType: 'json',
-    }).then(resAdmin =>{
-        window.location.href = '../index.html';
-    }).catch(error =>{
+    }).then(resCompany => {
+        window.location.href = '../index.php';
+    }).catch(error => {
         console.log(error);
     });
 }

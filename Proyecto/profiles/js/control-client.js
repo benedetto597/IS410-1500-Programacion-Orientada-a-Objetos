@@ -1,3 +1,17 @@
+//Logo
+document.getElementById('logo').innerHTML = `<img id="Mini-Mall-mainlogo" class="img-responsive" src="../img/icon/MiniMall.png">`;
+
+//Dropdown de cliente
+if(document.getElementById('client-dropdown')){
+    document.getElementById('client-dropdown').innerHTML = `<a class="dropdown-item" href="../profiles/profile-client.php">Ver Perfil</a>
+    <a class="dropdown-item" href="../profiles/profile-client.php">Editar Perfil</a>
+    <a class="dropdown-item" href="#" onclick="logout()">Cerrar Sesión</a>`;
+    document.getElementById('cart').innerHTML = `<a class="nav-link" href="../cart.php">
+    <h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6>
+    </a>`;
+    
+}
+
 var clientUser = {
     firstName: "",
     lastName: "",
@@ -98,7 +112,7 @@ function logout(){
         url: '../backend/axios/clients.php?action=logout',
         responseType: 'json',
     }).then(resAdmin =>{
-        window.location.href = '../index.html';
+        window.location.href = '../index.php';
     }).catch(error =>{
         console.log(error);
     });

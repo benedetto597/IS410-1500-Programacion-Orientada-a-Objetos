@@ -4,7 +4,7 @@
     require_once('../backend/class/class-database.php');
     $database = new Database();
     if(!Empresa ::verificarAutenticacion($database->getDB()))
-        header("Location: ../index.html");
+        header("Location: ../index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +54,7 @@
 
 <body onload="ShowInfo();">
     <div class="row">
-        <main class="col-12">
+        <main class="col-12" id="main">
             <!-- Barra de Navegación Primer Parte LandingPage -->
             <?php
                 include_once('../components/navbar-login-company.php');
@@ -63,27 +63,27 @@
                 <div id="navbar-menu" class="w-100">
                     <ul class="nav navbar-nav px-5  my-auto">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="../index.html">
+                            <a class="nav-link" href="../index.php">
                                 <h6 class="text-dark"><i class="fas fa-home fa-fw"></i>Inicio</h6>
                             </a>
                         </li>
-                        <li class="nav-item mr-auto ml-auto">
+                        <li class="nav-item mr-auto ml-auto" id="Promociones">
                             <div class="btn-group">
                                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-percent fa-fw"></i>Promociones</button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="../promotions/product-company-list.html"> <i
+                                    <a class="dropdown-item" href="../promotions/product-company-list.php"> <i
                                             class="fas fa-building fa-fw"></i>Productos y Empresas</a>
-                                    <a class="dropdown-item" href="../promotions/categories.html"><i
+                                    <a class="dropdown-item" href="../promotions/categories.php"><i
                                             class="fas fa-th-large fa-fw"></i>Categorías</a>
-                                    <a class="dropdown-item" href="../promotions/last-products.html"><i
+                                    <a class="dropdown-item" href="../promotions/last-products.php"><i
                                             class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item ml-auto">
-                            <a class="nav-link" href="../contact.html">
+                            <a class="nav-link" href="../contact.php">
                                 <h6 class="text-dark"><i class="fas fa-phone-volume fa-fw"></i>Contactanos</h6>
                             </a>
                         </li>
@@ -91,9 +91,8 @@
                 </div>
             </nav>
             <div class="container  col-lg-10 animated bounceInUp">
-                <div class="fb-profile">
-                    <img id="company-photo-logo" class="fb-image-profile thumbnail" src="../img/profile-company.jpeg"
-                        alt="Profile image" />
+                <div class="fb-profile" id="logo-photo">
+                    
                 </div>
             </div>
         </main>
@@ -221,19 +220,14 @@
                                         <div class="form-group col-md-4">
                                             <b>Empleado</b><br><small class="form-text text-dark" style="display: inline;" id="plan-alert"></small>
                                             <div class="row px-2">
-                                                <div class="col-md-6 px-1">
-                                                    <select id="plan-company" class="form-control text-dark my-1"
+                                                <div class="col-md-12 px-1" >
+                                                    <select id="plan-company"  disabled class="form-control text-dark my-1"
                                                         onchange="EnableChange()">
                                                         <option>Seleccione Plan</option>
                                                         <option value="Regular">Regular</option>
                                                         <option value="Premium">Premium</option>
                                                         <option value="Platinum">Platinum</option>
                                                     </select>   
-                                                </div>
-                                                <div class="col-md-6 px-1">
-                                                    <input type="number" class="form-control"
-                                                        id="number-employed-company" placeholder="Código de Acceso"
-                                                        disabled>
                                                 </div>
                                             </div>
                                             <input type="email" class="form-control my-1" id="email-employed-company"
@@ -274,18 +268,10 @@
                                             <small id="lat-long-company-alert" class="form-text text-dark"></small>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <b>Contraseña</b>
-                                            <input type="password" class="form-control" id="password-company"
-                                                placeholder="Contraseña" minlength="5" maxlength="30"
-                                                onchange="EnableChange()">
-                                            <small id="pass-company-alert" class="form-text text-dark"></small>
-                                            <input type="password" class="form-control my-1"
-                                                id="password-company-repeat" placeholder="Repita Contraseña"
-                                                minlength="5" maxlength="30" onchange="EnableChange()">
-                                            <small id="pass-repeat-company-alert" class="form-text text-dark"></small>
+                                            
                                             <b>Redes Sociales</b>
-                                            <div class="row">
-                                                <div class="col-md-6 px-1">
+                                            <div class="row px-1">
+                                                <div class="col-md-12 px-1">
                                                     <input type="text" class="form-control" id="facebook-company"
                                                         placeholder="Facebook" onchange="EnableChange()">
                                                     <small id="fb-alert" class="form-text text-dark"></small>
@@ -294,7 +280,7 @@
                                                         maxlenth="12">
                                                     <small id="wha-alert" class="form-text text-dark"></small>
                                                 </div>
-                                                <div class="col-md-6 px-1">
+                                                <div class="col-md-12 px-1">
                                                     <input type="text" class="form-control my-1" id="instagram-company"
                                                         placeholder="Instagram" onchange="EnableChange()">
                                                     <small id="ig-alert" class="form-text text-dark"></small>
@@ -309,8 +295,9 @@
                                                 <div class="col-auto mr-auto ml-auto">
                                                     <button id="btn-update-info" type="button"
                                                         class="btn btn-lg shadow p-2 px-3 m-0 rounded-pill text-dark"
-                                                        onclick="VerifyData();">Guardar
+                                                        onclick="updateInfo();">Guardar
                                                         Cambios</button>
+                                                        <small id="data-alert" class="form-text text-dark bg-danger"></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -322,6 +309,9 @@
                 </div>
             </div>
         </div>
+        <?php 
+            include_once('../components/loader.php');
+        ?>
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
@@ -378,6 +368,9 @@
             }
             
             }
+            $(window).on("load",function(){
+                $(".loader-wrapper").fadeIn("slow");
+            });
       </script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
           </script>

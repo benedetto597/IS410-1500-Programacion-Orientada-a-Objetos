@@ -29,66 +29,32 @@
 <body>
     <main>
         <!-- Barra de Navegación Primer Parte LandingPage -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main"
-                aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar-main">
-                <div class="row m-0 w-100">
-                    <ul id="main-navbar" class="nav navbar-nav mr-auto px-5 my-auto">
-                        <li class="nav-item">
-                            <div class="btn-group dropright">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user fa-fw"></i>Iniciar Sesión</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#login-client" data-toggle="modal"
-                                        data-target="#login-client">Cliente</a>
-                                    <a class="dropdown-item" href="#login-company" data-toggle="modal"
-                                        data-target="#login-company">Empresa</a>
-                                    <a class="dropdown-item" href="#login-admin" data-toggle="modal"
-                                        data-target="#login-admin">Super Admin</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="btn-group dropright">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user-plus fa-fw"></i>Registrarse</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="../register/register-client.html">Cliente</a>
-                                    <a class="dropdown-item" href="../register/register-company.html">Empresa</a>
-                                    <a class="dropdown-item" href="../register/register-admin.html">Super Admin</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive"
-                            src="../img/icon/MiniMall.png"></a>
-                    <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
-                        <li class="nav-item invisible">
-                            <a class="nav-link" href="#">
-                                <h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../cart.html">
-                                <h6 class="text-dark"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6>
-                            </a>
-                        </li>
-                    </ul>
-
-
-                </div>
-            </div>
-        </nav>
+        <?php 
+        //Verificando si esta logeado el usuario
+        require_once('../backend/class/class-admin.php');
+        require_once('../backend/class/class-clients.php');
+        require_once('../backend/class/class-companies.php');
+        require_once('../backend/class/class-database.php');
+        $database = new Database();
+        if(Administrador ::verificarAutenticacion($database->getDB())){
+            include_once('../components/navbar-login-admin.php');
+        }else{
+            if(Cliente ::verificarAutenticacion($database->getDB())){
+                include_once('../components/navbar-login-client.php');
+            }else{    
+                if(Empresa ::verificarAutenticacion($database->getDB())){
+                    include_once('../components/navbar-login-company.php');
+                }else{
+                    include_once('../components/navbar-no-login.php');
+                }
+            }
+        }
+        ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div id="navbar-menu" class="w-100">
                 <ul class="nav navbar-nav px-5  my-auto">
                     <li class="nav-item mr-auto">
-                        <a class="nav-link" href="../index.html">
+                        <a class="nav-link" href="../index.php">
                             <h6 class="text-dark"><i class="fas fa-home fa-fw"></i>Inicio</h6>
                         </a>
                     </li>
@@ -98,17 +64,17 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-percent fa-fw"></i>Promociones</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../promotions/product-company-list.html"> <i
-                                        class="fas fa-building fa-fw"></i>Productos y Empresas</a>
-                                <a class="dropdown-item" href="../promotions/categories.html"><i
+                                <a class="dropdown-item" href="#"> <i class="fas fa-building fa-fw"></i>Productos y
+                                    Empresas</a>
+                                <a class="dropdown-item" href="../promotions/categories.php"><i
                                         class="fas fa-th-large fa-fw"></i>Categorías</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-stopwatch fa-fw"></i>Últimas
-                                    Promociones</a>
+                                <a class="dropdown-item" href="../promotions/last-products.php"><i
+                                        class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item ml-auto">
-                        <a class="nav-link" href="../contact.html">
+                        <a class="nav-link" href="../contact.php">
                             <h6 class="text-dark"><i class="fas fa-phone-volume fa-fw"></i>Contactanos</h6>
                         </a>
                     </li>
@@ -135,20 +101,18 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Cliente</h4>
+                                    <small id="warning-client" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-10 mr-auto ml-auto">
                                     <input type="text" class="form-control my-2" id="login-user-client"
                                         placeholder="Usuario" required minlength="5" maxlength="15">
-                                    <small id="user-client-alert" class="form-text text-dark"></small>
                                     <input type="email" class="form-control my-2" id="email-login-client"
                                         placeholder="Email" required>
-                                    <small id="email-client-alert" class="form-text text-dark"></small>
                                     <input type="password" class="form-control my-2" id="login-pass-client"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
                                         minlength="5" maxlength="20">
-                                    <small id="pass-client-alert" class="form-text text-dark"></small>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -156,13 +120,13 @@
                             </div>
                         </form>
                         <div class="col-6 ml-auto mr-auto">
-                            <div class="bg-white rounded ml-auto mr-auto pl-2" style="border: none;">
+                            <div class="card" style="border: none;">
                                 <div class="card-body ml-auto mr-auto">
                                     <button type="button" id="btn-client-login"
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateClient();">Iniciar Sesión</button>
                                     <button type="button" id="btn-client-register-modal"
-                                        onclick="location.href='../register/register-client.html'"
+                                        onclick="location.href='../register/register-client.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -193,6 +157,7 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Empresa</h4>
+                                    <small id="warning-company" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -200,14 +165,11 @@
                                     <input type="number" class="form-control my-2" id="login-code-company"
                                         placeholder="Código de Empleado" minlength="4" maxlength="4" required min="1000"
                                         max="3999">
-                                    <small id="code-company-alert" class="form-text text-dark"></small>
                                     <input type="email" class="form-control my-2" id="email-login-company"
                                         placeholder="Email" required>
-                                    <small id="email-company-alert" class="form-text text-dark"></small>
                                     <input type="password" class="form-control my-2" id="login-pass-company"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
                                         minlength="5" maxlength="20">
-                                    <small id="pass-company-alert" class="form-text text-dark"></small>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -215,13 +177,13 @@
                             </div>
                         </form>
                         <div class="col-6 ml-auto mr-auto">
-                            <div class="bg-white rounded ml-auto mr-auto pl-2" style="border: none;">
+                            <div class="card" style="border: none;">
                                 <div class="card-body ml-auto mr-auto">
                                     <button type="button" id="btn-company-login"
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateCompany();">Iniciar Sesión</button>
                                     <button type="button" id="btn-company-register-modal"
-                                        onclick="location.href='../register/register-company.html'"
+                                        onclick="location.href='../register/register-company.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -252,24 +214,21 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Administrador</h4>
+                                    <small id="warning-admin" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-10 mr-auto ml-auto">
+                                <div class="form-group col-10 mr-auto ml-auto" id="form-login">
                                     <input type="number" class="form-control" id="login-code-admin"
                                         placeholder="Código de Acceso" required minlength="4" maxlength="5" min="1000"
-                                        max="9999">
-                                    <small id="code-admin-alert" class="form-text text-dark"></small>
+                                        max="9999" name="login-code-admin">
                                     <input type="text" class="form-control my-2" id="login-user-admin"
-                                        placeholder="Usuario" required minlength="5" maxlength="20">
-                                    <small id="user-admin-alert" class="form-text text-dark"></small>
+                                        placeholder="Usuario" required minlength="5" maxlength="20" name="login-user-admin">
                                     <input type="email" class="form-control my-2" id="email-login-admin"
-                                        placeholder="Email" required>
-                                    <small id="email-admin-alert" class="form-text text-dark"></small>
+                                        placeholder="Email" required name="email-login-admin">
                                     <input type="password" class="form-control my-2" id="login-pass-admin"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
-                                        minlength="5" maxlength="20">
-                                    <small id="pass-admin-alert" class="form-text text-dark"></small>
+                                        minlength="5" maxlength="20" name="login-pass-admin">
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -277,13 +236,13 @@
                             </div>
                         </form>
                         <div class="col-6 ml-auto mr-auto">
-                            <div class="bg-white rounded ml-auto mr-auto pl-2" style="border: none;">
+                            <div class="card" style="border: none;">
                                 <div class="card-body ml-auto mr-auto">
                                     <button type="button" id="btn-admin-login"
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateAdmin();">Iniciar Sesión</button>
                                     <button type="button" id="btn-admin-register-modal"
-                                        onclick="location.href='../register/register-company.html'"
+                                        onclick="location.href='../register/register-company.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -317,7 +276,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -344,7 +303,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -371,7 +330,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -398,7 +357,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -425,7 +384,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -452,7 +411,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -479,7 +438,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -506,7 +465,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body p-0 text-center">
-                                        <a href="categories.html" class="text-dark">
+                                        <a href="categories.php" class="text-dark">
                                             <h5 class="bg-light rounded-pill">Categoría</h5>
                                         </a>
                                         <h6>Descripción del Producto</h6>
@@ -527,11 +486,11 @@
             </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/login-validation.js"></script>
+    <script src="js/login-validation.js"></script>
     <script src="js/control-last-products-promotions.js"></script>
 </body>
 

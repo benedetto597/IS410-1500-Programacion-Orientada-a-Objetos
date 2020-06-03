@@ -55,13 +55,19 @@
         require_once('backend/class/class-companies.php');
         require_once('backend/class/class-database.php');
         $database = new Database();
-        if(Administrador ::verificarAutenticacion($database->getDB()))
+        if(Administrador ::verificarAutenticacion($database->getDB())){
             include_once('components/navbar-login-admin.php');
-        if(Cliente ::verificarAutenticacion($database->getDB()))
-            include_once('components/navbar-login-client.php');
-        if(Empresa ::verificarAutenticacion($database->getDB()))
-            include_once('components/navbar-login-company.php');
-        include_once('components/navbar-no-login.php');
+        }else{
+            if(Cliente ::verificarAutenticacion($database->getDB())){
+                include_once('components/navbar-login-client.php');
+            }else{    
+                if(Empresa ::verificarAutenticacion($database->getDB())){
+                    include_once('components/navbar-login-company.php');
+                }else{
+                    include_once('components/navbar-no-login.php');
+                }
+            }
+        }
         ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div id="navbar-menu" class="w-100">
@@ -115,20 +121,18 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Cliente</h4>
+                                    <small id="warning-client" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-10 mr-auto ml-auto">
                                     <input type="text" class="form-control my-2" id="login-user-client"
                                         placeholder="Usuario" required minlength="5" maxlength="15">
-                                    <small id="user-client-alert" class="form-text text-dark"></small>
                                     <input type="email" class="form-control my-2" id="email-login-client"
                                         placeholder="Email" required>
-                                    <small id="email-client-alert" class="form-text text-dark"></small>
                                     <input type="password" class="form-control my-2" id="login-pass-client"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
                                         minlength="5" maxlength="20">
-                                    <small id="pass-client-alert" class="form-text text-dark"></small>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -173,6 +177,7 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Empresa</h4>
+                                    <small id="warning-company" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -180,14 +185,11 @@
                                     <input type="number" class="form-control my-2" id="login-code-company"
                                         placeholder="Código de Empleado" minlength="4" maxlength="4" required min="1000"
                                         max="3999">
-                                    <small id="code-company-alert" class="form-text text-dark"></small>
                                     <input type="email" class="form-control my-2" id="email-login-company"
                                         placeholder="Email" required>
-                                    <small id="email-company-alert" class="form-text text-dark"></small>
                                     <input type="password" class="form-control my-2" id="login-pass-company"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
                                         minlength="5" maxlength="20">
-                                    <small id="pass-company-alert" class="form-text text-dark"></small>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -232,24 +234,21 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Administrador</h4>
+                                    <small id="warning-admin" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-10 mr-auto ml-auto">
+                                <div class="form-group col-10 mr-auto ml-auto" id="form-login">
                                     <input type="number" class="form-control" id="login-code-admin"
                                         placeholder="Código de Acceso" required minlength="4" maxlength="5" min="1000"
-                                        max="9999">
-                                    <small id="code-admin-alert" class="form-text text-dark"></small>
+                                        max="9999" name="login-code-admin">
                                     <input type="text" class="form-control my-2" id="login-user-admin"
-                                        placeholder="Usuario" required minlength="5" maxlength="20">
-                                    <small id="user-admin-alert" class="form-text text-dark"></small>
+                                        placeholder="Usuario" required minlength="5" maxlength="20" name="login-user-admin">
                                     <input type="email" class="form-control my-2" id="email-login-admin"
-                                        placeholder="Email" required>
-                                    <small id="email-admin-alert" class="form-text text-dark"></small>
+                                        placeholder="Email" required name="email-login-admin">
                                     <input type="password" class="form-control my-2" id="login-pass-admin"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
-                                        minlength="5" maxlength="20">
-                                    <small id="pass-admin-alert" class="form-text text-dark"></small>
+                                        minlength="5" maxlength="20" name="login-pass-admin">
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -317,9 +316,9 @@
             </form>
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/login-validation.js"></script>
     <script src="js/control-contact.js"></script>

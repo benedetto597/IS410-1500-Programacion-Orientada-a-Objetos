@@ -5,9 +5,9 @@
     require_once('../backend/class/class-database.php');
     $database = new Database();
     if(Cliente::verificarAutenticacion($database->getDB()))
-        header("Location: index.html");
+        header("Location: index.php");
     if(Empresa::verificarAutenticacion($database->getDB()))
-        header("Location: index.html");
+        header("Location: index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,9 +67,9 @@
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user-plus fa-fw" style="color: white;"></i>Registrarse</button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="register/register-client.html">Cliente</a>
-                                    <a class="dropdown-item" href="register/register-company.html">Empresa</a>
-                                    <a class="dropdown-item" href="register/register-admin.html">Super Admin</a>
+                                    <a class="dropdown-item" href="register/register-client.php">Cliente</a>
+                                    <a class="dropdown-item" href="register/register-company.php">Empresa</a>
+                                    <a class="dropdown-item" href="register/register-admin.php">Super Admin</a>
                                 </div>
                             </div>
                         </li>
@@ -83,7 +83,7 @@
                             </a>
                         </li>
                         <li class="nav-item invisible">
-                            <a class="nav-link" href="cart.html">
+                            <a class="nav-link" href="cart.php">
                                 <h6 class="text-white"><i class="fas fa-shopping-cart fa-fw"
                                         style="color: white;"></i>Carrito</h6>
                             </a>
@@ -98,7 +98,7 @@
             <div id="navbar-menu" class="w-100">
                 <ul class="nav navbar-nav px-5  my-auto">
                     <li class="nav-item mr-auto">
-                        <a class="nav-link" href="../index.html">
+                        <a class="nav-link" href="../index.php">
                             <h6 class="text-white"><i class="fas fa-home fa-fw" style="color: white;"></i>Inicio</h6>
                         </a>
                     </li>
@@ -108,17 +108,17 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-percent fa-fw" style="color: white;"></i>Promociones</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="promotions/product-company-list.html"> <i
+                                <a class="dropdown-item" href="promotions/product-company-list.php"> <i
                                         class="fas fa-building fa-fw"></i>Productos y Empresas</a>
-                                <a class="dropdown-item" href="promotions/categories.html"><i
+                                <a class="dropdown-item" href="promotions/categories.php"><i
                                         class="fas fa-th-large fa-fw"></i>Categorías</a>
-                                <a class="dropdown-item" href="promotions/last-products.html"><i
+                                <a class="dropdown-item" href="promotions/last-products.php"><i
                                         class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item ml-auto">
-                        <a class="nav-link" href="../contact.html">
+                        <a class="nav-link" href="../contact.php">
                             <h6 class="text-white"><i class="fas fa-phone-volume fa-fw"
                                     style="color: white;"></i>Contactanos</h6>
                         </a>

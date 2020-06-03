@@ -46,7 +46,7 @@ function ValidateForm() {
             responseType: 'json',
             data: companyBranch
         }).then(resBranch =>{
-            window.location.href = '../profiles/profile-company.html';
+            window.location.href = '../profiles/profile-company.php';
         }).catch(error =>{
             console.log(error);
         });

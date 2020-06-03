@@ -25,23 +25,23 @@
                     Empresa::obtenerEmpresas($database->getDB());
                     exit();
                 }
+                
             }else{
-                echo '{"mensaje:"Acceso no autorizado"}';
-                exit(); 
+                if(!Empresa::verificarAutenticacion($database->getDB())){
+                    echo '{"mensaje:"Acceso no autorizado"}';
+                    exit();
+                }
+                if(isset($_GET['action'])=='logout'){
+                    Empresa::logout();
+                    exit();
+                }
+                if (isset($_GET['id'])){
+                    Empresa::obtenerEmpresa($database->getDB(), $_GET['id']);
+                }else{
+                    Empresa::obtenerEmpresas($database->getDB());
+                }
             }
-            if(!Empresa::verificarAutenticacion($database->getDB())){
-                echo '{"mensaje:"Acceso no autorizado"}';
-                exit();
-            }
-            if(isset($_GET['action'])=='logout'){
-                Empresa::logout();
-                exit();
-            }
-            if (isset($_GET['id'])){
-                Empresa::obtenerEmpresa($database->getDB(), $_GET['id']);
-            }else{
-                Empresa::obtenerEmpresas($database->getDB());
-            }
+            
             
         break;
         case 'PUT':

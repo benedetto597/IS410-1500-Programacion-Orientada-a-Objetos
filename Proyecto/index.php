@@ -168,7 +168,7 @@
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateClient();">Iniciar Sesión</button>
                                     <button type="button" id="btn-client-register-modal"
-                                        onclick="location.href='register/register-client.html'"
+                                        onclick="location.href='register/register-client.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -225,7 +225,7 @@
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateCompany();">Iniciar Sesión</button>
                                     <button type="button" id="btn-company-register-modal"
-                                        onclick="location.href='register/register-company.html'"
+                                        onclick="location.href='register/register-company.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -284,7 +284,7 @@
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateAdmin();">Iniciar Sesión</button>
                                     <button type="button" id="btn-admin-register-modal"
-                                        onclick="location.href='register/register-company.html'"
+                                        onclick="location.href='register/register-company.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -300,7 +300,7 @@
             <div class="col-xl-2 col-lg-2 col-md-3 col-xs-3 col-sm-3 animated bounceInDown">
                 <div class="card" id="lp-content-img">
                     <div class="card-body">
-                        <a href="promotions/last-products.html"><img class="card-img-top"
+                        <a href="promotions/last-products.php"><img class="card-img-top"
                                 src="img/lp-content-image.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Últimas Promociones</h6>
                     </div>
@@ -310,7 +310,7 @@
             <div class="col-xl-2 col-lg-2 col-md-3 col-xs-3 col-sm-3 animated bounceInDown">
                 <div class="card" id="lp-content-img">
                     <div class="card-body">
-                        <a href="promotions/categories.html"><img class="card-img-top"
+                        <a href="promotions/categories.php"><img class="card-img-top"
                                 src="img/lp-content-categories.jpeg" alt="Card image cap"></a>
                         <h6 id="lp-content-text"> Categorías</h6>
                     </div>
@@ -327,35 +327,35 @@
                 <div id="carousel-products" class="carousel slide animated bounceInLeft" data-ride="carousel">
                     <div class="carousel-inner row w-75 mx-auto" role="listbox">
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
-                            <a href="product.html"><img src="img/lp-second-product1.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product1.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img1"></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.html"><img src="img/lp-second-product4.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product4.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img2"></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.html"><img src="img/lp-second-product2.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product2.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img3"></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.html"><img src="img/lp-second-product3.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product3.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img4"></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.html"><img src="img/lp-second-product4.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product4.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img5"></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.html"><img src="img/lp-second-product5.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product5.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img6"></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.html"><img src="img/lp-second-product1.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product1.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img7"></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.html"><img src="img/lp-second-product2.jpeg"
+                            <a href="product.php"><img src="img/lp-second-product2.jpeg"
                                 class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img8"></a>
                         </div>
                     </div>
@@ -384,7 +384,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <a href="promotions/product-company-list.html"><img src="img/lp-second-companylist.jpeg"
+                                <a href="promotions/product-company-list.php"><img src="img/lp-second-companylist.jpeg"
                                         class="card-img-right img-fluid rounded"></a>
                             </div>
                         </li>
@@ -393,7 +393,7 @@
                         <li class="nav-item row">
                             <div class="col-lg-6 ">
                                 <div class="px-0 text-right">
-                                    <a href="promotions/product-company-list.html"><img src="img/lp-second-productlist.jpeg"
+                                    <a href="promotions/product-company-list.php"><img src="img/lp-second-productlist.jpeg"
                                             class="card-img-right img-fluid rounded"></a>
                                 </div>
                             </div>
@@ -473,7 +473,7 @@
                             class="fab fa-instagram fa-2x"></i></a>
                 </li>
                 <li class="nav-item ml-auto ">
-                    <a class="nav-link active" href="contact.html"><i
+                    <a class="nav-link active" href="contact.php"><i
                             class="fas fa-phone-volume fa-fw"></i>Contáctenos</a>
                 </li>
             </ul>

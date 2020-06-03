@@ -34,8 +34,8 @@ function ValidateForm() {
             responseType: 'json',
             data: productPromotion
         }).then(res =>{
-            console.log(res.data);
-            //window.location.href = '../profiles/profile-company.html';
+            //console.log(res.data);
+            window.location.href = '../profiles/profile-company.php';
         }).catch(error =>{
             console.log(error);
         });

@@ -9,14 +9,12 @@ echo '<!-- Barra de Navegación Primer Parte LandingPage -->
         <div class="row m-0 w-100">
             <ul id="main-navbar" class="nav navbar-nav mr-auto px-5 my-auto">
                 <li class="nav-item">
-                    <div class="btn-group dropright">
+                    <div class="btn-group dropright" id="Empresa">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user fa-fw"></i>Empresa</button>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="../profiles/profile-client.php">Ver Perfil</a>
-                        <a class="dropdown-item" href="../profiles/profile-client.php">Editar Perfil</a>
-                        <a class="dropdown-item" href="#" onclick="logout()">Cerrar Sesión</a>
+                        <div class="dropdown-menu" id="company-dropdown">
+                        
                         </div>
                     </div>
                 </li>
@@ -25,26 +23,21 @@ echo '<!-- Barra de Navegación Primer Parte LandingPage -->
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-plus fa-fw"></i>Registrarse</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="../register/register-client.php">Cliente</a>
-                            <a class="dropdown-item" href="../register/register-company.php">Empresa</a>
-                            <a class="dropdown-item" href="../register/register-admin.php">Super Admin</a>
+                        <div class="dropdown-menu" >
+                            
                         </div>
                     </div>
                 </li>
             </ul>
-            <a class="navbar-brand" href="#"><img id="Mini-Mall-mainlogo" class="img-responsive"
-                    src="../img/icon/MiniMall.png"></a>
+            <a class="navbar-brand" href="#" id="logo"></a>
             <ul id="main-navbar" class="nav navbar-nav ml-auto px-5 my-auto">
                 <li class="nav-item invisible">
                     <a class="nav-link" href="#">
                         <h6 class="text-dark">Iniciar Sesión Iniciar Inic</h6>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../products.php">
-                        <h6 class="text-dark"><i class="fas fa-building fa-fw"></i>Productos</h6>
-                    </a>
+                <li class="nav-item" id="branch">
+                    
                 </li>
             </ul>
 

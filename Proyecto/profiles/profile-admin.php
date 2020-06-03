@@ -4,7 +4,7 @@
     require_once('../backend/class/class-database.php');
     $database = new Database();
     if(!Administrador ::verificarAutenticacion($database->getDB()))
-        header("Location: ../index.html");
+        header("Location: ../index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
