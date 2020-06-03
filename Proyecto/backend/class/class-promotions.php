@@ -109,7 +109,7 @@ class Promocion{
 
         return $this;
     }
-
+    // NO FUNCIONA
     public function obtenerPromocion($db, $id){
         $resultado = $db->getReference('productos')
             ->orderByChild('nombreProducto')
@@ -120,14 +120,14 @@ class Promocion{
         echo json_encode($resultado['promocionesProducto'][$id]);
     }
 
-    public function obtenerPromociones($db){
+    public function obtenerPromociones($db,$name){
         $resultado = $db->getReference('productos')
             ->orderByChild('nombreProducto')
-            ->equalTo($this->nombrePromocion)
+            ->equalTo($name)   
             ->getSnapshot()
             ->getValue();
-
-        echo json_encode($resultado['promocionesProducto']);
+        
+        echo json_encode($resultado);
     }
 
     public function crearPromocion($db){
@@ -151,6 +151,144 @@ class Promocion{
 
         if ($key != null)
             return '{"mensaje":"Registro de promocion creado","key":"'.$key.'"}';
+        else 
+            return '{"mensaje":"Error al crear el registro"}';
+
+    }
+
+    public function crearComentario($db){
+        $datos = $this->obtenerInfo();
+        $comentario['nombreProducto'] = $datos['nombrePromocion'];
+        $comentario['usuario'] = $datos['precioRealPromocion'];
+        $comentario['comentario'] = $datos['precioDescPromocion'];
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+            
+        $key = array_key_first($producto);
+
+        $resultado = $db->getReference('productos')
+            ->getChild($key)
+            ->getValue();
+        
+        $resultado['comentariosProducto'][] = $comentario;
+        $respuesta = $db->getReference('productos/'.$key.'/comentariosProducto')
+            ->set($resultado['comentariosProducto']);
+
+        if ($key != null)
+            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+        else 
+            return '{"mensaje":"Error al crear el registro"}';
+
+    }
+
+    public function crearFavorito($db){
+        $datos = $this->obtenerInfo();
+        $comentario['nombreProducto'] = $datos['nombrePromocion'];
+        $comentario['usuario'] = $datos['precioRealPromocion'];
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+            
+        $key = array_key_first($producto);
+
+        $resultado = $db->getReference('productos')
+            ->getChild($key)
+            ->getValue();
+        
+        $resultado['favoritosProducto'][] = $comentario;
+        $respuesta = $db->getReference('productos/'.$key.'/favoritosProducto')
+            ->set($resultado['favoritosProducto']);
+
+        if ($key != null)
+            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+        else 
+            return '{"mensaje":"Error al crear el registro"}';
+
+    }
+
+    public function crearCarrito($db){
+        $datos = $this->obtenerInfo();
+        $comentario['nombreProducto'] = $datos['nombrePromocion'];
+        $comentario['usuario'] = $datos['precioRealPromocion'];
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+            
+        $key = array_key_first($producto);
+
+        $resultado = $db->getReference('productos')
+            ->getChild($key)
+            ->getValue();
+        
+        $resultado['carritoProducto'][] = $comentario;
+        $respuesta = $db->getReference('productos/'.$key.'/carritoProducto')
+            ->set($resultado['carritoProducto']);
+
+        if ($key != null)
+            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+        else 
+            return '{"mensaje":"Error al crear el registro"}';
+
+    }
+
+    public function crearCalificacion($db){
+        $datos = $this->obtenerInfo();
+        $comentario['nombreProducto'] = $datos['nombrePromocion'];
+        $comentario['usuario'] = $datos['precioRealPromocion'];
+        $comentario['calificacion'] = $datos['precioDescPromocion'];
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+            
+        $key = array_key_first($producto);
+
+        $resultado = $db->getReference('productos')
+            ->getChild($key)
+            ->getValue();
+        
+        $resultado['calificacionesProducto'][] = $comentario;
+        $respuesta = $db->getReference('productos/'.$key.'/calificacionesProducto')
+            ->set($resultado['calificacionesProducto']);
+
+        if ($key != null)
+            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+        else 
+            return '{"mensaje":"Error al crear el registro"}';
+
+    }
+
+    public function crearCompra($db){
+        $datos = $this->obtenerInfo();
+        $comentario['nombreProducto'] = $datos['nombrePromocion'];
+        $comentario['usuario'] = $datos['precioRealPromocion'];
+        $comentario['cantidad'] = $datos['precioDescPromocion'];
+        $producto = $db->getReference('productos')
+            ->orderByChild('nombreProducto')
+            ->equalTo($this->nombrePromocion)
+            ->getSnapshot()
+            ->getValue();
+            
+        $key = array_key_first($producto);
+
+        $resultado = $db->getReference('productos')
+            ->getChild($key)
+            ->getValue();
+        
+        $resultado['compradoProducto'][] = $comentario;
+        $respuesta = $db->getReference('productos/'.$key.'/compradoProducto')
+            ->set($resultado['compradoProducto']);
+
+        if ($key != null)
+            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
         else 
             return '{"mensaje":"Error al crear el registro"}';
 
@@ -206,12 +344,13 @@ class Promocion{
         $respuesta = $db->getReference('empresas')
             ->getChild($_COOKIE['key'])
             ->getValue();
-
-        if($respuesta["token"]==$_COOKIE["token"]){
-            return true;
-        }else{
-            return false;
-        }        
+        if($respuesta != null){
+            if($respuesta["token"]==$_COOKIE["token"]){
+                return true;
+            }else{
+                return false;
+            }        
+        }
     }
 
 }

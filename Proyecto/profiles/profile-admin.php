@@ -53,7 +53,6 @@
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-percent fa-fw"></i>Promociones</button>
                             <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="../promotions/product-company-list.php"> <i class="fas fa-building fa-fw"></i>Productos y Empresas</a>
                                 <a class="dropdown-item" href="../promotions/categories.php"><i class="fas fa-th-large fa-fw"></i>Categorías</a>
                                 <a class="dropdown-item" href="../promotions/last-products.php"><i class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
                             </div>
@@ -138,8 +137,8 @@
                                                     <table class="table table-hover table-striped">
                                                         <thead id="table-admin">
                                                         <tr>
-                                                            <th scope="col">Nombre</th>
-                                                            <th scope="col">Suscripción</th>
+                                                                <th scope="col">Nombre</th>
+                                                                <th scope="col">Suscripción</th>
                                                                 <th scope="col">País</th>
                                                                 <th scope="col">Moneda</th>
                                                                 <th scope="col">Dirección</th>

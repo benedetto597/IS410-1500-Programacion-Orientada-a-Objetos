@@ -18,7 +18,7 @@ function ValidateForm() {
     let end = ValidateEnd();
     let branch = ValidateBranch();
 
-    if (product == true && discount == true && realPrice == true && discountPrice == true && start == true && end == true && branch == true) {
+    if (product  && discount  && realPrice  && discountPrice  && start  && end  && branch ) {
         productPromotion.product = document.getElementById('product-select-promotion').options[document.getElementById('product-select-promotion').selectedIndex].value;
         productPromotion.discount = `${document.getElementById('discount-product').value}%`;
         productPromotion.realPrice = productPrice;
@@ -27,10 +27,10 @@ function ValidateForm() {
         productPromotion.end = [document.getElementById('date-end-promotion').value, document.getElementById('time-end-promotion').value];
         productPromotion.branch = $("#branch-select-promotion").val();
         
-        console.log(productPromotion);
+        //console.log(productPromotion);
         axios({
             method: 'POST',
-            url: '../backend/axios/promotions.php',
+            url: '../backend/axios/promotions.php?action=promotion',
             responseType: 'json',
             data: productPromotion
         }).then(res =>{

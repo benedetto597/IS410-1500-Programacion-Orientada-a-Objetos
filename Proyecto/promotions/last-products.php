@@ -26,7 +26,7 @@
     </style>
 </head>
 
-<body>
+<body onload="showProducts()">
     <main>
         <!-- Barra de Navegación Primer Parte LandingPage -->
         <?php 
@@ -64,8 +64,6 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-percent fa-fw"></i>Promociones</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#"> <i class="fas fa-building fa-fw"></i>Productos y
-                                    Empresas</a>
                                 <a class="dropdown-item" href="../promotions/categories.php"><i
                                         class="fas fa-th-large fa-fw"></i>Categorías</a>
                                 <a class="dropdown-item" href="../promotions/last-products.php"><i
@@ -256,232 +254,10 @@
         <div class="top-content p-3">
             <div class="container-fluid animated bounceInUp">
                 <div id="carousel-products" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner row w-75 mx-auto" role="listbox">
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product1.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product2.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product3.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product4.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product5.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product1.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product2.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="p-2 rounded bg-transparent border-0">
-                                <div class="card-header border-0 rounded bg-transparent">
-                                    <img src="../img/lp-second-product3.jpeg"
-                                        class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
-                                        alt="img1">
-                                </div>
-                                <div class="card-body bg-dark border-0 rounded">
-                                    <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L 900.00</h3>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="#" class="btn rounded"><i class="fas fa-city fa-2x"
-                                                    style="color: black;"></i></a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5>Nombre del Producto</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-0 text-center">
-                                        <a href="categories.php" class="text-dark">
-                                            <h5 class="bg-light rounded-pill">Categoría</h5>
-                                        </a>
-                                        <h6>Descripción del Producto</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carousel-products" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel-products" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="carousel-inner row w-75 mx-auto" role="listbox" id="carousel-product-list">
+                        
+                        
+                    
                 </div>
             </div>
     </main>

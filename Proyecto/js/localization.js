@@ -1,6 +1,6 @@
 var mymap = L.map('map', {
 	center: [14.076304, -87.206158],
-	zoom: 15
+	zoom: 12
 });
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -10,19 +10,3 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1IjoiYmVuZWRldHRvNTk3IiwiYSI6ImNrODN2ZmdtOTFlbm8zZW80d2didThheGkifQ.YvWl88feDhf7yhQdMLSRwA'
 }).addTo(mymap);
 
-var lat_lon
-var marker
-
-function onMapClick(e) {
-    if (marker != undefined) {
-        mymap.removeLayer(marker);
-    };
-
-    lat = e.latlng.lat;
-    lon = e.latlng.lng;  
-    marker = L.marker([lat,lon]).addTo(mymap);
-    
-    return lat_lon = [lat,lon];
-}
-
-mymap.on('click', onMapClick);

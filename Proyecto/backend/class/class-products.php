@@ -8,6 +8,11 @@ class Producto{
     private $descripcionProducto;
     private $sucursalProducto;
     private $promocionesProducto;
+    private $comentariosProducto;
+    private $favoritosProducto;
+    private $carritoProducto;
+    private $compradoProducto;
+    private $calificacionesProducto;
 
     public function __construct(
     $nombreProducto,
@@ -16,7 +21,12 @@ class Producto{
     $categoriaProducto,
     $descripcionProducto,
     $sucursalProducto,
-    $promocionesProducto){
+    $promocionesProducto,
+    $comentariosProducto,
+    $favoritosProducto,
+    $carritoProducto,
+    $compradoProducto,
+    $calificacionesProducto){
 
         $this->nombreProducto = $nombreProducto;
         $this->imgProducto = $imgProducto;
@@ -25,8 +35,73 @@ class Producto{
         $this->descripcionProducto = $descripcionProducto;
         $this->sucursalProducto = $sucursalProducto;
         $this->promocionesProducto = $promocionesProducto;
+        $this->comentariosProducto = $comentariosProducto;
+        $this->favoritosProducto = $favoritosProducto;
+        $this->carritoProducto = $carritoProducto;
+        $this->compradoProducto = $compradoProducto;
+        $this->calificacionesProducto = $calificacionesProducto;
     }
  
+    public function getCalificacionesProducto()
+    {
+        return $this->calificacionesProducto;
+    }
+ 
+    public function setCalificacionesProducto($calificacionesProducto)
+    {
+        $this->calificacionesProducto = $calificacionesProducto;
+
+        return $this;
+    }
+ 
+    public function getCompradoProducto()
+    {
+        return $this->compradoProducto;
+    }
+ 
+    public function setCompradoProducto($compradoProducto)
+    {
+        $this->compradoProducto = $compradoProducto;
+
+        return $this;
+    }
+
+    public function getCarritoProducto()
+    {
+        return $this->carritoProducto;
+    }
+ 
+    public function setCarritoProducto($carritoProducto)
+    {
+        $this->carritoProducto = $carritoProducto;
+
+        return $this;
+    }
+
+    public function getFavoritosProducto()
+    {
+        return $this->favoritosProducto;
+    }
+ 
+    public function setFavoritosProducto($favoritosProducto)
+    {
+        $this->favoritosProducto = $favoritosProducto;
+
+        return $this;
+    }
+
+    public function getComentariosProducto()
+    {
+        return $this->comentariosProducto;
+    }
+ 
+    public function setComentariosProducto($comentariosProducto)
+    {
+        $this->comentariosProducto = $comentariosProducto;
+
+        return $this;
+    }
+
     public function getNombreProducto()
     {
         return $this->nombreProducto;
@@ -165,6 +240,11 @@ class Producto{
         $datos['descripcionProducto'] = $this->descripcionProducto;
         $datos['sucursalProducto'] = $this->sucursalProducto;
         $datos['promocionesProducto'] = $this->promocionesProducto;
+        $datos['comentariosProducto'] = $this->comentariosProducto;
+        $datos['favoritosProducto'] = $this->favoritosProducto;
+        $datos['compradoProducto'] = $this->compradoProducto;
+        $datos['carritoProducto'] = $this->carritoProducto;
+        $datos['calificacionesProducto'] = $this->calificacionesProducto;
         return $datos;
     }
 

@@ -6,10 +6,17 @@ var product = {
     category: "",
     description: "",
     branch:"",
-    promotions:[]
+    promotions:[],
+    comments:[],
+    favs:[],
+    cart:[],
+    buy:[],
+    qa:[],
 }
+$(".loader-wrapper").fadeOut("slow");
 
 function ValidateForm() {
+    $(".loader-wrapper").fadeIn("slow");
     uploadImage();
     let timer = setInterval(create, 4000);
     function create(){

@@ -140,7 +140,7 @@
                     <div class="form-group col-md-6">
                         <b>Subir Imagen</b>
                         <div class="custom-file overflow-hidden rounded-pill">
-                            <input id="product-img" type="file" class="custom-file-input rounded-pill" required>
+                            <input id="product-img" type="file" class="custom-file-input rounded-pill" required accept="image/*">
                             <label for="product-img" class="custom-file-label rounded-pill">Subir foto del producto</label>
                             <h1 style="visibility: hidden;" id="product-url"></h1>
                         </div>
@@ -199,6 +199,9 @@
                     </div>
                 </div>
             </div>
+            <?php 
+                include_once('../components/loader.php');
+            ?>
         </form>
 
 

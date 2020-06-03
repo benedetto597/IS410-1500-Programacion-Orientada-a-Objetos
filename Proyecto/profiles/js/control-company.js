@@ -189,7 +189,7 @@ function ShowInfo() {
         document.getElementById('info-company-wha').innerHTML = `<i class="fab fa-whatsapp"></i> ${CompanyContact(companyUser.country, companyUser.companyWha)}`;
         document.getElementById('info-company-twit').innerHTML = `<i class="fab fa-twitter"></i> ${companyUser.companyFb}`;
         document.getElementById('info-company-ig').innerHTML = `<i class="fab fa-instagram"></i> ${companyUser.companyFb}`;
-        //FillProductList();
+        FillProductList();
         //Sección de Productos
 
         //Sección Editar Perfil
@@ -206,28 +206,83 @@ function ShowInfo() {
        
         document.getElementById('btn-update-info').disabled = true;
         marker = L.marker([companyUser.companyLat, companyUser.companyLong]).addTo(mapForm);
-        $(".loader-wrapper").fadeOut("slow");
         clearInterval(timer);
     }
 }
 
+var products = [];
 function FillProductList() {
-    for (let i = 0; i < companyUser.branch.length; i++) {
-        for (let j = 0; j < companyUser.branch[i].branchProduct.length; j++) {
-            for (let k = 0; k < companyUser.branch[i].branchProduct[j].productPromotion.length; k++) {
-                document.getElementById('product-list').innerHTML +=
-                    `<tr>
-                    <th scope="row">${companyUser.branch[i].branchProduct[j].productName}</th>
-                    <td>${companyUser.branch[i].branchProduct[j].productCategory}</td>
-                    <td>${companyUser.branch[i].branchProduct[j].productRealPrice}</td>
-                    <td>${companyUser.branch[i].branchProduct[j].productPromotion[k].productDiscount}</td>
-                    <td>${companyUser.branch[i].branchProduct[j].productPromotion[k].productPromoPrice}</td>
-                    <td>5 estrellas</td>
-                    <td>Muy Bueno</td>
-                </tr>`
+    axios({
+        method: 'GET',
+        url: '../backend/axios/products.php?all',
+        responseType: 'json',
+    }).then(resProduct =>{
+        
+        let keys = Object.keys(resProduct.data);
+        let values = Object.values(resProduct.data);
+       
+        for(let i = 0; i<keys.length; i++){
+            let product = {};
+            product['key'] = keys[i];
+            product['productName'] = values[i].nombreProducto;
+            product['productCategory'] = values[i].categoriaProducto;
+            product['productPrice'] = values[i].precioProducto;
+            if(values[i].promocionesProducto){
+                //Se debe crear un producto por cada promo
+                for(let h = 0; h<values[i].promocionesProducto.length; h++){
+                    product['productDiscount'] = values[i].promocionesProducto[h].descuentoPromocion;
+                    product['productDiscountPrice'] = values[i].promocionesProducto[h].precioDescPromocion;
+                }
+            }else{
+                product['productDiscount'] = '0%';
+                product['productDiscountPrice'] ='No posee descuento';
             }
+            if(values[i].comentariosProducto){
+                product['productComments'] = values[i].comentariosProducto.length;
+            }else{
+                product['productComments'] = 'Sin Comentarios';
+            }
+            if(values[i].calificacionesProducto){
+                product['productQa'] = values[i].calificacionesProducto;
+            }else{
+                product['productQa'] = 'Sin Calificar';
+            }
+            
+            products.push(product);
         }
-    }
+        
+        for (let k = 0; k < products.length; k++) {
+            document.getElementById('product-list').innerHTML +=
+                    `<tr>
+                    <th scope="row">${products[k].productName}</th>
+                    <td>${products[k].productCategory}</td>
+                    <td>${products[k].productPrice}</td>
+                    <td>${products[k].productDiscount}</td>
+                    <td>${products[k].productDiscountPrice}</td>
+                    <td>${products[k].productComments}</td>
+                    <td>${products[k].productQa}</td>
+                    <td><button type="button" id="btn-delete-${k}" class="card-text bg-danger ml-auto mr-auto btn-sm shadow mb-0 rounded text-white" onclick="deleteProduct(${k})"><i class="fas fa-trash"></i></button></td>
+                </tr>`
+        }
+        //Ocultar Loader
+        $(".loader-wrapper").fadeOut("slow");
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
+function deleteProduct(position){
+    let key = products[position].key;
+        axios({
+            method: 'DELETE',
+            url: '../backend/axios/products.php?id='+ key,
+            responseType: 'json',
+        }).then(resPorduct =>{
+            console.log(resPorduct.data);
+            window.location.href = "../profiles/profile-company.php";
+        }).catch(error =>{
+            console.log(error);
+        });
 }
 
 function CompanyContact(country, number) {

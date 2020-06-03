@@ -83,8 +83,6 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-percent fa-fw"></i>Promociones</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="promotions/product-company-list.php"> <i
-                                        class="fas fa-building fa-fw"></i>Productos y Empresas</a>
                                 <a class="dropdown-item" href="promotions/categories.php"><i
                                         class="fas fa-th-large fa-fw"></i>Categorías</a>
                                 <a class="dropdown-item" href="promotions/last-products.php"><i

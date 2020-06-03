@@ -73,8 +73,6 @@
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-percent fa-fw"></i>Promociones</button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="../promotions/product-company-list.php"> <i
-                                            class="fas fa-building fa-fw"></i>Productos y Empresas</a>
                                     <a class="dropdown-item" href="../promotions/categories.php"><i
                                             class="fas fa-th-large fa-fw"></i>Categorías</a>
                                     <a class="dropdown-item" href="../promotions/last-products.php"><i
@@ -184,24 +182,32 @@
                                     <div class="container-fluid p-3">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <b>Productos</b>
-                                                <div class="table-wrapper-scroll-y my-custom-scrollbar"
-                                                    style="height: 16rem;">
-                                                    <table class="table table-hover table-striped">
-                                                        <thead class="table-warning">
-                                                            <tr>
-                                                                <th scope="col">Producto</th>
-                                                                <th scope="col">Categoria</th>
-                                                                <th scope="col">Precio Real</th>
-                                                                <th scope="col">Descuento</th>
-                                                                <th scope="col">Precio Oferta</th>
-                                                                <th scope="col">Calificación</th>
-                                                                <th scope="col">Comentaríos</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="product-list">
-                                                        </tbody>
-                                                    </table>
+                                                <div class="col-md-12 ml-auto mr-auto">
+                                                    <a id="btn-add-promo" href="../register/register-promotion.php"
+                                                        class="btn btn-lg shadow ml-auto mr-auto p-1 px-3 m-0 rounded  text-dark"
+                                                        onclick="updateInfo();">Agregar Promoción</a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <b>Productos</b>
+                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar"
+                                                        style="height: 16rem;">
+                                                        <table class="table table-hover table-striped">
+                                                            <thead class="table-warning">
+                                                                <tr>
+                                                                    <th scope="col">Producto</th>
+                                                                    <th scope="col">Categoria</th>
+                                                                    <th scope="col">Precio Real</th>
+                                                                    <th scope="col">Descuento</th>
+                                                                    <th scope="col">Precio Oferta</th>
+                                                                    <th scope="col">Calificación</th>
+                                                                    <th scope="col">Comentaríos</th>
+                                                                    <th scope="col">Eliminar</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="product-list">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">

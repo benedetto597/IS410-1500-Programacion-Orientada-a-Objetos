@@ -106,8 +106,6 @@
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-percent fa-fw"></i>Promociones</button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="promotions/product-company-list.php"> <i
-                                            class="fas fa-building fa-fw"></i>Productos y Empresas</a>
                                     <a class="dropdown-item" href="promotions/categories.php"><i
                                             class="fas fa-th-large fa-fw"></i>Categorías</a>
                                     <a class="dropdown-item" href="promotions/last-products.php"><i
@@ -325,39 +323,89 @@
         <div class="top-content p-3">
             <div class="container-fluid">
                 <div id="carousel-products" class="carousel slide animated bounceInLeft" data-ride="carousel">
-                    <div class="carousel-inner row w-75 mx-auto" role="listbox">
+                    <div class="carousel-inner row w-75 mx-auto" role="listbox" id="carrusel">
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
-                            <a href="product.php"><img src="img/lp-second-product1.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img1"></a>
+                            <a href="product.php"><img id="1" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.php"><img src="img/lp-second-product4.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img2"></a>
+                            <a href="product.php" ><img  id="2" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.php"><img src="img/lp-second-product2.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img3"></a>
+                            <a href="product.php"><img  id="3" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.php"><img src="img/lp-second-product3.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img4"></a>
+                            <a href="product.php"><img  id="4" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.php"><img src="img/lp-second-product4.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img5"></a>
+                            <a href="product.php"><img id="5" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php" class="border-0"><img  id="6" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.php"><img src="img/lp-second-product5.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img6"></a>
+                            <a href="product.php"><img  id="7" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.php"><img src="img/lp-second-product1.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img7"></a>
+                            <a href="product.php"><img  id="8" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="product.php"><img src="img/lp-second-product2.jpeg"
-                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" alt="img8"></a>
+                            <a href="product.php"><img  id="9" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
                         </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="10" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="11" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="12" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="13" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="14" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="15" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="16" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="17" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="18" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="19" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="product.php"><img  id="20" src=""
+                                class="img-fluid mx-auto d-block card-img-top  rounded-circle" ></a>
+                        </div>
+    
                     </div>
                     <a class="carousel-control-prev" href="#carousel-products" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -379,12 +427,12 @@
                         <li class=" nav-item row">
                             <div class="col-lg-6 ">
                                 <div class="px-0 text-right">
-                                    <h5 class="card-text">Listado de las principales empresas que compiten en está web
-                                        para alcanzar el mayor número de clientes</h5>
+                                    <h5 class="card-text">Listado de las principales categorias que compiten en está web
+                                        para alcanzar el mayor número de ventas</h5>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <a href="promotions/product-company-list.php"><img src="img/lp-second-companylist.jpeg"
+                                <a href="promotions/categories.php"><img src="img/lp-second-companylist.jpeg"
                                         class="card-img-right img-fluid rounded"></a>
                             </div>
                         </li>
@@ -393,7 +441,7 @@
                         <li class="nav-item row">
                             <div class="col-lg-6 ">
                                 <div class="px-0 text-right">
-                                    <a href="promotions/product-company-list.php"><img src="img/lp-second-productlist.jpeg"
+                                    <a href="promotions/last-products.php"><img src="img/lp-second-productlist.jpeg"
                                             class="card-img-right img-fluid rounded"></a>
                                 </div>
                             </div>
@@ -452,8 +500,6 @@
                 <div id="lp-card-comments" class="card form-group">
                     <div class="card-body">
                         <textarea name="" id="" class="form-control"></textarea>
-                        <input type="text" placeholder="Comenta tu opinión aquí" class="form-control my-3">
-                        <button type="button" class="btn btn-danger btn-block ">Publicar Comentario</button>
                     </div>
                 </div>
             </div>
@@ -486,7 +532,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/localization.js"></script>
-    <script src="js/places.js"></script>
     <script src="js/login-validation.js"></script>
     <script src="js/control-index.js"></script>
 </body>
