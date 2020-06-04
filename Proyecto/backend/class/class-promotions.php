@@ -157,10 +157,9 @@ class Promocion{
     }
 
     public function crearComentario($db){
-        $datos = $this->obtenerInfo();
-        $comentario['nombreProducto'] = $datos['nombrePromocion'];
-        $comentario['usuario'] = $datos['precioRealPromocion'];
-        $comentario['comentario'] = $datos['precioDescPromocion'];
+        $comentario['nombreProducto'] =  $this->nombrePromocion;
+        $comentario['usuario'] = $this->precioRealPromocion;
+        $comentario['comentario'] = $this->precioDescPromocion;
         $producto = $db->getReference('productos')
             ->orderByChild('nombreProducto')
             ->equalTo($this->nombrePromocion)
@@ -185,9 +184,8 @@ class Promocion{
     }
 
     public function crearFavorito($db){
-        $datos = $this->obtenerInfo();
-        $comentario['nombreProducto'] = $datos['nombrePromocion'];
-        $comentario['usuario'] = $datos['precioRealPromocion'];
+        $comentario['nombreProducto'] =  $this->nombrePromocion;
+        $comentario['usuario'] = $this->precioRealPromocion;
         $producto = $db->getReference('productos')
             ->orderByChild('nombreProducto')
             ->equalTo($this->nombrePromocion)
@@ -205,16 +203,15 @@ class Promocion{
             ->set($resultado['favoritosProducto']);
 
         if ($key != null)
-            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+            return '{"mensaje":"Registro de favorito creado","key":"'.$key.'"}';
         else 
             return '{"mensaje":"Error al crear el registro"}';
 
     }
 
     public function crearCarrito($db){
-        $datos = $this->obtenerInfo();
-        $comentario['nombreProducto'] = $datos['nombrePromocion'];
-        $comentario['usuario'] = $datos['precioRealPromocion'];
+        $comentario['nombreProducto'] =  $this->nombrePromocion;
+        $comentario['usuario'] = $this->precioRealPromocion;
         $producto = $db->getReference('productos')
             ->orderByChild('nombreProducto')
             ->equalTo($this->nombrePromocion)
@@ -232,17 +229,16 @@ class Promocion{
             ->set($resultado['carritoProducto']);
 
         if ($key != null)
-            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+            return '{"mensaje":"Registro de carrito creado","key":"'.$key.'"}';
         else 
             return '{"mensaje":"Error al crear el registro"}';
 
     }
 
     public function crearCalificacion($db){
-        $datos = $this->obtenerInfo();
-        $comentario['nombreProducto'] = $datos['nombrePromocion'];
-        $comentario['usuario'] = $datos['precioRealPromocion'];
-        $comentario['calificacion'] = $datos['precioDescPromocion'];
+        $comentario['nombreProducto'] =  $this->nombrePromocion;
+        $comentario['usuario'] = $this->precioRealPromocion;
+        $comentario['calificacion'] = $this->precioDescPromocion;
         $producto = $db->getReference('productos')
             ->orderByChild('nombreProducto')
             ->equalTo($this->nombrePromocion)
@@ -260,17 +256,16 @@ class Promocion{
             ->set($resultado['calificacionesProducto']);
 
         if ($key != null)
-            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+            return '{"mensaje":"Registro de clasficcacion creado","key":"'.$key.'"}';
         else 
             return '{"mensaje":"Error al crear el registro"}';
 
     }
 
     public function crearCompra($db){
-        $datos = $this->obtenerInfo();
-        $comentario['nombreProducto'] = $datos['nombrePromocion'];
-        $comentario['usuario'] = $datos['precioRealPromocion'];
-        $comentario['cantidad'] = $datos['precioDescPromocion'];
+        $comentario['nombreProducto'] =  $this->nombrePromocion;
+        $comentario['usuario'] = $this->precioRealPromocion;
+        $comentario['cantidad'] = $this->precioDescPromocion;
         $producto = $db->getReference('productos')
             ->orderByChild('nombreProducto')
             ->equalTo($this->nombrePromocion)
@@ -288,7 +283,7 @@ class Promocion{
             ->set($resultado['compradoProducto']);
 
         if ($key != null)
-            return '{"mensaje":"Registro de comentario creado","key":"'.$key.'"}';
+            return '{"mensaje":"Registro de comprar creado","key":"'.$key.'"}';
         else 
             return '{"mensaje":"Error al crear el registro"}';
 

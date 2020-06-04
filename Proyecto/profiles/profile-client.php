@@ -55,7 +55,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-percent fa-fw"></i>Promociones</button>
                             <div class="dropdown-menu">
-                                        class="fas fa-building fa-fw"></i>Productos y Empresas</a>
+                                        
                                 <a class="dropdown-item" href="../promotions/categories.php"><i
                                         class="fas fa-th-large fa-fw"></i>Categorías</a>
                                 <a class="dropdown-item" href="../promotions/last-products.php"><i
@@ -73,7 +73,7 @@
         </nav>
             <div class="container mt-3 col-lg-10 animated ">
                 <div class="fb-profile" id="profile-photo">
-                    <img  class="fb-image-profile thumbnail" src="../img/profile-client.jpeg" alt="Profile image" />
+                    <img  class="fb-image-profile thumbnail" src="../img/profile-client.jpeg"  />
                 </div>
             </div>
         </main>
@@ -139,8 +139,8 @@
                                 <div class="col-12 bg-white">
                                     <div class="container-fluid p-5">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <b>Promociones</b>
+                                            <div class="col-md-12">
+                                                <b>Favoritos</b>
                                                 <div class="table-wrapper-scroll-y my-custom-scrollbar ">
                                                     <table class="table table-hover table-striped">
                                                         <thead class="table-warning">
@@ -151,28 +151,10 @@
                                                                 <th scope="col">Descuento</th>
                                                                 <th scope="col">Precio Oferta</th>
                                                                 <th scope="col">Fin de Promoción</th>
+                                                                <th scope="col">Quitar de Favoritos</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="favorite-products"> 
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <b>Empresas</b>
-                                                <div class="table-wrapper-scroll-y my-custom-scrollbar ">
-                                                    <table class="table table-hover table-striped">
-                                                        <thead class="table-warning">
-                                                            <tr>
-                                                                <th scope="col">Nombre</th>
-                                                                <th scope="col">País</th>
-                                                                <th scope="col">Moneda</th>
-                                                                <th scope="col">Dirección</th>
-                                                                <th scope="col">Telefono</th>
-                                                                <th scope="col">Correo</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="favorite-companies">
                                                         </tbody>
                                                     </table>
                                                 </div>

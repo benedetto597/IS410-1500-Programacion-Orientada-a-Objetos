@@ -53,7 +53,7 @@ function ValidateForm() {
                             <img id="check" class="img-responsive"
                             src="../img/icon/check.png"><br>
                         </div>
-                        <b class="mr-auto ml-auto">Se ha envíado un correo con toda la información para poder iniciar seción</b>  
+                        <b class="mr-auto ml-auto">Se ha creado su usario correctamente</b>  
                     </div>
                     `;
             let timer = setInterval(redirect, 6000);

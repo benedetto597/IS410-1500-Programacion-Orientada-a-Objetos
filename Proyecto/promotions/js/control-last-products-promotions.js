@@ -79,7 +79,7 @@ function logoutAdmin(){
 var products =[];
 var companies =[];
 function showProducts(){
-
+    
     axios({
         method: 'GET',
         url: '../backend/axios/products.php?all',
@@ -113,12 +113,14 @@ function showProducts(){
     
             for(let i=0; i<products.length; i++){
                 document.getElementById('carousel-product-list').innerHTML+= `
-                <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+                <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active py-4">
                                 <div class="p-2 rounded bg-transparent border-0">
                                     <div class="card-header border-0 rounded bg-transparent">
+                                    <a onclick="setProduct(${i})">
                                         <img src="${products[i].productImg}"
                                             class="card card-img-top img-fluid mx-auto d-block card-img m-2 rounded-circle"
                                             alt="img1">
+                                    </a>
                                     </div>
                                     <div class="card-body bg-dark border-0 rounded">
                                         <h3 class="card-title bg-light rounded-pill py-2 px-2 text-center">L ${products[i].productPrice}</h3>
@@ -133,23 +135,129 @@ function showProducts(){
                                                 <h5 class="bg-light rounded-pill">${products[i].productCategory}</h5>
                                             </a>
                                             <h6>${products[i].productDescription}</h6>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <button type="button" id="toCart-${i}" class="card-text bg-primary ml-auto mr-auto btn-sm shadow mb-0 rounded text-white" onclick="addToCart(${i});" style="height: 40px" ><i class="fas fa-cart-arrow-down"></i></button>
+                                                
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" id="toFav-${i}" class="card-text bg-danger ml-auto mr-auto btn-sm shadow mb-0 rounded text-white" onclick="addToFav(${i});" style="height: 40px" ><i class="fas fa-heart"></i></button>
+                                                
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                 `;
             }
-    
-            /*
-            for(let j=1; j<products.length+1; j++){
-                document.getElementById(`${j}`).src = `${products[j-1].productuImg}`;
-                document.getElementById(`${j}`).style = "border: 2px solid #EEC058;";
+            let timer = setInterval(quit, 2500);
+            function quit(){
+                let key = getCookie('key');
+                if(key){
+                    axios({
+                        method: 'GET',
+                        url: '../backend/axios/clients.php?id=' + key,
+                        responseType: 'json',
+                    }).then(resClient =>{
+                        if(resClient.data == null){
+                            for(let i=0; i<products.length; i++){
+                                document.getElementById(`toFav-${i}`).disabled = true; 
+                                document.getElementById(`toCart-${i}`).disabled = true; 
+                            } 
+                        }else{
+                            for(let i=0; i<products.length; i++){
+                                document.getElementById(`toFav-${i}`).disabled = false; 
+                                document.getElementById(`toCart-${i}`).disabled = false; 
+                            }
+                        }
+                        $(".loader-wrapper").fadeOut("slow");
+                        clearInterval(timer);
+                    }).catch(error =>{
+                        console.log(error);
+                    });
+                }else{
+                    for(let i=0; i<products.length; i++){
+                        document.getElementById(`toFav-${i}`).disabled = true; 
+                        document.getElementById(`toCart-${i}`).disabled = true; 
+                    }
+                        
+                    $(".loader-wrapper").fadeOut("slow");
+                        clearInterval(timer);
+                }
+                
             }
-            for(let k=products.length+1; k<21;k++){
-                document.getElementById(`${k}`).style = "visibility: hidden";
-            }
-            */
         }).catch(error =>{
             console.log(error);
         });
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function addToCart(position){
+    let key = getCookie('key');
+    var data = {
+        product: `${products[position].productName}`,
+        branch: "tofill",
+        realPrice: key,
+        discount: "tofill",
+        discountPrice: "tofill",
+        start: ["2020-03-30", "21:02"],
+        end: ["2020-03-30", "21:02"]
+    }
+
+    axios({
+        method: 'POST',
+        url: '../backend/axios/promotions.php?cart=cart',
+        responseType: 'json',
+        data: data
+    }).then(res =>{
+        console.log(res.data);
+        document.getElementById(`toCart-${position}`).disabled = true; 
+        //window.location.href = '../profiles/profile-company.php';
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
+function addToFav(position){
+    let key = getCookie('key');
+    var data = {
+        product: `${products[position].productName}`,
+        branch: "tofill",
+        realPrice: key,
+        discount: "tofill",
+        discountPrice: "tofill",
+        start: ["2020-03-30", "21:02"],
+        end: ["2020-03-30", "21:02"]
+    }
+
+    axios({
+        method: 'POST',
+        url: '../backend/axios/promotions.php?fav=fav',
+        responseType: 'json',
+        data: data
+    }).then(res =>{
+        console.log(res.data);
+        document.getElementById(`toFav-${position}`).disabled = true; 
+        //window.location.href = '../profiles/profile-company.php';
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+
+
+function setProduct(position){
+    setCookie('producto', products[position].key, 1);
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
 }

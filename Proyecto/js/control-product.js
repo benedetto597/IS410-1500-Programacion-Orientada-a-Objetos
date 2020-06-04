@@ -1,3 +1,41 @@
+// --------------------------------- Barras de Navegacion ---------------------------------
+//Logo
+document.getElementById('logo').innerHTML = `<img id="Mini-Mall-mainlogo" class="img-responsive" src="img/icon/MiniMall.png">`;
+//Dropdown de cliente
+document.getElementById('boton').style = 'color:white';
+document.getElementById('client-dropdown').innerHTML = `<a class="dropdown-item" href="profiles/profile-client.php">Ver Perfil</a>
+<a class="dropdown-item" href="profiles/profile-client.php">Editar Perfil</a>
+<a class="dropdown-item" href="#" onclick="logoutClient()">Cerrar Sesión</a>`;
+document.getElementById('cart').innerHTML = `<a class="nav-link " href="cart.php">
+<h6 class="text-white"><i class="fas fa-shopping-cart fa-fw"></i>Carrito</h6>
+</a>`;
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+var producto = getCookie(producto);
+eliminarCookie(producto);
+
+function eliminarCookie(cname) {
+    return document.cookie = cname + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+// --------------------------------- Cerrar Sesión ---------------------------------
+function logoutClient(){
+    axios({
+        method: 'GET',
+        url: 'backend/axios/clients.php?action=logout',
+        responseType: 'json',
+    }).then(resAdmin =>{
+        window.location.href = 'index.php';
+    }).catch(error =>{
+        console.log(error);
+    });
+}
+$(".loader-wrapper").fadeOut("slow");
+
 // Obtener intervalo de tiempo restante para finalización de una promoción
 const getRemainTime = deadline => {
     let now = new Date(),

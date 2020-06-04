@@ -81,29 +81,6 @@ var favoriteProducts = [{
     }]
 }];
 
-var favoriteCompanies = [{
-    companyName: "La Colonia",
-    companyDir: "Colonia Tiloarque",
-    country: "Honduras",
-    currency: "Lempira",
-    companyWha: "22900193",
-    email: "example@example.com"
-}, {
-    companyName: "La Colonia",
-    companyDir: "Colonia Tiloarque",
-    country: "Honduras",
-    currency: "Lempira",
-    companyWha: "22900193",
-    email: "example@example.com"
-}, {
-    companyName: "La Colonia",
-    companyDir: "Colonia Tiloarque",
-    country: "Honduras",
-    currency: "Lempira",
-    companyWha: "22900193",
-    email: "example@example.com"
-}];
-
 function logout(){
     $(".loader-wrapper").fadeIn("slow");
     document.getElementById('pp-photo').style="visibility: hidden;";
@@ -189,36 +166,61 @@ function ShowInfo() {
     }
 }
 
+var products = [];
 function FillFavorites() {
     //Recibir todas los productos que añada a favoritos y quitar lo de las compañias
     //habilitar el quitar de carrito y quitar de favoritos
-    for (let i = 0; i < favoriteProducts.length; i++) {
-        for (let j = 0; j < favoriteProducts[i].productPromotion.length; j++) {
-            document.getElementById('favorite-products').innerHTML += `
-            <tr>
-                <th scope="row" id="favorite-product-name-${i}">${favoriteProducts[i].productName}</th>
-                <td id="favorite-product-categorie-${i}">${favoriteProducts[i].productCategory}</td>
-                <td id="favorite-product-real-price-${i}">${favoriteProducts[i].productRealPrice}</td>
-                <td id="favorite-product-discount-${i}">${favoriteProducts[i].productPromotion[j].productDiscount}</td>
-                <td id="favorite-product-promo-price-${i}">${favoriteProducts[i].productPromotion[j].productPromoPrice}</td>
-                <td id="favorite-product-promo-end-${i}">${favoriteProducts[i].productPromotion[j].productPromoEnd[0]}</td>
-            </tr>
-            `;
+    axios({
+        method: 'GET',
+        url: '../backend/axios/products.php?all',
+        responseType: 'json',
+    }).then(resProduct =>{
+        //Mostrar los productos que tiene en fav
+        let keys = Object.keys(resProduct.data);
+            let values = Object.values(resProduct.data);
+           
+            for(let i = 0; i<keys.length; i++){
+                let product = {};
+                if(values[i].favoritosProducto){
+                    let fav = Object.values(values[i].favoritosProducto);
+                        let key = getCookie('key');
+                        if(fav[0].usuario == key){
+                            product['key'] = keys[i];
+                            product['productName'] = values[i].nombreProducto;
+                            product['productCategory'] = values[i].categoriaProducto;
+                            product['productRealPrice'] = values[i].precioProducto;
+                            product['productDiscPrice'] = values[i].promocionesProducto[0].precioDescPromocion;
+                            product['productDiscount'] = values[i].promocionesProducto[0].descuentoPromocion;
+                            product['productEnd'] = values[i].promocionesProducto[0].finPromocion[0];
+                            products.push(product);
+                        }
+                    
+                }
+            }
+            
+            for (let i = 0; i < products.length; i++) {
+                document.getElementById('favorite-products').innerHTML += `
+                <tr>
+                    <th scope="row" id="favorite-product-name-${i}">${products[i].productName}</th>
+                    <td id="favorite-product-categorie-${i}">${products[i].productCategory}</td>
+                    <td id="favorite-product-real-price-${i}">${products[i].productRealPrice}</td>
+                    <td id="favorite-product-discount-${i}">${products[i].productDiscount}</td>
+                    <td id="favorite-product-promo-price-${i}">${products[i].productDiscPrice}</td>
+                    <td id="favorite-product-promo-end-${i}">${products[i].productEnd}</td>
+                    <td><button type="button" id="btn-delete-${i}" class="card-text bg-danger ml-auto mr-auto btn-sm shadow mb-0 rounded text-white" onclick="deleteFav(${i})"><i class="fas fa-trash"></i></button></td>
+                </tr>
+                `;
+            
         }
-    }
-    for (let k = 0; k < favoriteCompanies.length; k++) {
-        document.getElementById('favorite-companies').innerHTML += `
-            <tr>
-                <th scope="row" id="favorite-company-name-${k}">${favoriteCompanies[k].companyName}</th>
-                <td id="favorite-company-country-${k}">${favoriteCompanies[k].country}</td>
-                <td id="favorite-company-currency-${k}">${favoriteCompanies[k].currency}</td>
-                <td id="favorite-company-dir-${k}">${favoriteCompanies[k].companyDir}</td>
-                <td id="favorite-company-phone-${k}">${favoriteCompanies[k].companyWha}</td>
-                <td id="favorite-product-email-${k}">${favoriteCompanies[k].email}</td>
-            </tr>
-            `;
-    }
+    }).catch(error =>{
+        console.log(error);
+    });
     $(".loader-wrapper").fadeOut("slow");
+}
+
+function deleteFav(position){
+    //Eliminar de fav 
+    pass
 }
 
 function EnableChange() {

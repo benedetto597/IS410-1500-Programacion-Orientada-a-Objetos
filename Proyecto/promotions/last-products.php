@@ -17,17 +17,16 @@
         /* Background Main Window*/
         main {
             width: auto;
-            height: 100vh;
+            height: auto;
             background-image: url(../img/lp-primary-image.jpeg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: inherit;
+            background-repeat: repeat;   
+            
         }
     </style>
 </head>
 
 <body onload="showProducts()">
-    <main>
+    <main >
         <!-- Barra de Navegación Primer Parte LandingPage -->
         <?php 
         //Verificando si esta logeado el usuario
@@ -253,13 +252,16 @@
         <!-- Carrusel de Productos en Carrito o Comprados-->
         <div class="top-content p-3">
             <div class="container-fluid animated bounceInUp">
-                <div id="carousel-products" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner row w-75 mx-auto" role="listbox" id="carousel-product-list">
+                <div id="carousel-products" class="slide" >
+                    <div class=" row w-75 mx-auto" role="listbox" id="carousel-product-list">
                         
                         
-                    
+                    </div>
                 </div>
             </div>
+            <?php 
+                include_once('../components/loader.php');
+            ?>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">

@@ -88,23 +88,10 @@ new Chart(document.getElementById("bar-chart-horizontal-month"), {
 });
 
 // ------------------------- Mapa de sucursales con promoción y de Actualizar Perfil ------------------------- //
-var mapPromo = L.map('map-promotions').setView([14.076304, -87.206158], 11);
-var mapForm = L.map('map-update').setView([14.076304, -87.206158], 11);
+var mapPromo = L.map('map-promotions').setView([14.076304, -87.206158], 9);
+var mapForm = L.map('map-update').setView([14.076304, -87.206158], 9);
 //Aquí las sucursales
-var places = [
-    ["Torre Morazan", 14.101202, -87.182246],
-    ["Hospital Escuela", 14.096210, -87.190303],
-    ["Hotel Marriot", 14.089406, -87.190225],
-    ["PriceMart", 14.086822, -87.184021],
-    ["Injupemp", 14.083893, -87.189184],
-    ["Tu posición", 14.076304, -87.208158]
-];
-
-for (var i = 0; i < places.length; i++) {
-    marker = L.marker([places[i][1], places[i][2]])
-        .bindPopup(places[i][0])
-        .addTo(mapPromo);
-}
+var places = [];
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(mapForm);
 
@@ -164,6 +151,21 @@ function ShowInfo() {
         //Cargar Imagenes
         document.getElementById('logo-photo').innerHTML = `<img id="company-photo-logo" class="fb-image-profile thumbnail" src="${companyUser.logo}" alt="Profile image"/>`;
         document.getElementById('main').style.backgroundImage = `url("${companyUser.banner}")`;
+        //Cargar geo
+        let values = Object.values(companyUser.branch);
+        console.log(values);
+        for(let j=0; j<values.length; j++){
+            let place = [];
+            place.push(values[j].nombreSucursal);
+            place.push(values[j].latitudSucursal);
+            place.push(values[j].longitudSucursal);
+            places.push(place);
+        }
+        for (var i = 0; i < places.length; i++) {
+            marker = L.marker([places[i][1], places[i][2]])
+                .bindPopup(places[i][0])
+                .addTo(mapPromo);
+        }
 
 
     }).catch(error => {
