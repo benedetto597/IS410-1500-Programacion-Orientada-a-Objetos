@@ -262,5 +262,20 @@ class Producto{
             return false;
         }        
     }
+
+    public static function verificarAutenticacionCliente($db){
+        if(!isset($_COOKIE['key']))
+            return false;
+            
+        $respuesta = $db->getReference('clientes')
+            ->getChild($_COOKIE['key'])
+            ->getValue();
+
+        if($respuesta["token"]==$_COOKIE["token"]){
+            return true;
+        }else{
+            return false;
+        }        
+    }
 }
 ?>

@@ -74,29 +74,26 @@
             <div id="navbar-menu" class="w-100">
                 <ul class="nav navbar-nav px-5  my-auto">
                     <li class="nav-item mr-auto">
-                        <a class="nav-link" href="index.html">
-                            <h6 class="text-white"><i class="fas fa-home fa-fw" style="color: white;"></i>Inicio</h6>
+                        <a class="nav-link" href="index.php">
+                            <h6 class="text-white"><i class="fas fa-home fa-fw"></i>Inicio</h6>
                         </a>
                     </li>
                     <li class="nav-item mr-auto ml-auto">
                         <div class="btn-group">
                             <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-percent fa-fw" style="color: white;"></i>Promociones</button>
+                                <i class="fas fa-percent fa-fw"></i>Promociones</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="promotions/product-company-list.html"> <i
-                                        class="fas fa-building fa-fw"></i>Productos y Empresas</a>
-                                <a class="dropdown-item" href="promotions/categories.html"><i
+                                <a class="dropdown-item" href="promotions/categories.php"><i
                                         class="fas fa-th-large fa-fw"></i>Categorías</a>
-                                <a class="dropdown-item" href="promotions/last-products.html"><i
+                                <a class="dropdown-item" href="promotions/last-products.php"><i
                                         class="fas fa-stopwatch fa-fw"></i>Últimas Promociones</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item ml-auto">
-                        <a class="nav-link" href="contact.html">
-                            <h6 class="text-white"><i class="fas fa-phone-volume fa-fw"
-                                    style="color: white;"></i>Contactanos</h6>
+                        <a class="nav-link" href="#">
+                            <h6 class="text-white"><i class="fas fa-phone-volume fa-fw"></i>Contáctanos</h6>
                         </a>
                     </li>
                 </ul>
@@ -123,20 +120,18 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Cliente</h4>
+                                    <small id="warning-client" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-10 mr-auto ml-auto">
                                     <input type="text" class="form-control my-2" id="login-user-client"
                                         placeholder="Usuario" required minlength="5" maxlength="15">
-                                    <small id="user-client-alert" class="form-text text-dark"></small>
                                     <input type="email" class="form-control my-2" id="email-login-client"
                                         placeholder="Email" required>
-                                    <small id="email-client-alert" class="form-text text-dark"></small>
                                     <input type="password" class="form-control my-2" id="login-pass-client"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
                                         minlength="5" maxlength="20">
-                                    <small id="pass-client-alert" class="form-text text-dark"></small>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -150,7 +145,7 @@
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateClient();">Iniciar Sesión</button>
                                     <button type="button" id="btn-client-register-modal"
-                                        onclick="location.href='register/register-client.html'"
+                                        onclick="location.href='register/register-client.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -181,6 +176,7 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Empresa</h4>
+                                    <small id="warning-company" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -188,14 +184,11 @@
                                     <input type="number" class="form-control my-2" id="login-code-company"
                                         placeholder="Código de Empleado" minlength="4" maxlength="4" required min="1000"
                                         max="3999">
-                                    <small id="code-company-alert" class="form-text text-dark"></small>
                                     <input type="email" class="form-control my-2" id="email-login-company"
                                         placeholder="Email" required>
-                                    <small id="email-company-alert" class="form-text text-dark"></small>
                                     <input type="password" class="form-control my-2" id="login-pass-company"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
                                         minlength="5" maxlength="20">
-                                    <small id="pass-company-alert" class="form-text text-dark"></small>
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -209,7 +202,7 @@
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateCompany();">Iniciar Sesión</button>
                                     <button type="button" id="btn-company-register-modal"
-                                        onclick="location.href='register/register-company.html'"
+                                        onclick="location.href='register/register-company.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -240,24 +233,21 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto mr-auto ml-auto">
                                     <h4 id="exampleModalLabel">Administrador</h4>
+                                    <small id="warning-admin" class="form-text text-muted" style="color: red;"></small>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-10 mr-auto ml-auto">
+                                <div class="form-group col-10 mr-auto ml-auto" id="form-login">
                                     <input type="number" class="form-control" id="login-code-admin"
                                         placeholder="Código de Acceso" required minlength="4" maxlength="5" min="1000"
-                                        max="9999">
-                                    <small id="code-admin-alert" class="form-text text-dark"></small>
+                                        max="9999" name="login-code-admin">
                                     <input type="text" class="form-control my-2" id="login-user-admin"
-                                        placeholder="Usuario" required minlength="5" maxlength="20">
-                                    <small id="user-admin-alert" class="form-text text-dark"></small>
+                                        placeholder="Usuario" required minlength="5" maxlength="20" name="login-user-admin">
                                     <input type="email" class="form-control my-2" id="email-login-admin"
-                                        placeholder="Email" required>
-                                    <small id="email-admin-alert" class="form-text text-dark"></small>
+                                        placeholder="Email" required name="email-login-admin">
                                     <input type="password" class="form-control my-2" id="login-pass-admin"
                                         placeholder="Contraseña" aria-describedby="passwordHelpBlock" required
-                                        minlength="5" maxlength="20">
-                                    <small id="pass-admin-alert" class="form-text text-dark"></small>
+                                        minlength="5" maxlength="20" name="login-pass-admin">
                                     <small id="passwordHelpBlock" class="form-text text-muted">
                                         <a class="text-dark" href="#">¿Olvido su contraseña?</a>
                                     </small>
@@ -271,7 +261,7 @@
                                         class="btn btn-lg px-4 shadow  mb-0 rounded-pill my-2"
                                         onclick="ValidateAdmin();">Iniciar Sesión</button>
                                     <button type="button" id="btn-admin-register-modal"
-                                        onclick="location.href='register/register-company.html'"
+                                        onclick="location.href='register/register-company.php'"
                                         class="btn btn-lg shadow  mb-0 rounded-pill my-2"
                                         style="padding-left:2rem; padding-right:2rem;">Registrarse</button>
                                 </div>
@@ -281,84 +271,10 @@
                 </div>
             </div>
         </div>
-
         <!-- Formulario de Registro -->
         <for action="">
             <div class="col-8 mr-auto ml-auto p-2 animated zoomIn " id="form-product">
-                <div class="form-row ">
-                    <div class="form-group col-md-3 ">
-                        <div class="card" id="image-product">
-                            <img src="img/lp-second-product2.jpeg" class="card-img-top flex-row " alt="...">
-                            <div class="card-header border-0 bg-transparent ml-auto mr-auto">
-                                <!-- Calificador Responsive -->
-                                <img src="img/icon/staricon.png" alt="" class="img-responsive" style="width: 1rem;">
-                            </div>
-                            <div class="card-body p-2 border-0 bg-transparent">
-                                <input type="text" name="" id=""
-                                    class="card-title rounded-pill mx-2 col-lg-11 col-md-10 col-sm-12 col-xs-12"
-                                    placeholder="Comentario Aquí">
-                                <button type="button" id="btn-comment-product"
-                                    class="btn px-4 shadow m-0 rounded-pill col-lg-12 col-md-12 col-sm-12 col-xs-12">Publicar
-                                    Comentarío</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-9 row">
-                        <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12 ">
-                            <h2 class="px-3">Nombre del Producto</h2>
-                            <!-- Anclar la empresa a la que pertenece el producto -->
-                            <a href="" class="text-dark">
-                                <h3 class="px-3">Nombre de la Empresa</h3>
-                            </a>
-                            <a href="" class="text-dark">
-                                <h4 class="px-3">Categoría del Producto</h4>
-                            </a>
-                            <div class="row m-2">
-                                <div class="col-md-12 bg-white rounded">
-                                    <h5>Descripción del Producto</h5>
-                                    <!-- Mostrar en tiempo real el tiempo faltante -->
-                                </div>
-                                <div class="col-md-12 rounded">
-                                    <div id="clock"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
-                            <div class="col-md-10">
-                                <h5 class="bg-secundary text-white py-2 rounded-pill px-2 my-3 text-center">L 900.00</h5>
-                            </div>
-                            <button type="button" id="btn-buy-product"
-                                class="btn  px-5  shadow my-3 text-dark  rounded-pill" data-toggle="modal"
-                                data-target="#buy-product">Comprar</button>
-                            <button type="button" id="btn-add-fav-product"
-                                class="btn px-3 shadow my-3 text-dark rounded-pill">Añadir a Favoritos</button>
-                            <button type="button" id="btn-add-cart-product"
-                                class="btn  px-4 shadow my-3 text-dark rounded-pill">Añadir al Carrito</button>
-                        </div>
-                        <div class="container">
-
-                            <div class="col-md-12 text-center">
-                                <h4 class="px-3">Comentarios</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class=" bg-white rounded-pill px-3">Nombre del Producto</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class=" bg-white rounded-pill px-3">Nombre del Producto</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class=" bg-white rounded-pill px-3">Nombre del Producto</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <?php 
                 include_once('components/loader.php');

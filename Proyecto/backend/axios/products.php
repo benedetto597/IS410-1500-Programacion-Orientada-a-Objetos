@@ -20,10 +20,15 @@
                 Producto::obtenerProductos($database->getDB());
                 exit();
             }
+            if(isset($_GET['idp'])){
+                Producto::obtenerProducto($database->getDB(), $_GET['idp']);
+                exit();
+            }
             if(!Producto::verificarAutenticacion($database->getDB())){
                 echo '{"mensaje:"Acceso no autorizado"}';
                 exit();
             }
+            
             if (isset($_GET['id'])){
                 Producto::obtenerProducto($database->getDB(), $_GET['id']);
             }else{
