@@ -498,8 +498,8 @@
             id="lp-sidebar-comment">
             <div class="sidebar-sticky p-5">
                 <div id="lp-card-comments" class="card form-group">
-                    <div class="card-body">
-                        <textarea name="" id="" class="form-control"></textarea>
+                    <div class="card-body" id="comentarios">
+                        
                     </div>
                 </div>
             </div>

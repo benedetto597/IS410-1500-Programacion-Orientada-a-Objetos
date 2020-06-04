@@ -85,7 +85,7 @@ axios({
 }).then(resProduct =>{
     let keys = Object.keys(resProduct.data);
         let values = Object.values(resProduct.data);
-       
+        //Comentarios
         for(let i = 0; i<keys.length; i++){
             let product = {};
             if(values[i].promocionesProducto){
@@ -93,15 +93,13 @@ axios({
                 product['key'] = keys[i];
                 product['productName'] = values[i].nombreProducto;
                 product['productuImg'] = values[i].imgProducto;
-                /*
-                product['sucursales'] = [];
-                for(let h=0; h<values[i].promocionesProducto.length; h++){
-                    for(let l=0; values[i].promocionesProducto[h].sucursalPromocion.length;l++){
-                        product['sucursales'].push = values[i].promocionesProducto[h].sucursalPromocion[l];
-                    }
-                }*/
                 products.push(product);
             }   
+            if(values[i].comentariosProducto != null){
+                for(let r = 0; r<values[i].comentariosProducto.length; r++){
+                    document.getElementById('comentarios').innerHTML += ` <textarea class="form-control my-2" disabled>${values[i].comentariosProducto[r].comentario}</textarea>`;
+                }
+            }
         }
 
         for(let j=1; j<products.length+1; j++){
