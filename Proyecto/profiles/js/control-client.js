@@ -252,6 +252,7 @@ function updateInfo(){
         }else{
             document.getElementById('pp-url').innerHTML = clientUser.profileImg;
         }
+        document.getElementById('pp-photo').style="visibility: hidden;";
         $(".loader-wrapper").fadeIn("slow");
         let timer = setInterval(update, 3000);
         function update(){
