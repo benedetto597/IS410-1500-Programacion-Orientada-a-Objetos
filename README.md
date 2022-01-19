@@ -31,7 +31,7 @@ _______
 | Catedrático| Erick Vladimir Reyes Marín |
 | Correo Electrónico| erick.marin.v@gmail.com |
 | Teléfono| 98903878 |
-| Sección| 1700 | 
+| Sección| 1500 | 
 | Año/Periodo| 2020/I |
 | Bibliografía Sugerida| 150 |
 
