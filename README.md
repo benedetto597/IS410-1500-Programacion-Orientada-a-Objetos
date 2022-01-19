@@ -6,12 +6,14 @@
 ### I PAC 2020 
 ### Seccción 1500
 ### Catedratico **Ing. Erick Vladimir Marín**
-</div>
+
 
 ### Estudiante 
 | Nombre | Numero De Cuenta | Correo Institucional |
 |:-------------:| :-----:|:-----:|
 | Edgar Josué Benedetto Godoy | `20171033802` | [UNAH](mailto:edgar.benedetto@unah.hn) |
+
+</div>
 
 _______
 _______
